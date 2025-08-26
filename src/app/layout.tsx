@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const alliance = localFont({
+  src: [
+    { path: "../assets/fonts/Alliance/Alliance-Regular.otf", weight: "400", style: "normal" },
+    { path: "../assets/fonts/Alliance/Alliance-Bold.otf", weight: "700", style: "normal" },
+    { path: "../assets/fonts/Alliance/Alliance-Black.otf", weight: "900", style: "normal" },
+  ],
+  variable: "--font-alliance",
 });
 
 export const metadata: Metadata = {
@@ -24,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${alliance.variable} ${alliance.variable}`}>
         {children}
       </body>
     </html>

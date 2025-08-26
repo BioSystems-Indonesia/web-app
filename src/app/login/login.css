@@ -1,0 +1,174 @@
+.container {
+  height: 80vh;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.logo-card {
+  margin: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.logo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+h2 {
+  color: var(--foreground);
+  font-size: 2rem;
+  padding-bottom: 0.5rem;
+}
+
+.password-container {
+  margin: 1rem 0;
+}
+
+p {
+  color: var(--foreground);
+}
+
+form {
+  padding: 1rem;
+  margin-top: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+  border-radius: 0.25rem;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  padding-left: 0.5rem;
+  border-bottom: 1px solid #bfbfbf;
+}
+
+.input-container:focus-within {
+  border-bottom: 1px solid var(--primary);
+}
+
+.input-container.filled {
+  border-bottom: 1px solid var(--primary);
+}
+
+input {
+  width: 100%;
+  border: none;
+  font-size: 0.9rem;
+  padding-left: 0.5rem;
+}
+
+input:focus {
+  outline: none;
+}
+
+input::placeholder {
+  font-size: 0.9rem;
+  color: #bfbfbf;
+}
+
+button {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+
+button:hover {
+  background: var(--primary-hover);
+}
+
+.card-error {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  background-color: #ffe2e2;
+  padding: 0.5rem 1rem;
+  height: 2.2rem;
+  border-radius: 0.2rem;
+  border: 1px solid var(--danger);
+}
+
+.card-error p {
+  color: var(--danger);
+  margin: 0;
+  font-size: 0.8rem;
+}
+
+.card-error p:last-child {
+  cursor: pointer;
+}
+
+@media (min-width: 641px) {
+  .container {
+    padding: 2rem;
+    font-size: 16px;
+  }
+
+  .logo-card {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .container {
+    height: 90vh;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    font-size: 18px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .login-container {
+    width: 50%;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .password-container {
+    margin: 1rem 0;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+
+  .input-container.filled {
+    border-bottom: 1px solid var(--primary);
+  }
+
+  input {
+    width: 100%;
+    border: none;
+    font-size: 1rem;
+    padding-left: 0.5rem;
+  }
+
+  input::placeholder {
+    font-size: 0.8rem;
+  }
+}
