@@ -8,6 +8,10 @@ import { IoBagSharp, IoCall } from "react-icons/io5";
 
 import './sidebar.css';
 
+interface SidebarProps {
+    isOpen: boolean;
+}
+
 type NavItem = {
     href: string;
     label: string;
@@ -23,30 +27,33 @@ const navItems: NavItem[] = [
     { href: "/dashboard/users", label: "Users", icon: <FaUser /> },
 ];
 
-export default function SidebarDashboard() {
+export default function SidebarDashboard({ isOpen }: SidebarProps) {
     const pathname = usePathname();
 
     return (
-        <aside>
-            <ul>
-                {navItems.map((item) => {
-                    const isActive = pathname === item.href;
+        <>
+            <aside className={`${isOpen ? "" : "open"}`}>
+                <ul>
+                    {navItems.map((item) => {
+                        const isActive = pathname === item.href;
 
-                    return (
-                        <li key={item.href} className={`${isActive
+                        return (
+                            <li key={item.href} className={`${isActive
                                 ? "isActive"
                                 : ""
-                            }`}>
-                            <Link
-                                href={item.href}
-                            >
-                                {item.icon}
-                                {item.label}
-                            </Link>
-                        </li>
-                    );
-                })}
-            </ul>
-        </aside>
+                                }`}>
+                                <Link
+                                    href={item.href}
+                                >
+                                    {item.icon}
+                                    {item.label}
+                                </Link>
+                            </li>
+                        );
+                    })}
+                </ul>
+            </aside>
+            <div className={`layout ${isOpen ? "open-layout" : ""}`}></div>
+        </>
     );
 }

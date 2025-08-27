@@ -1,8 +1,17 @@
 aside {
-  margin-top: 3.65rem;
-  height: 91.5vh;
+  margin-top: 3rem;
+  /* height: 91.5vh; */
+  height: 100vh;
   position: fixed;
+  z-index: 999;
+  background-color: white;
   width: 12rem;
+  transform: translate(0);
+  transition: 0.5s ease;
+}
+
+.open {
+  transform: translate(-12rem);
 }
 
 /* Reset list */
@@ -25,7 +34,9 @@ ul li a {
   gap: 1rem;
   padding: 1rem;
   cursor: pointer;
-  transition: background 0.3s ease, color 0.3s ease;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
   width: 100%;
 }
 
@@ -38,4 +49,19 @@ ul li a:hover {
   width: 100%;
   background-color: var(--primary);
   color: #fff;
+}
+
+.layout {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.091);
+  transition: opacity 0.3s ease; /* animasi */
+}
+
+.layout.open-layout {
+  opacity: 1;
+  pointer-events: auto;
 }

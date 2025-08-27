@@ -46,7 +46,9 @@ export default function LoginPage() {
   return (
     <>
       <div className="container">
-        <Image src={logo} alt="BioSystems Logo" width={150} height={150} />
+        <div className="logo-card">
+          <Image className="logo" src={logo} alt="BioSystems Logo" />
+        </div>
         <div className="login-container">
           <h2>Login</h2>
           <p>Please log in to continue</p>

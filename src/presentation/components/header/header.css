@@ -1,15 +1,32 @@
 header {
+  height: 3rem;
   position: fixed;
+  z-index: 99999;
   width: 100%;
   background-color: var(--primary);
-  padding: 1rem 3rem;
+  padding: 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+  box-shadow:
+    rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
 
-.user-info p {
+.logo {
+  display: none;
+  height: auto !important;
+}
+
+.header-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+  width: 100%;
+}
+
+.header-info p {
   color: #fff !important;
+  font-size: 0.8rem;
 }
