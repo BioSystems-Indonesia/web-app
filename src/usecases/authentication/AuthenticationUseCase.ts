@@ -1,4 +1,4 @@
-import { AuthenticationRepository } from "@/domain/AuthenticationRepository";
+import { AuthenticationRepository } from "@/domain/authentication/AuthenticationRepository";
 import { Hasher } from "@/domain/security/Hasher";
 import { JwtService, Claims } from "@/lib/helper/JwtService";
 

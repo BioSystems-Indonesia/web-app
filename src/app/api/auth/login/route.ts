@@ -1,8 +1,8 @@
-import { AuthenticationRepositoryPrisma } from "@/infrastructure/prisma/AuthenticationRepositoryPrisma";
+import { AuthenticationRepositoryPrisma } from "@/infrastructure/authentication/AuthenticationRepository";
 import { APIResponseBuilder } from "@/lib/helper/apiResponse";
 import { PasswordHasher } from "@/lib/helper/hash";
 import { JwtService } from "@/lib/helper/JwtService";
-import { AuthenticationUseCase } from "@/usecases/AuthenticationUseCase";
+import { AuthenticationUseCase } from "@/usecases/authentication/AuthenticationUseCase";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {

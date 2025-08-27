@@ -1,6 +1,6 @@
-import { Authentication } from "@/domain/Authentication";
-import { AuthenticationRepository } from "@/domain/AuthenticationRepository";
-import { prisma } from "./PrismaClient";
+import { AuthenticationRepository } from "@/domain/authentication/AuthenticationRepository";
+import { prisma } from "../prisma/PrismaClient";
+import { Authentication } from "@/domain/authentication/Authentication";
 
 export class AuthenticationRepositoryPrisma implements AuthenticationRepository {
   async findByUsername(username: string): Promise<Authentication> {
