@@ -1,5 +1,5 @@
 "use client"
-import "./dashboard.css";
+
 
 export default function DashboardPage() {
     return (

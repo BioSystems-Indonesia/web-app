@@ -10,6 +10,7 @@ import './sidebar.css';
 
 interface SidebarProps {
     isOpen: boolean;
+    onToggle: () => void;
 }
 
 type NavItem = {
@@ -27,7 +28,7 @@ const navItems: NavItem[] = [
     { href: "/dashboard/users", label: "Users", icon: <FaUser /> },
 ];
 
-export default function SidebarDashboard({ isOpen }: SidebarProps) {
+export default function SidebarDashboard({ isOpen, onToggle }: SidebarProps) {
     const pathname = usePathname();
 
     return (
@@ -53,7 +54,8 @@ export default function SidebarDashboard({ isOpen }: SidebarProps) {
                     })}
                 </ul>
             </aside>
-            <div className={`layout ${isOpen ? "open-layout" : ""}`}></div>
+            <div className={`layout ${isOpen ? "open-layout" : ""}`} onClick={onToggle}></div>
+
         </>
     );
 }

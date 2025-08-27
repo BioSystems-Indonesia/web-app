@@ -1,15 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { FaRegUser, FaLock } from "react-icons/fa";
 import logo from "@/assets/logo/bios.png";
 import Image from "next/image";
+import axios from "axios";
 
-import "./login.css";
+import "./page.css";
 
 export default function LoginPage() {
-  const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -19,27 +18,25 @@ export default function LoginPage() {
     setError("");
 
     try {
-      const res = await fetch("/api/auth", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username: username, password: password }),
+      const res = await axios.post("/api/auth", {
+        username,
+        password,
       });
+      const data = res.data;
 
-      const data = await res.json();
-      localStorage.setItem("token", data.user.token);
-
-      if (!res.ok || !data.success) {
-        setError(data.message || "Email or password wrong!");
-        setPassword("")
+      if (!data.success) {
+        setError(data.message || "username or password wrong!");
+        setPassword("");
         return;
       }
 
-      router.push("/dashboard");
-    } catch (err) {
-      console.error("Login error:", err);
-      setError("Something went wrong, try again.");
+      window.location.href = "/dashboard";
+    } catch (err: unknown) {
+      if (axios.isAxiosError(err) && err.response?.data?.message) {
+        setError(err.response.data.message);
+      } else {
+        setError("Something went wrong, try again.");
+      }
     }
   };
 
@@ -65,6 +62,7 @@ export default function LoginPage() {
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   placeholder="Enter your username"
+                  autoCapitalize="none"
                   required
                 />
               </div>

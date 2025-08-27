@@ -8,6 +8,7 @@ aside {
   width: 12rem;
   transform: translate(0);
   transition: 0.5s ease;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
 }
 
 .open {
@@ -64,4 +65,17 @@ ul li a:hover {
 .layout.open-layout {
   opacity: 1;
   pointer-events: auto;
+}
+
+@media (min-width: 641px) {
+}
+
+@media (min-width: 1025px) {
+  .open {
+    transform: translate(0);
+  }
+
+  .layout {
+    display: none;
+  }
 }
