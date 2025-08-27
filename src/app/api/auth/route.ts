@@ -1,23 +1,29 @@
-import { NextResponse } from "next/server";
-import { login } from "@/usecases/authUseCase";
+import { AuthenticationRepositoryPrisma } from "@/infrastructure/prisma/AuthenticationRepositoryPrisma";
+import { APIResponseBuilder } from "@/lib/helper/apiResponse";
+import { PasswordHasher } from "@/lib/helper/hash";
+import { JwtService } from "@/lib/helper/JWTService";
+import { AuthenticationUseCase } from "@/usecases/AuthenticationUseCase";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
+  const { username, password } = await req.json();
+
+  const repo = new AuthenticationRepositoryPrisma();
+  const hasher = new PasswordHasher();
+  const jwt = new JwtService(process.env.SECRET_KEY || "");
+  const authUseCase = new AuthenticationUseCase(repo, hasher, jwt);
+
   try {
-    const { username, password } = await req.json();
-    if (!username) {
-      throw new Error("username required");
-    }
-    const user = await login(username, password);
-    const res = NextResponse.json({ success: true, user }, { status: 200 });
-    res.cookies.set("token", user.token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
-      path: "/",
-    });
-    return res;
+    const result = await authUseCase.login(username, password);
+    return NextResponse.json(APIResponseBuilder.success(result));
   } catch (error: unknown) {
-    const message = error instanceof Error ? error.message : "An unknown error occurred";
-    return NextResponse.json({ success: false, message }, { status: 401 });
+    const errorMessage =
+      typeof error === "object" && error !== null && "message" in error
+        ? (error as { message: string }).message
+        : String(error);
+    if (errorMessage.includes("wrong")) {
+      APIResponseBuilder.unauthorized(error);
+    }
+    return NextResponse.json({ error: errorMessage }, { status: 401 });
   }
 }

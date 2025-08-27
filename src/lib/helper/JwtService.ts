@@ -1,0 +1,33 @@
+import jwt, { Secret, SignOptions } from "jsonwebtoken";
+
+export interface Claims {
+  userId: string;
+  username: string;
+  role?: string;
+}
+
+export class JwtService {
+  private readonly secretKey: Secret;
+  private readonly options: SignOptions;
+
+  constructor(secretKey: string, expiresIn: SignOptions["expiresIn"] = "24h") {
+    this.secretKey = secretKey as Secret;
+    this.options = { expiresIn };
+  }
+
+  generate(payload: Claims): string {
+    return jwt.sign(payload, this.secretKey, this.options);
+  }
+
+  validate(token: string): { valid: boolean; payload?: Claims; error?: string } {
+    try {
+      const decoded = jwt.verify(token, this.secretKey) as Claims;
+      return { valid: true, payload: decoded };
+    } catch (error) {
+      return {
+        valid: false,
+        error: error instanceof Error ? error.message : "Token invalid",
+      };
+    }
+  }
+}
