@@ -1,0 +1,15 @@
+header {
+  position: fixed;
+  width: 100%;
+  background-color: var(--primary);
+  padding: 1rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.user-info p {
+  color: #fff !important;
+}

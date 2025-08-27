@@ -1,9 +1,8 @@
 "use client"
+import "./dashboard.css";
 
 export default function DashboardPage() {
-  return (
-    <div>
-      <h1>Dashboard</h1>
-    </div>
-  );
+    return (
+        <h1>Dashboard</h1>
+    );
 }
