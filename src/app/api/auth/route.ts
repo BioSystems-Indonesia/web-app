@@ -1,7 +1,7 @@
 import { AuthenticationRepositoryPrisma } from "@/infrastructure/prisma/AuthenticationRepositoryPrisma";
 import { APIResponseBuilder } from "@/lib/helper/apiResponse";
 import { PasswordHasher } from "@/lib/helper/hash";
-import { JwtService } from "@/lib/helper/JWTService";
+import { JwtService } from "@/lib/helper/JwtService";
 import { AuthenticationUseCase } from "@/usecases/AuthenticationUseCase";
 import { NextRequest, NextResponse } from "next/server";
 

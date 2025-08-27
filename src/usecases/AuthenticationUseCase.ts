@@ -1,6 +1,6 @@
 import { AuthenticationRepository } from "@/domain/AuthenticationRepository";
 import { Hasher } from "@/domain/security/Hasher";
-import { JwtService, Claims } from "@/lib/helper/JWTService";
+import { JwtService, Claims } from "@/lib/helper/JwtService";
 
 export class AuthenticationUseCase {
   constructor(
