@@ -15,7 +15,18 @@ export async function POST(req: NextRequest) {
 
   try {
     const result = await authUseCase.login(username, password);
-    return NextResponse.json(APIResponseBuilder.success(result));
+    const response = NextResponse.json(APIResponseBuilder.success(result));
+
+    response.cookies.set({
+      name: "token",
+      value: result.token,
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      path: "/",
+      maxAge: 60 * 60 * 24,
+    });
+
+    return response;
   } catch (error: unknown) {
     const errorMessage =
       typeof error === "object" && error !== null && "message" in error

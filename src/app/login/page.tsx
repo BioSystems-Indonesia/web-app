@@ -18,17 +18,10 @@ export default function LoginPage() {
     setError("");
 
     try {
-      const res = await axios.post("/api/auth/login", {
+      await axios.post("/api/auth/login", {
         username,
         password,
       });
-      const data = res.data;
-
-      if (!data.success) {
-        setError(data.message || "username or password wrong!");
-        setPassword("");
-        return;
-      }
 
       window.location.href = "/dashboard";
     } catch (err: unknown) {
