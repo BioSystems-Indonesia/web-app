@@ -6,6 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
+    "test": "jest --verbose --colors",
+    "test:watch": "jest --watch",
     "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx --fix .",
     "lint": "eslint"
   },
