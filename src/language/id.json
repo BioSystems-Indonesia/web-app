@@ -17,5 +17,19 @@
     "username": "Masukkan nama pengguna Anda",
     "loginDescription": "Silakan masuk untuk melanjutkan"
   },
+  "Header": {
+    "language": "Bahasa",
+    "login": "Masuk",
+    "products": "Produk",
+    "solutions": "Solusi",
+    "carear": "Karir",
+    "about": "Tentang",
+    "contact-us": "Hubungi Kami"
+  },
+  "Home": {
+    "h1-slide-1": "Improving health and well-being",
+    "h1-slide-2": "Reliable outcomes begin with robust systems",
+    "h1-slide-3": "We deliver comprehensive analytical solutions"
+  },
   "greeting": "Halo, Selamat datang!"
 }

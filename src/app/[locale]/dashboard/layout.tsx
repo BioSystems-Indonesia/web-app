@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import DashboardHeader from "@/presentation/components/header/header";
+import DashboardHeader from "@/presentation/components/header/dashboardHeader";
 import SidebarDashboard from "@/presentation/components/sidebar/sidebar";
 import "./layout.css";
 

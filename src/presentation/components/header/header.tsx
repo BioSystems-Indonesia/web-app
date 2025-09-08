@@ -1,36 +1,52 @@
-import logo from "@/assets/BioSystems-logo-white.png";
-import "./header.css";
 import Image from "next/image";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { IoLogOut } from "react-icons/io5";
-import axios from "axios";
+import RoundEarthLogo from "@/presentation/components/icon/RoundEarth.svg";
+import LoginLogo from "@/presentation/components/icon/Login.svg"
+import { useTranslations } from "next-intl";
+import Link from "next/link";
+import "./header.css"
 
-type DashboardHeaderProps = {
-  username?: string;
-  role?: string;
-  onToggleSidebar: () => void;
+type NavItem = {
+    href: string;
+    label: string;
 }
 
+export default function Header() {
+    const t = useTranslations("Header")
 
+    const navItems: NavItem[] = [
+        { href: "#", label: "products" },
+        { href: "#", label: "solutions" },
+        { href: "#", label: "carear" },
+        { href: "#", label: "about" },
+        { href: "#", label: "contact-us" }
+    ]
 
-export default function DashboardHeader({ username, role, onToggleSidebar }: DashboardHeaderProps) {
-  const handleLogout = async () => {
-    try {
-      await axios.post("/api/auth/logout");
-      window.location.href = "/login";
-    } catch (error: unknown) {
-      console.error(error)
-    }
-  }
-
-  return (
-    <header>
-      <Image className="logo" src={logo.src} alt="BioSystems Logo" height={0} width={120} />
-      <GiHamburgerMenu className="hamburger-menu" cursor="pointer" onClick={onToggleSidebar} />
-      <div className="header-info">
-        {username && <p>Welcome, {role} <span>{username}</span>!</p>}
-        <IoLogOut className="logout-icon" size={20} onClick={handleLogout} cursor={"pointer"} />
-      </div>
-    </header>
-  );
+    return (
+        <header>
+            <div className="header-up">
+                <h2 className="logo">BioSystems</h2>
+                <div className="items">
+                    <div>
+                        <Image src={RoundEarthLogo} alt="RoundEarth Logo" width={15}></Image>
+                        <p>{t("language")}</p>
+                    </div>
+                    <div>
+                        <Image src={LoginLogo} alt="Login Logo" width={15}></Image>
+                        <p>{t("login")}</p>
+                    </div>
+                </div>
+            </div>
+            <div className="header-bottom">
+                <ul>
+                    {navItems.map((item, index) => (
+                        <li key={index}>
+                            <Link
+                                href={item.href}
+                            >{t(item.label)}</Link>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        </header>
+    )
 }

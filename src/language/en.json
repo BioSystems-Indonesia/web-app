@@ -17,5 +17,19 @@
     "username": "Enter your username",
     "loginDescription": "Please log in to continue"
   },
+  "Header": {
+    "language": "Langguage",
+    "login": "Login",
+    "products": "Products",
+    "solutions": "Solutions",
+    "carear": "Carear",
+    "about": "About",
+    "contact-us": "Contact Us"
+  },
+  "Home": {
+    "h1-slide-1": "Improving health and well-being",
+    "h1-slide-2": "Reliable outcomes begin with robust systems",
+    "h1-slide-3": "We deliver comprehensive analytical solutions"
+  },
   "greeting": "Hello, Welcome!"
 }

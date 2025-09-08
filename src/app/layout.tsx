@@ -6,6 +6,8 @@ const alliance = localFont({
   src: [
     { path: "../assets/fonts/Alliance/Alliance-Regular.otf", weight: "400", style: "normal" },
     { path: "../assets/fonts/Alliance/Alliance-Bold.otf", weight: "700", style: "normal" },
+    { path: "../assets/fonts/Alliance/Alliance-Medium.otf", weight: "500", style: "normal" },
+    { path: "../assets/fonts/Alliance/Alliance-Light.otf", weight: "100", style: "normal" },
     { path: "../assets/fonts/Alliance/Alliance-Black.otf", weight: "900", style: "normal" },
   ],
   variable: "--font-alliance",
