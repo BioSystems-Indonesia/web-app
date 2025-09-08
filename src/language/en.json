@@ -1,0 +1,21 @@
+{
+  "HomePage": {
+    "title": "Welcome to BioSystems Indonesia",
+    "description": "The best platform for biosystem management"
+  },
+  "Navigation": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "login": "Login",
+    "logout": "Logout"
+  },
+  "Auth": {
+    "login": "Login",
+    "logout": "Logout",
+    "email": "Email",
+    "password": "Password",
+    "username": "Enter your username",
+    "loginDescription": "Please log in to continue"
+  },
+  "greeting": "Hello, Welcome!"
+}
