@@ -2,4 +2,9 @@
 .home {
   width: 100%;
   min-height: 100vh;
+  /* Create new stacking context to isolate from header transforms */
+  position: relative;
+  isolation: isolate;
+  /* Ensure proper containment */
+  contain: layout style;
 }
