@@ -1,5 +1,5 @@
 import logo from "@/assets/BioSystems-logo-white.png";
-import "./header.css";
+import "./dashboardHeader.css";
 import Image from "next/image";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoLogOut } from "react-icons/io5";

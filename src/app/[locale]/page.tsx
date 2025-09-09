@@ -4,6 +4,7 @@ import HeroSection from "@/presentation/components/hero/HeroSection";
 import { generateSEOMetadata, generateHrefLang } from "@/lib/seo/generateMetadata";
 import { getTranslations } from 'next-intl/server';
 import { Metadata } from 'next';
+import Header from "@/presentation/components/header/header";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -52,6 +53,8 @@ export default async function Home({ params }: PageProps) {
       />
 
       <div className="home">
+        <Header />
+
         <HeroSection />
         <SolutionSection />
       </div>

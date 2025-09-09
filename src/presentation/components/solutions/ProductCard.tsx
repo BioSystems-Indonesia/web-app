@@ -23,7 +23,7 @@ export const ProductCard: React.FC<ProductCardProps> = React.memo(({
             <p className="product-name">{product.name}</p>
         </div>
         <div className="product-link-container">
-            <Link href={product.link} className="product-link">
+            <Link href={product.link} target="_blank" className="product-link">
                 {seeProductText}
             </Link>
             <GoArrowUpRight className="arrow-icon" />

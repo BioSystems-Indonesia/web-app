@@ -41,6 +41,7 @@
 }
 
 .solution-section .highlighted-products {
+  background-color: white;
   padding: 24px 16px;
   width: 100%;
   order: 2;

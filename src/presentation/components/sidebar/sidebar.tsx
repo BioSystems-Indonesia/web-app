@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useLocale } from "next-intl";
 import { FaHome, FaNewspaper, FaUser } from "react-icons/fa";
 import { MdEventAvailable } from "react-icons/md";
 import { IoBagSharp, IoCall } from "react-icons/io5";
@@ -19,17 +20,19 @@ type NavItem = {
     icon: React.ReactNode;
 };
 
-const navItems: NavItem[] = [
-    { href: "/dashboard", label: "Home", icon: <FaHome /> },
-    { href: "/dashboard/posts", label: "Posts", icon: <FaNewspaper /> },
-    { href: "/dashboard/events", label: "Events", icon: <MdEventAvailable /> },
-    { href: "/dashboard/career", label: "Career", icon: <IoBagSharp /> },
-    { href: "/dashboard/contact", label: "Contact", icon: <IoCall /> },
-    { href: "/dashboard/users", label: "Users", icon: <FaUser /> },
+const getNavItems = (locale: string): NavItem[] => [
+    { href: `/${locale}/dashboard`, label: "Home", icon: <FaHome /> },
+    { href: `/${locale}/dashboard/posts`, label: "Posts", icon: <FaNewspaper /> },
+    { href: `/${locale}/dashboard/events`, label: "Events", icon: <MdEventAvailable /> },
+    { href: `/${locale}/dashboard/career`, label: "Career", icon: <IoBagSharp /> },
+    { href: `/${locale}/dashboard/contact`, label: "Contact", icon: <IoCall /> },
+    { href: `/${locale}/dashboard/users`, label: "Users", icon: <FaUser /> },
 ];
 
 export default function SidebarDashboard({ isOpen, onToggle }: SidebarProps) {
     const pathname = usePathname();
+    const locale = useLocale();
+    const navItems = getNavItems(locale);
 
     return (
         <>

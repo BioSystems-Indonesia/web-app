@@ -168,6 +168,39 @@ li {
     gap: 40px;
   }
 
+  .header-up .items .language-card {
+    position: absolute;
+    z-index: 9999;
+    background-color: #fff;
+    top: 1.5rem;
+    flex-direction: column !important;
+    gap: 0 !important; /* Override parent gap */
+    width: 80px; /* Fixed width */
+    height: auto;
+    width: auto !important;
+  }
+
+  .header-up .items .language-card span {
+    width: 100%;
+    text-align: center;
+    color: #121212;
+    margin: 0;
+    padding: 0.5rem 1rem;
+    font-size: 12px;
+    font-weight: 200;
+    border-bottom: 1px solid #dedede;
+    transition: 0.5s ease;
+  }
+
+  .header-up .items .language-card span:last-child {
+    border-bottom: none;
+  }
+
+  .language-card span:hover {
+    background-color: var(--primary);
+    color: white !important;
+  }
+
   .header-up .items p {
     font-size: 11px;
   }

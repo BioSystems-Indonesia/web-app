@@ -8,6 +8,8 @@ const secret = new TextEncoder().encode(process.env.SECRET_KEY);
 const intlMiddleware = createMiddleware({
   locales: ["en", "id"],
   defaultLocale: "id",
+  localePrefix: "always",
+  localeDetection: false,
 });
 
 export async function middleware(req: NextRequest) {
@@ -47,5 +49,12 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/", "/(id|en)/:path*"],
+  matcher: [
+    // Match all pathnames except for
+    // - API routes
+    // - Static files (_next/static, favicon.ico, etc.)
+    "/((?!api|_next/static|_next/image|favicon.ico).*)",
+    // Also match root path
+    "/",
+  ],
 };

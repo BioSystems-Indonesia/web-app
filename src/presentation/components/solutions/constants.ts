@@ -33,14 +33,14 @@ export const PRODUCTS: Product[] = [
     name: "BA 200",
     type: "Analyzer",
     icon: BA200Icon,
-    link: "#",
+    link: "https://katalog.inaproc.id/elga-tama/biosystems-ba200-and-accessories",
     images: [BA200Img1, BA200Img2, BA200Img3],
   },
   {
     name: "A15",
     type: "Analyzer",
     icon: A15Icon,
-    link: "#",
+    link: "https://katalog.inaproc.id/elga-tama/biosystems-a15-random-access-automatic-analyzer-and-accessories",
     images: [A15Img1, A15Img2, A15Img3],
   },
   {
