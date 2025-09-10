@@ -17,6 +17,7 @@ export default function Header() {
     const t = useTranslations("Header")
     const [langOpen, setLangOpen] = useState(false)
     const [isOpen, setIsOpen] = useState(false)
+    const [isScrolled, setIsScrolled] = useState(false)
     const locale = useLocale()
     const languageRef = useRef<HTMLDivElement>(null)
 
@@ -37,6 +38,20 @@ export default function Header() {
         }
     }, [langOpen])
 
+    // Handle scroll to show/hide header-up
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollTop = window.scrollY
+            setIsScrolled(scrollTop > 100) // Hide header-up when scrolled more than 100px
+        }
+
+        window.addEventListener('scroll', handleScroll)
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll)
+        }
+    }, [])
+
     const navItems = (locale: string): NavItem[] => [
         { href: `${locale}/#`, label: "products" },
         { href: `${locale}/#`, label: "solutions" },
@@ -51,7 +66,7 @@ export default function Header() {
                 className={`layout ${isOpen ? 'open' : ''}`}
                 onClick={() => setIsOpen(false)}
             ></div>
-            <div className="header-up">
+            <div className={`header-up ${isScrolled ? 'hidden' : ''}`}>
                 <h2 className="logo">BioSystems</h2>
                 <div className="items">
                     <div ref={languageRef} style={{ position: "relative" }}>
@@ -59,7 +74,7 @@ export default function Header() {
                             <Image src={RoundEarthLogo} alt="RoundEarth Logo" width={15}></Image>
                             <p>{t("language")}</p>
                         </div>
-                        {langOpen ? <div className="language-card">
+                        {/* <div className={`language-card ${langOpen ? 'lang-open' : ''}`}>
                             <span onClick={() => {
                                 window.location.href = "/id"
                                 setLangOpen(false)
@@ -72,7 +87,7 @@ export default function Header() {
                             }} style={{ cursor: "pointer" }}>
                                 English
                             </span>
-                        </div> : ""}
+                        </div> */}
                     </div>
 
 
@@ -88,7 +103,7 @@ export default function Header() {
                     <div className="line-2"></div>
                 </div>
             </div>
-            <div className="header-bottom" style={isOpen ? { transform: "translateX(0)" } : {}}>
+            <div className={`header-bottom ${isScrolled ? 'move-up' : ''}`} style={isOpen ? { transform: "translateX(0)" } : {}}>
                 <ul>
                     {navItems(locale).map((item, index) => (
                         <li key={index}>

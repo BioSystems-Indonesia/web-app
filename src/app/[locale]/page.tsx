@@ -1,10 +1,12 @@
-import SolutionSection from "@/presentation/components/solutions/SolutionSection";
 import "./page.css";
-import HeroSection from "@/presentation/components/hero/HeroSection";
 import { generateSEOMetadata, generateHrefLang } from "@/lib/seo/generateMetadata";
 import { getTranslations } from 'next-intl/server';
 import { Metadata } from 'next';
+
 import Header from "@/presentation/components/header/header";
+import HeroSection from "@/presentation/components/hero/HeroSection";
+import SolutionSection from "@/presentation/components/solutions/SolutionSection";
+import WhyChooseUseSection from "@/presentation/components/whyChooseUs/WhyChooseUsSection";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -54,9 +56,9 @@ export default async function Home({ params }: PageProps) {
 
       <div className="home">
         <Header />
-
         <HeroSection />
         <SolutionSection />
+        <WhyChooseUseSection />
       </div>
     </>
   );

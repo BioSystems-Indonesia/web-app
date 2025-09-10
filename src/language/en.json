@@ -37,5 +37,28 @@
     "h2": "Highlighted Products",
     "see-product": "See Product"
   },
+  "WhyChooseUs": {
+    "h1": "Why choose us?",
+    "item1": {
+      "title": "24h Customer Support",
+      "desc": "Support via phone or WhatsApp—so you can rely on us whenever you need assistance."
+    },
+    "item2": {
+      "title": "Trusted Quality & Stability",
+      "desc": "Produced under one fully integrated facility, our reagents and instruments guarantee excellent quality and stability."
+    },
+    "item3": {
+      "title": "Reliable Supply",
+      "desc": "With up to 6 months of buffer stock, we help your lab run without interruptions."
+    },
+    "item4": {
+      "title": "After-Sales Without Worries",
+      "desc": "From installation, training, calibration, to maintenance and spare part replacement—our services are provided free of charge."
+    },
+    "item5": {
+      "title": "Free Shipping Nationwide",
+      "desc": "We provide complimentary shipping for all non-e-catalog orders nationwide."
+    }
+  },
   "greeting": "Hello, Welcome!"
 }

@@ -1,7 +1,10 @@
 /* Mobile-first header styles */
 header {
-  position: fixed;
-  z-index: 999999;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 999999 !important;
   color: white;
   width: 100vw;
   background-color: rgba(255, 255, 255, 0.1);
@@ -14,13 +17,18 @@ header .header-up {
   justify-content: space-between;
   align-items: center;
   padding: 8px 16px;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .layout {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 99;
+  z-index: 999;
   width: 100vw;
   height: 100vh;
 
@@ -102,7 +110,6 @@ header .header-bottom {
   z-index: 999;
   display: block;
   transform: translateX(-100%);
-  background-color: #121212;
   width: 70vw;
   height: 100vh;
   padding-left: 2rem;
@@ -150,6 +157,9 @@ li {
 
 /* Tablet styles - 768px and up */
 @media (min-width: 768px) {
+  header {
+    z-index: 0;
+  }
   header .header-up {
     padding: 10px 32px;
     border-bottom: 1px solid white;
@@ -166,39 +176,7 @@ li {
   .header-up .items {
     display: flex;
     gap: 40px;
-  }
-
-  .header-up .items .language-card {
-    position: absolute;
-    z-index: 9999;
-    background-color: #fff;
-    top: 1.5rem;
-    flex-direction: column !important;
-    gap: 0 !important; /* Override parent gap */
-    width: 80px; /* Fixed width */
-    height: auto;
-    width: auto !important;
-  }
-
-  .header-up .items .language-card span {
-    width: 100%;
-    text-align: center;
-    color: #121212;
-    margin: 0;
-    padding: 0.5rem 1rem;
-    font-size: 12px;
-    font-weight: 200;
-    border-bottom: 1px solid #dedede;
-    transition: 0.5s ease;
-  }
-
-  .header-up .items .language-card span:last-child {
-    border-bottom: none;
-  }
-
-  .language-card span:hover {
-    background-color: var(--primary);
-    color: white !important;
+    position: relative;
   }
 
   .header-up .items p {
@@ -209,6 +187,16 @@ li {
     display: none;
   }
 
+  header .header-up.hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  header .header-bottom.hidden {
+    transform: translateY(-20%);
+  }
+
   header .header-bottom {
     padding: 8px 32px;
     height: auto;
@@ -217,7 +205,14 @@ li {
     transform: translateX(0);
     display: block;
     position: relative;
-    background-color: transparent;
+    transition:
+      margin-top 0.3s ease,
+      background-color 0.3s ease;
+  }
+
+  header .header-bottom.move-up {
+    background-color: var(--primary);
+    margin-top: -62px;
   }
 
   .header-bottom ul {

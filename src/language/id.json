@@ -37,5 +37,28 @@
     "h2": "Produk Unggulan",
     "see-product": "Lihat Produk"
   },
+  "WhyChooseUs": {
+    "h1": "Mengapa memilih kami?",
+    "item1": {
+      "title": "Dukungan Pelanggan 24 Jam",
+      "desc": "Dukungan melalui telepon atau WhatsApp—sehingga Anda dapat mengandalkan kami kapan pun Anda membutuhkan bantuan."
+    },
+    "item2": {
+      "title": "Kualitas & Stabilitas Terpercaya",
+      "desc": "Diproduksi di bawah satu fasilitas terintegrasi penuh, reagen dan instrumen kami menjamin kualitas dan stabilitas yang sangat baik."
+    },
+    "item3": {
+      "title": "Pasokan Andal",
+      "desc": "Dengan stok buffer hingga 6 bulan, kami membantu laboratorium Anda berjalan tanpa gangguan."
+    },
+    "item4": {
+      "title": "Layanan Purna Jual Tanpa Khawatir",
+      "desc": "Dari instalasi, pelatihan, kalibrasi, hingga pemeliharaan dan penggantian suku cadang—layanan kami disediakan tanpa biaya."
+    },
+    "item5": {
+      "title": "Pengiriman Gratis Se-Indonesia",
+      "desc": "Kami menyediakan pengiriman gratis untuk semua pesanan non-e-katalog di seluruh Indonesia."
+    }
+  },
   "greeting": "Halo, Selamat datang!"
 }
