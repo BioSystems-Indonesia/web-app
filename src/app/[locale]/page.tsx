@@ -7,6 +7,9 @@ import Header from "@/presentation/components/header/header";
 import HeroSection from "@/presentation/components/hero/HeroSection";
 import SolutionSection from "@/presentation/components/solutions/SolutionSection";
 import WhyChooseUseSection from "@/presentation/components/whyChooseUs/WhyChooseUsSection";
+import InsideOurLab from "@/presentation/components/insideOurLab/InsideOurLab";
+import ClincalAnalysisSection from "@/presentation/components/clinicalAnalysis/ClincalAnalysis";
+import DistributionSection from "@/presentation/components/distribution/DistributionSection";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -59,6 +62,9 @@ export default async function Home({ params }: PageProps) {
         <HeroSection />
         <SolutionSection />
         <WhyChooseUseSection />
+        <InsideOurLab />
+        <ClincalAnalysisSection />
+        <DistributionSection />
       </div>
     </>
   );

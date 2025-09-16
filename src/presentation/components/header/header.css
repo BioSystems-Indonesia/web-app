@@ -211,8 +211,7 @@ li {
   }
 
   header .header-bottom.move-up {
-    background-color: var(--primary);
-    margin-top: -62px;
+    margin-top: -82px;
   }
 
   .header-bottom ul {
@@ -240,7 +239,7 @@ li {
 
   .header-up .logo {
     font-weight: 200;
-    font-size: 1.9rem;
+    font-size: 48px;
   }
 
   .header-up .items {
@@ -291,7 +290,7 @@ li {
 /* Extra large desktop styles - 1920px and up */
 @media (min-width: 1920px) {
   header .header-up {
-    padding: 12px 100px;
+    padding: 12px 158px;
   }
 
   .header-up .items {
@@ -302,11 +301,19 @@ li {
     gap: 0.6rem;
   }
 
+  .header-up .items p {
+    font-size: 16px;
+  }
+
   header .header-bottom {
-    padding: 10px 100px;
+    padding: 10px 158px;
   }
 
   .header-bottom ul {
     gap: 52px;
+  }
+
+  .header-bottom ul a {
+    font-size: 16px;
   }
 }

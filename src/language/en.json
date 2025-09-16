@@ -60,5 +60,10 @@
       "desc": "We provide complimentary shipping for all non-e-catalog orders nationwide."
     }
   },
+  "InsideOurLab": {
+    "title": "Inside Our Laboratory",
+    "description": "Discover our state-of-the-art laboratory facilities where cutting-edge technology meets scientific excellence. Experience the precision and innovation that drives our commitment to quality.",
+    "ctaButton": "Take a Virtual Tour"
+  },
   "greeting": "Hello, Welcome!"
 }

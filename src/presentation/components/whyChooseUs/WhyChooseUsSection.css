@@ -1,5 +1,6 @@
 /* Mobile First Design */
 .why-choose-us {
+  background-color: white;
   margin-top: 1rem;
   height: auto;
   min-height: 50vh;
@@ -75,7 +76,7 @@
 }
 
 .wcu-card .wcu-content {
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.85) !important;
   position: absolute;
   height: 100%;
   width: 100%;
@@ -83,12 +84,11 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  cursor: pointer;
   transition: 0.5s ease;
 }
 
 .wcu-card:hover .wcu-content {
-  background-color: transparent;
+  background-color: transparent !important;
 }
 
 .wcu-card:hover .wcu-content h3,
@@ -118,7 +118,7 @@
   line-height: 1.4;
 }
 
-/* Tablet styles */
+/* Tablet styles - 768px and up */
 @media (min-width: 768px) {
   .why-choose-us {
     padding: 1.5rem;
@@ -165,7 +165,7 @@
   }
 }
 
-/* Desktop styles */
+/* Desktop styles - 1024px and up */
 @media (min-width: 1024px) {
   .why-choose-us {
     height: 100vh;
@@ -213,5 +213,59 @@
   .wcu-content p {
     font-size: 14px;
     line-height: inherit;
+  }
+}
+
+/* Large desktop styles - 1440px and up */
+@media (min-width: 1440px) {
+  .why-choose-us .head h1 {
+    font-size: 42px;
+  }
+
+  .why-choose-us .head .icon-card {
+    width: 40px;
+    height: 40px;
+  }
+
+  .why-choose-us .container {
+    margin-top: 20px;
+    margin-bottom: 1rem;
+  }
+
+  .wcu-card .wcu-content {
+    padding: 2.5rem;
+  }
+
+  .wcu-content h3 {
+    font-size: 20px;
+  }
+
+  .wcu-content p {
+    font-size: 16px;
+  }
+}
+
+/* Extra large desktop styles - 1920px and up */
+@media (min-width: 1920px) {
+  .why-choose-us .head h1 {
+    font-size: 72px;
+  }
+
+  .why-choose-us .head .icon-card {
+    width: 90px;
+    height: 90px;
+  }
+
+  .wcu-card .wcu-content {
+    padding: 36px;
+  }
+
+  .wcu-content h3 {
+    font-size: 32px;
+  }
+
+  .wcu-content p {
+    font-size: 21px;
+    padding-bottom: calc(64px - 32px);
   }
 }

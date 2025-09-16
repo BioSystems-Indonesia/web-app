@@ -114,11 +114,12 @@ export default function Header() {
                     ))}
                     <div className="items">
                         <div >
-                            <Image src={RoundEarthLogo} alt="RoundEarth Logo" width={15}></Image>
+                            <Image src={RoundEarthLogo} alt="RoundEarth Logo" width={25}></Image>
                             <p>{t("language")}</p>
                         </div>
                         <div onClick={() => window.location.href = `${locale}/login`}>
-                            <Image src={LoginLogo} alt="Login Logo" width={15}></Image>
+                            <LoginLogo />
+                            {/* <Image src={LoginLogo} alt="Login Logo" width={25}></Image> */}
                             <p>{t("login")}</p>
                         </div>
                     </div>

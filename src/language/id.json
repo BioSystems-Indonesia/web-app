@@ -60,5 +60,10 @@
       "desc": "Kami menyediakan pengiriman gratis untuk semua pesanan non-e-katalog di seluruh Indonesia."
     }
   },
+  "InsideOurLab": {
+    "title": "Di Dalam Laboratorium Kami",
+    "description": "Temukan fasilitas laboratorium canggih kami dimana teknologi terdepan bertemu dengan keunggulan ilmiah. Rasakan presisi dan inovasi yang mendorong komitmen kami terhadap kualitas.",
+    "ctaButton": "Tur Virtual"
+  },
   "greeting": "Halo, Selamat datang!"
 }

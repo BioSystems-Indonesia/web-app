@@ -11,6 +11,7 @@ const alliance = localFont({
     { path: "../assets/fonts/Alliance/Alliance-Black.otf", weight: "900", style: "normal" },
   ],
   variable: "--font-alliance",
+  display: "swap",       // penting untuk cegah FOUT/FOIT
 });
 
 export const metadata: Metadata = {
@@ -76,7 +77,7 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#EE2737" />
       </head>
-      <body className={`${alliance.variable}`}>
+      <body className={`${alliance.variable} ${alliance.className}`}>
         {children}
       </body>
     </html>

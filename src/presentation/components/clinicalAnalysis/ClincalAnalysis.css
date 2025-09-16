@@ -1,0 +1,51 @@
+.clinical-analysis {
+  background-color: #ff5a00;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+
+.clinical-analysis .container {
+  background: url("@/assets/img/home/ca.png");
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.clinical-analysis .container h1 {
+  font-weight: 500;
+  font-size: 160px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.clinical-analysis .container .line-vertical {
+  width: 2px;
+  height: 16rem;
+  background-color: white;
+}
+
+.clinical-analysis .container .text {
+  width: 20rem;
+  color: white;
+  font-weight: 200;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .clinical-analysis .container h1 {
+    font-size: 56px;
+  }
+}
+
+@media (max-width: 480px) {
+  .clinical-analysis .container h1 {
+    font-size: 36px;
+  }
+}

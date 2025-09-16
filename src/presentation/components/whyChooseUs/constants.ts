@@ -17,7 +17,7 @@ export const SCROLL_CONFIG = {
   SCROLL_MULTIPLIER: 0.3,
   BASE_OFFSET: -10000,
   INFINITE_ARRAY_LENGTH: 50,
-  ICON_SIZE: 12,
+  ICON_SIZE: 24,
 } as const;
 
 export const createWhyChooseUsData = (t: (key: string) => string): WhyChooseUsItem[] => [

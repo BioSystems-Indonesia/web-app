@@ -202,7 +202,7 @@
   }
 
   .carousel-title {
-    font-size: 2.25rem;
+    font-size: 92px;
     margin-bottom: 24px;
   }
 
@@ -229,14 +229,19 @@
 /* Large desktop styles - 1440px and up */
 @media (min-width: 1440px) {
   .carousel-content {
-    width: 30rem;
+    width: 795px;
     left: 80px;
     bottom: 8rem;
   }
 
   .carousel-title {
-    font-size: 2.5rem;
+    font-size: 64px;
     margin-bottom: 28px;
+  }
+
+  .carousel-description {
+    font-size: 24px;
+    width: 790px;
   }
 
   .carousel-indicators {
@@ -248,7 +253,7 @@
 /* Extra large desktop styles - 1920px and up */
 @media (min-width: 1920px) {
   .carousel-content {
-    left: 100px;
+    left: 158px;
     bottom: 9rem;
   }
 }

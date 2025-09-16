@@ -1,4 +1,5 @@
 .solution-section {
+  background-color: white;
   min-height: 100vh;
   width: 100%;
 }
@@ -234,7 +235,7 @@
   left: 0;
 }
 
-/* Tablet styles */
+/* Tablet styles - 768px and up */
 @media (min-width: 768px) {
   .container-section {
     display: grid;
@@ -312,7 +313,7 @@
   }
 }
 
-/* Desktop styles */
+/* Desktop styles - 1024px and up */
 @media (min-width: 1024px) {
   .solution-section {
     height: 100vh;
@@ -415,14 +416,10 @@
   }
 }
 
+/* Large desktop styles - 1440px and up */
 @media (min-width: 1440px) {
   .solution-section .card {
     padding-bottom: 54px;
-    padding-left: 100px !important;
-  }
-
-  .solution-section .highlighted-products {
-    padding-left: 100px;
   }
 
   .product-image-preview {
@@ -452,21 +449,22 @@
   .product-link-container .product-link {
     font-size: 1.5rem;
   }
-
-  /* 
-.image-track {
-  width: 100%;
-  height: 100%;
 }
 
-.preview-image {
-  object-fit: fill;
-  position: relative !important;
-  flex-shrink: 0;
-  width: 100%;
-  height: 100%;
-  transition:
-    transform 0.3s ease,
-    opacity 0.3s ease;
-} */
+/* Extra large desktop styles - 1920px and up */
+@media (min-width: 1920px) {
+  .solution-section .card h1 {
+    font-size: 48px;
+  }
+
+  .solution-section .card p {
+    font-weight: 200;
+  }
+  .solution-section .card {
+    padding-left: 158px !important;
+  }
+
+  .solution-section .highlighted-products {
+    padding-left: 158px;
+  }
 }

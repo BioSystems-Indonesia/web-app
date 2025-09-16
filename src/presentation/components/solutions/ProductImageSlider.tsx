@@ -1,11 +1,11 @@
 import React, { useMemo } from 'react';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 
 interface ProductImageSliderProps {
     product: {
         Name: string;
         Type: string;
-        Image: any[];
+        Image: StaticImageData[];
     };
     currentImageIndex: number;
     isTransitioning: boolean;

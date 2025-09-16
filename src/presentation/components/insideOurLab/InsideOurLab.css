@@ -1,0 +1,203 @@
+/* Mobile First Design - Inside Our Lab */
+.inside-our-lab {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Video Background */
+/* .video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+} */
+
+.background-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Video Overlay for better text readability */
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/* Content Container */
+.content-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 90%;
+  text-align: center;
+  color: white;
+  padding: 1rem;
+}
+
+.content h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.content p {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  max-width: 100%;
+}
+
+.cta-button {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cta-button:hover {
+  background-color: var(--primary-dark, #0056b3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Tablet styles */
+@media (min-width: 768px) {
+  .inside-our-lab {
+    height: 70vh;
+    min-height: 500px;
+  }
+
+  .content-container {
+    max-width: 80%;
+  }
+
+  .content h2 {
+    font-size: 32px;
+    margin-bottom: 1.5rem;
+  }
+
+  .content p {
+    font-size: 16px;
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-button {
+    padding: 14px 28px;
+    font-size: 16px;
+  }
+}
+
+/* Desktop styles */
+@media (min-width: 1024px) {
+  .inside-our-lab {
+    height: 80vh;
+    min-height: 600px;
+    position: relative;
+  }
+  .gradient {
+    position: absolute;
+    top: 0;
+    z-index: 99;
+    background: #d9d9d9;
+    background: linear-gradient(180deg, rgba(217, 217, 217, 1) 0%, rgba(115, 115, 115, 0) 100%);
+    height: 130px;
+    width: 100%;
+    border-top: 1px solid #121212;
+  }
+
+  .inside-our-lab .container {
+    position: absolute;
+    width: 100%;
+    left: 158px;
+    top: 154px;
+  }
+
+  .inside-our-lab .container .card1 {
+    display: flex;
+    gap: 20px;
+    width: 1065px;
+  }
+
+  .inside-our-lab .container .card1 img {
+    width: 390px;
+    height: 488px;
+  }
+
+  .inside-our-lab .container .card1 p {
+    color: white;
+    font-size: 48px;
+  }
+
+  .inside-our-lab .container .card2 {
+    position: absolute;
+    right: calc(160px + 157px);
+    bottom: -200px;
+  }
+
+  .inside-our-lab .container .card2 img {
+    width: 512px;
+    height: 315px;
+  }
+}
+
+/* Large desktop */
+@media (min-width: 1440px) {
+  .inside-our-lab {
+    height: 100vh;
+  }
+
+  .content h2 {
+    font-size: 48px;
+  }
+
+  .content p {
+    font-size: 20px;
+    max-width: 800px;
+  }
+}
+
+/* Accessibility - Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .background-video {
+    animation-play-state: paused;
+  }
+
+  .cta-button:hover {
+    transform: none;
+  }
+}
+
+/* Fallback for no video support */
+.inside-our-lab .video-background::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -3;
+}
