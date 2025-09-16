@@ -1,8 +1,6 @@
-// MapDots.tsx
 import Image from "next/image";
 import Map from "@/assets/img/home/map.png";
 
-// pakai  biar bisa render sebagai React Component
 import Dashaceh from "@/assets/img/line/line-aceh.svg";
 import Dashbatam from "@/assets/img/line/line-batam.svg";
 import Dashbengkulu from "@/assets/img/line/line-bengkulu.svg";
