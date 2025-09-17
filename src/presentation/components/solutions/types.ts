@@ -3,7 +3,7 @@ import { StaticImageData } from "next/image";
 export interface Product {
   name: string;
   type: string;
-  icon: StaticImageData;
+  icon: any;
   link: string;
   images: StaticImageData[];
 }

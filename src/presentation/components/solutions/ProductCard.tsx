@@ -16,7 +16,7 @@ export const ProductCard: React.FC<ProductCardProps> = React.memo(({
         onMouseLeave={onLeave}
     >
         <div className="product-icon-container">
-            <Image src={product.icon} alt={product.name} />
+            <product.icon />
         </div>
         <div className="product-info">
             <p className="product-type">{product.type}</p>

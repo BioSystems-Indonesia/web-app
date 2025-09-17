@@ -21,7 +21,6 @@ export default function Header() {
     const locale = useLocale()
     const languageRef = useRef<HTMLDivElement>(null)
 
-    // Close language dropdown when clicking outside
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
             if (languageRef.current && !languageRef.current.contains(event.target as Node)) {
@@ -38,11 +37,10 @@ export default function Header() {
         }
     }, [langOpen])
 
-    // Handle scroll to show/hide header-up
     useEffect(() => {
         const handleScroll = () => {
             const scrollTop = window.scrollY
-            setIsScrolled(scrollTop > 100) // Hide header-up when scrolled more than 100px
+            setIsScrolled(scrollTop > 100) 
         }
 
         window.addEventListener('scroll', handleScroll)
@@ -71,7 +69,7 @@ export default function Header() {
                 <div className="items">
                     <div ref={languageRef} style={{ position: "relative" }}>
                         <div style={{ cursor: "pointer" }} onClick={() => { setLangOpen(!langOpen) }}>
-                            <Image src={RoundEarthLogo} alt="RoundEarth Logo" width={15}></Image>
+                            <RoundEarthLogo />
                             <p>{t("language")}</p>
                         </div>
                         {/* <div className={`language-card ${langOpen ? 'lang-open' : ''}`}>
@@ -92,7 +90,7 @@ export default function Header() {
 
 
                     <div onClick={() => window.location.href = `${locale}/login`} style={{ cursor: "pointer" }}>
-                        <Image src={LoginLogo} alt="Login Logo" width={15}></Image>
+                        <LoginLogo />
                         <p>{t("login")}</p>
 
                     </div>
