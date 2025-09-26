@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { generateSolutionMetadata, solutionPageJsonLd } from "@/lib/seo/solutionMetadata";
-import SolutionSection from "@/presentation/components/solutions/SolutionSection";
+import SolutionSection from "@/presentation/home/solutions/SolutionSection";
 
 interface SolutionsPageProps {
     params: Promise<{ locale: string }>;

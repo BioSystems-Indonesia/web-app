@@ -1,11 +1,11 @@
 "use client";
 
-import Carousel from "@/presentation/components/hero/Carousel";
+import Carousel from "@/presentation/home/hero/Carousel";
 import { useTranslations } from "next-intl";
 import BgHero1 from "@/assets/img/home/bg-hero-1.png";
 import BgHero2 from "@/assets/img/home/bg-hero-2.png";
 import BgHero3 from "@/assets/img/home/bg-hero-3.png";
-import type { CarouselSlide } from "@/presentation/components/hero/types";
+import type { CarouselSlide } from "@/presentation/home/hero/types";
 import "./HeroSection.css";
 
 interface HeroSectionProps {

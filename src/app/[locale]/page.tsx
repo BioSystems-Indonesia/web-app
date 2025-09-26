@@ -4,14 +4,14 @@ import { getTranslations } from 'next-intl/server';
 import { Metadata } from 'next';
 
 import Header from "@/presentation/components/header/header";
-import HeroSection from "@/presentation/components/hero/HeroSection";
-import SolutionSection from "@/presentation/components/solutions/SolutionSection";
-import WhyChooseUseSection from "@/presentation/components/whyChooseUs/WhyChooseUsSection";
-import InsideOurLab from "@/presentation/components/insideOurLab/InsideOurLab";
-import ClincalAnalysisSection from "@/presentation/components/clinicalAnalysis/ClincalAnalysis";
-import DistributionSection from "@/presentation/components/distribution/DistributionSection";
-import NewsSection from "@/presentation/components/news/NewsSection";
-import CTASection from "@/presentation/components/cta/CTASection";
+import HeroSection from "@/presentation/home/hero/HeroSection";
+import SolutionSection from "@/presentation/home/solutions/SolutionSection";
+import WhyChooseUseSection from "@/presentation/home/whyChooseUs/WhyChooseUsSection";
+import InsideOurLab from "@/presentation/home/insideOurLab/InsideOurLab";
+import ClincalAnalysisSection from "@/presentation/home/clinicalAnalysis/ClincalAnalysis";
+import DistributionSection from "@/presentation/home/distribution/DistributionSection";
+import NewsSection from "@/presentation/home/news/NewsSection";
+import CTASection from "@/presentation/home/cta/CTASection";
 import Footer from "@/presentation/components/footer/footer";
 
 interface PageProps {
