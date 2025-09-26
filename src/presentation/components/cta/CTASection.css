@@ -16,7 +16,8 @@
   width: 625px;
 }
 
-.cta-section .container img {
+.cta-section .container .cta > img {
+  border-left: 1px solid #212121;
   width: 1087px;
   height: 581px;
 }

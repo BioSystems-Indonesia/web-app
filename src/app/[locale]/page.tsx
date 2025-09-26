@@ -12,6 +12,7 @@ import ClincalAnalysisSection from "@/presentation/components/clinicalAnalysis/C
 import DistributionSection from "@/presentation/components/distribution/DistributionSection";
 import NewsSection from "@/presentation/components/news/NewsSection";
 import CTASection from "@/presentation/components/cta/CTASection";
+import Footer from "@/presentation/components/footer/footer";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -69,6 +70,7 @@ export default async function Home({ params }: PageProps) {
         <DistributionSection />
         <NewsSection />
         <CTASection />
+        <Footer />
       </div>
     </>
   );

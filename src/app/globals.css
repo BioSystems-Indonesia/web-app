@@ -19,7 +19,6 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   transition: 0.5s ease;
-  margin-bottom: 100rem;
   background-color: white;
 }
 
@@ -53,8 +52,22 @@ img {
 }
 
 footer {
-  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--primary);
+  padding: 50px 181px;
+  margin-top: 141px;
   font-size: 0.8rem;
   text-align: center;
-  color: #8f8f8f;
+  color: white;
+}
+
+footer .social {
+  display: flex;
+  align-items: center;
+  gap: 74px;
+}
+
+footer p {
+  font-size: 16px;
 }
