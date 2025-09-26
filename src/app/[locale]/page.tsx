@@ -10,6 +10,7 @@ import WhyChooseUseSection from "@/presentation/components/whyChooseUs/WhyChoose
 import InsideOurLab from "@/presentation/components/insideOurLab/InsideOurLab";
 import ClincalAnalysisSection from "@/presentation/components/clinicalAnalysis/ClincalAnalysis";
 import DistributionSection from "@/presentation/components/distribution/DistributionSection";
+import NewsSection from "@/presentation/components/news/NewsSection";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -65,6 +66,7 @@ export default async function Home({ params }: PageProps) {
         <InsideOurLab />
         <ClincalAnalysisSection />
         <DistributionSection />
+        <NewsSection />
       </div>
     </>
   );

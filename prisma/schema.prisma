@@ -57,3 +57,32 @@ enum UserRole {
   USER
   ADMIN
 }
+model ActivationCode {
+  id        Int       @id @default(autoincrement())
+  code      String    @unique @db.VarChar(64)
+  issuedTo  String?   @map("issued_to") @db.VarChar(255)
+  used      Boolean   @default(false)
+  boundTo   String?   @map("bound_to") @db.VarChar(255)
+  expiresAt DateTime? @map("expires_at")
+  createdAt DateTime  @default(now()) @map("created_at")
+
+  devices   Device[]
+  
+  @@map("activation_codes")
+}
+
+model Device {
+  id              Int       @id @default(autoincrement())
+  machineId       String    @unique @map("machine_id") @db.VarChar(255)
+  licenseCode     String    @map("license_code") @db.VarChar(64)
+  licensePayload  String    @map("license_payload") @db.Text
+  licenseSignature String   @map("license_signature") @db.Text
+  activatedAt     DateTime  @map("activated_at")
+  lastHeartbeat   DateTime? @map("last_heartbeat")
+  revoked         Boolean   @default(false)
+
+  activationCode  ActivationCode @relation(fields: [licenseCode], references: [code], onDelete: Cascade)
+
+  @@map("devices")
+}
+
