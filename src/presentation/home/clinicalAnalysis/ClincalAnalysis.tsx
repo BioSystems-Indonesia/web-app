@@ -1,5 +1,4 @@
 import "./ClincalAnalysis.css"
-import { MdArrowOutward } from "react-icons/md";
 export default function ClincalAnalysisSection() {
     return (
         <section className="clinical-analysis">
@@ -8,7 +7,8 @@ export default function ClincalAnalysisSection() {
                     <span className="line-1">Clinical</span>
                     <span className="line-2">Analysis</span>
                 </h1>
-                <MdArrowOutward color="white" size={90} />
+                <div className="line-vertical"></div>
+                <p className="text">We deliver analytical products and automation systems for biochemistry and autoimmunity, using high-quality materials and validated processes to ensure reliable results.</p>
             </div>
         </section>
     )

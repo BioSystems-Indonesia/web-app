@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLocale } from "next-intl";
 import { FaHome, FaNewspaper, FaUser } from "react-icons/fa";
+import { SlChemistry } from "react-icons/sl";
 import { MdEventAvailable } from "react-icons/md";
 import { IoBagSharp, IoCall } from "react-icons/io5";
 
@@ -27,6 +28,7 @@ const getNavItems = (locale: string): NavItem[] => [
     { href: `/${locale}/dashboard/career`, label: "Career", icon: <IoBagSharp /> },
     { href: `/${locale}/dashboard/contact`, label: "Contact", icon: <IoCall /> },
     { href: `/${locale}/dashboard/users`, label: "Users", icon: <FaUser /> },
+    { href: `/${locale}/dashboard/lis`, label: "LIS Dashboard", icon: <SlChemistry /> },
 ];
 
 export default function SidebarDashboard({ isOpen, onToggle }: SidebarProps) {

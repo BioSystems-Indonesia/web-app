@@ -14,19 +14,19 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(uuid())
-  email     String   @unique
+  id        String          @id @default(uuid())
+  email     String          @unique
   name      String?
   roleId    Int?
-  role      Role?    @relation(fields: [roleId], references: [id])
+  role      Role?           @relation(fields: [roleId], references: [id])
   posts     Post[]
   auth      Authentication?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime        @default(now())
+  updatedAt DateTime        @updatedAt
 }
 
 model Authentication {
-  id        Int   @id @default(autoincrement())
+  id        Int      @id @default(autoincrement())
   userId    String   @unique
   username  String   @unique
   password  String
@@ -57,6 +57,7 @@ enum UserRole {
   USER
   ADMIN
 }
+
 model ActivationCode {
   id        Int       @id @default(autoincrement())
   code      String    @unique @db.VarChar(64)
@@ -66,23 +67,47 @@ model ActivationCode {
   expiresAt DateTime? @map("expires_at")
   createdAt DateTime  @default(now()) @map("created_at")
 
-  devices   Device[]
-  
+  devices Device[]
+
   @@map("activation_codes")
 }
 
 model Device {
-  id              Int       @id @default(autoincrement())
-  machineId       String    @unique @map("machine_id") @db.VarChar(255)
-  licenseCode     String    @map("license_code") @db.VarChar(64)
-  licensePayload  String    @map("license_payload") @db.Text
-  licenseSignature String   @map("license_signature") @db.Text
-  activatedAt     DateTime  @map("activated_at")
-  lastHeartbeat   DateTime? @map("last_heartbeat")
-  revoked         Boolean   @default(false)
+  id               Int       @id @default(autoincrement())
+  machineId        String    @unique @map("machine_id") @db.VarChar(255)
+  licenseCode      String    @map("license_code") @db.VarChar(64)
+  licensePayload   String    @map("license_payload") @db.Text
+  licenseSignature String    @map("license_signature") @db.Text
+  activatedAt      DateTime  @map("activated_at")
+  lastHeartbeat    DateTime? @map("last_heartbeat")
+  revoked          Boolean   @default(false)
 
-  activationCode  ActivationCode @relation(fields: [licenseCode], references: [code], onDelete: Cascade)
+  activationCode ActivationCode @relation(fields: [licenseCode], references: [code], onDelete: Cascade)
+
+  Analyzer Analyzer[]
 
   @@map("devices")
 }
 
+model Analyzer {
+  id             Int       @id @default(autoincrement())
+  analyzerCode   String    @unique @map("analyzer_code") @db.VarChar(64)
+  name           String    @map("name") @db.VarChar(255)
+  type           String    @map("type") @db.VarChar(100)
+  manufacturer   String?   @map("manufacturer") @db.VarChar(255)
+  model          String?   @map("model") @db.VarChar(100)
+  serialNumber   String?   @map("serial_number") @db.VarChar(100)
+  connectionType String?   @map("connection_type") @db.VarChar(50) // e.g. "serial", "tcp"
+  connectionInfo String?   @map("connection_info") @db.VarChar(255) // e.g. "COM3,9600" or "192.168.1.10:4000"
+  active         Boolean   @default(true) @map("active")
+  lastSyncAt     DateTime? @map("last_sync_at")
+
+  // Relasi ke Device
+  machineId String @map("machine_id") @db.VarChar(255)
+  device    Device @relation(fields: [machineId], references: [machineId], onDelete: Cascade)
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("analyzers")
+}

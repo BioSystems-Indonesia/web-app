@@ -1,0 +1,203 @@
+.testing-parameter {
+  background-color: white !important;
+  margin-bottom: 10rem;
+}
+
+.testing-parameter .head {
+  display: inline-block;
+  padding: 36px;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  margin-left: 158px;
+}
+
+.testing-parameter h1 {
+  font-size: 64px;
+  font-weight: 500;
+}
+
+.testing-parameter .content {
+  padding: 30px 158px;
+  border-top: 1px solid black;
+}
+
+.testing-parameter .content .chip {
+  width: 255px;
+  height: 50px;
+  justify-content: center;
+  border-radius: 25px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background-color: #121212;
+}
+
+.testing-parameter .content .chip h3 {
+  color: white;
+  font-size: 32;
+  font-weight: 400;
+}
+
+.testing-parameter .content .category-list {
+  width: 1226px;
+  margin-top: 25px;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 35px;
+}
+.testing-parameter .content .category-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.testing-parameter .content .category-list li {
+  font-size: 24px;
+  font-weight: 400;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.2s ease;
+}
+
+.testing-parameter .content .category-list li::before {
+  content: "";
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1px solid #121212;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.testing-parameter .content .category-list .isActive::before {
+  background-color: #121212;
+}
+
+.testing-parameter .content .category-list li:hover {
+  color: #ff5a00 !important;
+}
+
+.testing-parameter .content .category-list li:hover::before {
+  background-color: #ff5a00;
+  border-color: #ff5a00;
+}
+
+.testing-parameter .content .parameter {
+  margin-top: 183px;
+}
+
+.testing-parameter .content .parameter .category {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.parameter .category h4 {
+  font-size: 64px;
+  font-weight: 500;
+  color: #6a6a6a;
+}
+
+.content .parameter-list li {
+  position: relative;
+  border-top: 1px solid #121212;
+  padding: 3rem 0;
+  font-size: 40px;
+  font-weight: 400;
+}
+
+.content .parameter-list li .title {
+  position: absolute;
+  top: 24px;
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.title-text {
+  transition:
+    transform 1s ease,
+    opacity 2s ease;
+  will-change: transform, opacity;
+  transform-origin: left center;
+}
+.title-text.hidden {
+  transform: translateY(70px) translateX(0);
+  pointer-events: none;
+  text-align: start;
+}
+
+/* plus icon rotation */
+.plus {
+  transform: rotate(45deg);
+  transition: transform 220ms ease;
+  font-weight: 100;
+  font-size: 24px;
+}
+.plus.rotated {
+  transform: rotate(0deg);
+}
+
+.content .parameter-list .card {
+  display: block;
+}
+
+.content .parameter-list .card p {
+  font-size: 24px;
+  color: #6a6a6a;
+}
+
+.content .parameter-list li:last-child {
+  border-bottom: 1px solid #121212;
+}
+
+.content .parameter-list li p:last-child {
+  color: #6a6a6a;
+}
+
+.content .parameter-list li:first-child {
+  margin-top: 50px;
+  border-top: 1px solid #121212;
+}
+
+.card th {
+  padding-top: 3rem;
+  font-size: 32px;
+  font-weight: 400;
+  text-align: start;
+  align-items: start;
+  padding-bottom: 2rem;
+}
+
+.card tr td {
+  font-size: 20px;
+  color: #6a6a6a;
+  padding-bottom: 15px !important;
+}
+
+/* Smooth expand/collapse for .card */
+.content .parameter-list .card {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition:
+    max-height 0.7s ease,
+    opacity 0.5s ease,
+    padding 0.5s ease,
+    transform 560ms ease;
+  transform: translateY(12px);
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.content .parameter-list .card.open {
+  max-height: 2000px; /* large enough to contain content; safe for most cases */
+  opacity: 1;
+  transform: translateY(0);
+  padding: 0px 0;
+}

@@ -1,0 +1,29 @@
+declare module "*.module.css";
+declare module "*.module.scss";
+declare module "*.module.sass";
+
+declare module "*.css";
+declare module "*.scss";
+declare module "*.sass";
+
+// For images and other static assets
+declare module "*.svg" {
+  const content: string;
+  export default content;
+}
+declare module "*.png" {
+  const content: string;
+  export default content;
+}
+declare module "*.jpg" {
+  const content: string;
+  export default content;
+}
+declare module "*.jpeg" {
+  const content: string;
+  export default content;
+}
+declare module "*.gif" {
+  const content: string;
+  export default content;
+}

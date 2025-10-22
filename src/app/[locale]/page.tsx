@@ -69,8 +69,8 @@ export default async function Home({ params }: PageProps) {
         <ClincalAnalysisSection />
         <DistributionSection />
         <NewsSection />
-        <CTASection />
-        <Footer />
+        <CTASection iconColor="#ee2737" />
+        <Footer bgColor="#ee2737" />
       </div>
     </>
   );

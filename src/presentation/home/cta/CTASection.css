@@ -10,6 +10,7 @@
 }
 
 .cta-section .container .head h2 {
+  font-style: italic;
   padding: 25px 0;
   font-size: 64px;
   font-weight: 500;
@@ -31,6 +32,7 @@
 }
 
 .cta-section .cta .content {
+  width: 100%;
   padding-top: 178px;
   padding-left: 178px;
   text-shadow: none;
@@ -63,4 +65,36 @@
   width: 33px !important;
   height: 33px !important;
   object-fit: contain;
+}
+
+/* icon-wrap: allow coloring icons via mix-blend-mode or filters
+   Usage: set inline style mixBlendMode and color on .icon-wrap element */
+.icon-wrap {
+  display: inline-flex;
+  width: 33px;
+  height: 33px;
+  align-items: center;
+  justify-content: center;
+}
+.icon-wrap img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain;
+  /* default: let mix-blend-mode + parent color handle tinting */
+}
+
+/* mask-based icon for PNG tinting fallback */
+.icon-mask {
+  width: 33px;
+  height: 33px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
 }

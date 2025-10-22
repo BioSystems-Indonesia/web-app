@@ -9,6 +9,7 @@ const alliance = localFont({
     { path: "../assets/fonts/Alliance/Alliance-Medium.otf", weight: "500", style: "normal" },
     { path: "../assets/fonts/Alliance/Alliance-Light.otf", weight: "100", style: "normal" },
     { path: "../assets/fonts/Alliance/Alliance-Black.otf", weight: "900", style: "normal" },
+    { path: "../assets/fonts/Alliance/Alliance-Medium-Italic.otf", weight: "500", style: "italic" }
   ],
   variable: "--font-alliance",
   display: "swap",       // penting untuk cegah FOUT/FOIT

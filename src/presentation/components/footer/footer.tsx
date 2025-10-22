@@ -3,11 +3,14 @@ import YTIcon from "@/presentation/components/icon/yt.svg"
 import IGIcon from "@/presentation/components/icon/ig.svg"
 import LinkedinIcon from "@/presentation/components/icon/linkedin.svg"
 
-import Image from "next/image"
 
-export default function Footer() {
+type FooterProps = {
+    bgColor?: string;
+}
+
+export default function Footer({ bgColor = 'transparent' }: FooterProps) {
     return (
-        <footer>
+        <footer style={{ backgroundColor: bgColor }}>
             <div className="social">
                 <LinkedinIcon />
                 <IGIcon />
