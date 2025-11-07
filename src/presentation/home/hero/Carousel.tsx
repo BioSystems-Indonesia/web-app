@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 import "./Carousel.css";
 import { CarouselProps } from "./types";
@@ -13,7 +13,7 @@ export default function Carousel({
 }: CarouselProps) {
     const [currentSlide, setCurrentSlide] = useState(1);
     const [isTransitioning, setIsTransitioning] = useState(true);
-    const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
+    const intervalRef = useRef<NodeJS.Timeout | null>(null);
     const [isClient, setIsClient] = useState(false);
 
     const [isDragging, setIsDragging] = useState(false);
@@ -31,32 +31,32 @@ export default function Carousel({
         slides[0]
     ];
 
+    const nextSlide = useCallback(() => {
+        setIsTransitioning(true);
+        setCurrentSlide(prev => prev + 1);
+    }, []);
+
     useEffect(() => {
         if (!isClient || isPaused) return;
 
         const startInterval = () => {
-            if (intervalId) {
-                clearInterval(intervalId);
+            if (intervalRef.current) {
+                clearInterval(intervalRef.current);
             }
             const newInterval = setInterval(() => {
                 nextSlide();
             }, autoPlayInterval);
-            setIntervalId(newInterval);
+            intervalRef.current = newInterval;
         };
 
         startInterval();
 
         return () => {
-            if (intervalId) {
-                clearInterval(intervalId);
+            if (intervalRef.current) {
+                clearInterval(intervalRef.current);
             }
         };
-    }, [currentSlide, autoPlayInterval, isClient, isPaused]);
-
-    const nextSlide = useCallback(() => {
-        setIsTransitioning(true);
-        setCurrentSlide(prev => prev + 1);
-    }, []);
+    }, [currentSlide, autoPlayInterval, isClient, isPaused, nextSlide]);
 
     const prevSlide = useCallback(() => {
         setIsTransitioning(true);

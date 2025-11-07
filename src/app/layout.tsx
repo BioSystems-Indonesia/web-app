@@ -1,19 +1,5 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
-
-const alliance = localFont({
-  src: [
-    { path: "../assets/fonts/Alliance/Alliance-Regular.otf", weight: "400", style: "normal" },
-    { path: "../assets/fonts/Alliance/Alliance-Bold.otf", weight: "700", style: "normal" },
-    { path: "../assets/fonts/Alliance/Alliance-Medium.otf", weight: "500", style: "normal" },
-    { path: "../assets/fonts/Alliance/Alliance-Light.otf", weight: "100", style: "normal" },
-    { path: "../assets/fonts/Alliance/Alliance-Black.otf", weight: "900", style: "normal" },
-    { path: "../assets/fonts/Alliance/Alliance-Medium-Italic.otf", weight: "500", style: "italic" }
-  ],
-  variable: "--font-alliance",
-  display: "swap",       // penting untuk cegah FOUT/FOIT
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://biosystems-indonesia.com'),
@@ -68,19 +54,5 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <head>
-        <link rel="canonical" href="https://biosystems-indonesia.com" />
-        <link rel="alternate" hrefLang="en" href="https://biosystems-indonesia.com/en" />
-        <link rel="alternate" hrefLang="id" href="https://biosystems-indonesia.com/id" />
-        <link rel="alternate" hrefLang="x-default" href="https://biosystems-indonesia.com/en" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#EE2737" />
-      </head>
-      <body className={`${alliance.variable} ${alliance.className}`}>
-        {children}
-      </body>
-    </html>
-  );
+  return children;
 }

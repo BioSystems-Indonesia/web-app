@@ -1,0 +1,69 @@
+.clinical-analysis .hero {
+  background: url("@/assets/img/home/ca.png");
+  background-color: #ff5a00;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  padding: 261px;
+  position: relative;
+}
+
+/* Initial state: h1 centered, line and text hidden */
+.clinical-analysis .hero .ca-title {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  font-size: 160px;
+  color: white;
+  font-weight: 400;
+  transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(370px);
+}
+
+.clinical-analysis .hero .ca-title span:first-child {
+  transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(30px);
+}
+
+.clinical-analysis .hero .line-vertical {
+  height: 250px;
+  margin: 0 70px;
+  width: 1.2rem;
+  background-color: white;
+  opacity: 0;
+  transform: translateX(-100px);
+  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.clinical-analysis .hero .text {
+  font-size: 40px;
+  color: white;
+  font-weight: 200;
+  opacity: 0;
+  transform: translateX(-100px);
+  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Animated state: after 1 second */
+.clinical-analysis .hero.animated .ca-title {
+  transform: translateX(0);
+}
+
+.clinical-analysis .hero.animated .ca-title span {
+  transform: translateX(0);
+}
+
+.clinical-analysis .hero.animated .line-vertical {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.clinical-analysis .hero.animated .text {
+  opacity: 1;
+  transform: translateX(0);
+}

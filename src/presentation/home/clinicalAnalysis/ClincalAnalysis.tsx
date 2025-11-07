@@ -1,14 +1,49 @@
+"use client";
 import "./ClincalAnalysis.css"
-export default function ClincalAnalysisSection() {
+import { GoArrowUpRight } from "react-icons/go"
+import Link from "next/link"
+import { useEffect, useState } from "react"
+
+interface ClincalAnalysisSectionProps {
+    variant?: "home" | "full";
+}
+
+export default function ClincalAnalysisSection({ variant = "full" }: ClincalAnalysisSectionProps) {
+    const isHome = variant === "home";
+    const [animated, setAnimated] = useState(false);
+
+    useEffect(() => {
+        if (!isHome) {
+            const timer = setTimeout(() => {
+                setAnimated(true);
+            }, 500);
+            return () => clearTimeout(timer);
+        }
+    }, [isHome]);
+
     return (
-        <section className="clinical-analysis">
-            <div className="container">
-                <h1>
-                    <span className="line-1">Clinical</span>
-                    <span className="line-2">Analysis</span>
-                </h1>
-                <div className="line-vertical"></div>
-                <p className="text">We deliver analytical products and automation systems for biochemistry and autoimmunity, using high-quality materials and validated processes to ensure reliable results.</p>
+        <section className={`clinical-analysis ${isHome ? "clinical-analysis--home" : ""}`}>
+            <div className={`container ${animated ? "animated" : ""}`}>
+                <div className="analysis">
+                    <Link href="/clinical-analysis" className="clinical-analysis-home-link" target="_blank">
+                        <div style={{ display: "flex" }}>
+                            <h1>
+                                <span className="line-1">Clinical</span>
+                                <span className="line-2">Analysis</span>
+                            </h1>
+                            <GoArrowUpRight className="arrow-icon" />
+                        </div>
+                    </Link>
+                    <Link href="/food-beverage-analysis" className="food-beverage-analysis" target="_blank">
+                        <div style={{ display: "flex" }}>
+                            <h1>
+                                <span className="line-1">Food & Beverage</span>
+                                <span className="line-2">Analysis</span>
+                            </h1>
+                            <GoArrowUpRight className="arrow-icon" />
+                        </div>
+                    </Link>
+                </div>
             </div>
         </section>
     )

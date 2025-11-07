@@ -1,9 +1,7 @@
 /* Mobile First Design */
 .why-choose-us {
-  background-color: white;
   margin-top: 1rem;
   height: auto;
-  min-height: 50vh;
   overflow: hidden;
   position: relative;
   padding: 1rem;
@@ -47,6 +45,13 @@
   justify-content: center;
   border-radius: 50%;
   flex-shrink: 0;
+}
+
+/* make the svg icon scale with the .icon-card container so it's responsive */
+.why-choose-us .head .icon-card .icon {
+  width: 60%;
+  height: 60%;
+  color: white; /* ensure icon color contrasts the primary background */
 }
 
 .why-choose-us .container {
@@ -122,7 +127,6 @@
 @media (min-width: 768px) {
   .why-choose-us {
     padding: 1.5rem;
-    min-height: 70vh;
   }
 
   .why-choose-us .head > div {
@@ -137,6 +141,12 @@
   .why-choose-us .head .icon-card {
     width: 30px;
     height: 30px;
+  }
+
+  /* keep using percentage-based sizing so icon scales with the container */
+  .why-choose-us .head .icon-card .icon {
+    width: 25px;
+    height: 25px;
   }
 
   .why-choose-us .container {
@@ -168,7 +178,6 @@
 /* Desktop styles - 1024px and up */
 @media (min-width: 1024px) {
   .why-choose-us {
-    height: 100vh;
     padding: 0;
   }
 

@@ -1,9 +1,10 @@
 import { StaticImageData } from "next/image";
+import { ComponentType, SVGProps } from "react";
 
 export interface Product {
   name: string;
   type: string;
-  icon: any;
+  icon: ComponentType<SVGProps<SVGSVGElement>>;
   link: string;
   images: StaticImageData[];
 }

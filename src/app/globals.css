@@ -9,8 +9,10 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #720a0a;
-    --foreground: #ededed;
+    --background: #ffffff;
+    --foreground: oklch(27.9% 0.041 260.031);
+    /* --background: #fff;
+    --foreground: #ededed; */
   }
 }
 
@@ -51,12 +53,14 @@ img {
   }
 }
 
+/* Mobile First Design - Footer */
 footer {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 1.5rem;
   background-color: var(--primary);
-  padding: 50px 181px;
-  margin-top: 141px;
+  padding: 2rem 1rem;
+  margin-top: 3rem;
   font-size: 0.8rem;
   text-align: center;
   color: white;
@@ -65,9 +69,73 @@ footer {
 footer .social {
   display: flex;
   align-items: center;
-  gap: 74px;
+  justify-content: start;
+  gap: 1.5rem;
+  flex-wrap: wrap;
 }
 
 footer p {
-  font-size: 16px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Tablet styles - 768px and up */
+@media (min-width: 768px) {
+  footer {
+    padding: 3rem 2rem;
+    margin-top: 4rem;
+    gap: 2rem;
+  }
+
+  footer .social {
+    gap: 2.5rem;
+  }
+
+  footer p {
+    font-size: 15px;
+  }
+}
+
+/* Desktop styles - 1024px and up */
+@media (min-width: 1024px) {
+  footer {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 3rem 4rem;
+    margin-top: 5rem;
+    gap: 0;
+  }
+
+  footer .social {
+    gap: 3rem;
+    justify-content: flex-start;
+  }
+
+  footer p {
+    font-size: 16px;
+  }
+}
+
+/* Large desktop styles - 1440px and up */
+@media (min-width: 1440px) {
+  footer {
+    padding: 3.5rem 6rem;
+    margin-top: 6rem;
+  }
+
+  footer .social {
+    gap: 4rem;
+  }
+}
+
+/* Extra large desktop - 1920px and up */
+@media (min-width: 1920px) {
+  footer {
+    padding: 50px 181px;
+    margin-top: 141px;
+  }
+
+  footer .social {
+    gap: 74px;
+  }
 }

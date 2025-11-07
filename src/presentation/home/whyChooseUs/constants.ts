@@ -15,7 +15,7 @@ export const WCU_IMAGES = {
 
 export const SCROLL_CONFIG = {
   SCROLL_MULTIPLIER: 0.3,
-  BASE_OFFSET: -10000,
+  BASE_OFFSET: -5000,
   INFINITE_ARRAY_LENGTH: 50,
   ICON_SIZE: 24,
 } as const;

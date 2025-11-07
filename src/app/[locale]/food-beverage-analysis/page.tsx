@@ -1,12 +1,14 @@
 "use client";
+
+import React from "react";
 import { useState, useEffect } from "react";
-import Header from "@/presentation/components/header/header"
 import OurProductsSection from "@/presentation/clinicalAnalysis/ourProducts/ourProuduts"
 import TestingParameterSection from "@/presentation/clinicalAnalysis/ourParameter/testingParameter"
 import CTASection from "@/presentation/home/cta/CTASection"
 import Footer from "@/presentation/components/footer/footer"
 import "./page.css"
-export default function ClincalAnalysis() {
+import Header from "@/presentation/components/header/header";
+export default function FoodBeverageAnalysis() {
     const [animated, setAnimated] = useState(false);
 
     useEffect(() => {
@@ -18,11 +20,11 @@ export default function ClincalAnalysis() {
     }, []);
 
     return (
-        <div className="clinical-analysis">
+        <div className="food-beverage-analysis">
             <Header />
             <div className={`hero ${animated ? "animated" : ""}`}>
                 <h1 className="ca-title">
-                    <span className="line-1">Clinical</span>
+                    <span className="line-1">Food & Beverage</span>
                     <span className="line-2">Analysis</span>
                 </h1>
                 <div className="line-vertical"></div>
@@ -30,8 +32,8 @@ export default function ClincalAnalysis() {
             </div>
             <OurProductsSection />
             <TestingParameterSection />
-            <CTASection contentBg="#FF5A00" contentColor="#fff" iconColor="#fff" />
-            <Footer bgColor=" #FF5A00" />
+            <CTASection contentBg="#d3d92b" contentColor="#fff" iconColor="#fff" />
+            <Footer bgColor=" #d3d92b" />
         </div>
     )
 }

@@ -56,7 +56,7 @@ const dots = [
     { id: "palembang-3", name: "Palembang", top: "19.5rem", left: "23rem", Comp: "", anchor: "bottom-left" },
     { id: "lampung", name: "Lampung", top: "24rem", left: "23rem", Comp: Linelampung, anchor: "top-right" },
     { id: "pangkalpinang", name: "Pangkalpinang", top: "18rem", left: "25.5rem", Comp: LinepangkalPinang, anchor: "bottom-left" },
-    
+
     // Jawa
     { id: "serang", name: "Serang", top: "26rem", left: "24.9rem", Comp: Lineserang, anchor: "bottom-left" },
     { id: "rangkasbitung", name: "Rangkasbitung", top: "27.2rem", left: "25.5rem", Comp: Linerangkas, anchor: "top-right" },
@@ -75,7 +75,7 @@ const dots = [
     { id: "bali", name: "Bali", top: "31.2rem", left: "45.3rem", Comp: Linebali, anchor: "top-right" },
     { id: "mataram", name: "Mataram", top: "31.2rem", left: "47.8rem", Comp: Linemataram, anchor: "bottom-left" },
     { id: "kupang", name: "Kupang", top: "35rem", left: "64rem", Comp: Linekupang, anchor: "top-left" },
-    
+
     // Kalimantan
     { id: "palangkaraya", name: "Palangkaraya", top: "17.5rem", left: "42rem", Comp: Linepalangkaraya, anchor: "top-left" },
     { id: "banjarmasin", name: "Banjarmasin", top: "19.6rem", left: "44.2rem", Comp: Linebanjarmasin, anchor: "top-left" },
@@ -83,7 +83,7 @@ const dots = [
     { id: "balikpapan-2", name: "Balikpapan", top: "14.8rem", left: "49.1rem", Comp: "", anchor: "bottom-left" },
     { id: "tarakan", name: "Tarakan", top: "5.2rem", left: "50.5rem", Comp: Linetarakan, anchor: "bottom-left" },
     { id: "pontianak", name: "Pontianak", top: "12.5rem", left: "32.5rem", Comp: Linepontianak, anchor: "bottom-left" },
-    
+
     // Sulawesi
     { id: "manado", name: "Manado", top: "9.7rem", left: "66.6rem", Comp: Linemanado, anchor: "bottom-left" },
     { id: "gorontalo", name: "Gorontalo", top: "11.3rem", left: "62.4rem", Comp: Linegorontalo, anchor: "bottom-left" },
@@ -93,7 +93,7 @@ const dots = [
     { id: "makassar-2", name: "Makassar", top: "23.55rem", left: "55rem", Comp: "", anchor: "bottom-left" },
     { id: "kendari", name: "Kendari", top: "21.4rem", left: "61.4rem", Comp: Linekendari, anchor: "bottom-left" },
     { id: "ambon", name: "Ambon", top: "20.3rem", left: "73.8rem", Comp: Lineambon, anchor: "top-left" },
-    
+
     // Papua
     { id: "jayapura", name: "Jayapura", top: "18.3rem", left: "101.5rem", Comp: Linejayapura, anchor: "bottom-left" },
 

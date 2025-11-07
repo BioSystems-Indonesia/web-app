@@ -20,7 +20,12 @@ type DeviceItem = {
     id: number
     machine_id: string
     license_code: string
-    license_payload: any
+    license_payload: {
+        device_meta?: {
+            hostname?: string
+            os?: string
+        }
+    } | null
     activated_at?: string
     last_heartbeat?: string
     revoked: boolean
@@ -55,7 +60,7 @@ export default function LISPage() {
     const [confirmPrimaryLabel, setConfirmPrimaryLabel] = useState('Confirm')
     const [pendingConfirm, setPendingConfirm] = useState<{ kind: 'delete'; id: number } | { kind: 'revoke'; device: DeviceItem } | { kind: 'update'; id: number | null; issued_to: string } | null>(null)
 
-    const API_BASE = "http://localhost"
+    const API_BASE = "http://202.10.35.119"
     const API_KEY = "KJKDANCJSANIUWYR6243UJFOISJFJKVOMV72487YEHFHFHSDVOHF9AMDC9AN9SDN98YE98YEHDIU2Y897873YYY68686487WGDUDUAGYTE8QTEYADIUHADUYW8E8BWTNC8N8NAMDOAIMDAUDUWYAD87NYW7Y7CBT87EY8142164B36248732M87MCIFH8NYRWCM8MYCMUOIDOIADOIDOIUR83YR983Y98328N32C83NYC8732NYC8732Y87Y32NCNSAIHJAOJFOIJFOIQFIUIUNCNHCIUHWV8NRYNV8Y989N9198298YOIJOI090103021313JKJDHAHDJAJASHHAH"
 
 
@@ -101,13 +106,13 @@ export default function LISPage() {
             await navigator.clipboard.writeText(text)
             setCopiedId(id)
             window.setTimeout(() => setCopiedId(null), 2000)
-        } catch (e) {
+        } catch {
             // fallback: try execCommand (older browsers), or ignore silently
             const ta = document.createElement('textarea')
             ta.value = text
             document.body.appendChild(ta)
             ta.select()
-            try { document.execCommand('copy') } catch (_) { }
+            try { document.execCommand('copy') } catch { /* ignore */ }
             document.body.removeChild(ta)
             setCopiedId(id)
             window.setTimeout(() => setCopiedId(null), 2000)
@@ -170,8 +175,9 @@ export default function LISPage() {
                 return bTime - aTime
             })
             setDevices(data)
-        } catch (err: any) {
-            setDevicesError(err.message || 'Failed to load devices')
+        } catch (err) {
+            const errorMessage = err instanceof Error ? err.message : 'Failed to load devices'
+            setDevicesError(errorMessage)
         } finally {
             setDevicesLoading(false)
         }
@@ -215,8 +221,9 @@ export default function LISPage() {
                     await fetchLicenses()
                     await fetchDevices()
                     success = true
-                } catch (err: any) {
-                    setConfirmMessage(err?.message ? `Failed to delete license: ${err.message}` : 'Failed to delete license')
+                } catch (err) {
+                    const errorMessage = err instanceof Error ? err.message : 'Unknown error'
+                    setConfirmMessage(`Failed to delete license: ${errorMessage}`)
                 } finally {
                     setDeletingId(null)
                 }
@@ -231,8 +238,9 @@ export default function LISPage() {
                     }
                     await fetchDevices()
                     success = true
-                } catch (err: any) {
-                    setConfirmMessage(err?.message ? `Failed to ${device.revoked ? 'unrevoke' : 'revoke'} device: ${err.message}` : 'Failed to update device')
+                } catch (err) {
+                    const errorMessage = err instanceof Error ? err.message : 'Unknown error'
+                    setConfirmMessage(`Failed to ${device.revoked ? 'unrevoke' : 'revoke'} device: ${errorMessage}`)
                 } finally {
                     setRevokingId(null)
                 }
@@ -250,8 +258,9 @@ export default function LISPage() {
                     // close edit modal if open
                     closeEditModal()
                     success = true
-                } catch (err: any) {
-                    setConfirmMessage(err?.message ? `Failed to update license: ${err.message}` : 'Failed to update license')
+                } catch (err) {
+                    const errorMessage = err instanceof Error ? err.message : 'Unknown error'
+                    setConfirmMessage(`Failed to update license: ${errorMessage}`)
                 } finally {
                     setUpdateLoading(false)
                 }
@@ -300,8 +309,9 @@ export default function LISPage() {
             setExpiresInInput(365)
             // close modal on success
             setShowModal(false)
-        } catch (err: any) {
-            setError(`Failed to generate license: ${err.message}`)
+        } catch (err) {
+            const errorMessage = err instanceof Error ? err.message : 'Unknown error'
+            setError(`Failed to generate license: ${errorMessage}`)
         } finally {
             setGenerating(false)
         }
@@ -316,8 +326,9 @@ export default function LISPage() {
                 }
             })
             setLicenses(res.data.data || [])
-        } catch (err: any) {
-            setError(err.message || "Failed to load license data")
+        } catch (err) {
+            const errorMessage = err instanceof Error ? err.message : "Failed to load license data"
+            setError(errorMessage)
         } finally {
             setLoading(false)
         }
@@ -400,7 +411,7 @@ export default function LISPage() {
                                             const exp = new Date(lic.expires_at)
                                             const diff = Math.ceil((exp.getTime() - now.getTime()) / (1000 * 60 * 60 * 24))
                                             return diff > 0 ? `${diff} day${diff === 1 ? '' : 's'}` : 'Expired'
-                                        } catch (e) {
+                                        } catch {
                                             return '-'
                                         }
                                     })()}

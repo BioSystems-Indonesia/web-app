@@ -16,7 +16,7 @@ import LipidIcon from '@/presentation/components/icon/lipid.svg'
 import LiverIcon from '@/presentation/components/icon/liver.svg'
 import PancreaticIcon from '@/presentation/components/icon/pancreatic.svg'
 import RenalIcon from '@/presentation/components/icon/renal.svg'
-import { INFINITE_CACHE } from "next/dist/lib/constants"
+import { ComponentType, SVGProps } from 'react'
 
 interface AssayItem {
     analyzer: string;
@@ -35,7 +35,7 @@ interface AnemiaPanel {
 
 interface TestingPanel {
     title: string;
-    icon: any;
+    icon: ComponentType<SVGProps<SVGSVGElement>>;
 }
 
 export default function TestingParameterSection() {
@@ -218,11 +218,11 @@ export default function TestingParameterSection() {
                         </div>
                         <ul className="parameter-list">
                             {activeChemistries.map((chemistry, index) => (
-                                <li key={index} style={{ display: "flex", flexDirection: "column", backgroundColor: expandedIndex === index ? "rgba(106, 106, 106, 0.05)" : "" }}>
+                                <li onClick={() => toggleCard(index)}
+                                    key={index} style={{ display: "flex", flexDirection: "column", backgroundColor: expandedIndex === index ? "rgba(106, 106, 106, 0.05)" : "", cursor: "pointer" }}>
                                     <div
                                         className="title"
-                                        onClick={() => toggleCard(index)}
-                                        style={{ cursor: "pointer" }}
+
                                     >
                                         <p className={"title-text " + (expandedIndex === index ? "hidden" : "visible")}>{chemistry.name}</p>
                                         <p className={"plus " + (expandedIndex === index ? "" : "rotated")}>
@@ -242,9 +242,12 @@ export default function TestingParameterSection() {
                                                     <th style={{ width: "10rem", textAlign: "start" }}>{chemistry.unit}</th>
                                                 </tr>
                                             </thead>
-                                            <p style={{ marginBottom: "2rem", paddingLeft: "30px" }}>{chemistry.method}</p>
-
                                             <tbody>
+                                                <tr>
+                                                    <td colSpan={5} style={{ paddingLeft: "30px", paddingBottom: "2rem" }}>
+                                                        {chemistry.method}
+                                                    </td>
+                                                </tr>
                                                 {chemistry.items.map((item, idx) => (
 
                                                     <tr key={idx} >
@@ -256,8 +259,8 @@ export default function TestingParameterSection() {
                                                     </tr>
                                                 ))}
                                             </tbody>
-                                            <p style={{ paddingLeft: "30px", marginTop: "30px" }}>More Details</p>
                                         </table>
+                                        <p style={{ paddingLeft: "30px", marginTop: "30px" }}>More Details</p>
                                     </div>
                                 </li>
                             ))}

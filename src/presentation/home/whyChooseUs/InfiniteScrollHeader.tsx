@@ -18,7 +18,7 @@ export const InfiniteScrollHeader: React.FC<InfiniteScrollHeaderProps> = ({
                     <React.Fragment key={index}>
                         <h1>{title}</h1>
                         <div className="icon-card">
-                            <FaArrowDown size={SCROLL_CONFIG.ICON_SIZE} />
+                            <FaArrowDown className="icon" />
                         </div>
                     </React.Fragment>
                 ))}

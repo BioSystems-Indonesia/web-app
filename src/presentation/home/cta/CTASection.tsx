@@ -3,15 +3,15 @@ import CTAImg from "@/assets/img/home/cta.png"
 import LocIcon from "@/presentation/components/icon/loc.png"
 import callIcon from "@/presentation/components/icon/call.png"
 import Image from "next/image"
+import { StaticImageData } from "next/image"
 
 type CTASectionProps = {
     contentBg?: string;
     contentColor?: string;
     iconColor?: string; // accepts any CSS color or a css filter-friendly value
-    iconBlendMode?: React.CSSProperties['mixBlendMode'];
 }
 
-export default function CTASection({ contentBg = "transparent", contentColor = "inherit", iconColor = "#121212", iconBlendMode = 'normal' }: CTASectionProps) {
+export default function CTASection({ contentBg = "transparent", contentColor = "inherit", iconColor = "#121212" }: CTASectionProps) {
     return (
         <section className="cta-section">
             <div className="container">
@@ -27,8 +27,8 @@ export default function CTASection({ contentBg = "transparent", contentColor = "
                                     aria-hidden
                                     style={{
                                         backgroundColor: iconColor,
-                                        WebkitMaskImage: `url(${(LocIcon as any).src})`,
-                                        maskImage: `url(${(LocIcon as any).src})`,
+                                        WebkitMaskImage: `url(${(LocIcon as StaticImageData).src})`,
+                                        maskImage: `url(${(LocIcon as StaticImageData).src})`,
                                         WebkitMaskRepeat: 'no-repeat',
                                         maskRepeat: 'no-repeat',
                                         WebkitMaskSize: 'contain',
@@ -49,8 +49,8 @@ export default function CTASection({ contentBg = "transparent", contentColor = "
                                     aria-hidden
                                     style={{
                                         backgroundColor: iconColor,
-                                        WebkitMaskImage: `url(${(callIcon as any).src})`,
-                                        maskImage: `url(${(callIcon as any).src})`,
+                                        WebkitMaskImage: `url(${(callIcon as StaticImageData).src})`,
+                                        maskImage: `url(${(callIcon as StaticImageData).src})`,
                                         WebkitMaskRepeat: 'no-repeat',
                                         maskRepeat: 'no-repeat',
                                         WebkitMaskSize: 'contain',

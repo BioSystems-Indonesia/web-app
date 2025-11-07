@@ -66,7 +66,7 @@ export default async function Home({ params }: PageProps) {
         <SolutionSection />
         <WhyChooseUseSection />
         <InsideOurLab />
-        <ClincalAnalysisSection />
+        <ClincalAnalysisSection variant="home" />
         <DistributionSection />
         <NewsSection />
         <CTASection iconColor="#ee2737" />

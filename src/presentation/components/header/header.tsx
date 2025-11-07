@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import RoundEarthLogo from "@/presentation/components/icon/RoundEarth.svg";
 import LoginLogo from "@/presentation/components/icon/Login.svg"
 import { useLocale, useTranslations } from "next-intl";
@@ -40,7 +39,7 @@ export default function Header() {
     useEffect(() => {
         const handleScroll = () => {
             const scrollTop = window.scrollY
-            setIsScrolled(scrollTop > 100) 
+            setIsScrolled(scrollTop > 100)
         }
 
         window.addEventListener('scroll', handleScroll)
@@ -112,12 +111,11 @@ export default function Header() {
                     ))}
                     <div className="items">
                         <div >
-                            <Image src={RoundEarthLogo} alt="RoundEarth Logo" width={25}></Image>
+                            <RoundEarthLogo />
                             <p>{t("language")}</p>
                         </div>
                         <div onClick={() => window.location.href = `${locale}/login`}>
                             <LoginLogo />
-                            {/* <Image src={LoginLogo} alt="Login Logo" width={25}></Image> */}
                             <p>{t("login")}</p>
                         </div>
                     </div>
