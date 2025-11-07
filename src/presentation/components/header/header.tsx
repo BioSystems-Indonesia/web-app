@@ -6,6 +6,7 @@ import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import "./header.css"
 import { useState, useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 
 type NavItem = {
     href: string;
@@ -17,24 +18,40 @@ export default function Header() {
     const [langOpen, setLangOpen] = useState(false)
     const [isOpen, setIsOpen] = useState(false)
     const [isScrolled, setIsScrolled] = useState(false)
+    const [productsOpen, setProductsOpen] = useState(false)
+    const [isDesktop, setIsDesktop] = useState(false)
     const locale = useLocale()
+    const pathname = usePathname()
     const languageRef = useRef<HTMLDivElement>(null)
+    const productsRef = useRef<HTMLLIElement>(null)
+
+    useEffect(() => {
+        const checkDesktop = () => {
+            setIsDesktop(window.innerWidth >= 768)
+        }
+        checkDesktop()
+        window.addEventListener('resize', checkDesktop)
+        return () => window.removeEventListener('resize', checkDesktop)
+    }, [])
 
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
             if (languageRef.current && !languageRef.current.contains(event.target as Node)) {
                 setLangOpen(false)
             }
+            if (productsRef.current && !productsRef.current.contains(event.target as Node)) {
+                setProductsOpen(false)
+            }
         }
 
-        if (langOpen) {
+        if (langOpen || productsOpen) {
             document.addEventListener('mousedown', handleClickOutside)
         }
 
         return () => {
             document.removeEventListener('mousedown', handleClickOutside)
         }
-    }, [langOpen])
+    }, [langOpen, productsOpen])
 
     useEffect(() => {
         const handleScroll = () => {
@@ -51,7 +68,6 @@ export default function Header() {
 
     const navItems = (locale: string): NavItem[] => [
         { href: `${locale}/#`, label: "products" },
-        { href: `${locale}/#`, label: "solutions" },
         { href: `${locale}/#`, label: "carear" },
         { href: `${locale}/#`, label: "about" },
         { href: `${locale}/#`, label: "contact-us" }
@@ -102,13 +118,29 @@ export default function Header() {
             </div>
             <div className={`header-bottom ${isScrolled ? 'move-up' : ''}`} style={isOpen ? { transform: "translateX(0)" } : {}}>
                 <ul>
-                    {navItems(locale).map((item, index) => (
-                        <li key={index}>
-                            <Link
-                                href={item.href}
-                            >{t(item.label)}</Link>
-                        </li>
-                    ))}
+                    {navItems(locale).map((item, index) => {
+                        const isActive = pathname === item.href || pathname === `/${locale}${item.href.replace(locale, '')}`;
+                        const isProductsItem = item.label === 'products';
+                        const isOnProductPage = pathname.includes('/clinical-analysis') || pathname.includes('/food-beverage-analysis');
+                        const shouldBeActive = isActive || (isProductsItem && productsOpen && isDesktop) || (isProductsItem && isOnProductPage);
+
+                        return (
+                            <li
+                                key={index}
+                                ref={isProductsItem ? productsRef : null}
+                                className={shouldBeActive ? 'active' : ''}
+                                onClick={() => {
+                                    if (isProductsItem && isDesktop) {
+                                        setProductsOpen(!productsOpen);
+                                    }
+                                }}
+                            >
+                                <Link href={item.href}>
+                                    {t(item.label)}
+                                </Link>
+                            </li>
+                        );
+                    })}
                     <div className="items">
                         <div >
                             <RoundEarthLogo />
@@ -120,6 +152,10 @@ export default function Header() {
                         </div>
                     </div>
                 </ul>
+                <div className={`floating-products ${productsOpen ? 'open' : ''}`}>
+                    <Link href="#">Instruments</Link>
+                    <Link href="/clinical-analysis" target="_blank">Reagents</Link>
+                </div>
             </div>
         </header>
     )

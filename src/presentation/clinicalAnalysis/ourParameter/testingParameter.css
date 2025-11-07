@@ -77,12 +77,12 @@
 }
 
 .testing-parameter .content .category-list li:hover {
-  color: #ff5a00 !important;
+  color: var(--hover-color, #ff5a00) !important;
 }
 
 .testing-parameter .content .category-list li:hover::before {
-  background-color: #ff5a00;
-  border-color: #ff5a00;
+  background-color: var(--hover-color, #ff5a00) !important;
+  border-color: var(--hover-color, #ff5a00) !important;
 }
 
 .testing-parameter .content .parameter {

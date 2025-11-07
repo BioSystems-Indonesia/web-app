@@ -149,10 +149,30 @@ li {
 }
 
 .header-bottom li a {
-  font-size: 22px;
-  font-weight: 200;
+  font-size: 16px !important;
+  font-weight: 200 !important;
   text-decoration: none;
   color: inherit;
+  transition: all 0.3s ease;
+}
+
+.header-bottom li.active {
+  background-color: white;
+
+  color: #6a6a6a;
+}
+
+.header-bottom li a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.header-bottom li.active a:hover {
+  background-color: white;
+}
+
+/* Hide floating products on mobile by default */
+.header-bottom .floating-products {
+  display: none;
 }
 
 /* Tablet styles - 768px and up */
@@ -198,7 +218,7 @@ li {
   }
 
   header .header-bottom {
-    padding: 8px 32px;
+    padding: 0px 32px;
     height: auto;
     width: auto;
     overflow-x: visible;
@@ -216,7 +236,6 @@ li {
 
   .header-bottom ul {
     flex-direction: row;
-    gap: 32px;
     justify-content: center;
     border: none;
     padding: 0;
@@ -226,8 +245,45 @@ li {
     display: none;
   }
 
+  .header-bottom li {
+    padding: 21px 22px;
+  }
+
   .header-bottom li a {
     font-size: 11.5px;
+  }
+
+  /* Show floating products only on tablet and above */
+  .header-bottom .floating-products {
+    display: flex;
+    top: 60px;
+    right: 565px;
+    width: 230px;
+    position: absolute;
+    padding: 20px 24px;
+    flex-direction: column;
+    background-color: white;
+    gap: 32px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+  }
+
+  .header-bottom .floating-products.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .floating-products a {
+    color: #707064;
+    font-size: 13px;
+    transition: 0.5s ease;
+  }
+
+  .floating-products a:hover {
+    color: var(--primary);
   }
 }
 
@@ -254,13 +310,20 @@ li {
     font-size: 12px;
   }
 
+  .header-bottom .floating-products {
+    right: 380px;
+  }
+
   header .header-bottom {
-    padding: 10px 64px;
+    padding: 0px 64px;
   }
 
   .header-bottom ul {
-    gap: 40px;
     justify-content: end;
+  }
+
+  .header-bottom li {
+    padding: 21px 22px;
   }
 
   .header-bottom li a {
@@ -278,12 +341,12 @@ li {
     gap: 70px;
   }
 
-  header .header-bottom {
-    padding: 10px 80px;
+  .header-bottom .floating-products {
+    right: 395px;
   }
 
-  .header-bottom ul {
-    gap: 48px;
+  header .header-bottom {
+    padding: 0px 80px;
   }
 }
 
@@ -306,11 +369,11 @@ li {
   }
 
   header .header-bottom {
-    padding: 10px 158px;
+    padding: 0px 158px;
   }
 
-  .header-bottom ul {
-    gap: 52px;
+  .header-bottom .floating-products {
+    right: 470px;
   }
 
   .header-bottom ul a {

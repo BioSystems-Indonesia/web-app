@@ -38,7 +38,11 @@ interface TestingPanel {
     icon: ComponentType<SVGProps<SVGSVGElement>>;
 }
 
-export default function TestingParameterSection() {
+type Props = {
+    color: string
+}
+
+export default function TestingParameterSection({ color }: Props) {
     const [panelActive, setIsactive] = useState<number>(0)
     const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
@@ -185,7 +189,7 @@ export default function TestingParameterSection() {
         setIsactive(index)
     }
     return (
-        <section className="testing-parameter">
+        <section className="testing-parameter" style={{ '--hover-color': color } as React.CSSProperties & { '--hover-color': string }}>
             <div className="head">
                 <h1>Our Testing Parameters</h1>
             </div>

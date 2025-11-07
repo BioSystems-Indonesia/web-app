@@ -29,7 +29,7 @@ export default function ClincalAnalysis() {
                 <p className="text">We deliver analytical products and automation systems for biochemistry and autoimmunity, using high-quality materials and validated processes to ensure reliable results.</p>
             </div>
             <OurProductsSection />
-            <TestingParameterSection />
+            <TestingParameterSection color="#FF5A00" />
             <CTASection contentBg="#FF5A00" contentColor="#fff" iconColor="#fff" />
             <Footer bgColor=" #FF5A00" />
         </div>

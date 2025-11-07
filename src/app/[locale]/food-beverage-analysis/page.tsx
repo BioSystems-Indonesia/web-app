@@ -8,6 +8,7 @@ import CTASection from "@/presentation/home/cta/CTASection"
 import Footer from "@/presentation/components/footer/footer"
 import "./page.css"
 import Header from "@/presentation/components/header/header";
+
 export default function FoodBeverageAnalysis() {
     const [animated, setAnimated] = useState(false);
 
@@ -31,9 +32,9 @@ export default function FoodBeverageAnalysis() {
                 <p className="text">We deliver analytical products and automation systems for biochemistry and autoimmunity, using high-quality materials and validated processes to ensure reliable results.</p>
             </div>
             <OurProductsSection />
-            <TestingParameterSection />
+            <TestingParameterSection color="#d3d92b" />
             <CTASection contentBg="#d3d92b" contentColor="#fff" iconColor="#fff" />
-            <Footer bgColor=" #d3d92b" />
+            <Footer bgColor="#d3d92b" />
         </div>
     )
 }
