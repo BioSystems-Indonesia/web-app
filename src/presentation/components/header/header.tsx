@@ -68,7 +68,7 @@ export default function Header() {
 
     const navItems = (locale: string): NavItem[] => [
         { href: `${locale}/#`, label: "products" },
-        { href: `${locale}/#`, label: "carear" },
+        { href: `${locale}/career`, label: "career" },
         { href: `${locale}/#`, label: "about" },
         { href: `${locale}/#`, label: "contact-us" }
     ]

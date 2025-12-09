@@ -239,6 +239,7 @@ li {
     justify-content: center;
     border: none;
     padding: 0;
+    gap: 0;
   }
 
   .header-bottom .items {
