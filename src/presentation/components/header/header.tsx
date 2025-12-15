@@ -13,7 +13,11 @@ type NavItem = {
     label: string;
 }
 
-export default function Header() {
+type HeaderProps = {
+    backgroundColor?: string;
+}
+
+export default function Header({ backgroundColor = 'transparent' }: HeaderProps) {
     const t = useTranslations("Header")
     const [langOpen, setLangOpen] = useState(false)
     const [isOpen, setIsOpen] = useState(false)
@@ -74,7 +78,7 @@ export default function Header() {
     ]
 
     return (
-        <header>
+        <header style={{ backgroundColor }}>
             <div
                 className={`layout ${isOpen ? 'open' : ''}`}
                 onClick={() => setIsOpen(false)}

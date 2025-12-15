@@ -1,0 +1,202 @@
+.opportunities {
+  height: 100vh;
+  width: 100vw;
+}
+
+.opportunities .container {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.opportunities .container .content {
+  padding: 75px 158px;
+  position: relative;
+  background-color: white;
+  z-index: 3;
+}
+
+.opportunities .container h1 {
+  font-weight: 400;
+  font-size: 96px;
+}
+
+.opportunities .container .opportunities-list {
+  margin-top: 85px;
+  width: 588px;
+}
+
+.opportunities .container .opportunities-list li {
+  padding: 32px 44px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  box-shadow: 0px 0px 40px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
+  margin-bottom: 40px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.opportunities .container .opportunities-list li:hover {
+  background-color: #ee2737;
+  color: white;
+}
+
+.opportunities .container .opportunities-list li:hover h2 {
+  color: white;
+}
+
+.opportunities .container .opportunities-list li.active {
+  scale: 1.1;
+  background-color: #ee2737;
+}
+
+.opportunities .container .opportunities-list li h2 {
+  font-size: 40px;
+  font-weight: 400;
+  color: #ee2737;
+  transition: all 0.3s ease;
+}
+
+.opportunities .container .opportunities-list li.active h2 {
+  color: white;
+}
+
+.opportunities .container .opportunities-list li p {
+  font-size: 24;
+  font-weight: 400;
+}
+
+.opportunities .container .opportunities-list li.active p {
+  color: white;
+}
+
+.opportunities .container .detail-card {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  z-index: 2;
+  background: linear-gradient(to right, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: left 0.5s ease;
+}
+
+.opportunities .container .detail-card.show {
+  left: 940px;
+}
+
+.opportunities .container .detail-card h2 {
+  font-size: 48px;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.opportunities .container .detail-card .detail-section {
+  height: 100%;
+  flex: 1;
+  width: 50vw;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  padding: 35px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  overflow: hidden;
+  bottom: 0;
+  transition: all 0.5s ease;
+}
+
+.opportunities .container .detail-card .detail-section:last-child {
+  border-bottom: none;
+}
+
+.opportunities .container .detail-card .detail-section.active {
+  background-color: #ee2737;
+  flex: 15;
+  color: white;
+}
+
+.opportunities .container .detail-card .detail-section:hover {
+  background-color: #ee2737;
+  color: white;
+}
+
+.opportunities .container .detail-card .detail-section h2 {
+  margin: 0;
+  transition: all 0.5s ease;
+}
+
+.opportunities .container .detail-card .detail-section .section-content {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition:
+    max-height 0.5s ease,
+    opacity 0.5s ease,
+    margin-top 0.5s ease;
+  margin-top: 0;
+}
+
+.opportunities .container .detail-card .detail-section.active .section-content {
+  max-height: 1000px;
+  opacity: 1;
+  margin-top: 30px;
+}
+
+.opportunities .container .detail-card .detail-section .section-content p {
+  font-size: 20px;
+  line-height: 1.8;
+  margin: 0;
+  color: white;
+}
+
+.opportunities .container .detail-card .detail-section .section-content ul {
+  list-style: disc;
+  padding-left: 25px;
+  margin: 0;
+}
+
+.opportunities .container .detail-card .detail-section .section-content ul li {
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 12px;
+  color: white;
+}
+
+.opportunities .container .detail-card .application-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.opportunities .container .detail-card .application-section .apply-button {
+  padding: 15px 40px;
+  background-color: white;
+  color: #ee2737;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  border: 2px solid white;
+}
+
+.opportunities .container .detail-card .application-section .apply-button:hover {
+  background-color: transparent;
+  color: white;
+  transform: scale(1.05);
+}
+
+.opportunities .container .img-card {
+  position: relative;
+  z-index: 1;
+}

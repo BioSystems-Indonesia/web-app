@@ -1,6 +1,9 @@
 "use client"
 
 import Header from "@/presentation/components/header/header"
+import OpportunitiesSection from "@/presentation/career/opportunities/opportunities";
+import Footer from "@/presentation/components/footer/footer";
+import CTASection from "@/presentation/home/cta/CTASection";
 import "./page.css"
 import { useState, useEffect } from "react";
 
@@ -26,8 +29,12 @@ export default function CareerPage() {
                 <div className="line-vertical"></div>
 
                 <p className="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt leo sit amet purus congue, eget venenatis eros semper. Maecenas nisl dui, suscipit non sodales a </p>
-
             </div>
+            <OpportunitiesSection />
+            <CTASection iconColor="#ee2737" />
+
+            <Footer bgColor="#ee2737" />
+
         </div>
     )
 }
