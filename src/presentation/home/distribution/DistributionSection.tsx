@@ -46,7 +46,7 @@ export default function DistributionSection() {
             (entries) => {
                 if (entries[0].isIntersecting) {
                     setInView(true);
-                    observer.disconnect(); // jalankan sekali saja
+                    observer.disconnect();
                 }
             },
             { threshold: 0.3 }

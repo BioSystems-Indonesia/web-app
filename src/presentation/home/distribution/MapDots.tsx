@@ -43,108 +43,88 @@ import Lineyogya from "@/assets/img/line/line-yogya.svg";
 
 const dots = [
     // Sumatera
-    { id: "aceh", name: "Aceh", top: "1rem", left: "1.5rem", Comp: Lineaceh, anchor: "bottom-left" },
-    { id: "medan", name: "Medan", top: "6rem", left: "8.5rem", Comp: LineMedan, anchor: "bottom-left" },
-    { id: "pekanbaru", name: "Pekanbaru", top: "11rem", left: "13.4rem", Comp: Linepekanbaru, anchor: "bottom-left" },
-    { id: "padang", name: "Padang", top: "15rem", left: "13.5rem", Comp: Linepadang, anchor: "top-right" },
-    { id: "batam", name: "Batam", top: "10.5rem", left: "20.2rem", Comp: Linebatam, anchor: "bottom-left" },
-    { id: "bengkulu", name: "Bengkulu", top: "20.5rem", left: "17rem", Comp: Linebengkulu, anchor: "top-right" },
-    { id: "jambi", name: "Jambi", top: "15.5rem", left: "19rem", Comp: Linejambi, anchor: "bottom-left" },
-    { id: "jambi-2", name: "Jambi", top: "16.4rem", left: "19.3rem", Comp: "", anchor: "bottom-left" },
-    { id: "palembang", name: "Palembang", top: "18.5rem", left: "22rem", Comp: "", anchor: "bottom-left" },
-    { id: "palembang-2", name: "Palembang", top: "19rem", left: "22.5rem", Comp: Linepalembang, anchor: "bottom-left" },
-    { id: "palembang-3", name: "Palembang", top: "19.5rem", left: "23rem", Comp: "", anchor: "bottom-left" },
-    { id: "lampung", name: "Lampung", top: "24rem", left: "23rem", Comp: Linelampung, anchor: "top-right" },
-    { id: "pangkalpinang", name: "Pangkalpinang", top: "18rem", left: "25.5rem", Comp: LinepangkalPinang, anchor: "bottom-left" },
+    { id: "aceh", name: "Aceh", top: "4.46%", left: "7%", Comp: Lineaceh, anchor: "bottom-left" },
+    { id: "medan", name: "Medan", top: "15.14%", left: "13.17%", Comp: LineMedan, anchor: "bottom-left" },
+    { id: "pekanbaru", name: "Pekanbaru", top: "30.03%", left: "17.50%", Comp: Linepekanbaru, anchor: "bottom-left" },
+    { id: "padang", name: "Padang", top: "39.76%", left: "16.90%", Comp: Linepadang, anchor: "top-right" },
+    { id: "batam", name: "Batam", top: "29.00%", left: "23.30%", Comp: Linebatam, anchor: "bottom-left" },
+    { id: "bengkulu", name: "Bengkulu", top: "55.10%", left: "20.55%", Comp: Linebengkulu, anchor: "top-right" },
+    { id: "jambi", name: "Jambi", top: "41.29%", left: "22.42%", Comp: Linejambi, anchor: "bottom-left" },
+    { id: "jambi-2", name: "Jambi", top: "42.56%", left: "22.63%", Comp: "", anchor: "bottom-left" },
+    { id: "palembang", name: "Palembang", top: "50.46%", left: "24.97%", Comp: "", anchor: "bottom-left" },
+    { id: "palembang-2", name: "Palembang", top: "51.49%", left: "25.27%", Comp: Linepalembang, anchor: "bottom-left" },
+    { id: "palembang-3", name: "Palembang", top: "52.80%", left: "25.45%", Comp: "", anchor: "bottom-left" },
+    { id: "lampung", name: "Lampung", top: "63.57%", left: "25.66%", Comp: Linelampung, anchor: "top-right" },
+    { id: "pangkalpinang", name: "Pangkalpinang", top: "48.03%", left: "27.30%", Comp: LinepangkalPinang, anchor: "bottom-left" },
 
     // Jawa
-    { id: "serang", name: "Serang", top: "26rem", left: "24.9rem", Comp: Lineserang, anchor: "bottom-left" },
-    { id: "rangkasbitung", name: "Rangkasbitung", top: "27.2rem", left: "25.5rem", Comp: Linerangkas, anchor: "top-right" },
-    { id: "jakarta", name: "Jakarta", top: "26rem", left: "26.8rem", Comp: Linejakarta, anchor: "bottom-left" },
-    { id: "jakarta-2", name: "Jakarta", top: "26.3rem", left: "27.3rem", Comp: "", anchor: "bottom-left" },
-    { id: "subang", name: "Subang", top: "27rem", left: "28.3rem", Comp: Linesubang, anchor: "bottom-left" },
-    { id: "bogor", name: "Bogor", top: "27.7rem", left: "27.5rem", Comp: Linebogor, anchor: "top-right" },
-    { id: "cirebon", name: "Cirebon", top: "27rem", left: "30.3rem", Comp: Linecirebon, anchor: "bottom-left" },
-    { id: "bandung", name: "Bandung", top: "28.5rem", left: "29rem", Comp: Linebandung, anchor: "top-right" },
-    { id: "semarang", name: "Semarang", top: "27.88rem", left: "35rem", Comp: Linesemarang, anchor: "bottom-left" },
-    { id: "yogya", name: "DI Yogyakarta", top: "29.8rem", left: "35rem", Comp: Lineyogya, anchor: "top-right" },
-    { id: "surabaya", name: "Surabaya", top: "28.5rem", left: "39rem", Comp: Linesurabaya, anchor: "bottom-left" },
-    { id: "surabaya-2", name: "Surabaya", top: "28.5rem", left: "39.6rem", Comp: "", anchor: "bottom-left" },
-    { id: "malang", name: "Malang", top: "30rem", left: "39.8rem", Comp: Linemalang, anchor: "top-right" },
-    { id: "kediri", name: "Kediri", top: "29.7rem", left: "37.6rem", Comp: Linekediri, anchor: "top-right" },
-    { id: "bali", name: "Bali", top: "31.2rem", left: "45.3rem", Comp: Linebali, anchor: "top-right" },
-    { id: "mataram", name: "Mataram", top: "31.2rem", left: "47.8rem", Comp: Linemataram, anchor: "bottom-left" },
-    { id: "kupang", name: "Kupang", top: "35rem", left: "64rem", Comp: Linekupang, anchor: "top-left" },
+    { id: "serang", name: "Serang", top: "69.19%", left: "27.14%", Comp: Lineserang, anchor: "bottom-left" },
+    { id: "rangkasbitung", name: "Rangkasbitung", top: "72.01%", left: "27.42%", Comp: Linerangkas, anchor: "top-right" },
+    { id: "jakarta", name: "Jakarta", top: "69.29%", left: "28.90%", Comp: Linejakarta, anchor: "bottom-left" },
+    { id: "jakarta-2", name: "Jakarta", top: "69.94%", left: "29.30%", Comp: "", anchor: "bottom-left" },
+    { id: "subang", name: "Subang", top: "71.14%", left: "30.28%", Comp: Linesubang, anchor: "bottom-left" },
+    { id: "bogor", name: "Bogor", top: "73.54%", left: "29.29%", Comp: Linebogor, anchor: "top-right" },
+    { id: "cirebon", name: "Cirebon", top: "71.14%", left: "31.55%", Comp: Linecirebon, anchor: "bottom-left" },
+    { id: "bandung", name: "Bandung", top: "74.93%", left: "30.57%", Comp: Linebandung, anchor: "top-right" },
+    { id: "semarang", name: "Semarang", top: "73.66%", left: "35.98%", Comp: Linesemarang, anchor: "bottom-left" },
+    { id: "yogya", name: "DI Yogyakarta", top: "79.34%", left: "35.98%", Comp: Lineyogya, anchor: "top-right" },
+    { id: "surabaya", name: "Surabaya", top: "75.43%", left: "39.52%", Comp: Linesurabaya, anchor: "bottom-left" },
+    { id: "surabaya-2", name: "Surabaya", top: "75.43%", left: "40.01%", Comp: "", anchor: "bottom-left" },
+    { id: "malang", name: "Malang", top: "79.51%", left: "40.11%", Comp: Linemalang, anchor: "top-right" },
+    { id: "kediri", name: "Kediri", top: "78.86%", left: "38.25%", Comp: Linekediri, anchor: "top-right" },
+    { id: "bali", name: "Bali", top: "83.14%", left: "44.93%", Comp: Linebali, anchor: "top-right" },
+    { id: "mataram", name: "Mataram", top: "83.14%", left: "46.89%", Comp: Linemataram, anchor: "bottom-left" },
+    { id: "kupang", name: "Kupang", top: "92%", left: "61%", Comp: Linekupang, anchor: "top-left" },
 
     // Kalimantan
-    { id: "palangkaraya", name: "Palangkaraya", top: "17.5rem", left: "42rem", Comp: Linepalangkaraya, anchor: "top-left" },
-    { id: "banjarmasin", name: "Banjarmasin", top: "19.6rem", left: "44.2rem", Comp: Linebanjarmasin, anchor: "top-left" },
-    { id: "balikpapan", name: "Balikpapan", top: "14.8rem", left: "48.5rem", Comp: Linebalikpapan, anchor: "bottom-left" },
-    { id: "balikpapan-2", name: "Balikpapan", top: "14.8rem", left: "49.1rem", Comp: "", anchor: "bottom-left" },
-    { id: "tarakan", name: "Tarakan", top: "5.2rem", left: "50.5rem", Comp: Linetarakan, anchor: "bottom-left" },
-    { id: "pontianak", name: "Pontianak", top: "12.5rem", left: "32.5rem", Comp: Linepontianak, anchor: "bottom-left" },
+    { id: "palangkaraya", name: "Palangkaraya", top: "47%", left: "42.08%", Comp: Linepalangkaraya, anchor: "top-left" },
+    { id: "banjarmasin", name: "Banjarmasin", top: "53%", left: "44.26%", Comp: Linebanjarmasin, anchor: "top-left" },
+    { id: "balikpapan", name: "Balikpapan", top: "40.29%", left: "47.68%", Comp: Linebalikpapan, anchor: "bottom-left" },
+    { id: "balikpapan-2", name: "Balikpapan", top: "40.29%", left: "48.23%", Comp: "", anchor: "bottom-left" },
+    { id: "tarakan", name: "Tarakan", top: "15.86%", left: "49.25%", Comp: Linetarakan, anchor: "bottom-left" },
+    { id: "pontianak", name: "Pontianak", top: "34.71%", left: "33.92%", Comp: Linepontianak, anchor: "bottom-left" },
 
     // Sulawesi
-    { id: "manado", name: "Manado", top: "9.7rem", left: "66.6rem", Comp: Linemanado, anchor: "bottom-left" },
-    { id: "gorontalo", name: "Gorontalo", top: "11.3rem", left: "62.4rem", Comp: Linegorontalo, anchor: "bottom-left" },
-    { id: "palu", name: "Palu", top: "14.8rem", left: "55.5rem", Comp: Linepalu, anchor: "bottom-left" },
-    { id: "mamuju", name: "Mamuju", top: "18.55rem", left: "53.7rem", Comp: Linemamuju, anchor: "top-right" },
-    { id: "makassar", name: "Makassar", top: "22.85rem", left: "55.3rem", Comp: Linemakassar, anchor: "top-right" },
-    { id: "makassar-2", name: "Makassar", top: "23.55rem", left: "55rem", Comp: "", anchor: "bottom-left" },
-    { id: "kendari", name: "Kendari", top: "21.4rem", left: "61.4rem", Comp: Linekendari, anchor: "bottom-left" },
-    { id: "ambon", name: "Ambon", top: "20.3rem", left: "73.8rem", Comp: Lineambon, anchor: "top-left" },
+    { id: "manado", name: "Manado", top: "26.51%", left: "63.52%", Comp: Linemanado, anchor: "bottom-left" },
+    { id: "gorontalo", name: "Gorontalo", top: "31.29%", left: "59.58%", Comp: Linegorontalo, anchor: "bottom-left" },
+    { id: "palu", name: "Palu", top: "40.29%", left: "53.88%", Comp: Linepalu, anchor: "bottom-left" },
+    { id: "mamuju", name: "Mamuju", top: "50.50%", left: "52.13%", Comp: Linemamuju, anchor: "top-right" },
+    { id: "makassar", name: "Makassar", top: "61.29%", left: "53.58%", Comp: Linemakassar, anchor: "top-right" },
+    { id: "makassar-2", name: "Makassar", top: "62.49%", left: "53.39%", Comp: "", anchor: "bottom-left" },
+    { id: "kendari", name: "Kendari", top: "57.14%", left: "58.69%", Comp: Linekendari, anchor: "bottom-left" },
+    { id: "ambon", name: "Ambon", top: "54.40%", left: "69.55%", Comp: Lineambon, anchor: "top-left" },
 
     // Papua
-    { id: "jayapura", name: "Jayapura", top: "18.3rem", left: "101.5rem", Comp: Linejayapura, anchor: "bottom-left" },
-
+    { id: "jayapura", name: "Jayapura", top: "49.79%", left: "93.50%", Comp: Linejayapura, anchor: "bottom-left" },
 ];
+
+
 
 export default function MapDots() {
     return (
-        <div className="map" style={{ position: "relative" }}>
-            <Image src={Map} alt="Indonesian Map | Map Indonesia" />
-            {dots.map((dot) => (
-                <div
-                    key={dot.id}
-                    style={{
-                        position: "absolute",
-                        top: dot.top,
-                        left: dot.left,
-                    }}
-                >
-                    <div className="dot-wrapper">
+        <div className="map">
+            <Image
+                src={Map}
+                alt="Map Indonesia"
+                fill
+                style={{ objectFit: "contain", }}
+            />
+
+            <div className="dot-frame">
+                {dots.map(dot => (
+                    <div
+                        key={dot.id}
+                        className="dot-position"
+                        style={{ top: dot.top, left: dot.left }}
+                    >
                         <div className="map-dot" />
-
-                        {dot.Comp ? <dot.Comp
-                            className={`dot-img anchor-${dot.anchor}`}
-                            style={{
-                                position: "absolute",
-                                pointerEvents: "none",
-                                top: dot.anchor === "top-right" ? 0 : dot.anchor === "top-left" ? 1 : 8,
-                                left: dot.anchor === "top-right" ? 9 : 0,
-                                // width: dot.width ? `${dot.width}px` : undefined,
-                                // height: dot.height ? `${dot.height}px` : undefined,
-                                transform:
-                                    dot.anchor === "bottom-left"
-                                        ? "translate(0, -100%)"
-                                        : dot.anchor === "bottom-right"
-                                            ? "translate(-100%, -100%)"
-                                            : dot.anchor === "top-left"
-                                                ? "translate(0, 0)"
-                                                : dot.anchor === "top-right"
-                                                    ? "translate(-100%, 0)"
-                                                    : "translate(0, -100%)",
-
-                                ...(dot.id === "aceh" && {
-                                    top: 13,
-                                    left: 0,
-                                }),
-                            }}
-                        /> : ""}
-
+                        {dot.Comp && (
+                            <dot.Comp className={`dot-img anchor-${dot.anchor}`} />
+                        )}
                     </div>
-                </div>
-            ))}
+                ))}
+            </div>
         </div>
+
     );
 }

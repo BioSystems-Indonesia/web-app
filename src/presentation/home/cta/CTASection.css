@@ -3,24 +3,26 @@
 }
 
 .cta-section .container .head {
-  border-left: 1px solid #212121;
-  border-right: 1px solid #212121;
-  padding-left: 20px;
-  margin: 0 158px;
+  border-left: none;
+  border-right: none;
+  padding-left: 16px;
+  margin: 0 1rem;
 }
 
 .cta-section .container .head h2 {
   font-style: italic;
-  padding: 25px 0;
-  font-size: 64px;
+  padding: 16px 0;
+  font-size: 28px;
   font-weight: 500;
-  width: 625px;
+  width: auto;
 }
 
 .cta-section .container .cta > img {
-  border-left: 1px solid #212121;
-  width: 1087px;
-  height: 581px;
+  display: block;
+  width: 100%;
+  height: auto;
+  border-left: none;
+  object-fit: cover;
 }
 
 .cta-section .cta {
@@ -28,65 +30,57 @@
   border-top: 1px solid #212121;
   border-bottom: 1px solid #212121;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 .cta-section .cta .content {
   width: 100%;
-  padding-top: 178px;
-  padding-left: 178px;
+  padding: 1rem 2rem;
+  padding-top: 4rem;
   text-shadow: none;
 }
 
 .cta .content .call {
-  margin-top: 69px;
+  margin-top: 1rem;
 }
 
 .cta .content .title {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
 }
 
 .cta .content p {
-  margin: 0;
+  margin: 0.5rem 0 0 0;
   text-shadow: none;
-  font-size: 24px;
-  font-weight: 500;
-  margin-left: 3rem;
-  width: 467px;
+  font-size: 15px;
+  font-weight: 400;
+  margin-left: 0;
+  width: auto;
 }
 
 .cta .title h5 {
-  font-size: 24px;
+  font-size: 16px;
 }
 
-.cta .content img {
-  width: 33px !important;
-  height: 33px !important;
+.cta .content img,
+.icon-wrap img,
+.icon-mask {
+  width: 28px !important;
+  height: 28px !important;
   object-fit: contain;
 }
 
-/* icon-wrap: allow coloring icons via mix-blend-mode or filters
-   Usage: set inline style mixBlendMode and color on .icon-wrap element */
 .icon-wrap {
   display: inline-flex;
-  width: 33px;
-  height: 33px;
+  width: 28px;
+  height: 28px;
   align-items: center;
   justify-content: center;
 }
-.icon-wrap img {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: contain;
-  /* default: let mix-blend-mode + parent color handle tinting */
-}
 
-/* mask-based icon for PNG tinting fallback */
 .icon-mask {
-  width: 33px;
-  height: 33px;
   display: inline-block;
   background-repeat: no-repeat;
   background-position: center;
@@ -97,4 +91,79 @@
   mask-repeat: no-repeat;
   mask-position: center;
   mask-size: contain;
+}
+
+@media (min-width: 768px) {
+  .cta-section .container .head {
+    padding-left: 20px;
+    margin: 0 3rem;
+    border-left: 1px solid #212121;
+    border-right: 1px solid #212121;
+  }
+  .cta-section .container .head h2 {
+    font-size: 40px;
+    padding: 20px 0;
+  }
+  .cta-section .cta {
+    flex-direction: row;
+    align-items: stretch;
+  }
+  .cta-section .cta .content {
+    padding: 2rem 3rem;
+    padding-top: 4rem;
+  }
+  .cta-section .container .cta > img {
+    width: auto;
+    max-width: 560px;
+    height: auto;
+  }
+  .cta .content p {
+    font-size: 18px;
+    width: 420px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .cta-section .cta {
+    gap: 0 !important;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+  }
+  .cta-section .container .head h2 {
+    font-size: 64px;
+    padding: 25px 0;
+    width: 625px;
+  }
+  .cta-section .container .head {
+    margin: 0 158px;
+  }
+  .cta-section .container .cta > img {
+    border-left: 1px solid #212121;
+    width: 1087px !important;
+    max-width: 1087px;
+  }
+  .cta-section .cta {
+    justify-content: space-between;
+  }
+  .cta-section .cta .content {
+    width: 834px;
+    padding-top: 178px;
+    padding-left: 178px;
+  }
+  .cta .content p {
+    font-size: 24px;
+    font-weight: 500;
+    margin-left: 3rem;
+    width: 467px;
+  }
+  .cta .title h5 {
+    font-size: 24px;
+  }
+  .icon-wrap,
+  .cta .content img,
+  .icon-mask {
+    width: 33px;
+    height: 33px;
+  }
 }

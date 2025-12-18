@@ -84,7 +84,6 @@
   padding: 14px 18px;
   font-size: 15px;
   border: 2px solid #dee2e6;
-  border-radius: 10px;
   transition: all 0.3s ease;
   font-family: inherit;
   background-color: #fff;
@@ -113,7 +112,6 @@
   color: white;
   padding: 10px 20px;
   border: none;
-  border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
   margin-right: 15px;
@@ -184,7 +182,7 @@
 }
 
 .checkbox-terms label {
-  display: flex;
+  display: inline-flex;
   align-items: flex-start;
   font-size: 15px;
   cursor: pointer;

@@ -21,7 +21,7 @@ export default function ClincalAnalysis() {
         <div className="clinical-analysis">
             <Header />
             <div className={`hero ${animated ? "animated" : ""}`}>
-                <h1 className="ca-title">
+                <h1 className="ca-title" >
                     <span className="line-1">Clinical</span>
                     <span className="line-2">Analysis</span>
                 </h1>

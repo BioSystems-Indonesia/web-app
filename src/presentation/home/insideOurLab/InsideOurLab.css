@@ -1,7 +1,6 @@
 /* Mobile First Design - Inside Our Lab */
 .inside-our-lab {
   position: relative;
-  min-height: 100vh;
   overflow: hidden;
   background-color: #121212;
   color: white;
@@ -154,7 +153,8 @@
   .inside-our-lab .container .card2 {
     position: absolute;
     right: 0;
-    bottom: -150px;
+    bottom: -350px;
+    width: 500px;
   }
 }
 
@@ -180,13 +180,9 @@
   }
 
   .inside-our-lab .container .card2 {
-    right: -1100px;
+    right: -500px;
     bottom: -400px;
-  }
-
-  .inside-our-lab .container .card2 img {
-    width: 512px;
-    height: 315px;
+    width: 700px;
   }
 }
 

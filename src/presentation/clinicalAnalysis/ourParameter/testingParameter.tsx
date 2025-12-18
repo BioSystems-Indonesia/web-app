@@ -217,7 +217,7 @@ export default function TestingParameterSection({ color }: Props) {
                     </ul>
                     <div className="parameter">
                         <div className="category">
-                            {activePanel.icon && <activePanel.icon />}
+                            {activePanel.icon && <activePanel.icon className="panel-icon" />}
                             <h4>{activePanel.title}</h4>
                         </div>
                         <ul className="parameter-list">
@@ -237,7 +237,7 @@ export default function TestingParameterSection({ color }: Props) {
                                         <table>
                                             <thead>
                                                 <tr>
-                                                    <th style={{ width: "75rem" }}>
+                                                    <th style={{ width: "10rem" }}>
                                                         {/* <span className={"th-text " + (expandedIndex === index ? "visible" : "hidden")}>{chemistry.name}</span> */}
                                                     </th>
                                                     <th style={{ width: "10rem", textAlign: "start" }}>Code</th>
@@ -248,14 +248,18 @@ export default function TestingParameterSection({ color }: Props) {
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td colSpan={5} style={{ paddingLeft: "30px", paddingBottom: "2rem" }}>
-                                                        {chemistry.method}
+                                                    <td colSpan={5} className="method-cell" style={{ paddingLeft: "10px", paddingBottom: "2rem", }}>
+                                                        <div style={{ display: "inline-block", width: '82px' }}>
+                                                            <p>{chemistry.method}</p>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                                 {chemistry.items.map((item, idx) => (
 
                                                     <tr key={idx} >
-                                                        <td style={{ paddingLeft: "30px", textAlign: "start" }}>{item.analyzer}</td>
+                                                        <td className="analyzer-cell" style={{ textAlign: "start" }}>
+                                                            <p className="analyzer">{item.analyzer}</p>
+                                                        </td>
                                                         <td>{item.code}</td>
                                                         <td>{item.RA}</td>
                                                         <td>{item.RB}</td>
@@ -264,7 +268,7 @@ export default function TestingParameterSection({ color }: Props) {
                                                 ))}
                                             </tbody>
                                         </table>
-                                        <p style={{ paddingLeft: "30px", marginTop: "30px" }}>More Details</p>
+                                        <p className="more-details" style={{ paddingLeft: "10px", marginTop: "30px" }}>More Details</p>
                                     </div>
                                 </li>
                             ))}

@@ -1,49 +1,58 @@
 .our-product-section {
-  height: 100vh;
   width: 100%;
   background-color: #121212;
+  box-sizing: border-box;
+  padding: 2rem 0rem;
 }
 
+/* Mobile-first content */
 .our-product-section .content {
-  padding: 158px;
-  padding-bottom: 0;
+  padding: 1.25rem 0 0 0;
 }
 
 .our-product-section h2 {
-  font-size: 64px;
+  padding: 0 2rem;
+  font-size: 28px;
   font-weight: 500;
-  width: 930px;
   color: white;
+  margin: 0;
+  text-align: left;
 }
 
 .our-product-section p {
-  margin-top: 25px;
-  width: 1065px;
+  margin-top: 16px;
   color: white;
-  font-weight: 500;
-  font-size: 24px;
+  font-weight: 400;
+  font-size: 14px;
+  width: 100%;
+  max-width: 100%;
+  padding: 0 2rem;
+  font-style: italic;
+  font-weight: 400;
 }
 
+/* show carousel on mobile as a horizontally scrollable track */
 .our-product-section .corousel {
-  display: none;
+  display: block;
 }
 
 .our-product-section .corousel-wrap {
-  overflow: hidden;
+  overflow: auto;
   width: 100%;
-  margin-top: 56px;
+  margin-top: 46px;
 }
 
 .our-product-section .corousel-track {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   align-items: center;
+  padding-bottom: 8px;
   animation: scroll-left 18s linear infinite;
 }
 
 .our-product-section .corousel-item img {
-  width: 425px;
-  height: 278px;
+  width: 160px;
+  height: 105px;
   object-fit: cover;
   display: block;
 }
@@ -54,5 +63,61 @@
   }
   100% {
     transform: translateX(-50%);
+  }
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  .our-product-section {
+    padding: 4rem 0rem;
+  }
+  .our-product-section .content {
+    padding-top: 2.5rem;
+  }
+  .our-product-section h2 {
+    font-size: 48px;
+    padding: 0 2rem;
+  }
+  .our-product-section p {
+    font-size: 18px;
+    width: 100%;
+    padding: 0 2rem;
+    margin-top: 20px;
+  }
+  .our-product-section .corousel-wrap {
+    margin-top: 40px;
+    overflow: hidden;
+  }
+  .our-product-section .corousel-track {
+    gap: 10px;
+    animation: scroll-left 18s linear infinite;
+  }
+  .our-product-section .corousel-item img {
+    width: 320px;
+    height: 210px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .our-product-section {
+    padding: 154px 0rem;
+  }
+  .our-product-section h2 {
+    font-size: 64px;
+    width: 990px;
+    padding: 0 4rem;
+  }
+  .our-product-section p {
+    font-size: 24px;
+    padding: 0 4rem;
+    width: 1065px;
+  }
+  .our-product-section .corousel-wrap {
+    margin-top: 123px;
+  }
+  .our-product-section .corousel-item img {
+    width: 425px;
+    height: 278px;
   }
 }

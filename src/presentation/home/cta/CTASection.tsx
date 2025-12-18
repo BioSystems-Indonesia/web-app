@@ -42,7 +42,7 @@ export default function CTASection({ contentBg = "transparent", contentColor = "
                             </div>
                             <p>Jl. Kyai Caringin No. 18-A RT 10/RW 4. Cideng, Kecamatan Gambir, Kota Jakarta Pusat. Daerah Khusus Ibukota Jakarta</p>
                         </div>
-                        <div className="call">
+                        <div className="call" style={{ marginTop: "2rem" }}>
                             <div className="title">
                                 <span
                                     className="icon-mask"

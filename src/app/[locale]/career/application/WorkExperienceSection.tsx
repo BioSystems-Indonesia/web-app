@@ -33,13 +33,10 @@ export default function WorkExperienceSection() {
         if (!startDate) return '0.0'
 
         const start = new Date(startDate)
-        // if endDate is empty or invalid, use current date
         const end = endDate ? new Date(endDate) : new Date()
 
-        // Calculate difference in months for better stability
         let months = (end.getFullYear() - start.getFullYear()) * 12
         months += end.getMonth() - start.getMonth()
-        // if day of month of end is less than start, subtract one month
         if (end.getDate() < start.getDate()) months -= 1
 
         const years = months / 12
@@ -50,12 +47,10 @@ export default function WorkExperienceSection() {
         setExperiences(experiences.map(exp => {
             if (exp.id === id) {
                 const updated = { ...exp } as any
-                // if checked (currently working), clear endDate (use present for calc)
                 if (checked) {
                     updated.endDate = ''
                     updated.years = calculateYears(updated.startDate, '')
                 } else {
-                    // when unchecking, leave endDate empty for user to fill
                     updated.years = exp.years || '0.0'
                 }
                 updated.isCurrent = checked
@@ -66,7 +61,6 @@ export default function WorkExperienceSection() {
     }
 
     const handleDateChange = (id: number, field: 'startDate' | 'endDate', value: string) => {
-        // sanitize year part to max 4 digits if user pastes unusual values
         if (value) {
             const parts = value.split('-')
             if (parts.length >= 1) {
@@ -74,7 +68,6 @@ export default function WorkExperienceSection() {
                 if (year && year.length > 4) {
                     // trim to first 4 digits
                     parts[0] = year.slice(0, 4)
-                    // if month/day present, keep them, otherwise set to Jan 01
                     if (!parts[1]) parts[1] = '01'
                     if (!parts[2]) parts[2] = '01'
                     value = parts.join('-')
@@ -85,7 +78,6 @@ export default function WorkExperienceSection() {
         setExperiences(experiences.map(exp => {
             if (exp.id === id) {
                 const updated: any = { ...exp, [field]: value }
-                // if this experience is marked as current, endDate should remain empty and years use present
                 const isCurrent = !!updated.isCurrent
                 if (isCurrent) {
                     updated.endDate = ''
@@ -114,7 +106,6 @@ export default function WorkExperienceSection() {
                         backgroundColor: '#ee2737',
                         color: 'white',
                         border: 'none',
-                        borderRadius: '8px',
                         cursor: 'pointer',
                         fontSize: '16px',
                         fontWeight: '600',

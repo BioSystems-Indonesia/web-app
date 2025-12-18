@@ -2,7 +2,7 @@
 import YTIcon from "@/presentation/components/icon/yt.svg"
 import IGIcon from "@/presentation/components/icon/ig.svg"
 import LinkedinIcon from "@/presentation/components/icon/linkedin.svg"
-
+import "./footer.css"
 
 type FooterProps = {
     bgColor?: string;

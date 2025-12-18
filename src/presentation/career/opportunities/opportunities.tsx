@@ -129,7 +129,7 @@ export default function OpportunitiesSection() {
                         </div>
                         <div className="detail-section application-section">
                             <h2>Application Form</h2>
-                            <Link href={`/career/application?id=${opportunitieCard[selectedIndex].id}`} className="apply-button">
+                            <Link target="_blank" href={`/career/application?id=${opportunitieCard[selectedIndex].id}`} className="apply-button">
                                 Apply Now
                             </Link>
                         </div>

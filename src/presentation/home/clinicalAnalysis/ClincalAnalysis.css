@@ -1,5 +1,4 @@
 .clinical-analysis {
-  height: 100vh;
   width: 100vw;
   position: relative;
   overflow: hidden;
@@ -9,24 +8,28 @@
   position: relative;
   width: 100%;
   height: 100%;
-  gap: 2rem;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Initial state: h1 centered, line and text hidden */
+/* Mobile-first base: small typography and compact layout */
 .clinical-analysis .container h1.ca-title {
   font-weight: 400;
-  font-size: 160px;
+  font-size: 36px;
   color: white;
   display: flex;
   flex-direction: column;
   text-align: center;
   transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translateX(350px);
+  transform: translateX(0);
 }
 
 .clinical-analysis .container h1 {
   font-weight: 400;
-  font-size: 128px;
+  font-size: 36px;
   color: white;
   display: flex;
   flex-direction: column;
@@ -34,40 +37,39 @@
 }
 
 .clinical-analysis .container .line-vertical {
-  width: 4px;
-  height: 320px;
+  width: 2px;
+  height: 120px;
   background-color: white;
   opacity: 0;
-  transform: translateX(10px);
+  transform: translateX(0);
   transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .clinical-analysis .container .text {
-  width: 599px;
+  width: 90%;
   color: white;
   font-weight: 200;
-  font-size: 40px;
+  font-size: 14px;
   opacity: 0;
-  transform: translateX(-100px);
+  transform: translateX(0);
   transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
 }
 
-/* Animated state: after 1 second */
+/* Animated state */
 .clinical-analysis .container.animated h1.ca-title {
-  transform: translateX(10px);
+  transform: translateX(0);
 }
-
 .clinical-analysis .container.animated .line-vertical {
   opacity: 1;
   transform: translateX(0);
 }
-
 .clinical-analysis .container.animated .text {
   opacity: 1;
   transform: translateX(0);
 }
 
-/* Home variant styles */
+/* Home variant styles (mobile) */
 .clinical-analysis--home .container {
   justify-content: center;
   align-items: center;
@@ -76,15 +78,15 @@
 .clinical-analysis--home .analysis {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   width: 100%;
-  height: 100vh;
+  height: auto;
   position: relative;
 }
 
 .clinical-analysis--home .clinical-analysis-home-link {
   background: url("@/assets/img/home/ca.png");
-  padding-left: 65px;
+  padding-left: 16px;
   background-color: #ff5a00;
   background-size: cover;
   background-position: center;
@@ -93,11 +95,11 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 50vh;
-  gap: 1rem;
+  height: 20vh;
+  gap: 0.75rem;
   text-decoration: none;
   cursor: pointer;
-  transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   transform-origin: top;
   z-index: 1;
   position: relative;
@@ -110,16 +112,15 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding-left: 65px;
-
+  padding-left: 16px;
   width: 100%;
-  height: 50vh;
+  height: 20vh;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 0.75rem;
   text-decoration: none;
   cursor: pointer;
-  transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   transform-origin: bottom;
   z-index: 1;
   position: relative;
@@ -127,151 +128,110 @@
 
 .clinical-analysis--home .arrow-icon {
   color: white;
-  font-size: 80px;
+  font-size: 48px;
   flex-shrink: 0;
   transition: transform 0.3s ease;
 }
 
-/* Hover effects - expand downward */
+/* Mobile hover/tap expansion (limited) */
 .clinical-analysis--home .clinical-analysis-home-link:hover {
-  height: 100vh;
+  height: 55vh;
   z-index: 2;
 }
-
-/* Hover effects - expand upward */
 .clinical-analysis--home .analysis .food-beverage-analysis:hover {
-  height: 100vh;
+  height: 55vh;
   z-index: 2;
 }
 
-/* Mobile responsive */
-@media (max-width: 768px) {
-  .clinical-analysis {
-    height: 100vh;
+/* Larger screens - tablet */
+@media (min-width: 768px) {
+  .clinical-analysis .container {
+    gap: 1.25rem;
   }
 
+  .clinical-analysis .container h1.ca-title,
   .clinical-analysis .container h1 {
-    font-size: 56px;
+    font-size: 60px;
   }
-
-  /* Mobile animation adjustments */
-  .clinical-analysis .container h1.ca-title {
-    font-size: 56px;
-    transform: translateX(0);
-  }
-
   .clinical-analysis .container .line-vertical {
     height: 150px;
-    margin: 0 20px;
     width: 2px;
-    transform: translateX(50px);
   }
-
   .clinical-analysis .container .text {
-    width: 90%;
     font-size: 18px;
-    text-align: center;
-    transform: translateX(100px);
+    width: 90%;
   }
-
-  .clinical-analysis .container.animated h1.ca-title {
-    transform: translateX(-80px);
-  }
-
-  .clinical-analysis .container.animated .line-vertical {
-    opacity: 1;
-    transform: translateX(0);
-  }
-
-  .clinical-analysis .container.animated .text {
-    opacity: 1;
-    transform: translateX(0);
-  }
-
-  /* Home variant mobile */
-  .clinical-analysis--home .clinical-analysis-home-link {
-    gap: 1rem;
-    flex-direction: row;
-  }
-
+  .clinical-analysis--home .clinical-analysis-home-link,
   .clinical-analysis--home .analysis .food-beverage-analysis {
+    height: 30vh;
     gap: 1rem;
-    flex-direction: row;
+    padding-left: 40px;
   }
-
   .clinical-analysis--home .arrow-icon {
     font-size: 60px;
   }
-
-  /* Mobile hover effects - still work but less dramatic */
   .clinical-analysis--home .clinical-analysis-home-link:hover {
     height: 60vh;
   }
-
   .clinical-analysis--home .analysis .food-beverage-analysis:hover {
     height: 60vh;
   }
 }
 
-@media (max-width: 480px) {
-  .clinical-analysis .container h1 {
-    font-size: 36px;
+/* Desktop and large screens */
+@media (min-width: 1024px) {
+  .clinical-analysis {
+    height: 100vh;
   }
-
-  /* Extra small mobile animation adjustments */
+  .clinical-analysis .container {
+    height: 100%;
+    gap: 2rem;
+  }
   .clinical-analysis .container h1.ca-title {
-    font-size: 36px;
-    transform: translateX(0);
+    font-size: 160px;
+    transform: translateX(350px);
   }
-
+  .clinical-analysis .container h1 {
+    font-size: 128px;
+  }
   .clinical-analysis .container .line-vertical {
-    height: 120px;
-    margin: 0 15px;
-    width: 2px;
-    transform: translateX(30px);
+    width: 4px;
+    height: 320px;
+    transform: translateX(10px);
   }
-
   .clinical-analysis .container .text {
-    width: 85%;
-    font-size: 14px;
-    transform: translateX(80px);
+    width: 599px;
+    font-size: 40px;
+    transform: translateX(-100px);
   }
-
   .clinical-analysis .container.animated h1.ca-title {
-    transform: translateX(-50px);
+    transform: translateX(10px);
   }
-
   .clinical-analysis .container.animated .line-vertical {
     opacity: 1;
     transform: translateX(0);
   }
-
   .clinical-analysis .container.animated .text {
     opacity: 1;
     transform: translateX(0);
   }
 
-  /* Home variant extra small mobile */
+  .clinical-analysis--home .analysis {
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+  }
+  .clinical-analysis--home .clinical-analysis-home-link,
+  .clinical-analysis--home .analysis .food-beverage-analysis {
+    padding-left: 65px;
+    height: 50vh;
+  }
   .clinical-analysis--home .arrow-icon {
-    font-size: 48px;
+    font-size: 80px;
   }
-
-  /* Extra small mobile hover effects */
-  .clinical-analysis--home .clinical-analysis-home-link:hover {
-    height: 55vh;
-  }
-
-  .clinical-analysis--home .analysis .food-beverage-analysis:hover {
-    height: 55vh;
-  }
-}
-
-/* Tablet and larger - full expand */
-@media (min-width: 769px) {
   .clinical-analysis--home .clinical-analysis-home-link:hover {
     height: 100vh;
   }
-
   .clinical-analysis--home .analysis .food-beverage-analysis:hover {
     height: 100vh;
   }
