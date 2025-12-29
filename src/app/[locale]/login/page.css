@@ -1,5 +1,5 @@
 .container {
-  height: 80vh;
+  height: 80dvh;
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -131,7 +131,7 @@ button:hover {
 
 @media (min-width: 1025px) {
   .container {
-    height: 90vh;
+    height: 90dvh;
     flex-direction: row;
     align-items: center;
     justify-content: center;

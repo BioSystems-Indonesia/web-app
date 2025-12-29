@@ -23,6 +23,7 @@
     "axios": "^1.12.2",
     "bcrypt": "^6.0.0",
     "flowbite-react": "^0.12.8",
+    "framer-motion": "^12.23.26",
     "jose": "^6.0.13",
     "jsonwebtoken": "^9.0.2",
     "next": "15.5.0",

@@ -1,5 +1,5 @@
 .clinical-analysis {
-  width: 100vw;
+  width: 100dvw;
   position: relative;
   overflow: hidden;
 }
@@ -95,7 +95,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 20vh;
+  height: 20dvh;
   gap: 0.75rem;
   text-decoration: none;
   cursor: pointer;
@@ -114,7 +114,7 @@
   background-repeat: no-repeat;
   padding-left: 16px;
   width: 100%;
-  height: 20vh;
+  height: 20dvh;
   justify-content: center;
   align-items: center;
   gap: 0.75rem;
@@ -135,11 +135,11 @@
 
 /* Mobile hover/tap expansion (limited) */
 .clinical-analysis--home .clinical-analysis-home-link:hover {
-  height: 55vh;
+  height: 55dvh;
   z-index: 2;
 }
 .clinical-analysis--home .analysis .food-beverage-analysis:hover {
-  height: 55vh;
+  height: 55dvh;
   z-index: 2;
 }
 
@@ -163,7 +163,7 @@
   }
   .clinical-analysis--home .clinical-analysis-home-link,
   .clinical-analysis--home .analysis .food-beverage-analysis {
-    height: 30vh;
+    height: 30dvh;
     gap: 1rem;
     padding-left: 40px;
   }
@@ -171,17 +171,17 @@
     font-size: 60px;
   }
   .clinical-analysis--home .clinical-analysis-home-link:hover {
-    height: 60vh;
+    height: 60dvh;
   }
   .clinical-analysis--home .analysis .food-beverage-analysis:hover {
-    height: 60vh;
+    height: 60dvh;
   }
 }
 
 /* Desktop and large screens */
 @media (min-width: 1024px) {
   .clinical-analysis {
-    height: 100vh;
+    height: 100dvh;
   }
   .clinical-analysis .container {
     height: 100%;
@@ -219,20 +219,20 @@
   .clinical-analysis--home .analysis {
     flex-direction: column;
     align-items: center;
-    height: 100vh;
+    height: 100dvh;
   }
   .clinical-analysis--home .clinical-analysis-home-link,
   .clinical-analysis--home .analysis .food-beverage-analysis {
     padding-left: 65px;
-    height: 50vh;
+    height: 50dvh;
   }
   .clinical-analysis--home .arrow-icon {
     font-size: 80px;
   }
   .clinical-analysis--home .clinical-analysis-home-link:hover {
-    height: 100vh;
+    height: 100dvh;
   }
   .clinical-analysis--home .analysis .food-beverage-analysis:hover {
-    height: 100vh;
+    height: 100dvh;
   }
 }

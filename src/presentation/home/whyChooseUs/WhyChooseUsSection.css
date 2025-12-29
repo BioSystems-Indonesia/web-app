@@ -46,11 +46,10 @@
   flex-shrink: 0;
 }
 
-/* make the svg icon scale with the .icon-card container so it's responsive */
 .why-choose-us .head .icon-card .icon {
   width: 60%;
   height: 60%;
-  color: white; /* ensure icon color contrasts the primary background */
+  color: white;
 }
 
 .why-choose-us .container {

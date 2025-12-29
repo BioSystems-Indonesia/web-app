@@ -1,0 +1,142 @@
+.instrument .hero {
+  background: url("@/assets/img/home/ca.png");
+  background-color: #ff5a00;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100dvh;
+  padding: 210px;
+  position: relative;
+}
+
+/* Initial state: h1 centered, line and text hidden */
+.instrument .hero .ca-title {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  font-size: 160px;
+  color: white;
+  font-weight: 400;
+  white-space: nowrap;
+  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(350px);
+}
+
+.ca-title span {
+  display: inline;
+}
+
+.instrument .hero .ca-title span:last-child {
+  transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(145px);
+}
+
+.instrument .hero .line-vertical {
+  height: 250px;
+  margin: 0 50px;
+  width: 0.25rem;
+  background-color: white;
+  opacity: 0;
+  transform: translateX(-100px);
+  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.instrument .hero .text {
+  width: 599px !important;
+  min-width: 599px;
+  max-width: 599px;
+  font-size: 40px;
+  color: white;
+  font-weight: 200;
+  opacity: 0;
+  transform: translateX(-599px);
+  transition:
+    opacity 1.6s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Animated state: after 1 second */
+.instrument .hero.animated .ca-title {
+  font-size: 96px;
+  transform: translateX(0);
+}
+
+.instrument .hero.animated .ca-title span {
+  transform: translateX(0);
+}
+
+.instrument .hero.animated .line-vertical {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.instrument .hero.animated .text {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.instrument .desctiption {
+  height: 733px;
+  display: flex;
+  align-items: center;
+}
+
+.instrument .desctiption .content {
+  padding-left: 158px;
+}
+
+.instrument .desctiption .content h2 {
+  font-weight: 500;
+  font-size: 64px;
+}
+
+.instrument .desctiption .content p {
+  margin-top: 20px;
+  font-size: 24px;
+}
+
+.instrument .analyzer {
+  position: relative;
+  background: url("@/assets/img/instrument/ba400.png");
+  height: 100dvh;
+  display: flex;
+  align-items: end;
+  justify-content: end;
+  padding: 157px;
+  cursor: pointer;
+}
+
+.instrument .analyzer .content {
+  position: absolute;
+  z-index: 99;
+  display: flex;
+  text-align: end;
+  flex-direction: column;
+  width: 647px;
+}
+
+.instrument .analyzer .content h2 {
+  font-size: 64px;
+  font-weight: 500;
+}
+
+.instrument .analyzer .content p {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.instrument .analyzer .overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background: #ffffff;
+  background: linear-gradient(360deg, rgba(255, 255, 255, 1) 0%, rgba(115, 115, 115, 0) 100%);
+}

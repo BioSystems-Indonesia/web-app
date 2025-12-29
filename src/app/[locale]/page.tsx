@@ -31,8 +31,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function Home({ params }: PageProps) {
-  await params; // Consume params to avoid unused parameter warning
-
+  await params;
   return (
     <>
       {/* Structured Data for Homepage */}
