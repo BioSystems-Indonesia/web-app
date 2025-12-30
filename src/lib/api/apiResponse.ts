@@ -1,7 +1,7 @@
 import { HttpStatus } from "@/lib/constant/responseCode";
 
 export type APIResponse<T = unknown> = {
-  statusCode: number;
+  code: number;
   message: string;
   data?: T;
   error?: string | object | unknown;
@@ -10,7 +10,7 @@ export type APIResponse<T = unknown> = {
 export class APIResponseBuilder {
   static success<T>(data: T): APIResponse {
     return {
-      statusCode: HttpStatus.OK,
+      code: HttpStatus.OK,
       message: "Ok",
       data,
     };
@@ -18,7 +18,7 @@ export class APIResponseBuilder {
 
   static created<T>(data: T): APIResponse {
     return {
-      statusCode: HttpStatus.CREATED,
+      code: HttpStatus.CREATED,
       message: "Ok",
       data,
     };
@@ -26,7 +26,7 @@ export class APIResponseBuilder {
 
   static badRequest(error?: unknown): APIResponse {
     return {
-      statusCode: HttpStatus.BAD_REQUEST,
+      code: HttpStatus.BAD_REQUEST,
       message: "Bad Request",
       error,
     };
@@ -34,15 +34,23 @@ export class APIResponseBuilder {
 
   static notFound(error?: unknown): APIResponse {
     return {
-      statusCode: HttpStatus.NOT_FOUND,
+      code: HttpStatus.NOT_FOUND,
       message: "Not Found",
+      error,
+    };
+  }
+
+  static vaidationError(error?: unknown): APIResponse {
+    return {
+      code: HttpStatus.BAD_REQUEST,
+      message: "Bad Request",
       error,
     };
   }
 
   static unauthorized(error?: unknown): APIResponse {
     return {
-      statusCode: HttpStatus.UNAUTHORIZED,
+      code: HttpStatus.UNAUTHORIZED,
       message: "Unatuhorized",
       error,
     };
@@ -50,7 +58,7 @@ export class APIResponseBuilder {
 
   static internalServerError(error?: unknown): APIResponse {
     return {
-      statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
+      code: HttpStatus.INTERNAL_SERVER_ERROR,
       message: "Internal Server Error",
       error,
     };

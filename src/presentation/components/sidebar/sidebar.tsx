@@ -7,6 +7,7 @@ import { FaHome, FaNewspaper, FaUser } from "react-icons/fa";
 import { SlChemistry } from "react-icons/sl";
 import { MdEventAvailable } from "react-icons/md";
 import { IoBagSharp, IoCall } from "react-icons/io5";
+import { BsBox2 } from "react-icons/bs";
 
 import './sidebar.css';
 
@@ -23,6 +24,7 @@ type NavItem = {
 
 const getNavItems = (locale: string): NavItem[] => [
     { href: `/${locale}/dashboard`, label: "Home", icon: <FaHome /> },
+    { href: `/${locale}/dashboard/products`, label: "Products", icon: <BsBox2 /> },
     { href: `/${locale}/dashboard/posts`, label: "Posts", icon: <FaNewspaper /> },
     { href: `/${locale}/dashboard/events`, label: "Events", icon: <MdEventAvailable /> },
     { href: `/${locale}/dashboard/career`, label: "Career", icon: <IoBagSharp /> },

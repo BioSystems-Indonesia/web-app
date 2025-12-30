@@ -5,19 +5,19 @@ import "./page.css"
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
-import BA1Img from "@/assets/img/instrument/ba400/1.png"
-import BA2Img from "@/assets/img/instrument/ba400/2.png"
-import BACenter from "@/assets/img/instrument/ba400/center.png"
+import BA1Img from "@/assets/img/instrument/ba200/1.png"
+import BA2Img from "@/assets/img/instrument/ba200/2.png"
+import BACenter from "@/assets/img/instrument/ba200/center.png"
 
-import BASpecs1 from "@/assets/img/instrument/ba400/specs-1.png"
-import BASpecs2 from "@/assets/img/instrument/ba400/specs-2.png"
-import BASpecs3 from "@/assets/img/instrument/ba400/specs-3.png"
+import BASpecs1 from "@/assets/img/instrument/ba200/specs-1.png"
+import BASpecs2 from "@/assets/img/instrument/ba200/specs-2.png"
+import BASpecs3 from "@/assets/img/instrument/ba200/specs-3.png"
 
-import DimensionImg1 from "@/assets/img/instrument/ba400/dimension-1.png"
-import DimensionImg2 from "@/assets/img/instrument/ba400/dimension-2.png"
+import DimensionImg1 from "@/assets/img/instrument/ba200/dimension-1.png"
+import DimensionImg2 from "@/assets/img/instrument/ba200/dimension-2.png"
 
-import Detail1 from "@/assets/img/instrument/ba400/detail-1.png"
-import Detail2 from "@/assets/img/instrument/ba400/detail-2.png"
+import Detail1 from "@/assets/img/instrument/ba200/detail-1.png"
+import Detail2 from "@/assets/img/instrument/ba200/detail-2.png"
 
 import { MdArrowOutward } from "react-icons/md";
 
@@ -28,7 +28,7 @@ import CTASection from "@/presentation/home/cta/CTASection";
 import Footer from "@/presentation/components/footer/footer";
 import { motion } from "framer-motion"
 
-export default function InstrumentBA400() {
+export default function InstrumentBA200() {
     const [animated, setAnimated] = useState(false);
     const fadeUp = {
         initial: { opacity: 0, y: 100 },
@@ -70,12 +70,12 @@ export default function InstrumentBA400() {
     const { getTransform } = useInfiniteScroll();
 
     return (
-        <div className="ba400">
+        <div className="ba200">
             <Header />
             <div className={`hero ${animated ? "animated" : ""}`}>
                 <h1 className="ca-title" >
                     <span className="line-1">BioSystems</span>
-                    <span className="line-2">BA400</span>
+                    <span className="line-2">BA200</span>
                 </h1>
                 <div className="line-vertical"></div>
                 <p className="text">BA400 is a clinical chemistry analyser that improves your laboratory resources and minimise the required system maintenance</p>
@@ -86,32 +86,34 @@ export default function InstrumentBA400() {
             </div>
             <div className="barrier">
                 <p>Anlyzer</p>
-                <h3>BA400</h3>
+                <h3>BA200</h3>
             </div>
             <article className="article">
-                <motion.div {...fadeRight}>
-                    <Image src={BACenter} alt="BioSystem BA400 Analyzer" />
+                <motion.div {...fadeUp}>
+                    <div className="wrapper">
+                        <Image src={BACenter} alt="BioSystem BA400 Analyzer" width={1571} className="image" />
+                    </div>
                 </motion.div>
                 <div className="content">
-                    <motion.div {...fadeUp}>
+                    <motion.div {...fadeRight}>
                         <div className="specs">
                             <Image src={BASpecs1} alt="BA400 Spesification"></Image>
-                            <h2>Minimum Working Time</h2>
-                            <p>New enhanced maneuvers reduce samples loading time and minimise the attention required by the user.</p>
+                            <h2>Highest performance, minimal maintenance</h2>
+                            <p>The optical bench is based on our patented LED technology, which requires the minimum maintenance and allows the longest lifespan.</p>
                         </div>
                     </motion.div>
                     <motion.div {...fadeUp}>
                         <div className="specs">
                             <Image src={BASpecs2} alt="BA400 Spesification"></Image>
-                            <h2>Reliable Validated System</h2>
+                            <h2>The highest flexibility and compactness</h2>
                             <p>The reagent barcoding and volume detection system allow to manage the amount of reagent in the system at anytime</p>
                         </div>
                     </motion.div>
-                    <motion.div {...fadeUp}>
+                    <motion.div {...fadeLeft}>
                         <div className="specs">
                             <Image src={BASpecs3} alt="BA400 Spesification"></Image>
-                            <h2>Highest Performance, Minimal Maintenence</h2>
-                            <p>The reagent barcoding and volume detection system allow to manage the amount of reagent in the system at anytime</p>
+                            <h2>Make your work easier</h2>
+                            <p>Automation saves time and avoids manual procedures. The new automatic hemolysis function guarantees more accurate results.</p>
                         </div>
                     </motion.div>
                 </div>
@@ -119,25 +121,25 @@ export default function InstrumentBA400() {
             <div className="specs-dimension">
                 <div className="analyzer-images">
                     <div className="length">
-                        <p>1200 mm</p>
+                        <p>1070 mm</p>
                         <Image src={DimensionImg1} alt="BA400 Dimension Length" />
                     </div>
                     <div className="width">
                         <div>
-                            <p>720 mm</p>
+                            <p>690 mm</p>
                             <Image src={DimensionImg2} alt="BA400 Dimension Width" />
                         </div>
-                        <p className="height">1258 mm</p>
+                        <p className="height">680 mm</p>
                     </div>
                 </div>
                 <article>
-                    <h2>Full Automatic Random Access Analyzer</h2>
-                    <p>Our main goal is to optimise the laboratory workflow and improve the user experience. The BA400 forms a complete systems that perfectly adapts to the demands of the laboratories in its reagents.</p>
+                    <h2>Clinical Chemistry Analyzer</h2>
+                    <p>In combination with the original validated BA reagents (complete panel of clinical chemistry including special tests), the BA200 forms a complete system that perfectly adapts to the demands of the laboratories in its segment.</p>
                 </article>
             </div>
             <div className="barrier2">
                 <motion.div {...fadeLeft}>
-                    <h1>BA400</h1>
+                    <h1>BA200</h1>
                 </motion.div>
             </div>
             <div className="images-detail">
@@ -155,9 +157,9 @@ export default function InstrumentBA400() {
                 <div className="body">
                     <p>Full Automatic Random Access Analyser</p>
                     <ul className="spec-list">
-                        <li>Dimensions: 1258 mm x 720 mm x 1200 mm</li>
-                        <li>Weight: 210 kg</li>
-                        <li>Throughput: 400 t/h (with ISE module: 560 t/h)</li>
+                        <li>Dimensions: 680 mm x 690 mm 1070 mm</li>
+                        <li>Weight: 166 kg</li>
+                        <li>Throughput: 200t/h (with ISE module: 300 t/h)</li>
                         <li>Light source: LED</li>
                     </ul>
                     <p>83400/83400ISE</p>
@@ -172,16 +174,16 @@ export default function InstrumentBA400() {
                         <div className="head">
                             <div className="title">
                                 <p>Analyzer</p>
-                                <h3>BA200</h3>
+                                <h3>BA400</h3>
                             </div>
                             <MdArrowOutward size={28} className="icon-outward" />
                         </div>
                         <div className="content">
-                            <p>BA200 is a full automatic analyser with high reagent and sample capacity (88 position), the highest grade in flexibility.</p>
+                            <p>BA400 is a full automatic analyser with automatic hemolysis on whole blood samples and fast sample loading.</p>
                         </div>
                         <div className="code">
                             <p>Code</p>
-                            <h4>83200/83200ISE</h4>
+                            <h4>83400/83400ISE</h4>
                         </div>
                     </div>
                     <div className="card">

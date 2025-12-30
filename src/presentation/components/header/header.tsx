@@ -71,7 +71,7 @@ export default function Header({ backgroundColor = 'transparent' }: HeaderProps)
     }, [])
 
     const navItems = (locale: string): NavItem[] => [
-        { href: `${locale}/#`, label: "products" },
+        { href: "", label: "products" },
         { href: `${locale}/career`, label: "career" },
         { href: `${locale}/#`, label: "about" },
         { href: `${locale}/#`, label: "contact-us" }
@@ -125,7 +125,7 @@ export default function Header({ backgroundColor = 'transparent' }: HeaderProps)
                     {navItems(locale).map((item, index) => {
                         const isActive = pathname === item.href || pathname === `/${locale}${item.href.replace(locale, '')}`;
                         const isProductsItem = item.label === 'products';
-                        const isOnProductPage = pathname.includes('/clinical-analysis') || pathname.includes('/food-beverage-analysis');
+                        const isOnProductPage = pathname.includes('/clinical-analysis') || pathname.includes('/food-beverage-analysis') || pathname.includes('/instrument');
                         const shouldBeActive = isActive || (isProductsItem && productsOpen && isDesktop) || (isProductsItem && isOnProductPage);
 
                         return (
@@ -157,7 +157,7 @@ export default function Header({ backgroundColor = 'transparent' }: HeaderProps)
                     </div>
                 </ul>
                 <div className={`floating-products ${productsOpen ? 'open' : ''}`}>
-                    <Link href="#">Instruments</Link>
+                    <Link href="/instrument">Instruments</Link>
                     <Link href="/clinical-analysis" target="_blank">Reagents</Link>
                 </div>
             </div>

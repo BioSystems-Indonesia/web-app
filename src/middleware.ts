@@ -1,9 +1,8 @@
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
 import { jwtVerify } from "jose";
 import createMiddleware from "next-intl/middleware";
 
-const secret = new TextEncoder().encode(process.env.SECRET_KEY);
+const secret = new TextEncoder().encode(process.env.SECRET_KEY!);
 
 const intlMiddleware = createMiddleware({
   locales: ["en", "id"],
@@ -12,15 +11,18 @@ const intlMiddleware = createMiddleware({
   localeDetection: false,
 });
 
+function redirectToLogin(req: NextRequest) {
+  const res = NextResponse.redirect(new URL("/id/login", req.url));
+  res.cookies.set("token", "", { expires: new Date(0), path: "/" });
+  return res;
+}
+
 export async function middleware(req: NextRequest) {
-  const token = req.cookies.get("token")?.value;
   const { pathname } = req.nextUrl;
+  const token = req.cookies.get("token")?.value;
 
-  // Handle internationalization first
   const intlResponse = intlMiddleware(req);
-
-  // If intl middleware returns a response (redirect), handle it
-  if (intlResponse && intlResponse.headers.get("location")) {
+  if (intlResponse?.headers.get("location")) {
     return intlResponse;
   }
 
@@ -33,16 +35,14 @@ export async function middleware(req: NextRequest) {
       }
 
       return NextResponse.next();
-    } catch (err) {
-      console.error("Invalid token:", err);
-      const res = NextResponse.redirect(new URL("/id/login", req.url));
-      res.cookies.set("token", "", { expires: new Date(0), path: "/" });
-      return res;
+    } catch (error) {
+      console.error("Invalid token:", error);
+      return redirectToLogin(req);
     }
   }
 
   if (!token && pathname.includes("/dashboard")) {
-    return NextResponse.redirect(new URL("/id/login", req.url));
+    return redirectToLogin(req);
   }
 
   return NextResponse.next();
@@ -50,11 +50,8 @@ export async function middleware(req: NextRequest) {
 
 export const config = {
   matcher: [
-    // Match all pathnames except for
-    // - API routes
-    // - Static files (_next/static, favicon.ico, etc.)
+    // Exclude API routes & static files
     "/((?!api|_next/static|_next/image|favicon.ico).*)",
-    // Also match root path
     "/",
   ],
 };

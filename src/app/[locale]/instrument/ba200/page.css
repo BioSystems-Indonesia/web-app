@@ -1,0 +1,438 @@
+.ba200 .hero {
+  background: url("@/assets/img/instrument/ba200/hero.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100dvh;
+  padding: 210px;
+  position: relative;
+}
+
+.ba200 .hero .ca-title {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  font-size: 160px;
+  color: white;
+  font-weight: 400;
+  white-space: nowrap;
+  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(390px);
+}
+
+.ca-title span {
+  display: inline;
+}
+
+.ba200 .hero .ca-title span:last-child {
+  transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(185px);
+}
+
+.ba200 .hero .line-vertical {
+  height: 250px;
+  margin: 0 50px;
+  width: 0.25rem;
+  background-color: white;
+  opacity: 0;
+  transform: translateX(-100px);
+  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ba200 .hero .text {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border-radius: 25px;
+  overflow: hidden;
+  padding: 46px;
+  width: 692px !important;
+  min-width: 692px;
+  max-width: 692px;
+  font-size: 40px;
+  color: white;
+  font-weight: 200;
+  opacity: 0;
+  transform: translateX(-599px);
+  transition:
+    opacity 1.6s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ba200 .hero.animated .ca-title {
+  font-size: 96px;
+  transform: translateX(0);
+}
+
+.ba200 .hero.animated .ca-title span {
+  transform: translateX(0);
+}
+
+.ba200 .hero.animated .line-vertical {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.ba200 .hero.animated .text {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.ba200 .container-hero-images {
+  display: flex;
+}
+
+.ba200 .barrier {
+  width: 100dvw;
+  height: 246px;
+  background-color: #0a0a0a;
+  padding-left: 148px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ba200 .barrier p {
+  font-size: 48px;
+  font-weight: 400;
+  color: white;
+  padding-left: 10px;
+}
+
+.ba200 .barrier h3 {
+  font-size: 96px;
+  font-weight: 400;
+  color: #ff5a00;
+}
+
+.ba200 .article {
+  display: flex;
+  flex-direction: column-reverse;
+  border-bottom: 1px solid black;
+}
+.ba200 .article .wrapper {
+  padding-bottom: 55px;
+  display: flex;
+  justify-content: center;
+  margin-top: 55px;
+}
+
+.ba200 .article .content {
+  padding-top: 180px;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-direction: row;
+  border-bottom: 1px solid #0a0a0a;
+}
+
+.ba200 .article .content .specs {
+  width: 525px;
+}
+.ba200 .article .content .specs h2 {
+  font-size: 47px;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+.ba200 .article .content .specs p {
+  font-size: 24px;
+  font-weight: 200;
+  margin-bottom: 110px;
+}
+
+.ba200 .specs-dimension {
+  padding: 27px 158px;
+}
+
+.ba200 .specs-dimension .analyzer-images {
+  display: flex;
+  gap: 52px;
+}
+
+.ba200 .specs-dimension .analyzer-images .width {
+  position: relative;
+  display: flex;
+  align-items: end;
+}
+
+.ba200 .specs-dimension .analyzer-images .width .height {
+  position: absolute;
+  left: 160px;
+  height: 74%;
+  bottom: -20px;
+  display: flex;
+  align-items: center;
+  padding-left: 5px;
+  border-bottom: none !important;
+  border-left: 1px solid black;
+}
+
+.ba200 .specs-dimension .analyzer-images .length p,
+.ba200 .specs-dimension .analyzer-images .width p {
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid black;
+  margin-bottom: 21px;
+  font-weight: 200;
+}
+
+.ba200 .specs-dimension {
+  display: flex;
+  align-items: center;
+  gap: 266px;
+  height: 350px;
+}
+
+.ba200 .specs-dimension article {
+  width: 796px;
+}
+
+.ba200 .specs-dimension article h2 {
+  font-size: 48px;
+  font-weight: 400;
+  color: #0a0a0a;
+  margin-bottom: 10px;
+}
+
+.ba200 .specs-dimension article p {
+  font-size: 24px;
+  font-weight: 200;
+}
+
+.ba200 .barrier2 {
+  overflow: hidden;
+  width: 100dvw;
+  height: 324px;
+  background-color: #0a0a0a;
+}
+
+.ba200 .barrier2 h1 {
+  margin-top: -100px;
+  margin-right: -180px;
+  font-size: 530px;
+  text-align: end;
+  color: #ff5a00;
+  font-weight: 400;
+}
+
+.ba200 .images-detail {
+  padding: 82px 158px;
+  width: 100dvw;
+  height: 100dvh;
+  border-bottom: 1px solid #0a0a0a;
+}
+
+.ba200 .images-detail .card-images {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.ba200 .images-detail .card-images > *:first-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: 48%;
+  height: auto;
+}
+
+.ba200 .images-detail .card-images > *:last-child {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  max-width: 48%;
+  height: auto;
+}
+
+.ba200 .images-detail .card-images img,
+.ba200 .images-detail .card-images picture,
+.ba200 .images-detail .card-images span img {
+  display: block;
+  width: 661px;
+  height: auto;
+}
+
+.ba200 .specs-detail {
+  padding: 86px 158px;
+  border-bottom: 1px solid #0a0a0a;
+}
+
+.ba200 .specs-detail .title {
+  display: flex;
+  gap: 16rem;
+  border-bottom: 1px solid #0a0a0a;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+.ba200 .specs-detail .title span {
+  font-size: 48px;
+  font-weight: 400;
+  color: #0a0a0a;
+}
+
+.ba200 .specs-detail .title h2 {
+  font-size: 36px;
+  font-weight: 400;
+  color: #0a0a0a;
+}
+
+.ba200 .specs-detail .title h2:last-child {
+  width: 31rem;
+  text-align: end;
+}
+
+.ba200 .specs-detail .body {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ba200 .specs-detail .body p {
+  font-size: 20px;
+  font-weight: 400;
+  color: #0a0a0a;
+}
+
+.ba200 .specs-detail .body p:first-child {
+  margin-left: 4rem;
+  display: inline;
+}
+
+.ba200 .specs-detail .body .spec-list {
+  font-size: 20px;
+  margin-left: 2rem;
+  list-style: disc !important;
+  color: #0a0a0a;
+  font-weight: 400;
+}
+
+.ba200 .specs-detail .body .spec-list li {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.ba200 .related-products {
+  padding: 80px 158px;
+}
+
+.ba200 .related-products h2 {
+  font-size: 48px;
+  font-weight: 500;
+  color: #ff5a00;
+}
+
+.ba200 .related-products .tags {
+  color: #c7c7c7 !important;
+}
+
+.ba200 .related-products .container {
+  margin-top: 78px;
+  display: flex;
+}
+
+.ba200 .related-products .container .card {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 30px;
+  transition: 0.5s ease;
+  cursor: pointer;
+}
+
+.ba200 .related-products .container .card:first-child,
+.ba200 .related-products .container .card:nth-child(2) {
+  border-left: 1px solid #0a0a0a;
+}
+
+.ba200 .related-products .container .card:last-child,
+.ba200 .related-products .container .card:nth-child(2) {
+  border-right: 1px solid #0a0a0a;
+}
+
+.ba200 .related-products .container .card .head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ba200 .related-products .container .card .head p {
+  font-size: 32px;
+  font-weight: 400;
+}
+
+.ba200 .related-products .container .card .head h3 {
+  margin-left: -2px;
+  font-size: 32px;
+  font-weight: 400;
+  color: #ff5a00;
+}
+
+.ba200 .related-products .container .card .content {
+  margin-top: 63px;
+  margin-bottom: 52px;
+}
+
+.ba200 .related-products .container .card .content p {
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.ba200 .related-products .container .card .code p {
+  font-size: 15px;
+  font-weight: 400;
+  color: #6a6a6a;
+}
+
+.ba200 .related-products .container .card .code h4 {
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.ba200 .related-products .container .card:hover {
+  background-color: #0a0a0a;
+  color: white;
+}
+
+.ba200 > .head > div {
+  background-color: #0a0a0a;
+  border-top: 1px solid #121212;
+  border-bottom: 1px solid #121212;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  will-change: transform;
+  width: max-content;
+  position: relative;
+  min-height: 210px;
+}
+
+.ba200 > .head h1 {
+  font-size: 128px;
+  font-weight: 400;
+  margin-top: -20px;
+  flex-shrink: 0;
+  color: white;
+}
+
+.ba200 > .head .icon-card {
+  background-color: #ff5a00;
+  display: inline-flex;
+  width: 110px;
+  height: 110px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.ba200 > .head .icon-card .icon {
+  width: 20%;
+  height: 60%;
+  color: #0a0a0a;
+}

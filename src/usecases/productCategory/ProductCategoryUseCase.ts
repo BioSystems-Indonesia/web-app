@@ -1,0 +1,35 @@
+import { ProductCategoryRequest } from "@/domain/dto/ProductCategory";
+import { ProductCategoryRepository } from "@/domain/productCategory/ProductCategoryRepository";
+import { ValidationError } from "@/lib/http/error";
+
+export class ProductCategoryUseCase {
+  constructor(private readonly repo: ProductCategoryRepository) {}
+
+  async create(req: ProductCategoryRequest) {
+    if (!req.category?.trim()) {
+      throw new ValidationError("Category name is required");
+    }
+
+    return this.repo.create(req);
+  }
+
+  async getById(id: number) {
+    return this.repo.getById(id);
+  }
+
+  async getAll() {
+    return this.repo.getAll();
+  }
+
+  async update(req: ProductCategoryRequest, id: number) {
+    if (!req.category?.trim()) {
+      throw new ValidationError("Category name is required");
+    }
+
+    return this.repo.update(id, req);
+  }
+
+  async delete(id: number) {
+    await this.repo.delete(id);
+  }
+}

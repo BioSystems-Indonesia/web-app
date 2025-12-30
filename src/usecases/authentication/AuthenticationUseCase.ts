@@ -1,6 +1,7 @@
 import { AuthenticationRepository } from "@/domain/authentication/AuthenticationRepository";
 import { Hasher } from "@/domain/security/Hasher";
 import { JwtService, Claims } from "@/lib/helper/JwtService";
+import { AuthenticationError, InvalidTokenError } from "@/lib/http/error";
 
 export class AuthenticationUseCase {
   constructor(
@@ -14,7 +15,7 @@ export class AuthenticationUseCase {
 
     const isValid = await this.hasher.compare(password, userAuth.password);
     if (!isValid) {
-      throw new Error("username or password is wrong!");
+      throw new AuthenticationError();
     }
 
     const payload: Claims = {
@@ -31,12 +32,12 @@ export class AuthenticationUseCase {
 
   async tokenVerify(token: string) {
     if (!token) {
-      throw new Error("invalid token");
+      throw new InvalidTokenError();
     }
 
     const result = this.jwt.validate(token);
     if (!result.valid) {
-      throw new Error(result.error ?? "invalid token");
+      throw new InvalidTokenError(result.error);
     }
 
     return result.payload;
