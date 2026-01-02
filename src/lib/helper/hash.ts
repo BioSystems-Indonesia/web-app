@@ -1,6 +1,6 @@
 // lib/hash/BcryptHasher.ts
 import * as bcrypt from "bcrypt";
-import { Hasher } from "@/domain/security/Hasher";
+import { Hasher } from "@/domain/repositories/Hasher";
 
 export class PasswordHasher implements Hasher {
   constructor(private readonly saltRounds = 10) {}

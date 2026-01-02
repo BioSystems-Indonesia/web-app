@@ -1,16 +1,17 @@
-import { AuthenticationRepository } from "@/domain/authentication/AuthenticationRepository";
-import { Hasher } from "@/domain/security/Hasher";
-import { JwtService, Claims } from "@/lib/helper/JwtService";
+import { Claims, Token } from "@/domain/dto/Authentication";
+import { AuthenticationRepository } from "@/domain/repositories/AuthenticationRepository";
+import { Hasher } from "@/domain/repositories/Hasher";
+import { JwtService } from "@/lib/helper/JwtService";
 import { AuthenticationError, InvalidTokenError } from "@/lib/http/error";
 
-export class AuthenticationUseCase {
+export class AuthenticationUseCase implements AuthenticationUseCase {
   constructor(
     private authRepo: AuthenticationRepository,
     private hasher: Hasher,
     private jwt: JwtService
   ) {}
 
-  async login(username: string, password: string) {
+  async login(username: string, password: string): Promise<Token> {
     const userAuth = await this.authRepo.findByUsername(username);
 
     const isValid = await this.hasher.compare(password, userAuth.password);
@@ -30,7 +31,7 @@ export class AuthenticationUseCase {
     };
   }
 
-  async tokenVerify(token: string) {
+  async tokenVerify(token: string): Promise<Claims> {
     if (!token) {
       throw new InvalidTokenError();
     }

@@ -38,10 +38,11 @@ export const PUT = WithAuth(async (req, ctx) => {
       });
     }
 
-    const { name, icon } = await req.json();
+    const { name, productType, icon } = await req.json();
 
     const payload: ProductCategoryRequest = {
       category: name,
+      categorType: productType,
       icon,
     };
 

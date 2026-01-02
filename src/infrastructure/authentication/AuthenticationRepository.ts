@@ -1,6 +1,6 @@
-import { AuthenticationRepository } from "@/domain/authentication/AuthenticationRepository";
+import { AuthenticationRepository } from "@/domain/repositories/AuthenticationRepository";
 import { prisma } from "../prisma/PrismaClient";
-import { Authentication } from "@/domain/authentication/Authentication";
+import { Authentication } from "@/domain/entities/Authentication";
 import { AuthenticationError } from "@/lib/http/error";
 
 export class AuthenticationRepositoryPrisma implements AuthenticationRepository {

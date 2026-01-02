@@ -58,20 +58,29 @@ model Post {
   updatedAt DateTime @updatedAt
 }
 
+enum ProductType {
+  CLINICAL
+  FOOD_AND_BEVERAGE
+}
+
 model Product {
-  id        Int      @id @default(autoincrement())
-  name      String
-  method    String
-  createdAt DateTime @default(now())
+  id          Int         @id @default(autoincrement())
+  name        String
+  method      String
+  productType ProductType @default(CLINICAL)
+  createdAt   DateTime    @default(now())
+  deletedAt   DateTime?
 
   variants          ProductVariant[]
   productCategories ProductCategory[] @relation("ProductToCategory")
 }
 
 model ProductCategory {
-  id       Int    @id @default(autoincrement())
-  category String @unique
-  icon     String
+  id           Int         @id @default(autoincrement())
+  category     String      @unique
+  categoryType ProductType @default(CLINICAL)
+  icon         String
+  deletedAt    DateTime?
 
   products Product[] @relation("ProductToCategory")
 }
@@ -86,9 +95,10 @@ model ProductVariant {
   rbVolume  String
   kitVolume String
 
-  createdAt DateTime @default(now())
+  createdAt DateTime  @default(now())
+  deletedAt DateTime?
 
-  product Product @relation(fields: [productId], references: [id])
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
 
   @@unique([productId, code])
 }

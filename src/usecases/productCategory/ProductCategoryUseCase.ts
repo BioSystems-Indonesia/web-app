@@ -1,6 +1,7 @@
 import { ProductCategoryRequest } from "@/domain/dto/ProductCategory";
-import { ProductCategoryRepository } from "@/domain/productCategory/ProductCategoryRepository";
+import { ProductCategoryRepository } from "@/domain/repositories/ProductCategoryRepository";
 import { ValidationError } from "@/lib/http/error";
+import { ProductType } from "@prisma/client";
 
 export class ProductCategoryUseCase {
   constructor(private readonly repo: ProductCategoryRepository) {}
@@ -19,6 +20,10 @@ export class ProductCategoryUseCase {
 
   async getAll() {
     return this.repo.getAll();
+  }
+
+  async getByProductType(productType: ProductType) {
+    return this.repo.getByProductType(productType);
   }
 
   async update(req: ProductCategoryRequest, id: number) {

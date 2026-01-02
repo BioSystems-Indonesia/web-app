@@ -1,8 +1,7 @@
-import { ProductCategory } from "../productCategory/ProductCategory";
-
 export interface ProductRequest {
   name: string;
   method: string;
+  productType: string;
   category: string[];
   variant: VariantRequest[];
 }

@@ -1,10 +1,5 @@
+import { Claims } from "@/domain/dto/Claims";
 import jwt, { Secret, SignOptions } from "jsonwebtoken";
-
-export interface Claims {
-  userId: string;
-  username: string;
-  role?: string;
-}
 
 export class JwtService {
   private readonly secretKey: Secret;
