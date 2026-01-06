@@ -8,8 +8,11 @@ import { ProductType } from "@prisma/client";
 
 export class ProductCategoryRepositoryPrisma implements ProductCategoryRepository {
   async create(req: ProductCategoryRequest): Promise<ProductCategory> {
-    const exists = await prisma.productCategory.findUnique({
-      where: { category: req.category },
+    const exists = await prisma.productCategory.findFirst({
+      where: {
+        category: req.category,
+        deletedAt: null,
+      },
     });
 
     if (exists) {
