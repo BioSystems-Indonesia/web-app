@@ -1,8 +1,9 @@
 import { Claims, Token } from "@/domain/dto/Authentication";
+import { UpdatePasswordRequest } from "@/domain/dto/User";
 import { AuthenticationRepository } from "@/domain/repositories/AuthenticationRepository";
 import { Hasher } from "@/domain/repositories/Hasher";
 import { JwtService } from "@/lib/helper/JwtService";
-import { AuthenticationError, InvalidTokenError } from "@/lib/http/error";
+import { AuthenticationError, InvalidTokenError, ValidationError } from "@/lib/http/error";
 
 export class AuthenticationUseCase implements AuthenticationUseCase {
   constructor(
@@ -37,10 +38,24 @@ export class AuthenticationUseCase implements AuthenticationUseCase {
     }
 
     const result = this.jwt.validate(token);
-    if (!result.valid) {
+    if (!result.valid || !result.payload) {
       throw new InvalidTokenError(result.error);
     }
 
     return result.payload;
+  }
+
+  async updatePassword(req: UpdatePasswordRequest) {
+    if (req.newPassword !== req.verifyPassword) {
+      throw new ValidationError("Password doesn't match");
+    }
+    const auth = await this.authRepo.findByUsername(req.username);
+    const isValid = await this.hasher.compare(req.currentPassword, auth.password);
+
+    if (!isValid) {
+      throw new AuthenticationError();
+    }
+
+    await this.authRepo.updatePassword(req.username, req.newPassword);
   }
 }

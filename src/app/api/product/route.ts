@@ -34,7 +34,7 @@ export const POST = WithAuth(async (req) => {
   }
 });
 
-export const GET = WithAuth(async () => {
+export const GET = async () => {
   try {
     const result = await productUseCase.getAll();
     const response = NextResponse.json(APIResponseBuilder.success(result), {
@@ -45,4 +45,4 @@ export const GET = WithAuth(async () => {
   } catch (error) {
     return HttpErrorHandler.handle(error);
   }
-});
+};

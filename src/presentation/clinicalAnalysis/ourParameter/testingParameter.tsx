@@ -1,5 +1,7 @@
 "use client"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useTranslations } from "next-intl"
+import axios from "axios"
 import "./testingParameter.css"
 import PanelIcon from '@/presentation/components/icon/panel.svg'
 import AnemiaIcon from '@/presentation/components/icon/anemia.svg'
@@ -26,7 +28,27 @@ interface AssayItem {
     mLPerKit: string;
 }
 
-interface AnemiaPanel {
+interface ProductCategory {
+    id: string;
+    category: string;
+    productType: string;
+}
+
+interface ProductVariant {
+    instrument: string;
+    code: string;
+    raVolume: string;
+    rbVolume: string;
+    kitVolume: string;
+}
+
+interface Product {
+    name: string;
+    method: string;
+    variants?: ProductVariant[];
+}
+
+interface ChemistryPanel {
     name: string;
     method: string;
     unit: string;
@@ -40,158 +62,131 @@ interface TestingPanel {
 
 type Props = {
     color: string
+    productType: 'CLINICAL' | 'FOOD_AND_BEVERAGE'
 }
 
-export default function TestingParameterSection({ color }: Props) {
+export default function TestingParameterSection({ color, productType }: Props) {
+    const t = useTranslations("ClinicalAnalysis");
     const [panelActive, setIsactive] = useState<number>(0)
     const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+    const [categories, setCategories] = useState<ProductCategory[]>([]);
+    const [products, setProducts] = useState<Product[]>([]);
+    const [loading, setLoading] = useState(true);
 
-    const testingPanel: TestingPanel[] = [
-        { title: "Anemia", icon: AnemiaIcon },
-        { title: "Cardiac", icon: CardicIcon },
-        { title: "Diabetic", icon: DiabeticIcon },
-        { title: "Fertility", icon: FertilityIcon },
-        { title: "Gastric", icon: GastricIcon },
-        { title: "Hemostasis", icon: HemostasisIcon },
-        { title: "Immune", icon: immuneIcon },
-        { title: "Infectious", icon: infectiousIcon },
-        { title: "Inflammatory", icon: InflammatoryIcon },
-        { title: "Ions", icon: IonsIcon },
-        { title: "Lipid", icon: LipidIcon },
-        { title: "Liper", icon: LiverIcon },
-        { title: "Pancreatic", icon: PancreaticIcon },
-        { title: "Rendal", icon: RenalIcon },
-    ]
+    useEffect(() => {
+        const fetchCategories = async () => {
+            try {
+                const categoriesRes = await axios.get('/api/product-category');
+                const allCategories = categoriesRes.data.data || [];
+                const filtered = allCategories.filter((cat: ProductCategory) => cat.productType === productType);
+                setCategories(filtered);
+            } catch (error) {
+                console.error('Error fetching categories:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchCategories();
+    }, [productType]);
+
+    useEffect(() => {
+        const fetchProducts = async () => {
+            if (categories.length === 0) return;
+
+            const activeCategory = categories[panelActive];
+            if (!activeCategory) return;
+
+            try {
+                const endpoint = productType === 'CLINICAL'
+                    ? `/api/product/clinical/${activeCategory.id}`
+                    : `/api/product/food-and-beverage/${activeCategory.id}`;
+
+                const productsRes = await axios.get(endpoint);
+                setProducts(productsRes.data.data || []);
+            } catch (error) {
+                console.error('Error fetching products:', error);
+                setProducts([]);
+            }
+        };
+        fetchProducts();
+    }, [panelActive, categories, productType]);
+
+    const iconMap: Record<string, ComponentType<SVGProps<SVGSVGElement>>> = {
+        "Anemia": AnemiaIcon,
+        "Cardiac": CardicIcon,
+        "Diabetic": DiabeticIcon,
+        "Fertility": FertilityIcon,
+        "Gastric": GastricIcon,
+        "Hemostasis": HemostasisIcon,
+        "Immune": immuneIcon,
+        "Infectious": infectiousIcon,
+        "Inflammatory": InflammatoryIcon,
+        "Ions": IonsIcon,
+        "Lipid": LipidIcon,
+        "Liver": LiverIcon,
+        "Pancreatic": PancreaticIcon,
+        "Renal": RenalIcon,
+    };
+
+    const testingPanel: TestingPanel[] = categories.map(cat => ({
+        title: cat.category,
+        icon: iconMap[cat.category] || AnemiaIcon
+    }))
 
     const toggleCard = (index: number) => {
         setExpandedIndex(expandedIndex === index ? null : index);
     };
 
-    const chemistryPanels: AnemiaPanel[] = [
-        {
-            name: "FERRITIN",
-            method: "Immunoturbidimetric latex assay",
-            unit: "mL/Kit",
-            items: [
-                { analyzer: "Manual", code: "31934", RA: "1×30 mL", RB: "1×15 mL", mLPerKit: "1×15 mL" },
-                { analyzer: "Manual", code: "31935", RA: "1×10 mL", RB: "1×5 mL", mLPerKit: "1×5 mL" },
-                { analyzer: "BA200, BA400", code: "23934", RA: "1×40 mL", RB: "1×20 mL", mLPerKit: "1×20 mL" },
-                { analyzer: "BA200, BA400", code: "22934", RA: "2×40 mL", RB: "2×40 mL", mLPerKit: "2×40 mL" },
-                { analyzer: "A15, A25", code: "13934", RA: "1×30 mL", RB: "1×30 mL", mLPerKit: "1×30 mL" },
-            ],
-        },
-        {
-            name: "GLUCOSE-6-PHOSPHATE DEHYDROGENASE",
-            method: "Kinetic UV test",
-            unit: "mL/Kit",
-            items: [
-                { analyzer: "Manual", code: "31450", RA: "1×20 mL", RB: "1×10 mL", mLPerKit: "1×10 mL" },
-                { analyzer: "BA400", code: "22450", RA: "2×20 mL", RB: "2×10 mL", mLPerKit: "2×10 mL" },
-                { analyzer: "A15, A25", code: "12450", RA: "1×25 mL", RB: "1×12.5 mL", mLPerKit: "1×12.5 mL" },
-            ],
-        },
-        {
-            name: "HAPTOGLOBIN",
-            method: "Immunoturbidimetric assay",
-            unit: "mL/Kit",
-            items: [
-                { analyzer: "Manual", code: "31940", RA: "1×30 mL", RB: "1×15 mL", mLPerKit: "1×15 mL" },
-                { analyzer: "BA400", code: "22940", RA: "2×40 mL", RB: "2×20 mL", mLPerKit: "2×20 mL" },
-            ],
-        },
-        {
-            name: "IRON–CHROMAZUROL",
-            method: "Colorimetric method",
-            unit: "mL/Kit",
-            items: [
-                { analyzer: "Manual", code: "31720", RA: "1×20 mL", RB: "1×10 mL", mLPerKit: "1×10 mL" },
-                { analyzer: "BA400", code: "22720", RA: "2×40 mL", RB: "2×20 mL", mLPerKit: "2×20 mL" },
-            ],
-        },
-        {
-            name: "IRON–FERROZINE",
-            method: "Colorimetric method (Ferrozine)",
-            unit: "mL/Kit",
-            items: [
-                { analyzer: "Manual", code: "31725", RA: "1×20 mL", RB: "1×10 mL", mLPerKit: "1×10 mL" },
-                { analyzer: "BA400", code: "22725", RA: "2×40 mL", RB: "2×20 mL", mLPerKit: "2×20 mL" },
-            ],
-        },
-        {
-            name: "LACTATE DEHYDROGENASE (LDH)",
-            method: "Kinetic UV test",
-            unit: "mL/Kit",
-            items: [
-                { analyzer: "Manual", code: "31410", RA: "1×20 mL", RB: "1×10 mL", mLPerKit: "1×10 mL" },
-                { analyzer: "BA400", code: "22410", RA: "2×40 mL", RB: "2×20 mL", mLPerKit: "2×20 mL" },
-            ],
-        },
-        {
-            name: "LACTATE DEHYDROGENASE (LDH) - IFCC",
-            method: "Kinetic UV test (IFCC)",
-            unit: "mL/Kit",
-            items: [
-                { analyzer: "Manual", code: "31412", RA: "1×20 mL", RB: "1×10 mL", mLPerKit: "1×10 mL" },
-                { analyzer: "BA400", code: "22412", RA: "2×40 mL", RB: "2×20 mL", mLPerKit: "2×20 mL" },
-            ],
-        },
-        {
-            name: "TOTAL IRON BINDING CAPACITY (TIBC)",
-            method: "Colorimetric method",
-            unit: "mL/Kit",
-            items: [
-                { analyzer: "Manual", code: "31750", RA: "1×30 mL", RB: "1×15 mL", mLPerKit: "1×15 mL" },
-                { analyzer: "BA400", code: "22750", RA: "2×40 mL", RB: "2×20 mL", mLPerKit: "2×20 mL" },
-            ],
-        },
-        {
-            name: "TRANSFERRIN",
-            method: "Immunoturbidimetric assay",
-            unit: "mL/Kit",
-            items: [
-                { analyzer: "Manual", code: "31970", RA: "1×30 mL", RB: "1×15 mL", mLPerKit: "1×15 mL" },
-                { analyzer: "BA400", code: "22970", RA: "2×40 mL", RB: "2×20 mL", mLPerKit: "2×20 mL" },
-            ],
-        },
-        {
-            name: "TRANSFERRIN [BIREAGENT]",
-            method: "Immunoturbidimetric assay (Bireagent)",
-            unit: "mL/Kit",
-            items: [
-                { analyzer: "Manual", code: "31975", RA: "1×30 mL", RB: "1×15 mL", mLPerKit: "1×15 mL" },
-                { analyzer: "BA400", code: "22975", RA: "2×40 mL", RB: "2×20 mL", mLPerKit: "2×20 mL" },
-            ],
-        },
-        {
-            name: "UNSATURATED IRON BINDING CAPACITY (UIBC)",
-            unit: "mL/Kit",
-            method: "Colorimetric method",
-            items: [
-                { analyzer: "Manual", code: "31760", RA: "1×30 mL", RB: "1×15 mL", mLPerKit: "1×15 mL" },
-                { analyzer: "BA400", code: "22760", RA: "2×40 mL", RB: "2×20 mL", mLPerKit: "2×20 mL" },
-            ],
-        },
-    ];
-
-    // map categories to chemistry panels (extend this mapping as you add data)
-    const panelsByCategory: Record<string, AnemiaPanel[]> = testingPanel.reduce((acc, p) => {
-        acc[p.title] = [];
-        return acc;
-    }, {} as Record<string, AnemiaPanel[]>);
-
-    panelsByCategory['Anemia'] = chemistryPanels;
-    panelsByCategory['Cardiac'] = chemistryPanels;
+    // Map products to chemistry panels
+    const activeChemistryPanels: ChemistryPanel[] = products.map(product => ({
+        name: product.name,
+        method: product.method,
+        unit: "mL/Kit",
+        items: product.variants?.map((v: ProductVariant) => ({
+            analyzer: v.instrument,
+            code: v.code,
+            RA: v.raVolume,
+            RB: v.rbVolume,
+            mLPerKit: v.kitVolume
+        })) || []
+    }));
 
     const activePanel = testingPanel[panelActive] || testingPanel[0];
-    const activeChemistries = panelsByCategory[activePanel.title] || [];
 
     const filterClick = (index: number) => {
         setIsactive(index)
     }
+
+    if (loading) {
+        return (
+            <section className="testing-parameter" style={{ '--hover-color': color } as React.CSSProperties & { '--hover-color': string }}>
+                <div className="head">
+                    <h1>{t('testingParametersTitle')}</h1>
+                </div>
+                <div className="content" style={{ textAlign: 'center', padding: '2rem' }}>
+                    <p>{t('loading')}</p>
+                </div>
+            </section>
+        );
+    }
+
+    if (!activePanel || testingPanel.length === 0) {
+        return (
+            <section className="testing-parameter" style={{ '--hover-color': color } as React.CSSProperties & { '--hover-color': string }}>
+                <div className="head">
+                    <h1>{t('testingParametersTitle')}</h1>
+                </div>
+                <div className="content" style={{ textAlign: 'center', padding: '2rem' }}>
+                    <p>{t('noPanelsAvailable')}</p>
+                </div>
+            </section>
+        );
+    }
+
     return (
         <section className="testing-parameter" style={{ '--hover-color': color } as React.CSSProperties & { '--hover-color': string }}>
             <div className="head">
-                <h1>Our Testing Parameters</h1>
+                <h1>{t('testingParametersTitle')}</h1>
             </div>
             <div className="content">
                 <div className="panel">
@@ -221,7 +216,7 @@ export default function TestingParameterSection({ color }: Props) {
                             <h4>{activePanel.title}</h4>
                         </div>
                         <ul className="parameter-list">
-                            {activeChemistries.map((chemistry, index) => (
+                            {activeChemistryPanels.map((chemistry, index) => (
                                 <li onClick={() => toggleCard(index)}
                                     key={index} style={{ display: "flex", flexDirection: "column", backgroundColor: expandedIndex === index ? "rgba(106, 106, 106, 0.05)" : "", cursor: "pointer" }}>
                                     <div
@@ -240,7 +235,7 @@ export default function TestingParameterSection({ color }: Props) {
                                                     <th style={{ width: "10rem" }}>
                                                         {/* <span className={"th-text " + (expandedIndex === index ? "visible" : "hidden")}>{chemistry.name}</span> */}
                                                     </th>
-                                                    <th style={{ width: "10rem", textAlign: "start" }}>Code</th>
+                                                    <th style={{ width: "10rem", textAlign: "start" }}>{t('code')}</th>
                                                     <th style={{ width: "10rem", textAlign: "start" }}>RA</th>
                                                     <th style={{ width: "10rem", textAlign: "start" }}>RB</th>
                                                     <th style={{ width: "10rem", textAlign: "start" }}>{chemistry.unit}</th>
@@ -268,7 +263,7 @@ export default function TestingParameterSection({ color }: Props) {
                                                 ))}
                                             </tbody>
                                         </table>
-                                        <p className="more-details" style={{ paddingLeft: "10px", marginTop: "30px" }}>More Details</p>
+                                        <p className="more-details" style={{ paddingLeft: "10px", marginTop: "30px" }}>{t('moreDetails')}</p>
                                     </div>
                                 </li>
                             ))}

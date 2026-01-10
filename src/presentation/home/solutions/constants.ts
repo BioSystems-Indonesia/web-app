@@ -7,6 +7,9 @@ import BA400Img3 from "@/assets/img/home/ba400-3.png";
 import BA200Img1 from "@/assets/img/home/ba200-1.png";
 import BA200Img2 from "@/assets/img/home/ba200-2.png";
 import BA200Img3 from "@/assets/img/home/ba200-3.png";
+import COAXImg1 from "@/assets/img/home/coax-1.png";
+import COAXImg2 from "@/assets/img/home/coax-2.png";
+import COAXImg3 from "@/assets/img/home/coax-3.png";
 import A15Img1 from "@/assets/img/home/a15-1.png";
 import A15Img2 from "@/assets/img/home/a15-2.png";
 import A15Img3 from "@/assets/img/home/a15-3.png";
@@ -19,14 +22,14 @@ import BA400Icon from "@/presentation/components/icon/BA400.svg";
 import BA200Icon from "@/presentation/components/icon/BA200.svg";
 import A15Icon from "@/presentation/components/icon/A15.svg";
 import BTSNewIcon from "@/presentation/components/icon/BTSNew.svg";
-import CoaxIcon from "@/presentation/components/icon/BA400.svg";
+import CoaxIcon from "@/presentation/components/icon/COAX.svg";
 
 export const PRODUCTS: Product[] = [
   {
     name: "BA 400",
     type: "Analyzer",
     icon: BA400Icon,
-    link: "#",
+    link: "https://katalog.inaproc.id/elga-tama/biosystems-ba400-and-accessories",
     images: [BA400Img1, BA400Img2, BA400Img3],
   },
   {
@@ -47,15 +50,15 @@ export const PRODUCTS: Product[] = [
     name: "BTS NEW",
     type: "Analyzer",
     icon: BTSNewIcon,
-    link: "#",
+    link: "https://katalog.inaproc.id/elga-tama/biosystems-bts-semiautomatic-analyzer-and-accessories",
     images: [BTSNewImg1, BTSNewImg2, BTSNewImg3],
   },
   {
     name: "COAX",
     type: "Analyzer",
     icon: CoaxIcon,
-    link: "#",
-    images: [BA400Img1, BA400Img2, BA400Img3],
+    link: "https://katalog.inaproc.id/elga-tama/biosystems-coax-4-channels",
+    images: [COAXImg1, COAXImg2, COAXImg3],
   },
 ];
 

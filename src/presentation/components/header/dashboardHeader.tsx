@@ -28,8 +28,17 @@ export default function DashboardHeader({ username, role, onToggleSidebar }: Das
       <Image className="logo" src={logo.src} alt="BioSystems Logo" height={0} width={120} />
       <GiHamburgerMenu className="hamburger-menu" cursor="pointer" onClick={onToggleSidebar} />
       <div className="header-info">
-        {username && <p>Welcome, {role} <span>{username}</span>!</p>}
-        <IoLogOut className="logout-icon" size={20} onClick={handleLogout} cursor={"pointer"} />
+        {username && (
+          <div className="user-info">
+            <div className="user-details">
+              <span className="user-name">{username}</span>
+              <span className="user-role">{role}</span>
+            </div>
+          </div>
+        )}
+        <button className="logout-button" onClick={handleLogout} title="Logout">
+          <IoLogOut className="logout-icon" size={20} />
+        </button>
       </div>
     </header>
   );

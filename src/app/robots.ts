@@ -5,8 +5,8 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/api/", "/admin/", "/_next/"],
+      disallow: ["/api/", "/dashboard/", "/login/", "/_next/"],
     },
-    sitemap: "https://biosystems-indonesia.com/sitemap.xml",
+    sitemap: "https://biosystems.id/sitemap.xml",
   };
 }

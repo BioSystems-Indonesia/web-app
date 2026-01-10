@@ -22,6 +22,7 @@ body {
   overflow-x: hidden;
   transition: 0.5s ease;
   background-color: white;
+  scroll-behavior: smooth;
 }
 
 body {

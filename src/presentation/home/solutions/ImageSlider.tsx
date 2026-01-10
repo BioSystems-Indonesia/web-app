@@ -21,7 +21,8 @@ export const ImageSlider: React.FC<ImageSliderProps> = React.memo(({
                     transform: `translateX(-${currentImageIndex * 100}%)`,
                     transition: isTransitioning
                         ? 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
-                        : 'none'
+                        : 'none',
+                    backgroundColor: 'blue',
                 }}
             >
                 {infiniteImages.map((image, index) => (

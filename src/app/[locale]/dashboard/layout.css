@@ -1,6 +1,7 @@
 .container {
-  padding: 1rem;
-  padding-top: 4rem;
+  padding: 2rem;
+  background-color: #f8f9fa;
+  padding-top: 6rem;
   transition: 0.5s ease;
 }
 

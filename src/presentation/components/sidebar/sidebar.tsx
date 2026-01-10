@@ -14,35 +14,41 @@ import './sidebar.css';
 interface SidebarProps {
     isOpen: boolean;
     onToggle: () => void;
+    userRole?: string;
 }
 
 type NavItem = {
     href: string;
     label: string;
     icon: React.ReactNode;
+    roles: string[];
 };
 
 const getNavItems = (locale: string): NavItem[] => [
-    { href: `/${locale}/dashboard`, label: "Home", icon: <FaHome /> },
-    { href: `/${locale}/dashboard/products`, label: "Products", icon: <BsBox2 /> },
-    { href: `/${locale}/dashboard/posts`, label: "Posts", icon: <FaNewspaper /> },
-    { href: `/${locale}/dashboard/events`, label: "Events", icon: <MdEventAvailable /> },
-    { href: `/${locale}/dashboard/career`, label: "Career", icon: <IoBagSharp /> },
-    { href: `/${locale}/dashboard/contact`, label: "Contact", icon: <IoCall /> },
-    { href: `/${locale}/dashboard/users`, label: "Users", icon: <FaUser /> },
-    { href: `/${locale}/dashboard/lis`, label: "LIS Dashboard", icon: <SlChemistry /> },
+    { href: `/${locale}/dashboard`, label: "Home", icon: <FaHome />, roles: ["ADMIN", "PRODUCT_SPECIALIST", "HUMAN_RESOURCE"] },
+    { href: `/${locale}/dashboard/products`, label: "Products", icon: <BsBox2 />, roles: ["ADMIN", "PRODUCT_SPECIALIST"] },
+    { href: `/${locale}/dashboard/posts`, label: "Articles", icon: <FaNewspaper />, roles: ["ADMIN", "PRODUCT_SPECIALIST"] },
+    { href: `/${locale}/dashboard/events`, label: "Events", icon: <MdEventAvailable />, roles: ["ADMIN", "PRODUCT_SPECIALIST"] },
+    { href: `/${locale}/dashboard/career`, label: "Career", icon: <IoBagSharp />, roles: ["ADMIN", "HUMAN_RESOURCE"] },
+    { href: `/${locale}/dashboard/contact`, label: "Contact", icon: <IoCall />, roles: ["ADMIN"] },
+    { href: `/${locale}/dashboard/users`, label: "Users", icon: <FaUser />, roles: ["ADMIN"] },
+    { href: `/${locale}/dashboard/lis`, label: "LIS Dashboard", icon: <SlChemistry />, roles: ["ADMIN"] },
 ];
 
-export default function SidebarDashboard({ isOpen, onToggle }: SidebarProps) {
+export default function SidebarDashboard({ isOpen, onToggle, userRole }: SidebarProps) {
     const pathname = usePathname();
     const locale = useLocale();
     const navItems = getNavItems(locale);
+
+    const filteredNavItems = userRole
+        ? navItems.filter(item => item.roles.includes(userRole))
+        : navItems;
 
     return (
         <>
             <aside className={`${isOpen ? "" : "open"}`}>
                 <ul>
-                    {navItems.map((item) => {
+                    {filteredNavItems.map((item) => {
                         const isActive = pathname === item.href;
 
                         return (

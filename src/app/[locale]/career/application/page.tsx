@@ -2,6 +2,8 @@ import Header from "@/presentation/components/header/header"
 import WorkExperienceSection from "./WorkExperienceSection"
 import "./page.css"
 import { notFound } from "next/navigation"
+import { Metadata } from "next"
+import { generateCareerApplicationMetadata, generateCareerApplicationJsonLd } from "@/lib/seo/careerApplicationMetadata"
 
 type Position = {
     id: string
@@ -15,7 +17,8 @@ type Position = {
 }
 
 type PageProps = {
-    searchParams: { id?: string }
+    params: Promise<{ locale: string }>
+    searchParams: Promise<{ id?: string }>
 }
 
 async function getPositionData(id: string): Promise<Position | null> {
@@ -36,16 +39,42 @@ async function getPositionData(id: string): Promise<Position | null> {
     }
 }
 
-export default async function ApplicationForm({ searchParams }: PageProps) {
-    const positionId = searchParams.id || 'POSMO001'
+export async function generateMetadata({ params, searchParams }: PageProps): Promise<Metadata> {
+    const { locale } = await params
+    const { id } = await searchParams
+    const positionId = id || 'POSMO001'
+    const position = await getPositionData(positionId)
+
+    return generateCareerApplicationMetadata({
+        locale,
+        positionTitle: position?.title,
+        positionLocation: position?.location,
+    })
+}
+
+export default async function ApplicationForm({ params, searchParams }: PageProps) {
+    await params
+    const { id } = await searchParams
+    const positionId = id || 'POSMO001'
     const position = await getPositionData(positionId)
 
     if (!position) {
         notFound()
     }
+
+    const jsonLd = generateCareerApplicationJsonLd(position)
+
     return (
 
         <section className="application-form-container">
+            {jsonLd && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify(jsonLd)
+                    }}
+                />
+            )}
             <Header backgroundColor="#ee2737" />
 
             <div className="form-header">
@@ -112,8 +141,8 @@ export default async function ApplicationForm({ searchParams }: PageProps) {
                             <option value="">Select Degree</option>
                             <option value="highschool">High School</option>
                             <option value="diploma">Diploma</option>
-                            <option value="bachelor">Bachelor's Degree</option>
-                            <option value="master">Master's Degree</option>
+                            <option value="bachelor">Bachelor&apos;s Degree</option>
+                            <option value="master">Master&apos;s Degree</option>
                             <option value="phd">PhD</option>
                         </select>
                     </div>

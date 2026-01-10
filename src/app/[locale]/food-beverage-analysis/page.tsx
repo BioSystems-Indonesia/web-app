@@ -32,7 +32,7 @@ export default function FoodBeverageAnalysis() {
                 <p className="text">We deliver analytical products and automation systems for biochemistry and autoimmunity, using high-quality materials and validated processes to ensure reliable results.</p>
             </div>
             <OurProductsSection />
-            <TestingParameterSection color="#d3d92b" />
+            <TestingParameterSection color="#d3d92b" productType="FOOD_AND_BEVERAGE" />
             <CTASection contentBg="#d3d92b" contentColor="#fff" iconColor="#fff" />
             <Footer bgColor="#d3d92b" />
         </div>

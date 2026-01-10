@@ -24,15 +24,21 @@
     "solutions": "Solutions",
     "career": "career",
     "about": "About",
-    "contact-us": "Contact Us"
+    "instruments": "Instruments",
+    "reagents": "Reagents",
+    "contact-us": "Contact Us",
+    "article": "Article"
   },
   "Home": {
     "h1-slide-1": "Improving health and well-being",
+    "desc-slide-1": "Supporting clinical and analytical excellence through proven, high-performance laboratory solutions.",
     "h1-slide-2": "Reliable outcomes begin with robust systems",
-    "h1-slide-3": "We deliver comprehensive analytical solutions"
+    "desc-slide-2": "Our dedication goes beyond product excellence we partner with users at every stage, providing complete support to help them achieve their goals.",
+    "h1-slide-3": "We deliver comprehensive analytical solutions",
+    "desc-slide-3": "Covering instruments, reagents, and expertise to support reliable laboratory performance."
   },
   "Solutions": {
-    "h1": "Solutions",
+    "h1": "About",
     "content": "Since 1981, we have focused on developing analytical solutions for in vitro diagnostics (IVD) throughout the entire value chain. We provide laboratory technicians with robust systems that ensure reliable results for informed decision-making.",
     "h2": "Highlighted Products",
     "see-product": "See Product"
@@ -62,8 +68,201 @@
   },
   "InsideOurLab": {
     "title": "Inside Our Laboratory",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at iaculis mi.",
+    "description": "Built to support clinical decision-making through precise, validated analytical workflows.",
     "ctaButton": "Take a Virtual Tour"
+  },
+  "Distribution": {
+    "title": "Our Global Reach",
+    "branches": "Branches",
+    "instruments": "Instruments",
+    "yearsServing": "Years Serving"
+  },
+  "News": {
+    "title": "NEWS",
+    "description": "Curated insights that translate scientific developments into practical guidance for laboratories and professionals.",
+    "viewMore": "Click to View More",
+    "parameters": {
+      "title": "PARAMETERS",
+      "desc": "Lorem ipsum dolor sit amet"
+    },
+    "newSeries": {
+      "title": "NEW SERIES",
+      "desc": "Lorem ipsum dolor sit amet"
+    },
+    "samplePreparing": {
+      "title": "SAMPLE PREPARING",
+      "desc": "Lorem ipsum dolor sit amet"
+    },
+    "contaiment": {
+      "title": "CONTAIMENT",
+      "desc": "Lorem ipsum dolor sit amet"
+    }
+  },
+  "CTA": {
+    "title": "We would be glad to help you!",
+    "address": "Address",
+    "addressText": "Jl. Kyai Caringin No. 18-A RT 10/RW 4. Cideng, Kecamatan Gambir, Kota Jakarta Pusat. Daerah Khusus Ibukota Jakarta",
+    "phone": "Phone",
+    "customerCare": "Customer Care +62 817-887-060",
+    "telemarketing": "Telemarketing  +62 811-712-906"
+  },
+  "Instrument": {
+    "heroTitle1": "Biochemistry",
+    "heroTitle2": "Systems",
+    "descTitle": "Analytical systems to enhance patient care and drive research forward",
+    "descContent": "Our analytical solutions integrate biochemistry instruments, reagents, and reference materials to accurately analyse biological samples, aiding in monitoring diseases through renal tests and cardiac tests, among other biochemistry controls, and assessing treatment effectiveness. By measuring biomarkers, we provide vital data that enhances patient care and contributes to medical research across various conditions, such as the control of diabetes, cardiovascular diseases, analysis of kidney disorders, and fertility issues.",
+    "ba400": {
+      "name": "BA400",
+      "description": "BA400 is a full automatic analyser with automatic hemolysis on whole blood samples and fast sample loading."
+    },
+    "ba200": {
+      "name": "BA200",
+      "description": "BA200 is a compact and versatile automatic analyzer designed for medium-sized laboratories."
+    },
+    "a15": {
+      "name": "A15",
+      "description": "A15 is a small size and low demanding analyser that facilitates automation of tests."
+    },
+    "bts": {
+      "name": "BTS",
+      "description": "BTS is a manual analyser with LED optics system and a new intuitive and easy-to use software that will ease your daily work in the laboratory."
+    },
+    "goTo": "Go to"
+  },
+  "BA400": {
+    "heroTitle1": "BioSystems",
+    "heroTitle2": "BA400",
+    "heroDesc": "BA400 is a clinical chemistry analyser that improves your laboratory resources and minimise the required system maintenance",
+    "barrierLabel": "Analyzer",
+    "barrierTitle": "BA400",
+    "spec1Title": "Minimum Working Time",
+    "spec1Desc": "New enhanced maneuvers reduce samples loading time and minimise the attention required by the user.",
+    "spec2Title": "Reliable Validated System",
+    "spec2Desc": "The reagent barcoding and volume detection system allow to manage the amount of reagent in the system at anytime",
+    "spec3Title": "Highest Performance, Minimal Maintenence",
+    "spec3Desc": "The reagent barcoding and volume detection system allow to manage the amount of reagent in the system at anytime",
+    "dimensionTitle": "Full Automatic Random Access Analyzer",
+    "dimensionDesc": "Our main goal is to optimise the laboratory workflow and improve the user experience. The BA400 forms a complete systems that perfectly adapts to the demands of the laboratories in its reagents.",
+    "productDesc": "Full Automatic Random Access Analyzer",
+    "specsTitle": "Specs",
+    "dimensions": "Dimensions: 1258 mm x 720 mm x 1200 mm",
+    "weight": "Weight: 210 kg",
+    "throughput": "Throughput: 400 t/h (with ISE module: 560 t/h)",
+    "lightSource": "Light source: LED",
+    "reference": "Reference",
+    "code": "Code",
+    "relatedProducts": "Related Products",
+    "relatedProductsTag": "Reagents, reference materials and more",
+    "analyzer": "Analyzer",
+    "contactUs": "Contact Us",
+    "ba200Desc": "BA200 is a full automatic analyser with high reagent and sample capacity (88 position), the highest grade in flexibility.",
+    "a15Desc": "A15 is a small size and low demanding analyser that facilitates automation of tests.",
+    "btsDesc": "BTS is a manual analyser with LED optics system and a new intuitive and easy-to use software that will ease your daily work in the laboratory"
+  },
+  "BA200": {
+    "heroTitle1": "BioSystems",
+    "heroTitle2": "BA200",
+    "heroDesc": "BA200 is a clinical chemistry analyser that improves your laboratory resources and minimise the required system maintenance",
+    "barrierLabel": "Analyzer",
+    "barrierTitle": "BA200",
+    "spec1Title": "Highest performance, minimal maintenance",
+    "spec1Desc": "The optical bench is based on our patented LED technology, which requires the minimum maintenance and allows the longest lifespan.",
+    "spec2Title": "The highest flexibility and compactness",
+    "spec2Desc": "The reagent barcoding and volume detection system allow to manage the amount of reagent in the system at anytime",
+    "spec3Title": "Make your work easier",
+    "spec3Desc": "Automation saves time and avoids manual procedures. The new automatic hemolysis function guarantees more accurate results.",
+    "dimensionTitle": "Clinical Chemistry Analyzer",
+    "dimensionDesc": "In combination with the original validated BA reagents (complete panel of clinical chemistry including special tests), the BA200 forms a complete system that perfectly adapts to the demands of the laboratories in its segment.",
+    "productDesc": "Full Automatic Random Access Analyser",
+    "specsTitle": "Specs",
+    "dimensions": "Dimensions: 680 mm x 690 mm 1070 mm",
+    "weight": "Weight: 166 kg",
+    "throughput": "Throughput: 200t/h (with ISE module: 300 t/h)",
+    "lightSource": "Light source: LED",
+    "reference": "Reference",
+    "code": "Code",
+    "relatedProducts": "Related Products",
+    "relatedProductsTag": "Reagents, reference materials and more",
+    "analyzer": "Analyzer",
+    "contactUs": "Contact Us",
+    "ba400Desc": "BA200 is a full automatic analyser with automatic hemolysis on whole blood samples and fast sample loading.",
+    "a15Desc": "A15 is a small size and low demanding analyser that facilitates automation of tests.",
+    "btsDesc": "BTS is a manual analyser with LED optics system and a new intuitive and easy-to use software that will ease your daily work in the laboratory"
+  },
+  "A15": {
+    "heroTitle1": "BioSystems",
+    "heroTitle2": "A15",
+    "heroDesc": "A15 is a small size and low demanding analyzer that facilitates automation of tests, reducing working time and improving the laboratory efficiency.",
+    "barrierLabel": "Analyzer",
+    "barrierTitle": "A15",
+    "spec1Title": "Durability over time",
+    "spec1Desc": "With a long history on the market, we still find new niches or applications to explore.",
+    "spec2Title": "Efficiency in lab Automation",
+    "spec2Desc": "We have come a long way to provide a simple solution for laboratory automation.",
+    "spec3Title": "Reliable validated system",
+    "spec3Desc": "Dedicated and validated reagents ensure a robust and reliable analytical system.",
+    "dimensionTitle": "A15 system is a perfect option for different size laboratories",
+    "dimensionDesc": "A long history of collaboration with users to improve this analyzer, together with a complete panel of clinical chemistry reagents.",
+    "productDesc": "Automatic Random Access Analyzer",
+    "specsTitle": "Specs",
+    "dimensions": "Dimensions: 615 mm x 670 mm 840 mm",
+    "weight": "Weight: 45 kg",
+    "throughput": "Throughput: 150t/h",
+    "lightSource": "Light source: Halogen lamp (6V, 10W)",
+    "reference": "Reference",
+    "code": "Code",
+    "relatedProducts": "Related Products",
+    "relatedProductsTag": "Reagents, reference materials and more",
+    "analyzer": "Analyzer",
+    "contactUs": "Contact Us",
+    "ba400Desc": "BA400 is a full automatic analyzer with automatic hemolysis on whole blood samples and fast sample loading.",
+    "ba200Desc": "BA200 is a full automatic analyzer with high reagent and sample capacity (88 position), the highest grade in flexibility.",
+    "btsDesc": "BTS is a manual analyser with LED optics system and a new intuitive and easy-to use software that will ease your daily work in the laboratory"
+  },
+  "BTS": {
+    "heroTitle1": "BioSystems",
+    "heroTitle2": "BTS",
+    "heroDesc": "BTS is a manual analyzer with LED optics system and a new intuitive and easy-to-use software that will ease your daily work in the laboratory.",
+    "barrierLabel": "Analyzer",
+    "barrierTitle": "BTS",
+    "spec1Title": "Optimise your efforts",
+    "spec1Desc": "The optics based on our patented LED technology, together with the full operating system included in BTS and the new colour touch screen will lead users to a new experience.",
+    "spec2Title": "Focus on what matters",
+    "spec2Desc": "Guarantee your results due to high optical quality quartz flow cell, quality control management (up to 3 levels) and validated reagents for the new BTS.",
+    "spec3Title": "Boost your workflow",
+    "spec3Desc": "Save time and resources thanks to low maintenance cost, with an upgradable and flexible device.",
+    "spec4Title": "Be connected everywhere",
+    "spec4Desc": "Connect and access all your data through any of your devices, without any intermediate software.",
+    "dimensionTitle": "Semi-automatic analyzer with LED technology",
+    "dimensionDesc": "Easy to use and intuitive semiautomatic analyzer, designed and developed together with users. Improve your lab resources using the latest technological advances.",
+    "productDesc": "Semi-Automatic Analyzer with LED Technology",
+    "specsTitle": "Specs",
+    "dimensions": "Dimensions: 180 mm x 438 mm 245 mm",
+    "weight": "Weight: 4.3 kg",
+    "throughput": "Throughput: manual",
+    "lightSource": "Light source: LEDs",
+    "reference": "Reference",
+    "code": "Code",
+    "relatedProducts": "Related Products",
+    "relatedProductsTag": "Reagents, reference materials and more",
+    "analyzer": "Analyzer",
+    "contactUs": "Contact Us",
+    "ba400Desc": "BA400 is a full automatic analyser with automatic hemolysis on whole blood samples and fast sample loading.",
+    "a15Desc": "A15 is a small size and low demanding analyser that facilitates automation of tests.",
+    "btsDesc": "BTS is a manual analyser with LED optics system and a new intuitive and easy-to use software that will ease your daily work in the laboratory"
+  },
+  "ClinicalAnalysis": {
+    "heroTitle1": "Clinical",
+    "heroTitle2": "Analysis",
+    "heroDesc": "We deliver analytical products and automation systems for biochemistry and autoimmunity, using high-quality materials and validated processes to ensure reliable results.",
+    "ourProductsTitle": "A wide range of reagents covering multiple testing parameters",
+    "ourProductsDesc": "Covering a broad spectrum of testing parameters, from routine biochemistry to specialized clinical panels.",
+    "testingParametersTitle": "Our Testing Parameters",
+    "panelLabel": "PANEL",
+    "loading": "Loading...",
+    "noPanelsAvailable": "No testing panels available",
+    "code": "Code",
+    "moreDetails": "More Details"
   },
   "greeting": "Hello, Welcome!"
 }

@@ -16,7 +16,7 @@
 }
 
 /* Mobile-first base: small typography and compact layout */
-.clinical-analysis .container h1.ca-title {
+.clinical-analysis .container h2.ca-title {
   font-weight: 400;
   font-size: 36px;
   color: white;
@@ -27,7 +27,7 @@
   transform: translateX(0);
 }
 
-.clinical-analysis .container h1 {
+.clinical-analysis .container h2 {
   font-weight: 400;
   font-size: 36px;
   color: white;
@@ -57,7 +57,7 @@
 }
 
 /* Animated state */
-.clinical-analysis .container.animated h1.ca-title {
+.clinical-analysis .container.animated h2.ca-title {
   transform: translateX(0);
 }
 .clinical-analysis .container.animated .line-vertical {
@@ -149,8 +149,8 @@
     gap: 1.25rem;
   }
 
-  .clinical-analysis .container h1.ca-title,
-  .clinical-analysis .container h1 {
+  .clinical-analysis .container h2.ca-title,
+  .clinical-analysis .container h2 {
     font-size: 60px;
   }
   .clinical-analysis .container .line-vertical {
@@ -187,11 +187,11 @@
     height: 100%;
     gap: 2rem;
   }
-  .clinical-analysis .container h1.ca-title {
+  .clinical-analysis .container h2.ca-title {
     font-size: 160px;
     transform: translateX(350px);
   }
-  .clinical-analysis .container h1 {
+  .clinical-analysis .container h2 {
     font-size: 128px;
   }
   .clinical-analysis .container .line-vertical {
@@ -204,7 +204,7 @@
     font-size: 40px;
     transform: translateX(-100px);
   }
-  .clinical-analysis .container.animated h1.ca-title {
+  .clinical-analysis .container.animated h2.ca-title {
     transform: translateX(10px);
   }
   .clinical-analysis .container.animated .line-vertical {

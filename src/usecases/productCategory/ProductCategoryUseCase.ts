@@ -11,19 +11,19 @@ export class ProductCategoryUseCase {
       throw new ValidationError("Category name is required");
     }
 
-    return this.repo.create(req);
+    return await this.repo.create(req);
   }
 
   async getById(id: number) {
-    return this.repo.getById(id);
+    return await this.repo.getById(id);
   }
 
   async getAll() {
-    return this.repo.getAll();
+    return await this.repo.getAll();
   }
 
   async getByProductType(productType: ProductType) {
-    return this.repo.getByProductType(productType);
+    return await this.repo.getByProductType(productType);
   }
 
   async update(req: ProductCategoryRequest, id: number) {
@@ -31,7 +31,7 @@ export class ProductCategoryUseCase {
       throw new ValidationError("Category name is required");
     }
 
-    return this.repo.update(id, req);
+    return await this.repo.update(id, req);
   }
 
   async delete(id: number) {

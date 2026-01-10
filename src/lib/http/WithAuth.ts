@@ -6,7 +6,7 @@ import { APIResponseBuilder } from "@/lib/api/apiResponse";
 const secret = new TextEncoder().encode(process.env.SECRET_KEY);
 
 type RouteContext = {
-  params?: Record<string, string>;
+  params: Promise<Record<string, string>>;
 };
 
 export function WithAuth(handler: (req: NextRequest, ctx?: RouteContext) => Promise<NextResponse>) {

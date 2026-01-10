@@ -1,4 +1,4 @@
-import { Claims } from "@/domain/dto/Claims";
+import { Claims } from "@/domain/dto/Authentication";
 import jwt, { Secret, SignOptions } from "jsonwebtoken";
 
 export class JwtService {

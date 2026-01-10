@@ -46,7 +46,7 @@ export default function WorkExperienceSection() {
     const handleCurrentToggle = (id: number, checked: boolean) => {
         setExperiences(experiences.map(exp => {
             if (exp.id === id) {
-                const updated = { ...exp } as any
+                const updated = { ...exp, isCurrent: checked }
                 if (checked) {
                     updated.endDate = ''
                     updated.years = calculateYears(updated.startDate, '')
@@ -77,7 +77,7 @@ export default function WorkExperienceSection() {
 
         setExperiences(experiences.map(exp => {
             if (exp.id === id) {
-                const updated: any = { ...exp, [field]: value }
+                const updated = { ...exp, [field]: value }
                 const isCurrent = !!updated.isCurrent
                 if (isCurrent) {
                     updated.endDate = ''
@@ -214,8 +214,8 @@ export default function WorkExperienceSection() {
                                 name={`experiences[${index}][endDate]`}
                                 value={experience.endDate}
                                 onChange={(e) => handleDateChange(experience.id, 'endDate', e.target.value)}
-                                disabled={!!(experience as any).isCurrent}
-                                required={!((experience as any).isCurrent)}
+                                disabled={!!experience.isCurrent}
+                                required={!experience.isCurrent}
                             />
                         </div>
                     </div>
@@ -224,14 +224,14 @@ export default function WorkExperienceSection() {
                         <label className="checkbox-terms" style={{ display: 'inline-flex', alignItems: 'center', cursor: "pointer" }}>
                             <input
                                 type="checkbox"
-                                checked={!!(experience as any).isCurrent}
+                                checked={!!experience.isCurrent}
                                 onChange={(e) => handleCurrentToggle(experience.id, e.target.checked)}
                             />
                             Currently working here
                         </label>
                     </div>
 
-                    {experience.startDate && ((experience.endDate) || (experience as any).isCurrent) && (
+                    {experience.startDate && ((experience.endDate) || experience.isCurrent) && (
                         <div className="form-group" style={{ marginBottom: '20px' }}>
                             <div style={{
                                 padding: '12px 18px',

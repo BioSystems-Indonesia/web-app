@@ -24,15 +24,21 @@
     "solutions": "Solusi",
     "career": "Karir",
     "about": "Tentang",
-    "contact-us": "Hubungi Kami"
+    "instruments": "Instrumen",
+    "reagents": "Reagen",
+    "contact-us": "Hubungi Kami",
+    "article": "Artikel"
   },
   "Home": {
-    "h1-slide-1": "Improving health and well-being",
-    "h1-slide-2": "Reliable outcomes begin with robust systems",
-    "h1-slide-3": "We deliver comprehensive analytical solutions"
+    "h1-slide-1": "Meningkatkan kesehatan dan kesejahteraan",
+    "desc-slide-1": "Mendukung keunggulan klinis dan analitis melalui solusi laboratorium terbukti dan berkinerja tinggi.",
+    "h1-slide-2": "Hasil yang andal dimulai dengan sistem yang kuat",
+    "desc-slide-2": "Dedikasi kami melampaui keunggulan produk, kami bermitra dengan pengguna di setiap tahap, memberikan dukungan lengkap untuk membantu mereka mencapai tujuan.",
+    "h1-slide-3": "Kami menghadirkan solusi analitis yang komprehensif",
+    "desc-slide-3": "Mencakup instrumen, reagen, dan keahlian untuk mendukung kinerja laboratorium yang andal."
   },
   "Solutions": {
-    "h1": "Solusi",
+    "h1": "Tentang Kami",
     "content": "Sejak tahun 1981, kami berfokus pada pengembangan solusi analitik untuk diagnostik in vitro (IVD) di seluruh rantai nilai. Kami menyediakan sistem yang andal bagi tenaga laboratorium untuk memastikan hasil yang terpercaya sebagai dasar pengambilan keputusan.",
     "h2": "Produk Unggulan",
     "see-product": "Lihat Produk"
@@ -62,8 +68,201 @@
   },
   "InsideOurLab": {
     "title": "Di Dalam Laboratorium Kami",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at iaculis mi.",
+    "description": "Dibangun untuk mendukung pengambilan keputusan klinis melalui alur kerja analitis yang tepat dan tervalidasi.",
     "ctaButton": "Tur Virtual"
+  },
+  "Distribution": {
+    "title": "Jangkauan Global Kami",
+    "branches": "Cabang",
+    "instruments": "Instrumen",
+    "yearsServing": "Tahun Melayani"
+  },
+  "News": {
+    "title": "BERITA",
+    "description": "Wawasan terkurasi yang menerjemahkan perkembangan ilmiah menjadi panduan praktis untuk laboratorium dan profesional.",
+    "viewMore": "Klik untuk Lihat Selengkapnya",
+    "parameters": {
+      "title": "PARAMETER",
+      "desc": "Lorem ipsum dolor sit amet"
+    },
+    "newSeries": {
+      "title": "SERI BARU",
+      "desc": "Lorem ipsum dolor sit amet"
+    },
+    "samplePreparing": {
+      "title": "PERSIAPAN SAMPEL",
+      "desc": "Lorem ipsum dolor sit amet"
+    },
+    "contaiment": {
+      "title": "PENAHANAN",
+      "desc": "Lorem ipsum dolor sit amet"
+    }
+  },
+  "CTA": {
+    "title": "Kami senang membantu Anda!",
+    "address": "Alamat",
+    "addressText": "Jl. Kyai Caringin No. 18-A RT 10/RW 4. Cideng, Kecamatan Gambir, Kota Jakarta Pusat. Daerah Khusus Ibukota Jakarta",
+    "phone": "Telepon",
+    "customerCare": "Layanan Pelanggan +62 817-887-060",
+    "telemarketing": "Telemarketing  +62 811-712-906"
+  },
+  "Instrument": {
+    "heroTitle1": "Biochemistry",
+    "heroTitle2": "Systems",
+    "descTitle": "Sistem analitis untuk meningkatkan perawatan pasien dan mendorong kemajuan riset",
+    "descContent": "Solusi analitis kami mengintegrasikan instrumen biokimia, reagen, dan bahan referensi untuk menganalisis sampel biologis secara akurat, membantu dalam memantau penyakit melalui tes ginjal dan tes jantung, di antara kontrol biokimia lainnya, serta menilai efektivitas pengobatan. Dengan mengukur biomarker, kami menyediakan data vital yang meningkatkan perawatan pasien dan berkontribusi pada penelitian medis di berbagai kondisi, seperti kontrol diabetes, penyakit kardiovaskular, analisis gangguan ginjal, dan masalah kesuburan.",
+    "ba400": {
+      "name": "BA400",
+      "description": "BA400 adalah instrumen otomatis penuh dengan hemolisis otomatis pada sampel darah lengkap dan pemuatan sampel yang cepat."
+    },
+    "ba200": {
+      "name": "BA200",
+      "description": "BA200 adalah instrumen otomatis yang kompak dan serbaguna yang dirancang untuk laboratorium berukuran sedang."
+    },
+    "a15": {
+      "name": "A15",
+      "description": "A15 adalah instrumen berukuran kecil dan tidak menuntut yang memfasilitasi otomatisasi tes."
+    },
+    "bts": {
+      "name": "BTS",
+      "description": "BTS adalah instrumen manual dengan sistem optik LED dan perangkat lunak baru yang intuitif dan mudah digunakan yang akan memudahkan pekerjaan sehari-hari Anda di laboratorium."
+    },
+    "goTo": "Pergi ke"
+  },
+  "BA400": {
+    "heroTitle1": "BioSystems",
+    "heroTitle2": "BA400",
+    "heroDesc": "BA400 adalah instrumen kimia klinis yang meningkatkan sumber daya laboratorium Anda dan meminimalkan pemeliharaan sistem yang diperlukan",
+    "barrierLabel": "Instrumen",
+    "barrierTitle": "BA400",
+    "spec1Title": "Waktu Kerja Minimum",
+    "spec1Desc": "Manuver yang ditingkatkan mengurangi waktu pemuatan sampel dan meminimalkan perhatian yang diperlukan oleh pengguna.",
+    "spec2Title": "Sistem Tervalidasi yang Andal",
+    "spec2Desc": "Sistem kode batang reagen dan deteksi volume memungkinkan untuk mengelola jumlah reagen dalam sistem kapan saja",
+    "spec3Title": "Kinerja Tertinggi, Pemeliharaan Minimal",
+    "spec3Desc": "Sistem kode batang reagen dan deteksi volume memungkinkan untuk mengelola jumlah reagen dalam sistem kapan saja",
+    "dimensionTitle": "Instrumen Akses Acak Otomatis Penuh",
+    "dimensionDesc": "Tujuan utama kami adalah mengoptimalkan alur kerja laboratorium dan meningkatkan pengalaman pengguna. BA400 membentuk sistem lengkap yang sempurna beradaptasi dengan tuntutan laboratorium dalam reagennya.",
+    "productDesc": "Instrumen Akses Acak Otomatis Penuh",
+    "specsTitle": "Spesifikasi",
+    "dimensions": "Dimensi: 1258 mm x 720 mm x 1200 mm",
+    "weight": "Berat: 210 kg",
+    "throughput": "Throughput: 400 t/h (dengan modul ISE: 560 t/h)",
+    "lightSource": "Sumber cahaya: LED",
+    "reference": "Referensi",
+    "code": "Kode",
+    "relatedProducts": "Produk Terkait",
+    "relatedProductsTag": "Reagen, bahan referensi dan lainnya",
+    "analyzer": "Instrumen",
+    "contactUs": "Hubungi Kami",
+    "ba200Desc": "BA200 adalah instrumen otomatis penuh dengan kapasitas reagen dan sampel yang tinggi (88 posisi), tingkat fleksibilitas tertinggi.",
+    "a15Desc": "A15 adalah instrumen berukuran kecil dan tidak menuntut yang memfasilitasi otomatisasi tes.",
+    "btsDesc": "BTS adalah instrumen manual dengan sistem optik LED dan perangkat lunak baru yang intuitif dan mudah digunakan yang akan memudahkan pekerjaan sehari-hari Anda di laboratorium"
+  },
+  "BA200": {
+    "heroTitle1": "BioSystems",
+    "heroTitle2": "BA200",
+    "heroDesc": "BA200 adalah penganalisis kimia klinis yang meningkatkan sumber daya laboratorium Anda dan meminimalkan pemeliharaan sistem yang diperlukan",
+    "barrierLabel": "Penganalisis",
+    "barrierTitle": "BA200",
+    "spec1Title": "Kinerja tertinggi, pemeliharaan minimal",
+    "spec1Desc": "Bangku optik didasarkan pada teknologi LED berpaten kami, yang memerlukan pemeliharaan minimum dan memungkinkan umur panjang terpanjang.",
+    "spec2Title": "Fleksibilitas dan kekompakan tertinggi",
+    "spec2Desc": "Sistem kode batang reagen dan deteksi volume memungkinkan untuk mengelola jumlah reagen dalam sistem kapan saja",
+    "spec3Title": "Permudah pekerjaan Anda",
+    "spec3Desc": "Otomatisasi menghemat waktu dan menghindari prosedur manual. Fungsi hemolisis otomatis baru menjamin hasil yang lebih akurat.",
+    "dimensionTitle": "Penganalisis Kimia Klinis",
+    "dimensionDesc": "Dalam kombinasi dengan reagen BA yang tervalidasi asli (panel lengkap kimia klinis termasuk tes khusus), BA200 membentuk sistem lengkap yang sempurna beradaptasi dengan tuntutan laboratorium di segmennya.",
+    "productDesc": "Penganalisis Akses Acak Otomatis Penuh",
+    "specsTitle": "Spesifikasi",
+    "dimensions": "Dimensi: 680 mm x 690 mm 1070 mm",
+    "weight": "Berat: 166 kg",
+    "throughput": "Throughput: 200t/h (dengan modul ISE: 300 t/h)",
+    "lightSource": "Sumber cahaya: LED",
+    "reference": "Referensi",
+    "code": "Kode",
+    "relatedProducts": "Produk Terkait",
+    "relatedProductsTag": "Reagen, bahan referensi dan lainnya",
+    "analyzer": "Penganalisis",
+    "contactUs": "Hubungi Kami",
+    "ba400Desc": "BA200 adalah penganalisis otomatis penuh dengan hemolisis otomatis pada sampel darah lengkap dan pemuatan sampel yang cepat.",
+    "a15Desc": "A15 adalah penganalisis berukuran kecil dan tidak menuntut yang memfasilitasi otomatisasi tes.",
+    "btsDesc": "BTS adalah penganalisis manual dengan sistem optik LED dan perangkat lunak baru yang intuitif dan mudah digunakan yang akan memudahkan pekerjaan sehari-hari Anda di laboratorium"
+  },
+  "A15": {
+    "heroTitle1": "BioSystems",
+    "heroTitle2": "A15",
+    "heroDesc": "A15 adalah penganalisis berukuran kecil dan tidak menuntut yang memfasilitasi otomatisasi tes, mengurangi waktu kerja dan meningkatkan efisiensi laboratorium.",
+    "barrierLabel": "Penganalisis",
+    "barrierTitle": "A15",
+    "spec1Title": "Daya tahan dari waktu ke waktu",
+    "spec1Desc": "Dengan sejarah panjang di pasar, kami masih menemukan ceruk atau aplikasi baru untuk dieksplorasi.",
+    "spec2Title": "Efisiensi dalam Otomasi Lab",
+    "spec2Desc": "Kami telah menempuh perjalanan panjang untuk menyediakan solusi sederhana untuk otomatisasi laboratorium.",
+    "spec3Title": "Sistem tervalidasi yang andal",
+    "spec3Desc": "Reagen khusus dan tervalidasi memastikan sistem analitis yang kuat dan andal.",
+    "dimensionTitle": "Sistem A15 adalah pilihan sempurna untuk laboratorium berbagai ukuran",
+    "dimensionDesc": "Sejarah panjang kolaborasi dengan pengguna untuk meningkatkan penganalisis ini, bersama dengan panel lengkap reagen kimia klinis.",
+    "productDesc": "Penganalisis Akses Acak Otomatis",
+    "specsTitle": "Spesifikasi",
+    "dimensions": "Dimensi: 615 mm x 670 mm 840 mm",
+    "weight": "Berat: 45 kg",
+    "throughput": "Throughput: 150t/h",
+    "lightSource": "Sumber cahaya: Lampu halogen (6V, 10W)",
+    "reference": "Referensi",
+    "code": "Kode",
+    "relatedProducts": "Produk Terkait",
+    "relatedProductsTag": "Reagen, bahan referensi dan lainnya",
+    "analyzer": "Penganalisis",
+    "contactUs": "Hubungi Kami",
+    "ba400Desc": "BA400 adalah penganalisis otomatis penuh dengan hemolisis otomatis pada sampel darah lengkap dan pemuatan sampel yang cepat.",
+    "ba200Desc": "BA200 adalah penganalisis otomatis penuh dengan kapasitas reagen dan sampel yang tinggi (88 posisi), tingkat fleksibilitas tertinggi.",
+    "btsDesc": "BTS adalah penganalisis manual dengan sistem optik LED dan perangkat lunak baru yang intuitif dan mudah digunakan yang akan memudahkan pekerjaan sehari-hari Anda di laboratorium"
+  },
+  "BTS": {
+    "heroTitle1": "BioSystems",
+    "heroTitle2": "BTS",
+    "heroDesc": "BTS adalah penganalisis manual dengan sistem optik LED dan perangkat lunak baru yang intuitif dan mudah digunakan yang akan memudahkan pekerjaan sehari-hari Anda di laboratorium.",
+    "barrierLabel": "Penganalisis",
+    "barrierTitle": "BTS",
+    "spec1Title": "Optimalkan upaya Anda",
+    "spec1Desc": "Optik berdasarkan teknologi LED kami yang dipatenkan, bersama dengan sistem operasi lengkap yang disertakan dalam BTS dan layar sentuh berwarna baru akan membawa pengguna ke pengalaman baru.",
+    "spec2Title": "Fokus pada hal yang penting",
+    "spec2Desc": "Jamin hasil Anda berkat sel aliran kuarsa berkualitas optik tinggi, manajemen kontrol kualitas (hingga 3 level) dan reagen tervalidasi untuk BTS baru.",
+    "spec3Title": "Tingkatkan alur kerja Anda",
+    "spec3Desc": "Hemat waktu dan sumber daya berkat biaya pemeliharaan rendah, dengan perangkat yang dapat di-upgrade dan fleksibel.",
+    "spec4Title": "Terhubung di mana saja",
+    "spec4Desc": "Hubungkan dan akses semua data Anda melalui perangkat apa pun, tanpa perangkat lunak perantara.",
+    "dimensionTitle": "Penganalisis semi-otomatis dengan teknologi LED",
+    "dimensionDesc": "Penganalisis semi-otomatis yang mudah digunakan dan intuitif, dirancang dan dikembangkan bersama pengguna. Tingkatkan sumber daya lab Anda menggunakan kemajuan teknologi terbaru.",
+    "productDesc": "Penganalisis Semi-Otomatis dengan Teknologi LED",
+    "specsTitle": "Spesifikasi",
+    "dimensions": "Dimensi: 180 mm x 438 mm 245 mm",
+    "weight": "Berat: 4.3 kg",
+    "throughput": "Throughput: manual",
+    "lightSource": "Sumber cahaya: LED",
+    "reference": "Referensi",
+    "code": "Kode",
+    "relatedProducts": "Produk Terkait",
+    "relatedProductsTag": "Reagen, bahan referensi dan lainnya",
+    "analyzer": "Penganalisis",
+    "contactUs": "Hubungi Kami",
+    "ba400Desc": "BA400 adalah penganalisis otomatis penuh dengan hemolisis otomatis pada sampel darah lengkap dan pemuatan sampel yang cepat.",
+    "a15Desc": "A15 adalah penganalisis berukuran kecil dan tidak menuntut yang memfasilitasi otomatisasi tes.",
+    "btsDesc": "BTS adalah penganalisis manual dengan sistem optik LED dan perangkat lunak baru yang intuitif dan mudah digunakan yang akan memudahkan pekerjaan sehari-hari Anda di laboratorium"
+  },
+  "ClinicalAnalysis": {
+    "heroTitle1": "Clinical",
+    "heroTitle2": "Analysis",
+    "heroDesc": "Kami menyediakan produk analitis dan sistem otomasi untuk biokimia dan autoimunitas, menggunakan bahan berkualitas tinggi dan proses tervalidasi untuk memastikan hasil yang andal.",
+    "ourProductsTitle": "Beragam reagen yang mencakup berbagai parameter pengujian",
+    "ourProductsDesc": "Mencakup spektrum luas parameter pengujian, dari biokimia rutin hingga panel klinis khusus.",
+    "testingParametersTitle": "Parameter Pengujian Kami",
+    "panelLabel": "PANEL",
+    "loading": "Memuat...",
+    "noPanelsAvailable": "Tidak ada panel pengujian yang tersedia",
+    "code": "Kode",
+    "moreDetails": "Rincian Lebih Lanjut"
   },
   "greeting": "Halo, Selamat datang!"
 }

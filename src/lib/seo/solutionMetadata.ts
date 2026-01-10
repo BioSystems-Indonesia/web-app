@@ -67,16 +67,16 @@ export const solutionPageJsonLd = {
   "@graph": [
     {
       "@type": "WebPage",
-      "@id": "https://biosystems-indonesia.com/solutions",
-      url: "https://biosystems-indonesia.com/solutions",
+      "@id": "https://biosystems.id/solutions",
+      url: "https://biosystems.id/solutions",
       name: "Analytical Solutions - BioSystems Indonesia",
       description:
         "Since 1981, we have focused on developing analytical solutions for in vitro diagnostics (IVD) throughout the entire value chain.",
       isPartOf: {
         "@type": "WebSite",
-        "@id": "https://biosystems-indonesia.com",
+        "@id": "https://biosystems.id",
         name: "BioSystems Indonesia",
-        url: "https://biosystems-indonesia.com",
+        url: "https://biosystems.id",
       },
       inLanguage: ["en", "id"],
       breadcrumb: {
@@ -86,25 +86,25 @@ export const solutionPageJsonLd = {
             "@type": "ListItem",
             position: 1,
             name: "Home",
-            item: "https://biosystems-indonesia.com",
+            item: "https://biosystems.id",
           },
           {
             "@type": "ListItem",
             position: 2,
             name: "Solutions",
-            item: "https://biosystems-indonesia.com/solutions",
+            item: "https://biosystems.id/solutions",
           },
         ],
       },
     },
     {
       "@type": "Organization",
-      "@id": "https://biosystems-indonesia.com/#organization",
+      "@id": "https://biosystems.id/#organization",
       name: "BioSystems Indonesia",
-      url: "https://biosystems-indonesia.com",
+      url: "https://biosystems.id",
       logo: {
         "@type": "ImageObject",
-        url: "https://biosystems-indonesia.com/assets/BioSystems-logo.png",
+        url: "https://biosystems.id/assets/BioSystems-logo.png",
       },
       foundingDate: "1981",
       industry: "Medical Devices",

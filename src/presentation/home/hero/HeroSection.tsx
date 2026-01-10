@@ -20,21 +20,21 @@ export default function HeroSection({ slides }: HeroSectionProps) {
             id: "slide-1",
             image: BgHero1,
             title: t("h1-slide-1"),
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac sem et enim faucibus porttitor. Nam ullamcorper ante tellus, et condimentum metus suscipit nec.",
+            description: t("desc-slide-1"),
             alt: "BioSystems Indonesia hero slide 1 - Innovation in biotechnology"
         },
         {
             id: "slide-2",
             image: BgHero2,
             title: t("h1-slide-2"),
-            description: "Our dedication goes beyond product excellence—we partner with users at every stage, providing complete support to help them achieve their goals.",
+            description: t("desc-slide-2"),
             alt: "BioSystems Indonesia hero slide 2 - Partnership and support"
         },
         {
             id: "slide-3",
             image: BgHero3,
             title: t("h1-slide-3"),
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac sem et enim faucibus porttitor. Nam ullamcorper ante tellus, et condimentum metus suscipit nec.",
+            description: t("desc-slide-3"),
             alt: "BioSystems Indonesia hero slide 3 - Advanced solutions"
         }
     ];

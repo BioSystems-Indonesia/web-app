@@ -1,4 +1,7 @@
+"use client";
+
 import { StaticImageData } from "next/image"
+import { useTranslations } from "next-intl"
 import "./NewsSection.css"
 import SampleImg from "@/assets/img/home/sample.png"
 import ParameterImg from "@/assets/img/home/parameters.png"
@@ -12,25 +15,27 @@ type NewsContent = {
 }
 
 export default function NewsSection() {
+    const t = useTranslations("News");
+
     const news: NewsContent[] = [
         {
-            title: "PARAMETERS",
-            desc: "Lorem ipsum dolor sit amet",
+            title: t("parameters.title"),
+            desc: t("parameters.desc"),
             image: ParameterImg
         },
         {
-            title: "NEW SERIES",
-            desc: "Lorem ipsum dolor sit amet",
+            title: t("newSeries.title"),
+            desc: t("newSeries.desc"),
             image: NewSeriesImg
         },
         {
-            title: "SAMPLE PREPARING",
-            desc: "Lorem ipsum dolor sit amet",
+            title: t("samplePreparing.title"),
+            desc: t("samplePreparing.desc"),
             image: SampleImg
         },
         {
-            title: "CONTAIMENT",
-            desc: "Lorem ipsum dolor sit amet",
+            title: t("contaiment.title"),
+            desc: t("contaiment.desc"),
             image: ContaimentImg
         },
     ]
@@ -44,7 +49,7 @@ export default function NewsSection() {
                             <div className="text">
                                 <h3>{n.title}</h3>
                                 <p>{n.desc}</p>
-                                <p>Click to View More</p>
+                                <p>{t("viewMore")}</p>
                             </div>
                             <div className="overlay"></div>
                         </div>
@@ -52,8 +57,8 @@ export default function NewsSection() {
                 </div>
                 <div className="content">
                     <div className="text">
-                        <h2>NEWS</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt leo sit amet purus congue, eget venenatis eros semper. Maecenas nisl dui, suscipit non sodales a, molestie eu sapien. Praesent libero diam, suscipit at feugiat non, sodales vehicula enim. In hac habitasse platea dictumst. Donec ultrices tellus justo, malesuada dignissim mauris dictum sit amet. Quisque a commodo ex. Nam egestas, dui ac lacinia pulvinar, metus odio malesuada mauris, id laoreet ligula neque ut ligula.</p>
+                        <h2>{t("title")}</h2>
+                        <p>{t("description")}</p>
                     </div>
                 </div>
             </div>

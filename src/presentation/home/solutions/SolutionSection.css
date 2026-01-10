@@ -316,7 +316,7 @@
 /* Desktop styles - 1024px and up */
 @media (min-width: 1024px) {
   .solution-section {
-    height: 100dvh;
+    min-height: 100dvh;
   }
 
   .solution-section .card {
@@ -336,7 +336,7 @@
   .container-section {
     display: flex;
     flex-direction: row;
-    height: 100dvh;
+    min-height: 100dvh;
   }
 
   .container-section > div:first-child {

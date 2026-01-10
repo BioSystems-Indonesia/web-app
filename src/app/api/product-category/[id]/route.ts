@@ -12,7 +12,8 @@ const productCategoryUseCase = new ProductCategoryUseCase(productCategoryRepo);
 
 export const GET = WithAuth(async (_req, ctx) => {
   try {
-    const id = Number(ctx?.params?.id);
+    const params = ctx?.params ? await ctx.params : undefined;
+    const id = Number(params?.id);
 
     if (!id || isNaN(id)) {
       return NextResponse.json(APIResponseBuilder.badRequest("Invalid category id"), {
@@ -30,7 +31,8 @@ export const GET = WithAuth(async (_req, ctx) => {
 
 export const PUT = WithAuth(async (req, ctx) => {
   try {
-    const id = Number(ctx?.params?.id);
+    const params = ctx?.params ? await ctx.params : undefined;
+    const id = Number(params?.id);
 
     if (!id || isNaN(id)) {
       return NextResponse.json(APIResponseBuilder.badRequest("Invalid category id"), {
@@ -56,7 +58,8 @@ export const PUT = WithAuth(async (req, ctx) => {
 
 export const DELETE = WithAuth(async (_req, ctx) => {
   try {
-    const id = Number(ctx?.params?.id);
+    const params = ctx?.params ? await ctx.params : undefined;
+    const id = Number(params?.id);
 
     if (!id || isNaN(id)) {
       return NextResponse.json(APIResponseBuilder.badRequest("Invalid category id"), {

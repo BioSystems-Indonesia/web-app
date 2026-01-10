@@ -1,17 +1,18 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
+import { useTranslations } from "next-intl";
 import "./DistributionSection.css";
 import MapDots from "./MapDots";
 
 function AnimatedCounter({ value, duration = 2000, trigger }: { value: number; duration?: number; trigger: boolean }) {
-    const [displayValue, setDisplayValue] = useState(value * 2);
+    const [displayValue, setDisplayValue] = useState(0);
 
     useEffect(() => {
         if (!trigger) return;
 
         let frame: number;
         let startTime: number | null = null;
-        const startValue = value * 2; // angka awal lebih besar
+        const startValue = 0;
         const endValue = value;
 
         const animate = (time: number) => {
@@ -38,6 +39,7 @@ function AnimatedCounter({ value, duration = 2000, trigger }: { value: number; d
 }
 
 export default function DistributionSection() {
+    const t = useTranslations("Distribution");
     const sectionRef = useRef<HTMLElement | null>(null);
     const [inView, setInView] = useState(false);
 
@@ -58,19 +60,20 @@ export default function DistributionSection() {
     }, []);
 
     return (
-        <section ref={sectionRef} className="distribution-section">
+        <section ref={sectionRef} className="distribution-section" aria-labelledby="distribution-heading">
+            <h2 id="distribution-heading" className="sr-only">{t("title")}</h2>
             <div className="card">
                 <div className="count">
                     <AnimatedCounter value={46} trigger={inView} />
-                    <h5>Branches</h5>
+                    <h5>{t("branches")}</h5>
                 </div>
                 <div className="count">
                     <AnimatedCounter value={1140} trigger={inView} />
-                    <h5>Instruments</h5>
+                    <h5>{t("instruments")}</h5>
                 </div>
                 <div className="count">
                     <AnimatedCounter value={38} trigger={inView} />
-                    <h5>Years Serving</h5>
+                    <h5>{t("yearsServing")}</h5>
                 </div>
             </div>
             <MapDots />

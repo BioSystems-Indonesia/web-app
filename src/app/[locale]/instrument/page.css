@@ -1,7 +1,20 @@
+/* Mobile First - Base Styles */
+/* Screen reader only class for SEO */
+.instrument .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 .instrument .hero {
   background: url("@/assets/img/instrument/hero.png");
   background-color: #ff5a00;
-
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -9,8 +22,8 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100dvh;
-  padding: 210px;
+  height: 50dvh;
+  padding: 20px;
   position: relative;
 }
 
@@ -19,12 +32,12 @@
   display: flex;
   flex-direction: column;
   align-items: start;
-  font-size: 160px;
+  font-size: 48px;
   color: white;
   font-weight: 400;
   white-space: nowrap;
   transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translateX(350px);
+  transform: translateX(0px);
 }
 
 .ca-title span {
@@ -33,36 +46,32 @@
 
 .instrument .hero .ca-title span:last-child {
   transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translateX(145px);
-}
-
-.instrument .hero .line-vertical {
-  height: 250px;
-  margin: 0 50px;
-  width: 0.25rem;
-  background-color: white;
-  opacity: 0;
-  transform: translateX(-100px);
-  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(40px);
 }
 
 .instrument .hero .text {
-  width: 599px !important;
-  min-width: 599px;
-  max-width: 599px;
-  font-size: 40px;
+  width: 100%;
+  font-size: 18px;
   color: white;
   font-weight: 200;
   opacity: 0;
-  transform: translateX(-599px);
+  transform: translateX(-100%);
   transition:
     opacity 1.6s cubic-bezier(0.4, 0, 0.2, 1),
     transform 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.instrument .desctiption {
+  padding: 1rem !important;
+}
+
+.instrument .desctiption .content {
+  margin-bottom: 1rem;
+}
+
 /* Animated state: after 1 second */
 .instrument .hero.animated .ca-title {
-  font-size: 96px;
+  font-size: 36px;
   transform: translateX(0);
 }
 
@@ -80,54 +89,396 @@
   transform: translateX(0);
 }
 
+/* Tablet - 768px */
+@media (min-width: 768px) {
+  .instrument .hero {
+    padding: 60px;
+  }
+
+  .instrument .hero .ca-title {
+    font-size: 80px;
+  }
+
+  .instrument .hero .ca-title span:last-child {
+    transform: translateX(80px);
+  }
+
+  .instrument .hero .text {
+    width: 450px;
+    font-size: 24px;
+  }
+
+  .instrument .hero.animated .ca-title {
+    font-size: 64px;
+  }
+}
+
+/* Desktop Small - 1024px */
+@media (min-width: 1024px) {
+  .instrument .hero {
+    padding: 120px;
+    height: 100dvh;
+  }
+
+  .instrument .hero .ca-title {
+    font-size: 120px;
+  }
+
+  .instrument .hero .ca-title span:last-child {
+    transform: translateX(110px);
+  }
+
+  .instrument .hero .text {
+    width: 500px;
+    font-size: 32px;
+  }
+
+  .instrument .hero.animated .ca-title {
+    font-size: 80px;
+  }
+}
+
+/* Desktop Large - 1444px */
+@media (min-width: 1444px) {
+  .instrument .hero {
+    padding: 210px;
+  }
+
+  .instrument .hero .ca-title {
+    font-size: 160px;
+  }
+
+  .instrument .hero .ca-title span:last-child {
+    transform: translateX(145px);
+  }
+
+  .instrument .hero .text {
+    width: 599px;
+    min-width: 599px;
+    max-width: 599px;
+    font-size: 40px;
+  }
+
+  .instrument .hero.animated .ca-title {
+    font-size: 96px;
+  }
+}
+
+/* Mobile First - Description */
 .instrument .desctiption {
-  height: 733px;
+  min-height: 400px;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  padding: 40px 20px;
 }
 
 .instrument .desctiption .content {
-  padding-left: 158px;
+  width: 100%;
+  padding-left: 0;
 }
 
 .instrument .desctiption .content h2 {
   font-weight: 500;
-  font-size: 64px;
+  font-size: 28px;
+  line-height: 32px;
 }
 
 .instrument .desctiption .content p {
-  margin-top: 20px;
-  font-size: 24px;
+  margin-top: 16px;
+  font-size: 16px;
+}
+
+/* Tablet - 768px */
+@media (min-width: 768px) {
+  .instrument .desctiption {
+    min-height: 500px;
+    padding: 60px 40px;
+  }
+
+  .instrument .desctiption .content {
+    width: 90%;
+    padding-left: 60px;
+  }
+
+  .instrument .desctiption .content h2 {
+    font-size: 36px;
+    line-height: 40px;
+  }
+
+  .instrument .desctiption .content p {
+    font-size: 18px;
+  }
+}
+
+/* Desktop Small - 1024px */
+@media (min-width: 1024px) {
+  .instrument .desctiption {
+    min-height: 600px;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 80px;
+  }
+
+  .instrument .desctiption .content {
+    padding: 0.5rem;
+  }
+
+  .instrument .desctiption img {
+    width: 500px;
+    height: auto;
+  }
+
+  .instrument .desctiption .content h2 {
+    font-size: 42px;
+    line-height: 46px;
+  }
+
+  .instrument .desctiption .content p {
+    font-size: 20px;
+  }
+}
+
+/* Desktop Large - 1444px */
+@media (min-width: 1444px) {
+  .instrument .desctiption {
+    height: 733px;
+  }
+
+  .instrument .desctiption .content {
+    width: 760px;
+    padding-left: 158px;
+  }
+
+  .instrument .desctiption .content h2 {
+    font-size: 48px;
+    line-height: 50px;
+  }
+
+  .instrument .desctiption img {
+    width: 952px;
+    height: auto;
+  }
+
+  .instrument .desctiption .content p {
+    margin-top: 20px;
+    font-size: 24px;
+  }
+}
+
+/* Mobile First - Analyzer Carousel */
+.instrument .analyzer-carousel {
+  position: relative;
+  height: 100dvh;
+  overflow: hidden;
+  cursor: grab;
+}
+
+.instrument .analyzer-carousel:active {
+  cursor: grabbing;
+}
+
+.instrument .analyzer-track {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  will-change: transform;
+}
+
+.instrument .analyzer-track.dragging {
+  cursor: grabbing;
 }
 
 .instrument .analyzer {
   position: relative;
-  background: url("@/assets/img/instrument/ba400.png");
-  height: 100dvh;
+  min-width: 100%;
+  height: 100%;
   display: flex;
   align-items: end;
-  justify-content: end;
-  padding: 157px;
-  cursor: pointer;
+  justify-content: center;
+  padding: 40px 20px;
+  background-size: cover;
+  background-position: center;
+  user-select: none;
 }
 
+/* Tablet - 768px */
+@media (min-width: 768px) {
+  .instrument .analyzer {
+    padding: 60px 40px;
+    justify-content: end;
+  }
+}
+
+/* Desktop Small - 1024px */
+@media (min-width: 1024px) {
+  .instrument .analyzer {
+    padding: 100px 80px;
+  }
+}
+
+/* Desktop Large - 1444px */
+@media (min-width: 1444px) {
+  .instrument .analyzer {
+    padding: 157px;
+  }
+}
+
+.instrument .analyzer.bg-ba400 {
+  background-image: url("@/assets/img/instrument/ba400.png");
+}
+
+.instrument .analyzer.bg-ba200 {
+  background-image: url("@/assets/img/instrument/ba200.png");
+}
+
+.instrument .analyzer.bg-a15 {
+  background-image: url("@/assets/img/instrument/a15.png");
+}
+
+.instrument .analyzer.bg-bts {
+  background-image: url("@/assets/img/instrument/bts.png");
+}
+
+/* Mobile First - Analyzer Content */
 .instrument .analyzer .content {
   position: absolute;
   z-index: 99;
   display: flex;
-  text-align: end;
+  text-align: center;
   flex-direction: column;
-  width: 647px;
+  width: 100%;
+  max-width: 90%;
+  pointer-events: none;
 }
 
-.instrument .analyzer .content h2 {
-  font-size: 64px;
+.instrument .analyzer .content h2,
+.instrument .analyzer .content h3 {
+  font-size: 32px;
   font-weight: 500;
 }
 
 .instrument .analyzer .content p {
-  font-size: 24px;
+  font-size: 16px;
   font-weight: 500;
+}
+
+/* Tablet - 768px */
+@media (min-width: 768px) {
+  .instrument .analyzer .content {
+    text-align: end;
+    max-width: 500px;
+  }
+
+  .instrument .analyzer .content h2,
+  .instrument .analyzer .content h3 {
+    font-size: 48px;
+  }
+
+  .instrument .analyzer .content p {
+    font-size: 18px;
+  }
+}
+
+/* Desktop Small - 1024px */
+@media (min-width: 1024px) {
+  .instrument .analyzer .content {
+    max-width: 550px;
+  }
+
+  .instrument .analyzer .content h2,
+  .instrument .analyzer .content h3 {
+    font-size: 56px;
+  }
+
+  .instrument .analyzer .content p {
+    font-size: 20px;
+  }
+}
+
+/* Desktop Large - 1444px */
+@media (min-width: 1444px) {
+  .instrument .analyzer .content {
+    width: 647px;
+    max-width: 647px;
+  }
+
+  .instrument .analyzer .content h2,
+  .instrument .analyzer .content h3 {
+    font-size: 64px;
+  }
+
+  .instrument .analyzer .content p {
+    font-size: 24px;
+  }
+}
+
+/* Mobile First - Indicators */
+.instrument .analyzer-carousel .indicators {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 99;
+  display: flex;
+  gap: 8px;
+}
+
+.instrument .analyzer-carousel .indicators .indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.instrument .analyzer-carousel .indicators .indicator:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.instrument .analyzer-carousel .indicators .indicator.active {
+  background: #fff;
+  width: 30px;
+  border-radius: 5px;
+}
+
+/* Tablet - 768px */
+@media (min-width: 768px) {
+  .instrument .analyzer-carousel .indicators {
+    bottom: 30px;
+    gap: 10px;
+  }
+
+  .instrument .analyzer-carousel .indicators .indicator {
+    width: 11px;
+    height: 11px;
+  }
+
+  .instrument .analyzer-carousel .indicators .indicator.active {
+    width: 35px;
+  }
+}
+
+/* Desktop Large - 1444px */
+@media (min-width: 1444px) {
+  .instrument .analyzer-carousel .indicators {
+    bottom: 40px;
+    gap: 12px;
+  }
+
+  .instrument .analyzer-carousel .indicators .indicator {
+    width: 12px;
+    height: 12px;
+  }
+
+  .instrument .analyzer-carousel .indicators .indicator.active {
+    width: 40px;
+    border-radius: 6px;
+  }
 }
 
 .instrument .analyzer .overlay {

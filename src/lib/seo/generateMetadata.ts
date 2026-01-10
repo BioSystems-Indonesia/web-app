@@ -9,6 +9,7 @@ interface GenerateMetadataProps {
       [key: string]: string;
     };
   };
+  canonical?: string;
 }
 
 export function generateSEOMetadata({
@@ -16,10 +17,17 @@ export function generateSEOMetadata({
   description,
   locale,
   alternates,
+  canonical,
 }: GenerateMetadataProps): Metadata {
   return {
     title,
     description,
+    ...(canonical && {
+      alternates: {
+        ...alternates,
+        canonical,
+      },
+    }),
     openGraph: {
       title,
       description,
@@ -55,4 +63,9 @@ export function generateHrefLang(pathname: string) {
       "x-default": `/en${pathname}`,
     },
   };
+}
+
+export function generateCanonicalUrl(locale: string, pathname: string): string {
+  const baseUrl = "https://biosystems.id";
+  return `${baseUrl}/${locale}${pathname}`;
 }

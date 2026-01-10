@@ -84,9 +84,9 @@ const positions = [
   },
 ];
 
-export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(request: NextRequest, context: { params: Promise<{ id: string }> }) {
   try {
-    const { id } = params;
+    const { id } = await context.params;
 
     // Cari posisi berdasarkan id
     const position = positions.find((pos) => pos.id === id);
@@ -97,6 +97,6 @@ export async function GET(request: NextRequest, { params }: { params: { id: stri
 
     return NextResponse.json(position, { status: 200 });
   } catch (error) {
-    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+    return NextResponse.json({ error: `Internal server error: ${error}` }, { status: 500 });
   }
 }

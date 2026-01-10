@@ -11,15 +11,36 @@ const intlMiddleware = createMiddleware({
   localeDetection: false,
 });
 
+// Role-based route permissions
+const routePermissions: Record<string, string[]> = {
+  "/dashboard": ["ADMIN", "PRODUCT_SPECIALIST", "HUMAN_RESOURCE"],
+  "/dashboard/products": ["ADMIN", "PRODUCT_SPECIALIST"],
+  "/dashboard/posts": ["ADMIN", "PRODUCT_SPECIALIST"],
+  "/dashboard/events": ["ADMIN", "PRODUCT_SPECIALIST"],
+  "/dashboard/career": ["ADMIN", "HUMAN_RESOURCE"],
+  "/dashboard/contact": ["ADMIN"],
+  "/dashboard/users": ["ADMIN"],
+  "/dashboard/lis": ["ADMIN"],
+};
+
 function redirectToLogin(req: NextRequest) {
   const res = NextResponse.redirect(new URL("/id/login", req.url));
   res.cookies.set("token", "", { expires: new Date(0), path: "/" });
   return res;
 }
 
+function redirectToUnauthorized(req: NextRequest) {
+  return NextResponse.redirect(new URL("/id/dashboard", req.url));
+}
+
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
   const token = req.cookies.get("token")?.value;
+
+  // Skip intl middleware for SEO files
+  if (pathname === "/sitemap.xml" || pathname === "/robots.txt") {
+    return NextResponse.next();
+  }
 
   const intlResponse = intlMiddleware(req);
   if (intlResponse?.headers.get("location")) {
@@ -28,10 +49,32 @@ export async function middleware(req: NextRequest) {
 
   if (token) {
     try {
-      await jwtVerify(token, secret);
+      const { payload } = await jwtVerify(token, secret);
+      const userRole = payload.role as string;
 
       if (pathname.includes("/login")) {
         return NextResponse.redirect(new URL("/id/dashboard", req.url));
+      }
+
+      // Check role-based access
+      if (pathname.includes("/dashboard")) {
+        // Extract the route pattern from pathname (remove locale)
+        const routePattern = pathname.replace(/^\/(en|id)/, "");
+
+        // Find matching permission
+        const matchedRoute = Object.keys(routePermissions).find(
+          (route) => routePattern === route || routePattern.startsWith(route + "/")
+        );
+
+        if (matchedRoute) {
+          const allowedRoles = routePermissions[matchedRoute];
+
+          // Check if user's role is allowed for this route
+          if (!allowedRoles.includes(userRole)) {
+            console.log(`Access denied for ${userRole} to ${routePattern}`);
+            return redirectToUnauthorized(req);
+          }
+        }
       }
 
       return NextResponse.next();
@@ -50,8 +93,8 @@ export async function middleware(req: NextRequest) {
 
 export const config = {
   matcher: [
-    // Exclude API routes & static files
-    "/((?!api|_next/static|_next/image|favicon.ico).*)",
+    // Exclude API routes, static files, and SEO files
+    "/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)",
     "/",
   ],
 };

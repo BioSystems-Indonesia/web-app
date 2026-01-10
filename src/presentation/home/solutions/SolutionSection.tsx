@@ -27,7 +27,7 @@ export default function SolutionSection() {
     const seeProductText = t("see-product");
 
     return (
-        <section className="solution-section">
+        <section className="solution-section" id="about">
             {/* SEO Components */}
             <StructuredData />
             <SEOFallback

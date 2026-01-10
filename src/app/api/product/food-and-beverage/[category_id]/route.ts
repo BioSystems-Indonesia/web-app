@@ -12,7 +12,8 @@ const productCategoryUseCase = new ProductUseCase(productCategoryRepo);
 
 export const GET = WithAuth(async (_req, ctx) => {
   try {
-    const categoryId = Number(ctx?.params?.category_id);
+    const params = ctx?.params ? await ctx.params : undefined;
+    const categoryId = Number(params?.category_id);
 
     if (!categoryId || isNaN(categoryId)) {
       return NextResponse.json(APIResponseBuilder.badRequest("Invalid category id"), {

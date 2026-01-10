@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://biosystems-indonesia.com'),
+  metadataBase: new URL('https://biosystems.id'),
   title: {
     template: '%s | BioSystems Indonesia',
     default: 'BioSystems Indonesia - Analytical Solutions for In Vitro Diagnostics'

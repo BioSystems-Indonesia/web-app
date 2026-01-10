@@ -151,11 +151,11 @@ export class ProductRepositoryPrisma implements ProductRepository {
 
     const products = await prisma.product.findMany({
       where: {
+        deletedAt: null,
         productCategories: {
           some: {
             id: categoryId,
           },
-          deletedAt: null,
         },
       },
       include: {

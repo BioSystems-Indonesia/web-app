@@ -1,4 +1,5 @@
 "use client"
+import { useTranslations } from "next-intl"
 import "./ourProducts.css"
 import Image from "next/image"
 
@@ -12,6 +13,7 @@ import Reagent7 from "@/assets/img/clinical-analysis/reagent-7.png"
 import Reagent8 from "@/assets/img/clinical-analysis/reagent-8.png"
 
 export default function OurProductsSection() {
+    const t = useTranslations("ClinicalAnalysis");
     const images = [Reagent1, Reagent2, Reagent3, Reagent4, Reagent5, Reagent6, Reagent7, Reagent8];
 
     // duplicate images array to create continuous loop
@@ -20,8 +22,8 @@ export default function OurProductsSection() {
     return (
         <div className="our-product-section">
             <div className="content">
-                <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt leo sit amet purus congue, eget venenatis eros semper. Maecenas nisl dui, suscipit non sodales a, molestie eu sapien. Praesent libero diam, suscipit at feugiat non, sodales vehicula enim. In hac habitasse platea dictumst. Donec ultrices tellus justo, malesuada dignissim mauris dictum sit amet. Quisque a commodo ex. Nam egestas, dui ac lacinia pulvinar, metus odio malesuada mauris, id laoreet ligula neque ut ligula.</p>
+                <h2>{t('ourProductsTitle')}</h2>
+                <p>{t('ourProductsDesc')}</p>
             </div>
             <div className="corousel-wrap">
                 <div className="corousel-track">

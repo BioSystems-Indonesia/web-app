@@ -27,20 +27,20 @@ export default function ClincalAnalysisSection({ variant = "full" }: ClincalAnal
                 <div className="analysis">
                     <Link href="/clinical-analysis" className="clinical-analysis-home-link" target="_blank">
                         <div style={{ display: "flex" }}>
-                            <h1>
+                            <h2>
                                 <span className="line-1">Clinical</span>
                                 <span className="line-2">Analysis</span>
-                            </h1>
-                            <GoArrowUpRight className="arrow-icon" />
+                            </h2>
+                            <GoArrowUpRight className="arrow-icon" aria-hidden="true" />
                         </div>
                     </Link>
                     <Link href="/food-beverage-analysis" className="food-beverage-analysis" target="_blank">
                         <div style={{ display: "flex" }}>
-                            <h1>
+                            <h2>
                                 <span className="line-1">Food & Beverage</span>
                                 <span className="line-2">Analysis</span>
-                            </h1>
-                            <GoArrowUpRight className="arrow-icon" />
+                            </h2>
+                            <GoArrowUpRight className="arrow-icon" aria-hidden="true" />
                         </div>
                     </Link>
                 </div>

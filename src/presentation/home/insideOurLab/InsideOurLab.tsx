@@ -40,7 +40,7 @@ export default function InsideOurLab() {
     }, []);
 
     return (
-        <section className="inside-our-lab">
+        <section className="inside-our-lab" aria-labelledby="inside-lab-heading">
             {shouldLoadVideo && (
                 <div className="video-background">
                     <video
@@ -49,6 +49,8 @@ export default function InsideOurLab() {
                         loop
                         playsInline
                         className="background-video"
+                        aria-label={t("title")}
+                        title={t("title")}
                     >
                         <source src={videoSrc} type="video/mp4" />
                         Your browser does not support the video tag.
@@ -57,6 +59,7 @@ export default function InsideOurLab() {
             )}
             <div className="gradient"></div>
             <div className="container">
+                <h2 id="inside-lab-heading" className="sr-only">{t("title")}</h2>
                 <div className="card1">
                     <Image
                         src={LabImg1}

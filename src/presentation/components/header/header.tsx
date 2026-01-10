@@ -70,45 +70,71 @@ export default function Header({ backgroundColor = 'transparent' }: HeaderProps)
         }
     }, [])
 
+    const getScrolledColor = () => {
+        if (pathname.includes('/clinical-analysis')) {
+            return '#FF5A00';
+        } else if (pathname.includes('/food-beverage-analysis')) {
+            return '#d3d92b';
+        } else if (pathname.includes('/instrument')) {
+            return '#FF5A00';
+        } else {
+            return 'var(--primary)';
+        }
+    };
+
+    const headerStyle = {
+        backgroundColor: isScrolled ? getScrolledColor() : backgroundColor,
+        backdropFilter: isScrolled ? 'blur(10px)' : 'none',
+        transition: 'all 0.3s ease'
+    };
+
+    const textColorClass = isScrolled ? 'text-dark' : '';
+
     const navItems = (locale: string): NavItem[] => [
-        { href: "", label: "products" },
-        { href: `${locale}/career`, label: "career" },
-        { href: `${locale}/#`, label: "about" },
-        { href: `${locale}/#`, label: "contact-us" }
+        // { href: `/${locale}/career`, label: "career" },
+        { href: `/${locale}/clinical-analysis`, label: "reagents" },
+        { href: `/${locale}/instrument`, label: "instruments" },
+        { href: `/${locale}/article`, label: "article" },
+        { href: `/${locale}#about`, label: "about" },
+        { href: `/${locale}#contact-us`, label: "contact-us" }
     ]
 
     return (
-        <header style={{ backgroundColor }}>
+        <header style={headerStyle} className={`${textColorClass} header`}>
             <div
                 className={`layout ${isOpen ? 'open' : ''}`}
                 onClick={() => setIsOpen(false)}
             ></div>
             <div className={`header-up ${isScrolled ? 'hidden' : ''}`}>
-                <h2 className="logo">BioSystems</h2>
+                <Link href={`/${locale}`}>
+                    <h2 className="logo">BioSystems</h2>
+                </Link>
                 <div className="items">
                     <div ref={languageRef} style={{ position: "relative" }}>
                         <div style={{ cursor: "pointer" }} onClick={() => { setLangOpen(!langOpen) }}>
                             <RoundEarthLogo />
                             <p>{t("language")}</p>
                         </div>
-                        {/* <div className={`language-card ${langOpen ? 'lang-open' : ''}`}>
+                        <div className={`language-card ${langOpen ? 'lang-open' : ''}`}>
                             <span onClick={() => {
-                                window.location.href = "/id"
-                                setLangOpen(false)
+                                const newPath = pathname.replace(`/${locale}`, '/id');
+                                window.location.href = newPath;
+                                setLangOpen(false);
                             }} style={{ cursor: "pointer" }}>
                                 Indonesia
                             </span>
                             <span onClick={() => {
-                                window.location.href = "/en"
-                                setLangOpen(false)
+                                const newPath = pathname.replace(`/${locale}`, '/en');
+                                window.location.href = newPath;
+                                setLangOpen(false);
                             }} style={{ cursor: "pointer" }}>
                                 English
                             </span>
-                        </div> */}
+                        </div>
                     </div>
 
 
-                    <div onClick={() => window.location.href = `${locale}/login`} style={{ cursor: "pointer" }}>
+                    <div onClick={() => window.location.href = `/${locale}/login`} style={{ cursor: "pointer" }}>
                         <LoginLogo />
                         <p>{t("login")}</p>
 
@@ -123,10 +149,15 @@ export default function Header({ backgroundColor = 'transparent' }: HeaderProps)
             <div className={`header-bottom ${isScrolled ? 'move-up' : ''}`} style={isOpen ? { transform: "translateX(0)" } : {}}>
                 <ul>
                     {navItems(locale).map((item, index) => {
-                        const isActive = pathname === item.href || pathname === `/${locale}${item.href.replace(locale, '')}`;
                         const isProductsItem = item.label === 'products';
                         const isOnProductPage = pathname.includes('/clinical-analysis') || pathname.includes('/food-beverage-analysis') || pathname.includes('/instrument');
-                        const shouldBeActive = isActive || (isProductsItem && productsOpen && isDesktop) || (isProductsItem && isOnProductPage);
+
+                        let shouldBeActive = false;
+                        if (isProductsItem) {
+                            shouldBeActive = isOnProductPage || (productsOpen && isDesktop);
+                        } else {
+                            shouldBeActive = pathname === item.href || pathname === `/${locale}${item.href.replace(locale, '')}`;
+                        }
 
                         return (
                             <li
@@ -136,8 +167,11 @@ export default function Header({ backgroundColor = 'transparent' }: HeaderProps)
                                 onClick={() => {
                                     if (isProductsItem && isDesktop) {
                                         setProductsOpen(!productsOpen);
+                                    } else {
+                                        window.location.href = item.href;
                                     }
                                 }}
+                                style={{ cursor: 'pointer' }}
                             >
                                 <Link href={item.href}>
                                     {t(item.label)}
