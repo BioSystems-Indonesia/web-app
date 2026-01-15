@@ -13,13 +13,13 @@ const intlMiddleware = createMiddleware({
 
 // Role-based route permissions
 const routePermissions: Record<string, string[]> = {
-  "/dashboard": ["ADMIN", "PRODUCT_SPECIALIST", "HUMAN_RESOURCE"],
-  "/dashboard/products": ["ADMIN", "PRODUCT_SPECIALIST"],
-  "/dashboard/posts": ["ADMIN", "PRODUCT_SPECIALIST"],
-  "/dashboard/events": ["ADMIN", "PRODUCT_SPECIALIST"],
-  "/dashboard/career": ["ADMIN", "HUMAN_RESOURCE"],
-  "/dashboard/contact": ["ADMIN"],
-  "/dashboard/users": ["ADMIN"],
+  "/dashboard": ["ADMIN", "PRODUCT_SPECIALIST", "HUMAN_RESOURCE", "DG"],
+  "/dashboard/products": ["ADMIN", "PRODUCT_SPECIALIST", "DG"],
+  "/dashboard/posts": ["ADMIN", "PRODUCT_SPECIALIST", "DG"],
+  // "/dashboard/events": ["ADMIN", "PRODUCT_SPECIALIST"],
+  // "/dashboard/career": ["ADMIN", "HUMAN_RESOURCE"],
+  // "/dashboard/contact": ["ADMIN"],
+  // "/dashboard/users": ["ADMIN"],
   "/dashboard/lis": ["ADMIN"],
 };
 
@@ -30,7 +30,7 @@ function redirectToLogin(req: NextRequest) {
 }
 
 function redirectToUnauthorized(req: NextRequest) {
-  return NextResponse.redirect(new URL("/id/dashboard", req.url));
+  return NextResponse.redirect(new URL("/id/", req.url));
 }
 
 export async function middleware(req: NextRequest) {
@@ -53,7 +53,7 @@ export async function middleware(req: NextRequest) {
       const userRole = payload.role as string;
 
       if (pathname.includes("/login")) {
-        return NextResponse.redirect(new URL("/id/dashboard", req.url));
+        return NextResponse.redirect(new URL("/id/dashboard/products", req.url));
       }
 
       // Check role-based access
