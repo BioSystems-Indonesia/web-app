@@ -14,8 +14,9 @@ header {
 }
 
 .logo {
+  font-weight: 200;
+  font-size: 1.8rem;
   display: none;
-  height: auto !important;
 }
 
 .header-info {

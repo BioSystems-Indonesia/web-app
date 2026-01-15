@@ -61,7 +61,7 @@ async function main() {
       roleId: adminRole.id,
       auth: {
         create: {
-          username: "admin",
+          username: "adminbiossystems",
           password: await bcrypt.hash("plmokn123", 10),
         },
       },

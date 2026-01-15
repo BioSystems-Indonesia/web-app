@@ -14,7 +14,6 @@ export class AuthenticationUseCase implements AuthenticationUseCase {
 
   async login(username: string, password: string): Promise<Token> {
     const userAuth = await this.authRepo.findByUsername(username);
-
     const isValid = await this.hasher.compare(password, userAuth.password);
     if (!isValid) {
       throw new AuthenticationError();
