@@ -1,8 +1,8 @@
 {
   "HomePage": {
-    "title": "Welcome to BioSystems Indonesia",
-    "description": "The best platform for biosystem management"
-  },
+  "title": "Welcome to BioSystems Indonesia",
+  "description": "BioSystems Indonesia provides laboratory instruments and reagents for clinical laboratories, hospitals, and medical facilities."
+},
   "Navigation": {
     "home": "Home",
     "dashboard": "Dashboard",

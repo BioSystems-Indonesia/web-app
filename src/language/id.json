@@ -1,8 +1,8 @@
 {
-  "HomePage": {
-    "title": "Selamat datang di BioSystems Indonesia",
-    "description": "Platform terbaik untuk manajemen biosistem"
-  },
+ "HomePage": {
+  "title": "Selamat datang di BioSystems Indonesia",
+  "description": "BioSystems Indonesia menyediakan alat laboratorium dan reagen untuk laboratorium klinik, rumah sakit, dan fasilitas medis."
+},
   "Navigation": {
     "home": "Beranda",
     "dashboard": "Dashboard",
