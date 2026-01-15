@@ -288,7 +288,7 @@ export default function Header({ backgroundColor = "transparent" }: HeaderProps)
                 <div className="user-role">{currentUser.role}</div>
               </div>
             ) : (
-              <div onClick={() => (window.location.href = `${locale}/login`)}>
+              <div onClick={() => (window.location.href = `/${locale}/login`)}>
                 <LoginLogo />
                 <p>{t("login")}</p>
               </div>
