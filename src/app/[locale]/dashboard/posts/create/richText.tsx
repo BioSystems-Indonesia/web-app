@@ -16,7 +16,6 @@ interface TiptapProps {
 
 const Tiptap: React.FC<TiptapProps> = ({ onChange, initialContent }) => {
   const [blocks, setBlocks] = useState<ContentBlock[]>([]);
-  const [activeBlockId, setActiveBlockId] = useState<string | null>(null);
 
   useEffect(() => {
     if (initialContent && blocks.length === 0) {
@@ -105,7 +104,6 @@ const Tiptap: React.FC<TiptapProps> = ({ onChange, initialContent }) => {
       content: "",
     };
     setBlocks([...blocks, newBlock]);
-    setActiveBlockId(newBlock.id);
   };
 
   const addImageBlock = () => {

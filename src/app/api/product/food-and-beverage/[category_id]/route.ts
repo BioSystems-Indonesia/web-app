@@ -5,30 +5,35 @@ import { HttpErrorHandler } from "@/lib/http/HTTPErrorHandler";
 import { WithAuth } from "@/lib/http/WithAuth";
 import { ProductUseCase } from "@/usecases/product/ProductUseCase";
 import { ProductType } from "@prisma/client";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 const productCategoryRepo = new ProductRepositoryPrisma();
 const productCategoryUseCase = new ProductUseCase(productCategoryRepo);
 
-export const GET = WithAuth(async (_req, ctx) => {
-  try {
-    const params = ctx?.params ? await ctx.params : undefined;
-    const categoryId = Number(params?.category_id);
+export const GET = WithAuth(
+  async (
+    _req: NextRequest,
+    ctx?: { params?: Promise<Record<string, string>> | Record<string, string> }
+  ) => {
+    try {
+      const params = ctx?.params ? await ctx.params : undefined;
+      const categoryId = Number(params?.category_id);
 
-    if (!categoryId || isNaN(categoryId)) {
-      return NextResponse.json(APIResponseBuilder.badRequest("Invalid category id"), {
-        status: HttpStatus.BAD_REQUEST,
+      if (!categoryId || isNaN(categoryId)) {
+        return NextResponse.json(APIResponseBuilder.badRequest("Invalid category id"), {
+          status: HttpStatus.BAD_REQUEST,
+        });
+      }
+
+      const result = await productCategoryUseCase.getByCategoryAndType(
+        ProductType.FOOD_AND_BEVERAGE,
+        categoryId
+      );
+      return NextResponse.json(APIResponseBuilder.success(result), {
+        status: HttpStatus.OK,
       });
+    } catch (error) {
+      return HttpErrorHandler.handle(error);
     }
-
-    const result = await productCategoryUseCase.getByCategoryAndType(
-      ProductType.FOOD_AND_BEVERAGE,
-      categoryId
-    );
-    return NextResponse.json(APIResponseBuilder.success(result), {
-      status: HttpStatus.OK,
-    });
-  } catch (error) {
-    return HttpErrorHandler.handle(error);
   }
-});
+);

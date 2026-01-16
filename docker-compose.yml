@@ -1,0 +1,17 @@
+services:
+  nextjs:
+    container_name: nextjs_app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env.production
+    networks:
+      - license-server_app_net
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+
+networks:
+  license-server_app_net:
+    external: true

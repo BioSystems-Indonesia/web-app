@@ -55,6 +55,17 @@ export default function ProductPage() {
     const [editingProduct, setEditingProduct] = useState<Product | null>(null);
     const [editingCategory, setEditingCategory] = useState<ProductCategory | null>(null);
     const [viewingProduct, setViewingProduct] = useState<Product | null>(null);
+
+    // Upload CSV state
+    const [showUploadModal, setShowUploadModal] = useState(false);
+    const [uploading, setUploading] = useState(false);
+    const [reagentFile, setReagentFile] = useState<File | null>(null);
+    const [variantFile, setVariantFile] = useState<File | null>(null);
+    interface UploadCreatedItem { productId: number; name: string }
+    interface UploadErrorItem { id: string; error: string }
+    interface UploadResult { message: string; productsCreated: number; variantsCreated: number; created: UploadCreatedItem[]; errors: UploadErrorItem[] }
+
+    const [uploadResult, setUploadResult] = useState<UploadResult | null>(null);
     const [filterType, setFilterType] = useState<ProductType | "ALL">("ALL");
     const [filterCategory, setFilterCategory] = useState<number | "ALL">("ALL");
     const [searchQuery, setSearchQuery] = useState("");
@@ -285,6 +296,55 @@ export default function ProductPage() {
         }, 300);
     };
 
+    const handleUploadSubmit = async (e?: React.FormEvent) => {
+        e?.preventDefault();
+        if (!reagentFile || !variantFile) {
+            alert('Please select both reagent.csv and variant.csv files');
+            return;
+        }
+
+        const form = new FormData();
+        form.append('reagent', reagentFile, 'reagent.csv');
+        form.append('variant', variantFile, 'variant.csv');
+
+        try {
+            setUploading(true);
+            setUploadResult(null);
+            const res = await axios.post('/api/product/import-csv', form, {
+                headers: { 'Content-Type': 'multipart/form-data' },
+            });
+
+            setUploadResult(res.data);
+            await fetchProducts();
+            await fetchCategories();
+        } catch (err: unknown) {
+            console.error('Upload failed', err);
+            let msg = 'Upload failed';
+            if (typeof err === 'object' && err !== null) {
+                // Axios error check
+                if (axios.isAxiosError && axios.isAxiosError(err)) {
+                    msg = err.response?.data?.message ?? err.message ?? msg;
+                } else if (err instanceof Error) {
+                    msg = err.message;
+                } else {
+                    msg = String(err);
+                }
+            } else if (err instanceof Error) {
+                msg = err.message;
+            }
+            alert(msg);
+        } finally {
+            setUploading(false);
+        }
+    };
+
+    const closeUploadModal = () => {
+        setShowUploadModal(false);
+        setReagentFile(null);
+        setVariantFile(null);
+        setUploadResult(null);
+    };
+
     const handleCategorySubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
@@ -353,9 +413,14 @@ export default function ProductPage() {
                 <h1>Product Management</h1>
                 <div className="header-actions">
                     {activeTab === "products" ? (
-                        <button className="btn-primary" onClick={() => openModal()}>
-                            + Add Product
-                        </button>
+                        <>
+                            <button className="btn-primary" onClick={() => openModal()}>
+                                + Add Product
+                            </button>
+                            <button className="btn-primary" onClick={() => setShowUploadModal(true)} style={{ marginLeft: '0.5rem', background: '#4CAF50' }}>
+                                + Upload CSV
+                            </button>
+                        </>
                     ) : (
                         <button className="btn-primary" onClick={() => openCategoryModal()}>
                             + Add Category
@@ -811,6 +876,67 @@ export default function ProductPage() {
                                 </button>
                                 <button type="submit" className="btn-submit">
                                     {editingCategory ? "Update" : "Create"}
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            )}
+
+            {/* Upload CSV modal */}
+            {showUploadModal && (
+                <div
+                    className={`modal-overlay ${isClosing ? "closing" : ""}`}
+                    onClick={closeUploadModal}
+                >
+                    <div
+                        className={`modal ${isClosing ? "closing" : ""}`}
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <div className="modal-header">
+                            <h2>Upload Products CSV</h2>
+                            <button className="modal-close" onClick={closeUploadModal}>
+                                ×
+                            </button>
+                        </div>
+
+                        <form onSubmit={handleUploadSubmit}>
+                            <div className="modal-body">
+                                <div className="form-group">
+                                    <label>Reagent CSV (reagent.csv)</label>
+                                    <input type="file" accept="text/csv,.csv" onChange={(e) => setReagentFile(e.target.files?.[0] ?? null)} required />
+                                </div>
+
+                                <div className="form-group">
+                                    <label>Variant CSV (variant.csv)</label>
+                                    <input type="file" accept="text/csv,.csv" onChange={(e) => setVariantFile(e.target.files?.[0] ?? null)} required />
+                                </div>
+
+                                {uploadResult && (
+                                    <div className="upload-result">
+                                        <p>Products created: {uploadResult.productsCreated}</p>
+                                        <p>Variants created: {uploadResult.variantsCreated}</p>
+                                        {uploadResult.errors && uploadResult.errors.length > 0 && (
+                                            <div>
+                                                <h4>Errors</h4>
+                                                <ul>
+                                                    {uploadResult.errors.map((err: UploadErrorItem, idx: number) => (
+                                                        <li key={idx}>{err.id}: {err.error}</li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                        )}
+                                    </div>
+                                )}
+
+                            </div>
+
+                            <div className="modal-footer">
+                                <button type="button" className="btn-cancel" onClick={closeUploadModal}>
+                                    Cancel
+                                </button>
+                                <button type="submit" className="btn-submit" disabled={uploading}>
+                                    {uploading ? 'Uploading...' : 'Upload'}
                                 </button>
                             </div>
                         </form>

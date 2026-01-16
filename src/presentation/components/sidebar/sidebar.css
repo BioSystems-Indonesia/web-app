@@ -1,7 +1,7 @@
 aside {
   margin-top: 4rem;
-  /* height: 91.5dvh; */
-  height: 100dvh;
+  /* height: 91.5vh; */
+  height: 100vh;
   position: fixed;
   z-index: 999;
   background-color: white;
@@ -57,7 +57,7 @@ ul li a:hover {
   pointer-events: none;
   position: fixed;
   width: 100dvw;
-  height: 100dvh;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.091);
   transition: opacity 0.3s ease; /* animasi */
 }

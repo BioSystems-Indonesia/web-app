@@ -24,6 +24,7 @@ import { MdArrowOutward } from "react-icons/md";
 
 import { InfiniteScrollHeader } from "@/presentation/home/whyChooseUs";
 import { useInfiniteScroll } from "@/presentation/home/whyChooseUs/hooks";
+import { useRouter } from 'next/navigation';
 
 import CTASection from "@/presentation/home/cta/CTASection";
 import Footer from "@/presentation/components/footer/footer";
@@ -75,172 +76,217 @@ export default function InstrumentBA200() {
     }, []);
 
     const { getTransform } = useInfiniteScroll();
-
+    const router = useRouter();
     return (
         <div className="ba200">
             <Header />
-            <div className={`hero ${animated ? "animated" : ""}`}>
-                <h1 className="ca-title" >
-                    <span className="line-1">{t('heroTitle1')}</span>
-                    <span className="line-2">{t('heroTitle2')}</span>
-                </h1>
-                <div className="line-vertical"></div>
-                <p className="text">{t('heroDesc')}</p>
-            </div>
-            <div className="container-hero-images">
-                <Image src={BA1Img} alt="BioSystems BA200 Analyzer" />
-                <Image src={BA2Img} alt="BioSystems BA200 Analyzer" />
-            </div>
-            <div className="barrier">
-                <p>{t('barrierLabel')}</p>
-                <h3>{t('barrierTitle')}</h3>
-            </div>
-            <article className="article">
-                <motion.div {...fadeUp}>
-                    <div className="wrapper">
-                        <Image src={BACenter} alt="BioSystem BA200 Analyzer" width={1571} className="center" />
+            <main>
+                <section aria-labelledby="hero-heading">
+                    <h1 className="sr-only" id="hero-heading">{t('heroTitle1')} {t('heroTitle2')}</h1>
+                    <div className={`hero ${animated ? "animated" : ""}`}>
+                        <div className="ca-title" role="heading" aria-level={1}>
+                            <span className="line-1">{t('heroTitle1')}</span>
+                            <span className="line-2">{t('heroTitle2')}</span>
+                        </div>
+                        <div className="line-vertical"></div>
+                        <p className="text">{t('heroDesc')}</p>
                     </div>
-                </motion.div>
-                <div className="content">
-                    <motion.div {...fadeRight}>
-                        <div className="specs">
-                            <Image src={BASpecs1} alt="BA200 Spesification"></Image>
-                            <h2>{t('spec1Title')}</h2>
-                            <p>{t('spec1Desc')}</p>
-                        </div>
-                    </motion.div>
-                    <motion.div {...fadeUp}>
-                        <div className="specs">
-                            <Image src={BASpecs2} alt="BA200 Spesification"></Image>
-                            <h2>{t('spec2Title')}</h2>
-                            <p>{t('spec2Desc')}</p>
-                        </div>
-                    </motion.div>
-                    <motion.div {...fadeLeft}>
-                        <div className="specs">
-                            <Image src={BASpecs3} alt="BA200 Spesification"></Image>
-                            <h2>{t('spec3Title')}</h2>
-                            <p>{t('spec3Desc')}</p>
-                        </div>
-                    </motion.div>
-                </div>
-            </article>
-            <div className="specs-dimension">
-                <div className="analyzer-images">
-                    <div className="length">
-                        <p>1070 mm</p>
-                        <Image src={DimensionImg1} alt="BA200 Dimension Length" />
+                </section>
+                <section aria-labelledby="images-heading">
+                    <h2 className="sr-only" id="images-heading">BioSystems BA200 Product Images</h2>
+                    <div className="container-hero-images">
+                        <Image src={BA1Img} alt="BioSystems BA200 Analyzer" />
+                        <Image src={BA2Img} alt="BioSystems BA200 Analyzer" />
                     </div>
-                    <div className="width">
+                </section>
+                <section aria-labelledby="barrier-heading">
+                    <h2 className="sr-only" id="barrier-heading">{t('barrierLabel')} {t('barrierTitle')}</h2>
+                    <div className="barrier">
+                        <p>{t('barrierLabel')}</p>
+                        <h3>{t('barrierTitle')}</h3>
+                    </div>
+                </section>
+                <section aria-labelledby="specifications-heading">
+                    <h2 className="sr-only" id="specifications-heading">Technical Specifications</h2>
+                    <article className="article">
+                        <motion.div {...fadeRight}>
+                            <div className="wrapper">
+                                <Image src={BACenter} alt="BioSystem BA200 Analyzer" className="center" />
+                            </div>
+                        </motion.div>
+                        <div className="content">
+                            <motion.div {...fadeUp}>
+                                <div className="specs">
+                                    <Image src={BASpecs1} alt="BA200 Spesification"></Image>
+                                    <h2>{t('spec1Title')}</h2>
+                                    <p>{t('spec1Desc')}</p>
+                                </div>
+                            </motion.div>
+                            <motion.div {...fadeUp}>
+                                <div className="specs">
+                                    <Image src={BASpecs2} alt="BA200 Spesification"></Image>
+                                    <h2>{t('spec2Title')}</h2>
+                                    <p>{t('spec2Desc')}</p>
+                                </div>
+                            </motion.div>
+                            <motion.div {...fadeUp}>
+                                <div className="specs">
+                                    <Image src={BASpecs3} alt="BA200 Spesification"></Image>
+                                    <h2>{t('spec3Title')}</h2>
+                                    <p>{t('spec3Desc')}</p>
+                                </div>
+                            </motion.div>
+                        </div>
+                    </article>
+                </section>
+                <section aria-labelledby="dimension-heading">
+                    <h2 className="sr-only" id="dimension-heading">Dimensions and Size</h2>
+                    <div className="specs-dimension">
+                        <div className="analyzer-images">
+                            <div className="length">
+                                <p>1070 mm</p>
+                                <Image src={DimensionImg1} alt="BA200 Dimension Length" />
+                            </div>
+                            <div className="width">
+                                <div>
+                                    <p>690 mm</p>
+                                    <Image src={DimensionImg2} alt="BA200 Dimension Width" />
+                                </div>
+                                <p className="height">680 mm</p>
+                            </div>
+                        </div>
+                        <article>
+                            <h3>{t('dimensionTitle')}</h3>
+                            <p>{t('dimensionDesc')}</p>
+                        </article>
+                    </div>
+                </section>
+                <section aria-labelledby="product-highlight">
+                    <div className="barrier2">
+                        <motion.div {...fadeLeft}>
+                            <h2 id="product-highlight">{t('heroTitle2')}</h2>
+                        </motion.div>
+                    </div>
+                </section>
+                <section aria-labelledby="detail-images-heading">
+                    <h2 className="sr-only" id="detail-images-heading">Product Detail Images</h2>
+                    <div className="images-detail">
+                        <div className="card-images">
+                            <Image src={Detail1} alt="Detail Spesification" />
+                            <Image src={Detail2} alt="Detail Spesification" />
+                        </div>
+                    </div>
+                </section>
+                <section aria-labelledby="product-details-heading">
+                    <h2 className="sr-only" id="product-details-heading">Complete Product Details</h2>
+                    <div className="specs-detail">
                         <div>
-                            <p>690 mm</p>
-                            <Image src={DimensionImg2} alt="BA200 Dimension Width" />
+                            <div className="title first">
+                                <h3>01 Product Description</h3>
+                            </div>
+                            <div className="body">
+                                <p className="desc">{t('productDesc')}</p>
+                            </div>
                         </div>
-                        <p className="height">680 mm</p>
+                        <div>
+                            <div className="title">
+                                <h3>02 {t('specsTitle')}</h3>
+                            </div>
+                            <div className="body">
+                                <ul className="spec-list">
+                                    <li>{t('dimensions')}</li>
+                                    <li>{t('weight')}</li>
+                                    <li>{t('throughput')}</li>
+                                    <li>{t('lightSource')}</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div>
+                            <div className="title">
+                                <h3>03 {t('reference')}</h3>
+                            </div>
+                            <div className="body">
+                                <p className="code">83200/83200ISE</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <article>
-                    <h2>{t('dimensionTitle')}</h2>
-                    <p>{t('dimensionDesc')}</p>
-                </article>
-            </div>
-            <div className="barrier2">
-                <motion.div {...fadeLeft}>
-                    <h1>BA200</h1>
-                </motion.div>
-            </div>
-            <div className="images-detail">
-                <div className="card-images">
-                    <Image src={Detail1} alt="Detail Spesification" />
-                    <Image src={Detail2} alt="Detail Spesification" />
-                </div>
-            </div>
-            <div className="specs-detail">
-                <div>
-                    <div className="title first">
-                        <h2>01 Product Description</h2>
-                    </div>
-                    <div className="body">
-                        <p className="desc">{t('productDesc')}</p>
-                    </div>
-                </div>
-                <div>
-                    <div className="title">
-                        <h2>02 {t('specsTitle')}</h2>
-                    </div>
-                    <div className="body">
-                        <ul className="spec-list">
-                            <li>{t('dimensions')}</li>
-                            <li>{t('weight')}</li>
-                            <li>{t('throughput')}</li>
-                            <li>{t('lightSource')}</li>
-                        </ul>
-                    </div>
-                </div>
-                <div>
-                    <div className="title">
-                        <h2>03 {t('reference')}</h2>
-                    </div>
-                    <div className="body">
-                        <p className="code">83200/83200ISE</p>
-                    </div>
-                </div>
-            </div>
-            <div className="related-products">
-                <h2>{t('relatedProducts')}</h2>
-                <h2 className="tags">{t('relatedProductsTag')}</h2>
+                </section>
+                <section aria-labelledby="related-products-heading">
+                    <div className="related-products">
+                        <h2 id="related-products-heading">{t('relatedProducts')}</h2>
+                        <h3 className="tags">{t('relatedProductsTag')}</h3>
 
-                <div className="container">
-                    <div className="card">
-                        <div className="head">
-                            <div className="title">
-                                <p>{t('analyzer')}</p>
-                                <h3>BA200</h3>
+                        <div className="container">
+                            <div
+                                className="card"
+                                role="link"
+                                tabIndex={0}
+                                onClick={() => router.push('/instrument/ba400')}
+                                onKeyDown={(e) => { if ((e as React.KeyboardEvent).key === 'Enter') router.push('/instrument/ba400'); }}
+                            >
+                                <div className="head">
+                                    <div className="title">
+                                        <p>{t('analyzer')}</p>
+                                        <h3>BA400</h3>
+                                    </div>
+                                    <MdArrowOutward size={28} className="icon-outward" />
+                                </div>
+                                <div className="content">
+                                    <p>{t('ba400Desc')}</p>
+                                </div>
+                                <div className="code">
+                                    <p>{t('code')}</p>
+                                    <h4>83400/83400ISE</h4>
+                                </div>
                             </div>
-                            <MdArrowOutward size={28} className="icon-outward" />
-                        </div>
-                        <div className="content">
-                            <p>{t('ba400Desc')}</p>
-                        </div>
-                        <div className="code">
-                            <p>{t('code')}</p>
-                            <h4>83400/83400ISE</h4>
+                            <div
+                                className="card"
+                                role="link"
+                                tabIndex={0}
+                                onClick={() => router.push('/instrument/a15')}
+                                onKeyDown={(e) => { if ((e as React.KeyboardEvent).key === 'Enter') router.push('/instrument/a15'); }}
+                            >
+                                <div className="head">
+                                    <div className="title">
+                                        <p>{t('analyzer')}</p>
+                                        <h3>A15</h3>
+                                    </div>
+                                    <MdArrowOutward size={28} className="icon-outward" />
+                                </div>
+                                <div className="content">
+                                    <p>{t('a15Desc')}</p>
+                                </div>
+                                <div className="code">
+                                    <p>{t('code')}</p>
+                                    <h4>83105</h4>
+                                </div>
+                            </div>
+                            <div
+                                className="card"
+                                role="link"
+                                tabIndex={0}
+                                onClick={() => router.push('/instrument/bts')}
+                                onKeyDown={(e) => { if ((e as React.KeyboardEvent).key === 'Enter') router.push('/instrument/bts'); }}
+                            >
+                                <div className="head">
+                                    <div className="title">
+                                        <p>{t('analyzer')}</p>
+                                        <h3>BTS</h3>
+                                    </div>
+                                    <MdArrowOutward size={28} className="icon-outward" />
+                                </div>
+                                <div className="content">
+                                    <p>{t('btsDesc')}</p>
+                                </div>
+                                <div className="code">
+                                    <p>{t('code')}</p>
+                                    <h4>83000</h4>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div className="card">
-                        <div className="head">
-                            <div className="title">
-                                <p>{t('analyzer')}</p>
-                                <h3>A15</h3>
-                            </div>
-                            <MdArrowOutward size={28} className="icon-outward" />
-                        </div>
-                        <div className="content">
-                            <p>{t('a15Desc')}</p>
-                        </div>
-                        <div className="code">
-                            <p>{t('code')}</p>
-                            <h4>83105</h4>
-                        </div>
-                    </div>
-                    <div className="card">
-                        <div className="head">
-                            <div className="title">
-                                <p>{t('analyzer')}</p>
-                                <h3>BTS</h3>
-                            </div>
-                            <MdArrowOutward size={28} className="icon-outward" />
-                        </div>
-                        <div className="content">
-                            <p>{t('btsDesc')}</p>
-                        </div>
-                        <div className="code">
-                            <p>{t('code')}</p>
-                            <h4>83000</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                </section>
+            </main>
             <InfiniteScrollHeader title={t('contactUs')} transform={getTransform()} />
             <CTASection />
             <Footer bgColor="#ff5a00" />

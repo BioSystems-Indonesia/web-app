@@ -5,7 +5,8 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
 }
 
 datasource db {
@@ -17,7 +18,7 @@ enum UserRole {
   HUMAN_RESOURCE
   PRODUCT_SPECIALIST
   ADMIN
-  DG_DGM
+  DG
 }
 
 model User {
@@ -56,15 +57,14 @@ model Role {
 }
 
 model Article {
-  id        String  @id @default(cuid())
-  authorId  String
-  title     String
-  subTitle  String
-  slug      String  @unique
-  excerpt   String? @db.VarChar(255)
-  heroImage String? @db.VarChar(500)
-  author    User    @relation(fields: [authorId], references: [id])
-
+  id          String        @id @default(cuid())
+  authorId    String
+  title       String
+  subTitle    String
+  slug        String        @unique
+  excerpt     String?       @db.LongText
+  heroImage   String?       @db.VarChar(500)
+  author      User          @relation(fields: [authorId], references: [id])
   contentHtml String        @db.LongText
   references  String?       @db.Text
   status      ArticleStatus @default(DRAFT)

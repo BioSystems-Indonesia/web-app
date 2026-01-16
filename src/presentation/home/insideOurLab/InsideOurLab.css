@@ -83,7 +83,7 @@
 /* Tablet styles - 768px and up */
 @media (min-width: 768px) {
   .inside-our-lab {
-    min-height: 70dvh;
+    min-height: 70vh;
     padding: 2rem;
   }
 
@@ -125,7 +125,7 @@
 /* Desktop styles - 1024px and up */
 @media (min-width: 1024px) {
   .inside-our-lab {
-    height: 100dvh;
+    height: 100vh;
     min-height: 600px;
     padding: 0;
   }
@@ -174,7 +174,7 @@
 /* Large desktop - 1440px and up */
 @media (min-width: 1440px) {
   .inside-our-lab {
-    height: 100dvh;
+    height: 100vh;
   }
 
   .inside-our-lab .container {

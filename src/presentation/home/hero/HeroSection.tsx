@@ -7,12 +7,27 @@ import BgHero2 from "@/assets/img/home/bg-hero-2.png";
 import BgHero3 from "@/assets/img/home/bg-hero-3.png";
 import type { CarouselSlide } from "@/presentation/home/hero/types";
 import "./HeroSection.css";
+import { useEffect } from "react";
 
 interface HeroSectionProps {
     slides?: CarouselSlide[];
 }
 
+
 export default function HeroSection({ slides }: HeroSectionProps) {
+    useEffect(() => {
+        const setVH = () => {
+            document.documentElement.style.setProperty(
+                '--vh',
+                `${window.innerHeight * 0.01}px`
+            )
+        }
+
+        setVH()
+        window.addEventListener('resize', setVH)
+        return () => window.removeEventListener('resize', setVH)
+    }, [])
+
     const t = useTranslations("Home");
 
     const defaultSlides: CarouselSlide[] = [

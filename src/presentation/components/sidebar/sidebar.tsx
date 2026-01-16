@@ -25,12 +25,12 @@ type NavItem = {
 };
 
 const getNavItems = (locale: string): NavItem[] => [
-    { href: `/${locale}/dashboard`, label: "Home", icon: <FaHome />, roles: ["ADMIN", "PRODUCT_SPECIALIST", "HUMAN_RESOURCE"] },
-    { href: `/${locale}/dashboard/products`, label: "Products", icon: <BsBox2 />, roles: ["ADMIN", "PRODUCT_SPECIALIST"] },
-    { href: `/${locale}/dashboard/posts`, label: "Articles", icon: <FaNewspaper />, roles: ["ADMIN", "PRODUCT_SPECIALIST"] },
-    { href: `/${locale}/dashboard/events`, label: "Events", icon: <MdEventAvailable />, roles: ["ADMIN", "PRODUCT_SPECIALIST"] },
-    { href: `/${locale}/dashboard/career`, label: "Career", icon: <IoBagSharp />, roles: ["ADMIN", "HUMAN_RESOURCE"] },
-    { href: `/${locale}/dashboard/contact`, label: "Contact", icon: <IoCall />, roles: ["ADMIN"] },
+    // { href: `/${locale}/dashboard`, label: "Home", icon: <FaHome />, roles: ["ADMIN", "PRODUCT_SPECIALIST", "HUMAN_RESOURCE"] },
+    { href: `/${locale}/dashboard/products`, label: "Products", icon: <BsBox2 />, roles: ["ADMIN", "PRODUCT_SPECIALIST", "DG"] },
+    { href: `/${locale}/dashboard/posts`, label: "Articles", icon: <FaNewspaper />, roles: ["ADMIN", "PRODUCT_SPECIALIST", "DG"] },
+    // { href: `/${locale}/dashboard/events`, label: "Events", icon: <MdEventAvailable />, roles: ["ADMIN", "PRODUCT_SPECIALIST"] },
+    // { href: `/${locale}/dashboard/career`, label: "Career", icon: <IoBagSharp />, roles: ["ADMIN", "HUMAN_RESOURCE"] },
+    // { href: `/${locale}/dashboard/contact`, label: "Contact", icon: <IoCall />, roles: ["ADMIN"] },
     { href: `/${locale}/dashboard/users`, label: "Users", icon: <FaUser />, roles: ["ADMIN"] },
     { href: `/${locale}/dashboard/lis`, label: "LIS Dashboard", icon: <SlChemistry />, roles: ["ADMIN"] },
 ];

@@ -6,27 +6,47 @@ import CTASection from "@/presentation/home/cta/CTASection";
 import Footer from "@/presentation/components/footer/footer";
 
 import type { Article as ArticleEntity } from "@/domain/entities/Article";
-import { ArticleRepositoryPrisma } from "@/infrastructure/article/ArticleRepository";
-import { NotFoundError } from "@/lib/http/error";
+import { headers } from "next/headers";
+import axios from "axios";
 import { generateCanonicalUrl, generateHrefLang, generateSEOMetadata } from "@/lib/seo/generateMetadata";
-import { ArticleUseCase } from "@/usecases/article/ArticleUseCase";
 
 interface PageProps {
     params: Promise<{ locale: string; slug: string }>;
 }
 
-const articleRepo = new ArticleRepositoryPrisma();
-const articleUseCase = new ArticleUseCase(articleRepo);
+async function getBaseUrl(): Promise<string> {
+    const hdrs = await headers();
+    const host = hdrs.get("host");
+    const proto = hdrs.get("x-forwarded-proto") ?? "http";
+
+    if (host) return `${proto}://${host}`;
+
+    return (
+        process.env.NEXT_PUBLIC_SITE_URL ?? process.env.NEXTAUTH_URL ?? `http://localhost:${process.env.PORT ?? 3000}`
+    );
+}
 
 async function getArticle(slug: string): Promise<ArticleEntity> {
-    try {
-        return await articleUseCase.getBySlug(slug);
-    } catch (error) {
-        if (error instanceof NotFoundError) {
-            notFound();
-        }
-        throw error;
+    const base = await getBaseUrl();
+    const url = new URL(`/api/article/public/${encodeURIComponent(slug)}`, base).toString();
+    const res = await axios.get(url, { validateStatus: () => true });
+
+    if (res.status === 404) {
+        notFound();
     }
+
+    if (res.status < 200 || res.status >= 300) {
+        throw new Error(`Failed to fetch article: ${res.status} ${res.statusText || res.status}`);
+    }
+
+    const payload = res.data || {};
+    const article = payload.data ?? payload;
+
+    return {
+        ...article,
+        createdAt: new Date(article.createdAt),
+        updatedAt: new Date(article.updatedAt),
+    } as ArticleEntity;
 }
 
 function stripOuterArticleContentWrapper(html: string): string {
@@ -47,12 +67,28 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     const canonical = generateCanonicalUrl(locale, `/article/${slug}`);
 
     try {
-        const article = await articleUseCase.getBySlug(slug);
+        const base = await getBaseUrl();
+        const url = new URL(`/api/article/public/${encodeURIComponent(slug)}`, base).toString();
+        const res = await axios.get(url, { validateStatus: () => true });
+        if (res.status === 404) {
+            return {
+                title: "Article not found | Biosystems Indonesia",
+                description: "Article not found",
+                robots: { index: false, follow: false },
+            } as Metadata;
+        }
+
+        if (res.status < 200 || res.status >= 300) {
+            throw new Error(`Failed to fetch article metadata: ${res.status} ${res.statusText || res.status}`);
+        }
+
+        const payload = res.data || {};
+        const article = payload.data ?? payload;
         const title = `${article.title} | Biosystems Indonesia`;
         const description = article.excerpt || article.subTitle;
-        const image = article.heroImage || "https://biosystems.id/logo/biosystems-logo.png";
+        const image = article.heroImage || "https://biosystems.id/logo.png";
 
-        const base = generateSEOMetadata({
+        const baseMeta = generateSEOMetadata({
             title,
             description,
             locale,
@@ -61,29 +97,23 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         });
 
         return {
-            ...base,
+            ...baseMeta,
             openGraph: {
-                ...base.openGraph,
+                ...baseMeta.openGraph,
                 type: "article",
                 url: canonical,
                 images: [{ url: image }],
-                publishedTime: article.createdAt.toISOString(),
-                modifiedTime: article.updatedAt.toISOString(),
+                publishedTime: new Date(article.createdAt).toISOString(),
+                modifiedTime: new Date(article.updatedAt).toISOString(),
                 authors: [article.author.name],
             },
             twitter: {
-                ...base.twitter,
+                ...baseMeta.twitter,
                 images: [image],
             },
         };
     } catch (error) {
-        if (error instanceof NotFoundError) {
-            return {
-                title: "Article not found | Biosystems Indonesia",
-                description: "Article not found",
-                robots: { index: false, follow: false },
-            };
-        }
+        console.log(error)
 
         return generateSEOMetadata({
             title: "Article | Biosystems Indonesia",
@@ -100,8 +130,8 @@ export default async function ArticlePage({ params }: PageProps) {
     const article = await getArticle(slug);
 
     const canonical = generateCanonicalUrl(locale, `/article/${article.slug}`);
-    const image = article.heroImage || "https://biosystems.id/logo/biosystems-logo.png";
-
+    const image = article.heroImage || "https://biosystems.id/logo.png";
+    console.log(article)
     const structuredData = {
         "@context": "https://schema.org",
         "@type": "Article",
@@ -117,7 +147,7 @@ export default async function ArticlePage({ params }: PageProps) {
             name: "Biosystems Indonesia",
             logo: {
                 "@type": "ImageObject",
-                url: "https://biosystems.id/logo/biosystems-logo.png",
+                url: "https://biosystems.id/logo.png",
             },
         },
         datePublished: article.createdAt.toISOString(),

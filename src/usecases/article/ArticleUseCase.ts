@@ -1,8 +1,9 @@
-import { ArticleRequest } from "@/domain/dto/Article";
+import { ArticleRequest, ArticleSummary } from "@/domain/dto/Article";
 import { Article } from "@/domain/entities/Article";
+import { User } from "@/domain/entities/User";
 import { ArticleRepository } from "@/domain/repositories/ArticleRepository";
 import { ValidationError } from "@/lib/http/error";
-import { ArticleStatus } from "@prisma/client";
+import { ArticleStatus, UserRole } from "@prisma/client";
 
 export class ArticleUseCase {
   constructor(private readonly repo: ArticleRepository) {}
@@ -57,16 +58,16 @@ export class ArticleUseCase {
     }
 
     const slug = this.generateSlug(req.title);
-    const excerpt = this.generateExcerpt(req.contentHtml);
+
     const article = new Article(
       "",
       req.authorId,
       req.title,
       req.subTitle,
       slug,
-      excerpt,
+      req.excerpt ?? "",
       req.heroImage ?? null,
-      {} as any,
+      new User("", "", "", UserRole.ADMIN, "", new Date(), new Date()),
       req.contentHtml,
       req.references ?? null,
       req.status as ArticleStatus,
@@ -85,8 +86,39 @@ export class ArticleUseCase {
     return await this.repo.getBySlug(slug);
   }
 
+  async getBySlugAdmin(slug: string) {
+    if (!slug?.trim()) {
+      throw new ValidationError("Slug is required");
+    }
+
+    return await this.repo.getBySlugAdmin(slug);
+  }
+
   async getAll() {
     return await this.repo.getAll();
+  }
+
+  async getAllPublished(): Promise<ArticleSummary[]> {
+    const articles = await this.repo.getAllPublished();
+    return articles.map((a) => ({
+      title: a.title,
+      excerpt: a.excerpt,
+      createdAt: a.createdAt,
+      heroImage: a.heroImage ?? null,
+      slug: a.slug,
+    }));
+  }
+
+  async getFourArticle(): Promise<ArticleSummary[]> {
+    const articles = await this.repo.getFourArticle();
+    return articles.map((a) => ({
+      title: a.title,
+      excerpt: a.excerpt,
+      createdAt: a.createdAt,
+      heroImage: a.heroImage ?? null,
+      slug: a.slug,
+      subTitle: a.subTitle,
+    }));
   }
 
   async update(slug: string, req: ArticleRequest) {
@@ -116,7 +148,7 @@ export class ArticleUseCase {
       newSlug,
       excerpt,
       req.heroImage ?? null,
-      {} as any,
+      new User("", "", "", UserRole.ADMIN, "", new Date(), new Date()),
       req.contentHtml,
       req.references ?? null,
       req.status as ArticleStatus,

@@ -457,6 +457,6 @@
   }
 
   .card td.analyzer-cell .analyzer {
-    max-width: 16rem; /* default width */
+    max-width: 30rem; /* default width */
   }
 }

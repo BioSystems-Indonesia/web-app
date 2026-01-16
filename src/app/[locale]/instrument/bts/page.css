@@ -21,7 +21,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 40dvh;
+  height: 40vh;
   padding: 20px;
   position: relative;
 }
@@ -103,7 +103,7 @@
 @media (min-width: 768px) {
   .bts .hero {
     padding: 60px;
-    height: 60dvh;
+    height: 60vh;
   }
 
   .bts .hero .ca-title {
@@ -136,7 +136,7 @@
 @media (min-width: 1024px) {
   .bts .hero {
     padding: 120px;
-    height: 80dvh;
+    height: 80vh;
   }
 
   .bts .hero .ca-title {
@@ -168,7 +168,7 @@
 @media (min-width: 1440px) {
   .bts .hero {
     padding: 210px;
-    height: 100dvh;
+    height: 100vh;
   }
 
   .bts .hero .ca-title {
@@ -752,7 +752,7 @@
 @media (min-width: 1440px) {
   .bts .images-detail {
     padding: 82px 158px;
-    height: 100dvh;
+    height: 100vh;
   }
 
   .bts .images-detail .card-images {
@@ -866,11 +866,11 @@
     font-size: 36px;
   }
 
-  .bts .specs-detail .title h2 {
+  .bts .specs-detail .title h3 {
     font-size: 28px;
   }
 
-  .bts .specs-detail .title h2:last-child {
+  .bts .specs-detail .title h3:last-child {
     width: 20rem;
   }
 
@@ -907,11 +907,11 @@
     font-size: 42px;
   }
 
-  .bts .specs-detail .title h2 {
+  .bts .specs-detail .title h3 {
     font-size: 32px;
   }
 
-  .bts .specs-detail .title h2:last-child {
+  .bts .specs-detail .title h3:last-child {
     width: 26rem;
   }
 
@@ -945,11 +945,11 @@
     font-size: 48px;
   }
 
-  .bts .specs-detail .title h2 {
+  .bts .specs-detail .title h3 {
     font-size: 36px;
   }
 
-  .bts .specs-detail .title h2:last-child {
+  .bts .specs-detail .title h3:last-child {
     width: 31rem;
   }
 

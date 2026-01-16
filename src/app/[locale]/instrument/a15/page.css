@@ -20,7 +20,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 40dvh;
+  height: 40vh;
   padding: 20px;
   position: relative;
 }
@@ -102,7 +102,7 @@
 @media (min-width: 768px) {
   .a15 .hero {
     padding: 60px;
-    height: 60dvh;
+    height: 60vh;
   }
 
   .a15 .hero .ca-title {
@@ -135,7 +135,7 @@
 @media (min-width: 1024px) {
   .a15 .hero {
     padding: 120px;
-    height: 80dvh;
+    height: 80vh;
   }
 
   .a15 .hero .ca-title {
@@ -167,7 +167,7 @@
 @media (min-width: 1440px) {
   .a15 .hero {
     padding: 210px;
-    height: 100dvh;
+    height: 100vh;
   }
 
   .a15 .hero .ca-title {
@@ -750,7 +750,7 @@
 @media (min-width: 1440px) {
   .a15 .images-detail {
     padding: 82px 158px;
-    height: 100dvh;
+    height: 100vh;
   }
 
   .a15 .images-detail .card-images {
@@ -994,6 +994,7 @@
   color: #c7c7c7 !important;
   font-size: 18px;
   padding-left: 2px;
+  font-weight: 500;
 }
 
 .a15 .related-products .container {

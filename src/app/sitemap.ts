@@ -1,6 +1,9 @@
 import { MetadataRoute } from "next";
 import { ArticleRepositoryPrisma } from "@/infrastructure/article/ArticleRepository";
 
+// Make sitemap dynamic at request time to avoid requiring DB during build
+export const dynamic = "force-dynamic";
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://biosystems.id";
   const lastModified = new Date();
@@ -52,10 +55,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: "/career", priority: 0.7, changeFrequency: "weekly" as const, lastModified: undefined },
   ];
 
-  // Fetch all published articles
-  const articleRepo = new ArticleRepositoryPrisma();
-  const articles = await articleRepo.getAll();
-  const publishedArticles = articles.filter((article) => article.status === "PUBLISHED");
+  // Fetch all published articles (fail-safe: if DB is unavailable during build, continue with empty list)
+  let publishedArticles: { slug: string; updatedAt: Date; status: string }[] = [];
+  try {
+    const articleRepo = new ArticleRepositoryPrisma();
+    const articles = await articleRepo.getAll();
+    publishedArticles = articles.filter((article) => article.status === "PUBLISHED");
+  } catch (err) {
+    console.error("Failed to load articles for sitemap (DB unavailable at build-time):", err);
+    publishedArticles = [];
+  }
 
   // Generate article routes
   const articleRoutes = publishedArticles.map((article) => ({

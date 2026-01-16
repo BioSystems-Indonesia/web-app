@@ -1,12 +1,16 @@
 import { Article } from "@/domain/entities/Article";
 import { User } from "@/domain/entities/User";
 import { ArticleRepository } from "@/domain/repositories/ArticleRepository";
-import { ArticleStatus, UserRole } from "@prisma/client";
+import { ArticleStatus, UserRole, Prisma } from "@prisma/client";
 import { prisma } from "../prisma/PrismaClient";
 import { NotFoundError } from "@/lib/http/error";
 
 export class ArticleRepositoryPrisma implements ArticleRepository {
-  private mapToArticle(articlePrisma: any): Article {
+  private mapToArticle(
+    articlePrisma: Prisma.ArticleGetPayload<{
+      include: { author: { include: { role: true; auth: true } } };
+    }>
+  ): Article {
     return new Article(
       articlePrisma.id,
       articlePrisma.author.id,
@@ -32,6 +36,51 @@ export class ArticleRepositoryPrisma implements ArticleRepository {
     );
   }
 
+  async getAllPublished(): Promise<Article[]> {
+    const articles = await prisma.article.findMany({
+      where: {
+        deletedAt: null,
+        status: ArticleStatus.PUBLISHED,
+      },
+      include: {
+        author: {
+          include: {
+            role: true,
+            auth: true,
+          },
+        },
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+
+    return articles.map((article) => this.mapToArticle(article));
+  }
+
+  async getFourArticle(): Promise<Article[]> {
+    const articles = await prisma.article.findMany({
+      where: {
+        deletedAt: null,
+        status: ArticleStatus.PUBLISHED,
+      },
+      include: {
+        author: {
+          include: {
+            role: true,
+            auth: true,
+          },
+        },
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+      take: 4,
+    });
+
+    return articles.map((article) => this.mapToArticle(article));
+  }
+
   async create(article: Article): Promise<Article> {
     const count = await prisma.article.count({
       where: {
@@ -52,6 +101,7 @@ export class ArticleRepositoryPrisma implements ArticleRepository {
         author: {
           connect: { id: article.authorId },
         },
+        status: article.status,
         excerpt: article.excerpt,
         heroImage: article.heroImage,
         contentHtml: article.contentHtml,
@@ -70,6 +120,29 @@ export class ArticleRepositoryPrisma implements ArticleRepository {
     return this.mapToArticle(articlePrisma);
   }
   async getBySlug(slug: string): Promise<Article> {
+    const articlePrisma = await prisma.article.findFirst({
+      where: {
+        slug: slug,
+        status: ArticleStatus.PUBLISHED,
+        deletedAt: null,
+      },
+      include: {
+        author: {
+          include: {
+            role: true,
+            auth: true,
+          },
+        },
+      },
+    });
+
+    if (!articlePrisma) {
+      throw new NotFoundError(`Article with slug '${slug}' not found`);
+    }
+
+    return this.mapToArticle(articlePrisma);
+  }
+  async getBySlugAdmin(slug: string): Promise<Article> {
     const articlePrisma = await prisma.article.findFirst({
       where: {
         slug: slug,

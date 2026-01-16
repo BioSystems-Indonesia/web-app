@@ -8,62 +8,97 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100dvh;
-  padding: 261px;
+  height: 40vh;
   position: relative;
 }
 
-/* Initial state: h1 centered, line and text hidden */
 .clinical-analysis .hero .ca-title {
   display: flex;
   flex-direction: column;
-  align-items: start;
-  font-size: 160px;
+  align-items: center;
+  font-size: 60px;
   color: white;
   font-weight: 400;
-  transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translateX(370px);
-}
-
-.clinical-analysis .hero .ca-title span:first-child {
-  transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translateX(30px);
-}
-
-.clinical-analysis .hero .line-vertical {
-  height: 250px;
-  margin: 0 70px;
-  width: 1.2rem;
-  background-color: white;
-  opacity: 0;
-  transform: translateX(-100px);
-  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .clinical-analysis .hero .text {
-  font-size: 40px;
-  color: white;
-  font-weight: 200;
-  opacity: 0;
-  transform: translateX(-100px);
-  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+  display: none;
 }
 
-/* Animated state: after 1 second */
-.clinical-analysis .hero.animated .ca-title {
-  transform: translateX(0);
+@media (min-width: 768px) {
+  .clinical-analysis .hero {
+    height: 60vh;
+  }
+
+  .clinical-analysis .hero .ca-title {
+    font-size: 80px;
+  }
 }
 
-.clinical-analysis .hero.animated .ca-title span {
-  transform: translateX(0);
+@media (min-width: 1024) {
+  .clinical-analysis .hero {
+    height: 80vh;
+  }
+
+  .clinical-analysis .hero .ca-title {
+    font-size: 120px;
+  }
 }
 
-.clinical-analysis .hero.animated .line-vertical {
-  opacity: 1;
-  transform: translateX(0);
-}
+@media (min-width: 1440px) {
+  .clinical-analysis .hero {
+    height: 100vh;
+    padding: 261px;
+  }
 
-.clinical-analysis .hero.animated .text {
-  opacity: 1;
-  transform: translateX(0);
+  .clinical-analysis .hero .ca-title {
+    align-items: start;
+    font-size: 160px;
+    transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(370px);
+  }
+
+  .clinical-analysis .hero .ca-title span:first-child {
+    transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(30px);
+  }
+
+  .clinical-analysis .hero .line-vertical {
+    height: 350px;
+    margin: 0 70px;
+    width: 1.2rem;
+    background-color: white;
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .clinical-analysis .hero .text {
+    display: block;
+    font-size: 36px;
+    color: white;
+    font-weight: 200;
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Animated state: after 1 second */
+  .clinical-analysis .hero.animated .ca-title {
+    transform: translateX(0);
+  }
+
+  .clinical-analysis .hero.animated .ca-title span {
+    transform: translateX(0);
+  }
+
+  .clinical-analysis .hero.animated .line-vertical {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .clinical-analysis .hero.animated .text {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }

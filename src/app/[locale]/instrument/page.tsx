@@ -19,6 +19,7 @@ export default function InsturmentPage() {
     const [hasDragged, setHasDragged] = useState(false);
     const [startPos, setStartPos] = useState(0);
     const [dragOffset, setDragOffset] = useState(0);
+    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
     const intervalRef = useRef<NodeJS.Timeout | null>(null);
     const router = useRouter();
 
@@ -50,6 +51,13 @@ export default function InsturmentPage() {
             description: t('bts.description'),
             bgClass: 'bg-bts',
             link: '/instrument/bts'
+        },
+        {
+            id: 'coax',
+            name: t('coax.name'),
+            description: t('coax.description'),
+            bgClass: 'bg-coax',
+            link: '/instrument/coax'
         }
     ];
 
@@ -210,8 +218,12 @@ export default function InsturmentPage() {
                             {infiniteAnalyzers.map((analyzer, index) => (
                                 <div
                                     key={`${analyzer.id}-${index}`}
-                                    className={`analyzer ${analyzer.bgClass}`}
+                                    className={`analyzer ${analyzer.bgClass} ${hoveredIndex === index ? 'active' : ''}`}
                                     onClick={handleAnalyzerClick}
+                                    onMouseEnter={() => setHoveredIndex(index)}
+                                    onMouseLeave={() => setHoveredIndex(null)}
+                                    onTouchStart={() => setHoveredIndex(index)}
+                                    onTouchEnd={() => setHoveredIndex(null)}
                                 >
                                     <div className="overlay"></div>
                                     <div className="content">

@@ -21,7 +21,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 40dvh;
+  height: 40vh;
   padding: 20px;
   position: relative;
 }
@@ -103,7 +103,7 @@
 @media (min-width: 768px) {
   .ba400 .hero {
     padding: 60px;
-    height: 60dvh;
+    height: 60vh;
   }
 
   .ba400 .hero .ca-title {
@@ -136,7 +136,7 @@
 @media (min-width: 1024px) {
   .ba400 .hero {
     padding: 120px;
-    height: 80dvh;
+    height: 80vh;
   }
 
   .ba400 .hero .ca-title {
@@ -168,7 +168,7 @@
 @media (min-width: 1440px) {
   .ba400 .hero {
     padding: 210px;
-    height: 100dvh;
+    height: 100vh;
   }
 
   .ba400 .hero .ca-title {
@@ -562,8 +562,8 @@
   }
 
   .ba400 .specs-dimension .analyzer-images .width .height {
-    left: 100px;
-    height: 115px;
+    left: 170px;
+    height: 225px;
     bottom: -20px;
   }
 
@@ -735,7 +735,7 @@
 @media (min-width: 1440px) {
   .ba400 .images-detail {
     padding: 82px 158px;
-    height: 100dvh;
+    height: 100vh;
   }
 
   .ba400 .images-detail .card-images {

@@ -25,6 +25,7 @@ import { MdArrowOutward } from "react-icons/md";
 
 import { InfiniteScrollHeader } from "@/presentation/home/whyChooseUs";
 import { useInfiniteScroll } from "@/presentation/home/whyChooseUs/hooks";
+import { useRouter } from 'next/navigation';
 
 import CTASection from "@/presentation/home/cta/CTASection";
 import Footer from "@/presentation/components/footer/footer";
@@ -76,6 +77,7 @@ export default function InstrumentBTS() {
     }, []);
 
     const { getTransform } = useInfiniteScroll();
+    const router = useRouter();
 
     return (
         <div className="bts">
@@ -230,7 +232,13 @@ export default function InstrumentBTS() {
                         <h3 className="tags">{t("relatedProductsTag")}</h3>
 
                         <div className="container">
-                            <div className="card">
+                            <div
+                                className="card"
+                                role="link"
+                                tabIndex={0}
+                                onClick={() => router.push('/instrument/ba400')}
+                                onKeyDown={(e) => { if ((e as React.KeyboardEvent).key === 'Enter') router.push('/instrument/ba400'); }}
+                            >
                                 <div className="head">
                                     <div className="title">
                                         <p>{t("analyzer")}</p>
@@ -246,7 +254,13 @@ export default function InstrumentBTS() {
                                     <h4>83400/83400ISE</h4>
                                 </div>
                             </div>
-                            <div className="card">
+                            <div
+                                className="card"
+                                role="link"
+                                tabIndex={0}
+                                onClick={() => router.push('/instrument/a15')}
+                                onKeyDown={(e) => { if ((e as React.KeyboardEvent).key === 'Enter') router.push('/instrument/a15'); }}
+                            >
                                 <div className="head">
                                     <div className="title">
                                         <p>{t("analyzer")}</p>
@@ -262,7 +276,13 @@ export default function InstrumentBTS() {
                                     <h4>83105</h4>
                                 </div>
                             </div>
-                            <div className="card">
+                            <div
+                                className="card"
+                                role="link"
+                                tabIndex={0}
+                                onClick={() => router.push('/instrument/bts')}
+                                onKeyDown={(e) => { if ((e as React.KeyboardEvent).key === 'Enter') router.push('/instrument/bts'); }}
+                            >
                                 <div className="head">
                                     <div className="title">
                                         <p>{t("analyzer")}</p>

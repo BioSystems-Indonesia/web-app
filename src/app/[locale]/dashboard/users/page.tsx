@@ -233,6 +233,8 @@ export default function UsersPage() {
         return "hr";
       case "PRODUCT_SPECIALIST":
         return "ps";
+      case "DG":
+        return "dg"
       default:
         return "admin";
     }
@@ -246,6 +248,8 @@ export default function UsersPage() {
         return "Human Resource";
       case "PRODUCT_SPECIALIST":
         return "Product Specialist";
+      case "DG":
+        return "Desain Grafis"
       default:
         return role;
     }
@@ -290,6 +294,7 @@ export default function UsersPage() {
             <option value="ADMIN">Admin</option>
             <option value="HUMAN_RESOURCE">Human Resource</option>
             <option value="PRODUCT_SPECIALIST">Product Specialist</option>
+            <option value="DG">Desain Grafik</option>
           </select>
         </div>
       </div>
@@ -453,6 +458,7 @@ export default function UsersPage() {
                     <option value="ADMIN">Admin</option>
                     <option value="HUMAN_RESOURCE">Human Resource</option>
                     <option value="PRODUCT_SPECIALIST">Product Specialist</option>
+                    <option value="DG">Desain Grafis</option>
                   </select>
                 </div>
               </div>

@@ -10,33 +10,38 @@ import { NextRequest, NextResponse } from "next/server";
 const articleRepo = new ArticleRepositoryPrisma();
 const articleUseCase = new ArticleUseCase(articleRepo);
 
-export const PATCH = WithAuth(async (req: NextRequest, ctx: any) => {
-  const body = await req.json();
-  const { status } = body;
+export const PATCH = WithAuth(
+  async (
+    req: NextRequest,
+    ctx?: { params?: Promise<Record<string, string>> | Record<string, string> }
+  ) => {
+    const body = await req.json();
+    const { status } = body;
 
-  try {
-    const params = ctx?.params ? await ctx.params : undefined;
-    const slug = params?.slug as string;
+    try {
+      const params = ctx?.params ? await ctx.params : undefined;
+      const slug = params?.slug as string;
 
-    if (!slug) {
-      return NextResponse.json(APIResponseBuilder.badRequest("Invalid article slug"), {
-        status: HttpStatus.BAD_REQUEST,
+      if (!slug) {
+        return NextResponse.json(APIResponseBuilder.badRequest("Invalid article slug"), {
+          status: HttpStatus.BAD_REQUEST,
+        });
+      }
+
+      if (!status) {
+        return NextResponse.json(APIResponseBuilder.badRequest("Status is required"), {
+          status: HttpStatus.BAD_REQUEST,
+        });
+      }
+
+      const result = await articleUseCase.updateStatus(slug, status as ArticleStatus);
+      const response = NextResponse.json(APIResponseBuilder.success(result), {
+        status: HttpStatus.OK,
       });
+
+      return response;
+    } catch (error) {
+      return HttpErrorHandler.handle(error);
     }
-
-    if (!status) {
-      return NextResponse.json(APIResponseBuilder.badRequest("Status is required"), {
-        status: HttpStatus.BAD_REQUEST,
-      });
-    }
-
-    const result = await articleUseCase.updateStatus(slug, status as ArticleStatus);
-    const response = NextResponse.json(APIResponseBuilder.success(result), {
-      status: HttpStatus.OK,
-    });
-
-    return response;
-  } catch (error) {
-    return HttpErrorHandler.handle(error);
   }
-});
+);

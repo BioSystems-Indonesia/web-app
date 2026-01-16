@@ -120,12 +120,6 @@ export default function PostsPage() {
     }
   };
 
-  const openDetailModal = (article: Article) => {
-    setViewingArticle(article);
-    setShowDetailModal(true);
-    setIsClosing(false);
-  };
-
   const closeDetailModal = () => {
     setIsClosing(true);
     setTimeout(() => {
@@ -148,7 +142,7 @@ export default function PostsPage() {
     const colors = {
       DRAFT: "#6c757d",
       PUBLISHED: "#28a745",
-      ARCHIVED: "#ffc107",
+      ARCHIVED: "#0b5cb8",
     };
     return colors[status] || "#6c757d";
   };
@@ -226,12 +220,46 @@ export default function PostsPage() {
                       <a className="btn-view" href={`/${locale}/article/${article.slug}`}>
                         View
                       </a>
+
                       <button className="btn-edit" onClick={() => router.push(`/dashboard/posts/${article.slug}/edit`)}>
                         Edit
                       </button>
+
                       <button className="btn-delete" onClick={() => handleDelete(article.slug)}>
                         Delete
                       </button>
+
+                      <div className="status-actions-inline">
+                        <button
+                          className="btn-status published"
+                          disabled={article.status === "PUBLISHED"}
+                          onClick={async () => {
+                            await handleStatusChange(article.slug, "PUBLISHED");
+                          }}
+                        >
+                          Publish
+                        </button>
+
+                        <button
+                          className="btn-status draf"
+                          disabled={article.status === "DRAFT"}
+                          onClick={async () => {
+                            await handleStatusChange(article.slug, "DRAFT");
+                          }}
+                        >
+                          Draft
+                        </button>
+
+                        <button
+                          className="btn-status archive"
+                          disabled={article.status === "ARCHIVED"}
+                          onClick={async () => {
+                            await handleStatusChange(article.slug, "ARCHIVED");
+                          }}
+                        >
+                          Archive
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 ))

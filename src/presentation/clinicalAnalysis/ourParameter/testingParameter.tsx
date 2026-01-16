@@ -223,7 +223,7 @@ export default function TestingParameterSection({ color, productType }: Props) {
                                         className="title"
 
                                     >
-                                        <p className={"title-text " + (expandedIndex === index ? "hidden" : "visible")}>{chemistry.name}</p>
+                                        <p className={"title-text " + (expandedIndex === index ? "hidden" : "visible")}>{chemistry.name.toUpperCase()}</p>
                                         <p className={"plus " + (expandedIndex === index ? "" : "rotated")}>
                                             +
                                         </p>
@@ -253,17 +253,17 @@ export default function TestingParameterSection({ color, productType }: Props) {
 
                                                     <tr key={idx} >
                                                         <td className="analyzer-cell" style={{ textAlign: "start" }}>
-                                                            <p className="analyzer">{item.analyzer}</p>
+                                                            <p className="analyzer">{item.analyzer.toUpperCase()}</p>
                                                         </td>
                                                         <td>{item.code}</td>
-                                                        <td>{item.RA}</td>
-                                                        <td>{item.RB}</td>
-                                                        <td>{item.mLPerKit}</td>
+                                                        <td>{!(item.RA.includes("tube") || item.RA.includes("g") || item.RA.includes("-")) ? item.RA + " mL" : item.RA}</td>
+                                                        <td>{!(item.RB.includes("tube") || item.RB.includes("g") || item.RB.includes("-")) ? item.RB + " mL" : item.RB}</td>
+                                                        <td>{!(item.mLPerKit.includes("tube") || item.mLPerKit.includes("g")) ? item.mLPerKit + " mL" : item.mLPerKit}</td>
                                                     </tr>
                                                 ))}
                                             </tbody>
                                         </table>
-                                        <p className="more-details" style={{ paddingLeft: "10px", marginTop: "30px" }}>{t('moreDetails')}</p>
+                                        {/* <p className="more-details" style={{ paddingLeft: "10px", marginTop: "30px" }}>{t('moreDetails')}</p> */}
                                     </div>
                                 </li>
                             ))}

@@ -13,11 +13,23 @@ export default function FoodBeverageAnalysis() {
     const [animated, setAnimated] = useState(false);
 
     useEffect(() => {
-        const timer = setTimeout(() => {
-            setAnimated(true);
-        }, 500);
+        const handleResize = () => {
+            if (window.innerWidth >= 1440) {
+                const timer = setTimeout(() => {
+                    setAnimated(true);
+                }, 500);
+                return () => clearTimeout(timer);
+            } else {
+                setAnimated(false);
+            }
+        };
 
-        return () => clearTimeout(timer);
+        handleResize();
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
     }, []);
 
     return (

@@ -25,6 +25,20 @@ export default function Carousel({
         setIsClient(true);
     }, []);
 
+    useEffect(() => {
+        const setVH = () => {
+            document.documentElement.style.setProperty(
+                '--vh',
+                `${window.innerHeight * 0.01}px`
+            )
+        }
+
+        setVH()
+        window.addEventListener('resize', setVH)
+        return () => window.removeEventListener('resize', setVH)
+    }, [])
+
+
     const infiniteSlides = [
         slides[slides.length - 1],
         ...slides,
@@ -193,7 +207,6 @@ export default function Carousel({
                                 className="carousel-slide-bg"
                                 style={{ objectFit: 'cover' }}
                                 priority={priority && index <= 2}
-                                sizes="100vw"
                                 quality={85}
                             />
                             <div className="carousel-content">

@@ -156,6 +156,11 @@
   color: #065f46;
 }
 
+.badge.dg {
+  background-color: #f3e8ff;
+  color: #6b21a8;
+}
+
 /* Action Buttons */
 .btn-edit,
 .btn-password,

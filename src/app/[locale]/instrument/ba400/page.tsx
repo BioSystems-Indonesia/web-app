@@ -24,6 +24,7 @@ import { MdArrowOutward } from "react-icons/md";
 
 import { InfiniteScrollHeader } from "@/presentation/home/whyChooseUs";
 import { useInfiniteScroll } from "@/presentation/home/whyChooseUs/hooks";
+import { useRouter } from 'next/navigation';
 
 import CTASection from "@/presentation/home/cta/CTASection";
 import Footer from "@/presentation/components/footer/footer";
@@ -75,6 +76,7 @@ export default function InstrumentBA400() {
     }, []);
 
     const { getTransform } = useInfiniteScroll();
+    const router = useRouter();
 
     return (
         <div className="ba400">
@@ -82,7 +84,7 @@ export default function InstrumentBA400() {
             <main>
                 <section aria-labelledby="hero-heading">
                     <h1 className="sr-only" id="hero-heading">{t('heroTitle1')} {t('heroTitle2')}</h1>
-                    <div className={`hero ${animated ? "animated" : ""}}`}>
+                    <div className={`hero ${animated ? "animated" : ""}`}>
                         <div className="ca-title" role="heading" aria-level={1}>
                             <span className="line-1">{t('heroTitle1')}</span>
                             <span className="line-2">{t('heroTitle2')}</span>
@@ -214,7 +216,13 @@ export default function InstrumentBA400() {
                         <h3 className="tags">{t('relatedProductsTag')}</h3>
 
                         <div className="container">
-                            <div className="card">
+                            <div
+                                className="card"
+                                role="link"
+                                tabIndex={0}
+                                onClick={() => router.push('/instrument/ba200')}
+                                onKeyDown={(e) => { if (e.key === 'Enter') router.push('/instrument/ba200'); }}
+                            >
                                 <div className="head">
                                     <div className="title">
                                         <p>{t('analyzer')}</p>
@@ -230,7 +238,13 @@ export default function InstrumentBA400() {
                                     <h4>83200/83200ISE</h4>
                                 </div>
                             </div>
-                            <div className="card">
+                            <div
+                                className="card"
+                                role="link"
+                                tabIndex={0}
+                                onClick={() => router.push('/instrument/a15')}
+                                onKeyDown={(e) => { if (e.key === 'Enter') router.push('/instrument/a15'); }}
+                            >
                                 <div className="head">
                                     <div className="title">
                                         <p>{t('analyzer')}</p>
@@ -246,7 +260,13 @@ export default function InstrumentBA400() {
                                     <h4>83105</h4>
                                 </div>
                             </div>
-                            <div className="card">
+                            <div
+                                className="card"
+                                role="link"
+                                tabIndex={0}
+                                onClick={() => router.push('/instrument/bts')}
+                                onKeyDown={(e) => { if (e.key === 'Enter') router.push('/instrument/bts'); }}
+                            >
                                 <div className="head">
                                     <div className="title">
                                         <p>{t('analyzer')}</p>

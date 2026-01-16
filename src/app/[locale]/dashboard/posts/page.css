@@ -119,27 +119,59 @@
 
 .status-badge {
   display: inline-block;
-  padding: 0.25rem 0.75rem;
-  border-radius: 12px;
+  padding: 0.5rem 0.75rem;
   font-size: 0.875rem;
   color: white;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .actions {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.5rem;
+}
+
+.actions .status-actions-inline {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.btn-status[disabled] {
+  background-color: rgb(237, 237, 237) !important;
+  color: #555 !important;
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .btn-view,
 .btn-edit,
-.btn-delete {
+.btn-delete,
+.btn-status {
   padding: 0.5rem 1rem;
+  width: 100px;
+  text-align: center;
   border: none;
   cursor: pointer;
   font-size: 0.875rem;
   font-weight: 600;
   transition: all 0.3s ease;
+}
+
+.btn-status.draf {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-status.published {
+  background-color: rgb(12, 143, 12);
+  color: white;
+}
+
+.btn-status.archive {
+  background-color: #0b5cb8;
+  color: white;
 }
 
 .btn-view {

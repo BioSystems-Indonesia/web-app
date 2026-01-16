@@ -1,5 +1,5 @@
 .container {
-  height: 80dvh;
+  height: 80vh;
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -13,8 +13,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 120px;
-  height: 120px;
+  max-width: 120px;
+  max-height: 120px;
   border-radius: 50%;
   overflow: hidden;
 }
@@ -64,6 +64,8 @@ form {
 }
 
 input {
+  background-color: white;
+  color: black;
   width: 100%;
   border: none;
   font-size: 0.9rem;
@@ -131,7 +133,7 @@ button:hover {
 
 @media (min-width: 1025px) {
   .container {
-    height: 90dvh;
+    height: 90vh;
     flex-direction: row;
     align-items: center;
     justify-content: center;

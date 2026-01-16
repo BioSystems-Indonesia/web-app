@@ -110,22 +110,26 @@
     "heroTitle1": "Biochemistry",
     "heroTitle2": "Systems",
     "descTitle": "Analytical systems to enhance patient care and drive research forward",
-    "descContent": "Our analytical solutions integrate biochemistry instruments, reagents, and reference materials to accurately analyse biological samples, aiding in monitoring diseases through renal tests and cardiac tests, among other biochemistry controls, and assessing treatment effectiveness. By measuring biomarkers, we provide vital data that enhances patient care and contributes to medical research across various conditions, such as the control of diabetes, cardiovascular diseases, analysis of kidney disorders, and fertility issues.",
+    "descContent": "Our analytical solutions combine clinical biochemistry instruments, reagents, and reference materials for accurate laboratory testing. They support kidney and cardiac monitoring, help track treatment response, and generate biomarker data that advances patient care and medical research in diabetes, cardiovascular health, kidney disorders, and fertility.",
     "ba400": {
       "name": "BA400",
-      "description": "BA400 is a full automatic analyser with automatic hemolysis on whole blood samples and fast sample loading."
+      "description": "Efficiency and autonomy"
     },
     "ba200": {
       "name": "BA200",
-      "description": "BA200 is a compact and versatile automatic analyzer designed for medium-sized laboratories."
+      "description": "Automation and flexibility"
     },
     "a15": {
       "name": "A15",
-      "description": "A15 is a small size and low demanding analyser that facilitates automation of tests."
+      "description": "Optimization and flexibility"
     },
     "bts": {
       "name": "BTS",
-      "description": "BTS is a manual analyser with LED optics system and a new intuitive and easy-to use software that will ease your daily work in the laboratory."
+      "description": "Experience and evolution"
+    },
+    "coax": {
+      "name": "COAX",
+      "description": "Easy and simple"
     },
     "goTo": "Go to"
   },
@@ -251,18 +255,59 @@
     "a15Desc": "A15 is a small size and low demanding analyser that facilitates automation of tests.",
     "btsDesc": "BTS is a manual analyser with LED optics system and a new intuitive and easy-to use software that will ease your daily work in the laboratory"
   },
+  "COAX": {
+    "heroTitle1": "BioSystems",
+    "heroTitle2": "COAX",
+    "heroDesc": "COAX is a semi-automated coagulometer that complementary optimize your laboratory routine",
+    "barrierLabel": "Analyzer",
+    "barrierTitle": "COAX",
+    "spec1Title": "The optimal complement to your routine laboratory",
+    "spec1Desc": "Ready for the daily routine and the upcoming requirements.",
+    "spec2Title": "Fully open system",
+    "spec2Desc": "Nearly maintenance free.",
+    "spec3Title": "Three models available",
+    "spec3Desc": "1, 2 or 4 optical channels",
+    "spec4Title": "High quality in the results",
+    "spec4Desc": "The coagulation reagents have been specifically validated to BioSystems coagulometers.",
+    "dimensionTitle": "Semi-automated coagulometer",
+    "dimensionDesc": "The management and control of anticoagulant therapy has never been so easy.",
+    "productDesc": "Semi-automated coagulometer",
+    "specsTitle": "Specs",
+    "dimensions": "Dimensions: 225 mm x 90 mm 115 mm",
+    "weight": "Latex based test: D-Dimer",
+    "throughput": "Display: Color touch screen display",
+    "lightSource": "USB (2x): Network, Firmware update",
+    "reference": "Reference",
+    "code": "Code",
+    "relatedProducts": "Related Products",
+    "relatedProductsTag": "Reagents, reference materials and more",
+    "analyzer": "Analyzer",
+    "contactUs": "Contact Us",
+    "ba400Desc": "BA400 is a full automatic analyser with automatic hemolysis on whole blood samples and fast sample loading.",
+    "a15Desc": "A15 is a small size and low demanding analyser that facilitates automation of tests.",
+    "btsDesc": "BTS is a manual analyser with LED optics system and a new intuitive and easy-to use software that will ease your daily work in the laboratory"
+  },
   "ClinicalAnalysis": {
     "heroTitle1": "Clinical",
     "heroTitle2": "Analysis",
     "heroDesc": "We deliver analytical products and automation systems for biochemistry and autoimmunity, using high-quality materials and validated processes to ensure reliable results.",
     "ourProductsTitle": "A wide range of reagents covering multiple testing parameters",
     "ourProductsDesc": "Covering a broad spectrum of testing parameters, from routine biochemistry to specialized clinical panels.",
-    "testingParametersTitle": "Our Testing Parameters",
+    "testingParametersTitle": "Testing Parameters",
     "panelLabel": "PANEL",
     "loading": "Loading...",
     "noPanelsAvailable": "No testing panels available",
     "code": "Code",
     "moreDetails": "More Details"
+  },
+  "Article": {
+    "heroTitle": "Health Insights and Product Education",
+    "heroDescription": "Health insights, the latest news, and product education from BioSystems to support clinical laboratory needs.",
+    "loading": "Loading...",
+    "noArticles": "No articles found."
+  },
+  "Role": {
+    "DG": "Graphic Designer"
   },
   "greeting": "Hello, Welcome!"
 }

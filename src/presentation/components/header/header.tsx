@@ -6,7 +6,9 @@ import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import "./header.css"
 import { useState, useEffect, useRef } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { FaUser } from "react-icons/fa";
+import axios from "axios";
 
 type NavItem = {
     href: string;
@@ -15,6 +17,14 @@ type NavItem = {
 
 type HeaderProps = {
     backgroundColor?: string;
+}
+
+interface CurrentUser {
+    id: string;
+    username: string;
+    name: string;
+    email: string;
+    role: string;
 }
 
 export default function Header({ backgroundColor = 'transparent' }: HeaderProps) {
@@ -27,7 +37,11 @@ export default function Header({ backgroundColor = 'transparent' }: HeaderProps)
     const locale = useLocale()
     const pathname = usePathname()
     const languageRef = useRef<HTMLDivElement>(null)
+    const languageRefBottom = useRef<HTMLDivElement>(null)
     const productsRef = useRef<HTMLLIElement>(null)
+
+    const [currentUser, setCurrentUser] = useState<CurrentUser | null>(null);
+    const router = useRouter();
 
     useEffect(() => {
         const checkDesktop = () => {
@@ -40,7 +54,7 @@ export default function Header({ backgroundColor = 'transparent' }: HeaderProps)
 
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
-            if (languageRef.current && !languageRef.current.contains(event.target as Node)) {
+            if (languageRef.current && !languageRef.current.contains(event.target as Node) && languageRefBottom.current && !languageRefBottom.current.contains(event.target as Node)) {
                 setLangOpen(false)
             }
             if (productsRef.current && !productsRef.current.contains(event.target as Node)) {
@@ -62,7 +76,6 @@ export default function Header({ backgroundColor = 'transparent' }: HeaderProps)
             const scrollTop = window.scrollY
             setIsScrolled(scrollTop > 100)
         }
-
         window.addEventListener('scroll', handleScroll)
 
         return () => {
@@ -70,6 +83,19 @@ export default function Header({ backgroundColor = 'transparent' }: HeaderProps)
         }
     }, [])
 
+    useEffect(() => {
+        const fetchCurrentUser = async () => {
+            try {
+                const response = await axios.get("/api/auth/me");
+                setCurrentUser(response.data.data);
+            } catch (error) {
+                console.log("Failed to fetch current user:", error);
+
+            }
+        };
+
+        fetchCurrentUser();
+    }, []);
     const getScrolledColor = () => {
         if (pathname.includes('/clinical-analysis')) {
             return '#FF5A00';
@@ -134,11 +160,22 @@ export default function Header({ backgroundColor = 'transparent' }: HeaderProps)
                     </div>
 
 
-                    <div onClick={() => window.location.href = `/${locale}/login`} style={{ cursor: "pointer" }}>
-                        <LoginLogo />
-                        <p>{t("login")}</p>
-
-                    </div>
+                    {currentUser ? (
+                        <div className="" onClick={() => router.push('/dashboard')} style={{ cursor: 'pointer' }}>
+                            <div className="user-info">
+                                <div className="user-name">{currentUser.name}</div>
+                                <div className="user-role">{currentUser.role}</div>
+                            </div>
+                            <div className="icon-card">
+                                <FaUser />
+                            </div>
+                        </div>
+                    ) : (
+                        <div onClick={() => window.location.href = `/${locale}/login`} style={{ cursor: "pointer" }}>
+                            <LoginLogo />
+                            <p>{t("login")}</p>
+                        </div>
+                    )}
 
                 </div>
                 <div className={`hamburger-menu ${isOpen ? "is-open" : ""}`} onClick={() => setIsOpen(!isOpen)}>
@@ -180,14 +217,40 @@ export default function Header({ backgroundColor = 'transparent' }: HeaderProps)
                         );
                     })}
                     <div className="items">
-                        <div >
-                            <RoundEarthLogo />
-                            <p>{t("language")}</p>
+                        <div ref={languageRefBottom} style={{ position: "relative" }}>
+                            {/* <div style={{ cursor: "pointer" }} onClick={() => { setLangOpen(!langOpen) }}>
+                                <RoundEarthLogo />
+                                <p>{t("language")}</p>
+                            </div> */}
+                            <div className={`language-card ${langOpen ? 'lang-open' : ''}`} style={{ display: 'flex', flexDirection: 'column', alignItems: "start", marginBottom: 10 }}>
+                                <span onClick={() => {
+                                    const newPath = pathname.replace(`/${locale}`, '/id');
+                                    window.location.href = newPath;
+                                    setLangOpen(false);
+                                }} style={{ cursor: "pointer" }}>
+                                    Indonesia
+                                </span>
+                                <span onClick={() => {
+                                    const newPath = pathname.replace(`/${locale}`, '/en');
+                                    window.location.href = newPath;
+                                    setLangOpen(false);
+                                }} style={{ cursor: "pointer" }}>
+                                    English
+                                </span>
+                            </div>
                         </div>
-                        <div onClick={() => window.location.href = `${locale}/login`}>
-                            <LoginLogo />
-                            <p>{t("login")}</p>
-                        </div>
+                        {currentUser ? (
+                            <div className="user-info" onClick={() => router.push('/dashboard')} style={{ cursor: 'pointer' }}>
+                                <div className="user-name">{currentUser.name}</div>
+                                <div className="user-role">{currentUser.role}</div>
+                            </div>
+                        ) : (
+                            <div onClick={() => window.location.href = `${locale}/login`}>
+                                <LoginLogo />
+                                <p>{t("login")}</p>
+                            </div>
+                        )
+                        }
                     </div>
                 </ul>
                 <div className={`floating-products ${productsOpen ? 'open' : ''}`}>

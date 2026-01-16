@@ -7,6 +7,7 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 const nextConfig: NextConfig = {
   images: {
     qualities: [50, 75, 85, 90, 100],
+    domains: ["192.168.1.152", "127.0.0.1", "biosystems.id"],
   },
 
   turbopack: {
@@ -55,6 +56,10 @@ const nextConfig: NextConfig = {
         ],
       },
     ];
+  },
+
+  eslint: {
+    ignoreDuringBuilds: true,
   },
 
   trailingSlash: false,

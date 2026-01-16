@@ -28,9 +28,6 @@ export default function CreatePostsPage() {
     status: "DRAFT" as ArticleStatus,
   });
 
-  useEffect(() => {
-    fetchCurrentUser();
-  }, []);
 
   const fetchCurrentUser = async () => {
     try {
@@ -41,6 +38,10 @@ export default function CreatePostsPage() {
       router.push("/dashboard/posts");
     }
   };
+
+  useEffect(() => {
+    fetchCurrentUser();
+  }, []);
 
   const handleContentChange = (html: string) => {
     setFormData({ ...formData, contentHtml: html });

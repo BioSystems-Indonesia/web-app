@@ -6,14 +6,14 @@
     "dev": "next dev --turbopack",
     "debug": "next dev --inspect",
     "build": "next build --turbopack",
-    "start": "next start",
+    "start": "next start -p 3000",
     "test": "jest --verbose --colors",
     "test:watch": "jest --watch",
     "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx --fix .",
     "lint": "eslint"
   },
   "prisma": {
-    "seed": "node ./prisma/seed.ts"
+    "seed": "npx tsx prisma/seed.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.14.0",
@@ -23,6 +23,7 @@
     "@tiptap/starter-kit": "^3.3.0",
     "axios": "^1.12.2",
     "bcrypt": "^6.0.0",
+    "csv-parse": "^6.1.0",
     "flowbite-react": "^0.12.8",
     "framer-motion": "^12.23.26",
     "jose": "^6.0.13",
