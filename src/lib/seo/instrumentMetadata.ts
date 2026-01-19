@@ -248,7 +248,7 @@ export function generateInstrumentListingJsonLd(locale: string) {
           : "Complete range of clinical chemistry analyzers from BioSystems Indonesia",
         isPartOf: {
           "@type": "WebSite",
-          "@id": "https://biosystems.id/#website",
+          "@id": "https://biosystems.id/",
         },
         about: {
           "@type": "Thing",
@@ -276,7 +276,7 @@ export function generateInstrumentListingJsonLd(locale: string) {
                   name: "BioSystems",
                 },
                 category: "Medical Laboratory Equipment",
-                image: "/assets/img/instrument/ba400/1.png",
+                image: "https://biosystems.id/instrument/images/ba400.png",
               },
             },
             {
@@ -295,7 +295,7 @@ export function generateInstrumentListingJsonLd(locale: string) {
                   name: "BioSystems",
                 },
                 category: "Medical Laboratory Equipment",
-                image: "/assets/img/instrument/ba200/1.png",
+                image: "https://biosystems.id/instrument/images/ba200.png",
               },
             },
             {
@@ -314,7 +314,7 @@ export function generateInstrumentListingJsonLd(locale: string) {
                   name: "BioSystems",
                 },
                 category: "Medical Laboratory Equipment",
-                image: "/assets/img/instrument/a15/1.png",
+                image: "https://biosystems.id/instrument/images/a15.png",
               },
             },
             {
@@ -333,7 +333,26 @@ export function generateInstrumentListingJsonLd(locale: string) {
                   name: "BioSystems",
                 },
                 category: "Medical Laboratory Equipment",
-                image: "/assets/img/instrument/bts/1.png",
+                image: "https://biosystems.id/instrument/images/bts.png",
+              },
+            },
+            {
+              "@type": "ListItem",
+              position: 5,
+              item: {
+                "@type": "Product",
+                "@id": "https://biosystems.id/instrument/coax#product",
+                name: "BioSystems COAX",
+                url: "https://biosystems.id/instrument/coax",
+                description: isIndonesian
+                  ? "COAX adalah koagulometer semi-otomatis yang dirancang untuk mengoptimalkan rutinitas laboratorium Anda."
+                  : "COAX is a semi-automated coagulometer designed to optimize your laboratory routine.",
+                brand: {
+                  "@type": "Brand",
+                  name: "BioSystems",
+                },
+                category: "Medical Laboratory Equipment",
+                image: "https://biosystems.id/instrument/images/coax.png",
               },
             },
           ],
