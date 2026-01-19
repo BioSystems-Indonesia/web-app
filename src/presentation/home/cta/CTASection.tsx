@@ -18,7 +18,7 @@ export default function CTASection({ contentBg = "transparent", contentColor = "
     const t = useTranslations("CTA");
 
     return (
-        <section className="cta-section" id="contact-us organization">
+        <section className="cta-section" id="contact-us">
             <div className="container">
                 <div className="head">
                     <h2>{t("title")}</h2>
