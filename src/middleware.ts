@@ -94,7 +94,7 @@ export async function middleware(req: NextRequest) {
 export const config = {
   matcher: [
     // Exclude API routes, static files, and SEO files
-    "/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|logo.png|og-image.jpg).*)",
+    "/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|logo.png|og-image.jpg|BingSiteAuth.xml).*)",
     "/",
   ],
 };
