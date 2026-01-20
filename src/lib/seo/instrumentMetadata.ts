@@ -90,28 +90,46 @@ export function generateInstrumentJsonLd({
         "@type": "Product",
         "@id": `${url}#product`,
         name: instrumentName,
-        description: description,
-        productID: instrumentCode,
+        description,
+        sku: instrumentCode,
+        url,
+        image: imageUrl ? [imageUrl] : undefined,
+        category: "Medical Laboratory Equipment",
+
         brand: {
           "@type": "Brand",
           name: "BioSystems",
         },
+
         manufacturer: {
           "@type": "Organization",
           name: "BioSystems",
           url: "https://biosystems.id",
         },
-        category: "Medical Laboratory Equipment",
-        image: imageUrl,
-        additionalProperty: Object.entries(specifications).map(([name, value]) => ({
-          "@type": "PropertyValue",
-          name,
-          value,
-        })),
-        ...(features.length > 0 && {
-          description: `${description} Features: ${features.join(", ")}`,
-        }),
+
+        offers: {
+          "@type": "Offer",
+          url,
+          priceCurrency: "IDR",
+          price: "0",
+          availability: "https://schema.org/InStock",
+          priceValidUntil: "2026-12-31",
+        },
+
+        additionalProperty: [
+          ...Object.entries(specifications).map(([name, value]) => ({
+            "@type": "PropertyValue",
+            name,
+            value,
+          })),
+          ...features.map((feature) => ({
+            "@type": "PropertyValue",
+            name: "Feature",
+            value: feature,
+          })),
+        ],
       },
+
       {
         "@type": "BreadcrumbList",
         "@id": `${url}#breadcrumb`,
@@ -136,12 +154,14 @@ export function generateInstrumentJsonLd({
           },
         ],
       },
+
       {
         "@type": "WebPage",
         "@id": `${url}#webpage`,
-        url: url,
-        name: `${instrumentName} - Clinical Analyzer`,
-        description: description,
+        url,
+        name: `${instrumentName} – Clinical Analyzer`,
+        description,
+        inLanguage: ["id", "en"],
         isPartOf: {
           "@type": "WebSite",
           "@id": "https://biosystems.id/#website",
@@ -149,7 +169,9 @@ export function generateInstrumentJsonLd({
         breadcrumb: {
           "@id": `${url}#breadcrumb`,
         },
-        inLanguage: ["en", "id"],
+        mainEntity: {
+          "@id": `${url}#product`,
+        },
       },
     ],
   };
