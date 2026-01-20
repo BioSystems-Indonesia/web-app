@@ -16,12 +16,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: "", priority: 1, changeFrequency: "monthly" as const },
     { path: "/clinical-analysis", priority: 0.9, changeFrequency: "weekly" as const },
     { path: "/food-beverage-analysis", priority: 0.9, changeFrequency: "weekly" as const },
+    { path: "/article", priority: 0.9, changeFrequency: "weekly" as const },
     { path: "/instrument", priority: 0.8, changeFrequency: "weekly" as const },
     { path: "/instrument/ba400", priority: 0.8, changeFrequency: "weekly" as const },
     { path: "/instrument/ba200", priority: 0.8, changeFrequency: "weekly" as const },
     { path: "/instrument/a15", priority: 0.8, changeFrequency: "weekly" as const },
     { path: "/instrument/bts", priority: 0.8, changeFrequency: "weekly" as const },
-    { path: "/career", priority: 0.7, changeFrequency: "weekly" as const },
+    { path: "/instrument/coax", priority: 0.8, changeFrequency: "weekly" as const },
+    // { path: "/career", priority: 0.7, changeFrequency: "weekly" as const },
   ];
 
   // Articles
