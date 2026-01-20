@@ -60,6 +60,7 @@ export default async function Home({ params }: PageProps) {
                   "streetAddress": "Jl. Kyai Caringin No. 18-A RT 10/RW 4. Cideng",
                   "addressLocality": "Jakarta Pusat",
                   "addressRegion": "DKI Jakarta",
+                  "postalCode": "10150",
                   "addressCountry": "ID"
                 },
                 "contactPoint": {
