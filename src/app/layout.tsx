@@ -1,53 +1,44 @@
 import type { Metadata } from "next";
 import "./globals.css";
-
 export const metadata: Metadata = {
-  metadataBase: new URL('https://biosystems.id'),
+  metadataBase: new URL("https://biosystems.id"),
   title: {
-    template: '%s | BioSystems Indonesia',
-    default: 'BioSystems Indonesia - Analytical Solutions for In Vitro Diagnostics'
+    template: "%s | BioSystems Indonesia",
+    default: "BioSystems Indonesia - Analytical Solutions for In Vitro Diagnostics",
   },
-  description: "Leading provider of analytical solutions for in vitro diagnostics since 1981. Reliable systems for laboratory technicians worldwide.",
-  keywords: ['biosystems', 'in vitro diagnostics', 'analytical solutions', 'laboratory', 'IVD', 'biotechnology'],
-  authors: [{ name: 'BioSystems Indonesia' }],
-  creator: 'BioSystems Indonesia',
-  publisher: 'BioSystems Indonesia',
+  description:
+    "BioSystems Indonesia provides laboratory instruments and reagents for clinical laboratories, hospitals, and medical facilities.",
   robots: {
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
   },
   openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    alternateLocale: ['id_ID'],
-    siteName: 'BioSystems Indonesia',
+    type: "website",
+    siteName: "BioSystems Indonesia",
+    locale: "id_ID",
+    alternateLocale: ["en_US"],
     images: [
       {
-        url: '/og-image.jpg',
+        url: "https://biosystems.id/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: 'BioSystems Indonesia - Analytical Solutions',
+        alt: "BioSystems Indonesia",
       },
     ],
   },
   twitter: {
-    card: 'summary_large_image',
-    site: '@biosystems_id',
-    creator: '@biosystems_id',
-  },
-  verification: {
-    google: 'your-google-verification-code',
-    // yandex: 'your-yandex-verification-code',
-    // bing: 'your-bing-verification-code',
+    card: "summary_large_image",
   },
 };
+
 
 export default function RootLayout({
   children,
