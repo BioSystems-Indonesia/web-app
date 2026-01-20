@@ -14,7 +14,6 @@ export default function InsideOurLab() {
     const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
 
     useEffect(() => {
-        // Only load video on tablet and above for better mobile performance
         const isMobile = window.innerWidth < 768;
         setShouldLoadVideo(!isMobile);
 
@@ -22,7 +21,6 @@ export default function InsideOurLab() {
             setVideoSrc(`${window.location.origin}/inside-our-lab.mp4`);
         }
 
-        // Re-check on resize (debounced)
         let resizeTimer: NodeJS.Timeout;
         const handleResize = () => {
             clearTimeout(resizeTimer);

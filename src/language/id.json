@@ -1,8 +1,8 @@
 {
- "HomePage": {
-  "title": "Selamat datang di BioSystems Indonesia",
-  "description": "BioSystems Indonesia menyediakan alat laboratorium dan reagen untuk laboratorium klinik, rumah sakit, dan fasilitas medis."
-},
+  "HomePage": {
+    "title": "Selamat datang di BioSystems Indonesia",
+    "description": "BioSystems Indonesia menyediakan alat laboratorium dan reagen untuk laboratorium klinik, rumah sakit, dan fasilitas medis."
+  },
   "Navigation": {
     "home": "Beranda",
     "dashboard": "Dashboard",
@@ -68,7 +68,7 @@
   },
   "InsideOurLab": {
     "title": "Di Dalam Laboratorium Kami",
-    "description": "Dibangun untuk mendukung pengambilan keputusan klinis melalui alur kerja analitis yang tepat dan tervalidasi.",
+    "description": "Mendukung pengambilan keputusan klinis melalui alur kerja analitis yang akurat, andal, dan telah tervalidasi.",
     "ctaButton": "Tur Virtual"
   },
   "Distribution": {
