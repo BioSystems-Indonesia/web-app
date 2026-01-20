@@ -19,7 +19,6 @@ export async function POST(req: NextRequest) {
     const authUseCase = new AuthenticationUseCase(repo, hasher, jwt);
 
     const result = await authUseCase.login(username, password);
-
     const response = NextResponse.json(APIResponseBuilder.success(result), {
       status: HttpStatus.OK,
     });

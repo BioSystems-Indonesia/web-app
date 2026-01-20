@@ -16,10 +16,10 @@ export default function LoginPage() {
   const [error, setError] = useState("");
   const [locale, setLocale] = useState("id");
   const params = useParams();
-  const t = useTranslations('Auth');
+  const t = useTranslations("Auth");
 
   useEffect(() => {
-    if (params?.locale && typeof params.locale === 'string') {
+    if (params?.locale && typeof params.locale === "string") {
       setLocale(params.locale);
     }
   }, [params]);
@@ -34,7 +34,7 @@ export default function LoginPage() {
         password,
       });
 
-      window.location.href = `/${locale}/dashboard`;
+      window.location.href = `/${locale}/dashboard/products`;
     } catch (err: unknown) {
       if (axios.isAxiosError(err) && err.response?.data?.message) {
         setError(err.response.data.message);
@@ -51,44 +51,41 @@ export default function LoginPage() {
           <Image className="logo" src={logo} alt="BioSystems Logo" />
         </div>
         <div className="login-container">
-          <h2>{t('login')}</h2>
-          <p>{t('loginDescription')}</p>
+          <h2>{t("login")}</h2>
+          <p>{t("loginDescription")}</p>
           {error && (
-            <div className="card-error"><p className="error">{error}</p><p onClick={() => setError("")}>x</p></div>
+            <div className="card-error">
+              <p className="error">{error}</p>
+              <p onClick={() => setError("")}>x</p>
+            </div>
           )}
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="username-container">
-
               <div className={`input-container ${username ? "filled" : ""}`}>
                 <FaRegUser />
                 <input
                   type="text"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  placeholder={t('username')}
+                  placeholder={t("username")}
                   autoCapitalize="none"
                   required
                 />
               </div>
             </div>
             <div className="password-container">
-
               <div className={`input-container ${password ? "filled" : ""}`}>
                 <FaLock />
                 <input
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder={t('password')}
+                  placeholder={t("password")}
                   required
                 />
               </div>
             </div>
-            <button
-              type="submit"
-            >
-              {t('login')}
-            </button>
+            <button type="submit">{t("login")}</button>
           </form>
         </div>
       </div>

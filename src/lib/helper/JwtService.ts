@@ -11,6 +11,7 @@ export class JwtService {
   }
 
   generate(payload: Claims): string {
+    console.log(payload);
     return jwt.sign(payload, this.secretKey, this.options);
   }
 

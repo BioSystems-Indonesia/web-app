@@ -5,8 +5,8 @@ import { AuthenticationError, NotFoundError } from "@/lib/http/error";
 
 export class AuthenticationRepositoryPrisma implements AuthenticationRepository {
   async findByUsername(username: string): Promise<Authentication> {
-    const auth = await prisma.authentication.findUnique({
-      where: { username },
+    const auth = await prisma.authentication.findFirst({
+      where: { username, deletedAt: null },
       include: {
         user: {
           select: {
@@ -17,18 +17,19 @@ export class AuthenticationRepositoryPrisma implements AuthenticationRepository 
       },
     });
 
-    if (!auth) {
+    if (!auth || !auth.user) {
       throw new AuthenticationError();
     }
 
-    const role = auth.user.roleId
-      ? await prisma.role.findUnique({
-          where: { id: auth.user.roleId },
-          select: { name: true },
-        })
-      : null;
-
-    return new Authentication(auth.user.id, auth.username, auth.password, role?.name);
+    let roleName: string | undefined = undefined;
+    if (auth.user.roleId) {
+      const role = await prisma.role.findFirst({
+        where: { id: auth.user.roleId, deletedAt: null },
+        select: { name: true },
+      });
+      roleName = role?.name ?? undefined;
+    }
+    return new Authentication(auth.user.id, auth.username, auth.password, roleName);
   }
 
   async updatePassword(username: string, newPassword: string): Promise<void> {

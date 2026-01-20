@@ -49,6 +49,8 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         return "Human Resource";
       case "PRODUCT_SPECIALIST":
         return "Product Specialist";
+      case "DG":
+        return "Desain Grafik";
       default:
         return role;
     }
