@@ -35,79 +35,81 @@ export default async function Home({ params }: PageProps) {
 
   return (
     <>
-      {/* Structured Data for Homepage */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "BioSystems Indonesia",
-            "url": "https://biosystems.id",
-            "logo": "https://biosystems.id/logo.png",
-            "description": "Leading provider of analytical solutions for in vitro diagnostics since 1981",
-            "foundingDate": "1981",
-            "industry": "Biotechnology",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "Jl. Kyai Caringin No. 18-A RT 10/RW 4. Cideng",
-              "addressLocality": "Jakarta Pusat",
-              "addressRegion": "DKI Jakarta",
-              "addressCountry": "ID"
-            },
-            "contactPoint": {
-              "@type": "ContactPoint",
-              "telephone": "+62-817-887-060",
-              "contactType": "Customer Service",
-              "availableLanguage": ["en", "id"]
-            },
-            "sameAs": [
-              "https://linkedin.com/company/biosystemsid",
-              "https://instagram.com/biosystems.ind",
-              "https://youtube.com/@biosystemsindonesia"
+            "@graph": [
+              {
+                "@type": "Organization",
+                "@id": "https://biosystems.id/#organization",
+                "name": "BioSystems Indonesia",
+                "url": "https://biosystems.id",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://biosystems.id/logo.png",
+                  "width": 512,
+                  "height": 512
+                },
+                "description": "Leading provider of analytical solutions for in vitro diagnostics since 1981",
+                "foundingDate": "1981",
+                "industry": "Biotechnology",
+                "address": {
+                  "@type": "PostalAddress",
+                  "streetAddress": "Jl. Kyai Caringin No. 18-A RT 10/RW 4. Cideng",
+                  "addressLocality": "Jakarta Pusat",
+                  "addressRegion": "DKI Jakarta",
+                  "addressCountry": "ID"
+                },
+                "contactPoint": {
+                  "@type": "ContactPoint",
+                  "telephone": "+62-817-887-060",
+                  "contactType": "Customer Service",
+                  "availableLanguage": ["en", "id"]
+                },
+                "sameAs": [
+                  "https://linkedin.com/company/biosystemsid",
+                  "https://instagram.com/biosystems.ind",
+                  "https://youtube.com/@biosystemsindonesia"
+                ]
+              },
+              {
+                "@type": "WebSite",
+                "@id": "https://biosystems.id/#website",
+                "url": "https://biosystems.id",
+                "name": "BioSystems Indonesia",
+                "publisher": {
+                  "@id": "https://biosystems.id/#organization"
+                },
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": {
+                    "@type": "EntryPoint",
+                    "urlTemplate": "https://biosystems.id/search?q={search_term_string}"
+                  },
+                  "query-input": "required name=search_term_string"
+                },
+                "inLanguage": ["en", "id"]
+              },
+              {
+                "@type": "VideoObject",
+                "@id": "https://biosystems.id/#inside-our-lab-video",
+                "name": "Inside BioSystems Indonesia Laboratory",
+                "description": "Virtual tour of our state-of-the-art laboratory facilities showcasing clinical and analytical excellence",
+                "thumbnailUrl": "https://biosystems.id/lab-thumbnail.jpg",
+                "uploadDate": "2024-01-01",
+                "contentUrl": "https://biosystems.id/inside-our-lab.mp4",
+                "embedUrl": "https://biosystems.id/inside-our-lab.mp4",
+                "publisher": {
+                  "@id": "https://biosystems.id/#organization"
+                }
+              }
             ]
           })
         }}
       />
 
-      {/* Video Object Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "VideoObject",
-            "name": "Inside BioSystems Indonesia Laboratory",
-            "description": "Virtual tour of our state-of-the-art laboratory facilities showcasing clinical and analytical excellence",
-            "thumbnailUrl": "https://biosystems.id/lab-thumbnail.jpg",
-            "uploadDate": new Date().toISOString(),
-            "contentUrl": "https://biosystems.id/inside-our-lab.mp4",
-            "embedUrl": "https://biosystems.id/inside-our-lab.mp4"
-          })
-        }}
-      />
-
-      {/* WebSite Schema with Search Action */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "name": "BioSystems Indonesia",
-            "url": "https://biosystems.id",
-            "potentialAction": {
-              "@type": "SearchAction",
-              "target": {
-                "@type": "EntryPoint",
-                "urlTemplate": "https://biosystems.id/search?q={search_term_string}"
-              },
-              "query-input": "required name=search_term_string"
-            },
-            "inLanguage": ["en", "id"]
-          })
-        }}
-      />
 
       <div className="home">
         <Header />

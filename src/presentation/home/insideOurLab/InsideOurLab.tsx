@@ -38,7 +38,7 @@ export default function InsideOurLab() {
     }, []);
 
     return (
-        <section className="inside-our-lab" aria-labelledby="inside-lab-heading">
+        <section className="inside-our-lab" aria-labelledby="inside-lab-heading" id="inside-our-lab">
             {shouldLoadVideo && (
                 <div className="video-background">
                     <video
