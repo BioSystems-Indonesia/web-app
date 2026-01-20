@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: InstrumentLayoutProps): Promi
             "Minimal maintenance",
             "Reagent barcoding system"
         ],
-        imageUrl: "/assets/img/instrument/ba200/1.png"
+        imageUrl: "/assets/img/instrument/ba200/hero.png"
     });
 }
 
@@ -36,7 +36,7 @@ export default async function BA200Layout({ children, params }: InstrumentLayout
         instrumentCode: "83200/83200ISE",
         description: "Full automatic clinical chemistry analyzer with LED optical technology and 200 tests per hour throughput. Features automatic hemolysis detection on whole blood samples.",
         url: `https://biosystems.id/${locale}/instrument/ba200`,
-        imageUrl: "https://biosystems.id/assets/img/instrument/ba200/1.png",
+        imageUrl: "https://biosystems.id/instrument/images/ba200.png",
         features: [
             "LED optical technology with minimal maintenance",
             "Automatic hemolysis detection on whole blood samples",

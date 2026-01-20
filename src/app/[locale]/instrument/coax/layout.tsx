@@ -11,46 +11,45 @@ export async function generateMetadata({ params }: InstrumentLayoutProps): Promi
 
     return generateInstrumentMetadata({
         locale,
-        instrumentName: "BTS",
-        instrumentCode: "83000",
+        instrumentName: "COAX",
+        instrumentCode: "85001/85002/85004",
         description: locale === "id"
-            ? "BTS adalah penganalisis manual dengan sistem optik LED dan perangkat lunak baru yang intuitif dan mudah digunakan yang akan memudahkan pekerjaan sehari-hari Anda di laboratorium."
-            : "BTS is a manual analyzer with LED optics system and a new intuitive and easy-to-use software that will ease your daily work in the laboratory.",
-        pathname: "/instrument/bts",
+            ? "COAX adalah koagulometer semi-otomatis yang dirancang untuk mengoptimalkan rutinitas laboratorium Anda."
+            : "COAX is a semi-automated coagulometer designed to optimize your laboratory routine.",
+        pathname: "/instrument/coax",
         features: [
-            "Manual analyzer",
-            "LED optics system",
-            "Intuitive software",
-            "Easy to use",
-            "Compact design"
+            "Semi-automated coagulometer",
+            "Open system",
+            "1, 2 or 4 optical channels",
+            "Nearly maintenance-free",
+            "High-quality results"
         ],
-        imageUrl: "/assets/img/instrument/bts/1.png"
+        imageUrl: "/assets/img/instrument/coax/hero.png"
     });
 }
 
-export default async function BTSLayout({ children, params }: InstrumentLayoutProps) {
+export default async function CoaxLayout({ children, params }: InstrumentLayoutProps) {
     const { locale } = await params;
 
     const jsonLd = generateInstrumentJsonLd({
-        instrumentName: "BioSystems BTS",
-        instrumentCode: "83000",
-        description: "Manual analyzer with LED optics system and intuitive software for efficient laboratory work. Compact and reliable solution for clinical chemistry analysis.",
-        url: `https://biosystems.id/${locale}/instrument/bts`,
-        imageUrl: "https://biosystems.id/assets/img/instrument/bts/1.png",
+        instrumentName: "BioSystems COAX",
+        instrumentCode: "85001/85002/85004",
+        description: "Semi-automated coagulometer designed to optimize laboratory routine. Available in 1, 2, or 4 optical channel models for flexible coagulation testing.",
+        url: `https://biosystems.id/${locale}/instrument/coax`,
+        imageUrl: "https://biosystems.id/instrument/images/coax.png",
         features: [
-            "Manual semi-automatic analyzer",
-            "LED optical technology",
-            "Intuitive and easy-to-use software",
-            "Compact design (180mm x 438mm x 245mm)",
-            "Low maintenance cost"
+            "Semi-automated coagulometer",
+            "Open system",
+            "1, 2 or 4 optical channels",
+            "Nearly maintenance-free",
+            "Color touch screen display"
         ],
         specifications: {
-            "Dimensions": "180 mm x 438 mm x 245 mm",
-            "Weight": "4.3 kg",
-            "Throughput": "Manual",
-            "Light Source": "LEDs",
-            "Product Code": "83000",
-            "Type": "Semi-Automatic Analyzer with LED Technology"
+            "Dimensions": "225 mm x 90 mm x 115 mm",
+            "Channels": "1, 2, or 4 optical channels",
+            "Display": "Color touch screen",
+            "Product Code": "85001/85002/85004",
+            "Type": "Semi-Automated Coagulometer"
         }
     });
 

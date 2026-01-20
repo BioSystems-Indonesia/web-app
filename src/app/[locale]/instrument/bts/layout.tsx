@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: InstrumentLayoutProps): Promi
             "Easy to use",
             "Compact design"
         ],
-        imageUrl: "/assets/img/instrument/bts/1.png"
+        imageUrl: "/assets/img/instrument/bts/hero.png"
     });
 }
 
@@ -36,7 +36,7 @@ export default async function BTSLayout({ children, params }: InstrumentLayoutPr
         instrumentCode: "83000",
         description: "Manual analyzer with LED optics system and intuitive software for efficient laboratory work. Compact and reliable solution for clinical chemistry analysis.",
         url: `https://biosystems.id/${locale}/instrument/bts`,
-        imageUrl: "https://biosystems.id/assets/img/instrument/bts/1.png",
+        imageUrl: "https://biosystems.id/instrument/images/bts.png",
         features: [
             "Manual semi-automatic analyzer",
             "LED optical technology",

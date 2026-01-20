@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: InstrumentLayoutProps): Promi
             "Fast sample loading",
             "Advanced LED technology"
         ],
-        imageUrl: "/assets/img/instrument/ba400/1.png"
+        imageUrl: "/assets/img/instrument/ba400/hero.png"
     });
 }
 
@@ -36,7 +36,7 @@ export default async function BA400Layout({ children, params }: InstrumentLayout
         instrumentCode: "83400/83400ISE",
         description: "Full automatic clinical chemistry analyzer with automatic hemolysis detection on whole blood samples and fast sample loading capability. Ideal for high-throughput laboratories.",
         url: `https://biosystems.id/${locale}/instrument/ba400`,
-        imageUrl: "https://biosystems.id/assets/img/instrument/ba400/1.png",
+        imageUrl: "https://biosystems.id/instrument/images/ba400.png",
         features: [
             "Full automatic random access analyzer",
             "Automatic hemolysis detection on whole blood samples",

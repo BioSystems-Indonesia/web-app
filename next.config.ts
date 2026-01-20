@@ -34,6 +34,10 @@ const nextConfig: NextConfig = {
         source: "/:locale/uploads/:path*",
         destination: "/uploads/:path*",
       },
+      {
+        source: "/:locale/instrument/images/:path*",
+        destination: "/instrument/images/:path*",
+      },
     ];
   },
 
