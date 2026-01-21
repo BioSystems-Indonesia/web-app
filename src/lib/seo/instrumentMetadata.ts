@@ -111,9 +111,8 @@ export function generateInstrumentJsonLd({
           "@type": "Offer",
           url,
           priceCurrency: "IDR",
-          price: "0",
           availability: "https://schema.org/InStock",
-          priceValidUntil: "2026-12-31",
+          itemCondition: "https://schema.org/NewCondition",
         },
 
         additionalProperty: [
