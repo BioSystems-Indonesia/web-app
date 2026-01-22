@@ -1,0 +1,38 @@
+model Employee {
+    id           String @id @default(uuid())
+    employeeCode String @unique
+    fullName     String
+
+    positionId String
+    position   Position @relation(fields: [positionId], references: [id])
+
+    joinDate         DateTime
+    employmentStatus EmployeeStatus
+    birthDate        DateTime
+    nationalId       String         @unique
+    salary           Decimal
+    domicile         String
+    email            String         @unique
+    motherName       String
+    religion         String
+    bankName         String
+    bankAccount      String
+    bpjsNumber       String?
+    taxNumber        String?
+
+    role EmployeeRole @default(EMPLOYEE)
+
+    attendances     Attendance[]
+    leaveRequests   LeaveRequest[]
+    inventoryAssets InventoryHandover[]
+    jobAssignments  EmployeeJobdesk[]
+    kpis            KPI[]
+    performances    PerformanceReview[]
+
+    auditedKpis    KPIAudit[]         @relation("Auditor")
+    auditedReviews PerformanceAudit[] @relation("Auditor")
+
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    deletedAt DateTime?
+}

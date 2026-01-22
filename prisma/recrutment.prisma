@@ -1,0 +1,70 @@
+model RecruitmentCandidate {
+    id        String   @id @default(uuid())
+    fullName  String
+    email     String?
+    phone     String
+    birthDate DateTime
+    address   String
+    domicile  String
+
+    status    RecruitmentStatus @default(RECEIVED)
+    appliedAt DateTime          @default(now())
+
+    urlCV        String
+    urlSelfPhoto String
+    urlPortfolio String?
+
+    coverLetter String?
+
+    expectedSalery       Decimal
+    availabilityToStart  DateTime
+    profesionalReference String
+    source               String
+
+    experiences   CandidateExperience[]
+    educations    CandidateEducation[]
+    statusHistory RecruitmentStatusHistory[]
+
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    deletedAt DateTime?
+}
+
+model CandidateExperience {
+    id          String @id @default(uuid())
+    candidateId String
+
+    companyName    String
+    jobTitle       String
+    startDate      DateTime
+    endDate        DateTime?
+    description    String?
+    isStillWorking Boolean
+
+    candidate RecruitmentCandidate @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+}
+
+model CandidateEducation {
+    id              String @id @default(uuid())
+    candidateId     String
+    highestDegree   Degree
+    institutionName String
+    fieldOfStudy    String
+    endYear         Int?
+    gpa             Float?
+
+    candidate RecruitmentCandidate @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+}
+
+model RecruitmentStatusHistory {
+    id          String            @id @default(uuid())
+    candidateId String
+    status      RecruitmentStatus
+    notes       String?
+
+    candidate RecruitmentCandidate @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    deletedAt DateTime?
+}

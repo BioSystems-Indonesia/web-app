@@ -3,14 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev -p 8080 --turbopack",
     "debug": "next dev --inspect",
     "build": "next build --turbopack",
-    "start": "next start -p 3000",
+    "start": "next start -p 8080",
     "test": "jest --verbose --colors",
     "test:watch": "jest --watch",
     "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx --fix .",
-    "lint": "eslint"
+    "lint": "eslint",
+    "prisma:merge": "tsx prisma/merge-schema.ts",
+    "prisma:generate": "npm run prisma:merge && prisma generate",
+    "prisma:migrate": "npm run prisma:merge && prisma migrate dev"
   },
   "prisma": {
     "seed": "npx tsx prisma/seed.ts"

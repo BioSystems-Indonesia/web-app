@@ -1,0 +1,27 @@
+model Jobdesk {
+    id          String  @id @default(uuid())
+    title       String
+    description String?
+
+    positionId String
+    position   Position @relation(fields: [positionId], references: [id])
+
+    employees EmployeeJobdesk[]
+
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    deletedAt DateTime?
+}
+
+model EmployeeJobdesk {
+    id         String @id @default(uuid())
+    employeeId String
+    jobdeskId  String
+
+    employee Employee @relation(fields: [employeeId], references: [id])
+    jobdesk  Jobdesk  @relation(fields: [jobdeskId], references: [id])
+
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    deletedAt DateTime?
+}

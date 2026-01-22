@@ -1,0 +1,11 @@
+model Authentication {
+    id       Int    @id @default(autoincrement())
+    userId   String @unique
+    username String @unique
+    password String
+    user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    deletedAt DateTime?
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+}

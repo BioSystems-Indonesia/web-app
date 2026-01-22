@@ -1,0 +1,17 @@
+model LeaveRequest {
+    id         String      @id @default(uuid())
+    employeeId String
+    position   String
+    leaveType  String
+    startDate  DateTime
+    endDate    DateTime
+    totalDays  Int
+    status     LeaveStatus @default(PENDING)
+    approvedBy String?
+
+    employee Employee @relation(fields: [employeeId], references: [id])
+
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    deletedAt DateTime?
+}

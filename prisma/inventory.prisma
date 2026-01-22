@@ -1,0 +1,44 @@
+model Inventory {
+    id        String          @id @default(uuid())
+    assetCode String          @unique
+    assetType String
+    status    InventoryStatus @default(AVAILABLE)
+
+    categoryId String
+    category   InventoryCategory @relation(fields: [categoryId], references: [id])
+
+    handovers InventoryHandover[]
+
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    deletedAt DateTime?
+}
+
+model InventoryCategory {
+    id   String @id @default(uuid())
+    code String @unique
+    name String
+
+    inventories Inventory[]
+
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    deletedAt DateTime?
+}
+
+model InventoryHandover {
+    id             String    @id @default(uuid())
+    employeeId     String
+    inventoryId    String
+    handoverDate   DateTime
+    conditionNotes String
+    signatureFile  String
+    returnedAt     DateTime?
+
+    employee  Employee  @relation(fields: [employeeId], references: [id])
+    inventory Inventory @relation(fields: [inventoryId], references: [id])
+
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    deletedAt DateTime?
+}

@@ -1,0 +1,74 @@
+enum UserRole {
+    HUMAN_RESOURCE
+    PRODUCT_SPECIALIST
+    ADMIN
+    DG
+}
+
+enum ArticleStatus {
+    DRAFT
+    PUBLISHED
+    ARCHIVED
+}
+
+enum ProductType {
+    CLINICAL
+    FOOD_AND_BEVERAGE
+}
+
+enum EmployeeStatus {
+    PERMANENT
+    PROBATION
+    CONTRACT
+}
+
+enum RecruitmentStatus {
+    RECEIVED
+    IN_REVIEW
+    INITIAL_INTERVIEW
+    TECHNICAL_TEST
+    PSYCHOLOGICAL_TEST
+    OFFERING
+    REJECTED
+}
+
+enum AttendanceStatus {
+    PRESENT
+    FULL_LEAVE
+    HALF_LEAVE
+    SICK
+    ABSENT
+    OUT_OF_OFFICE
+}
+
+enum LeaveStatus {
+    PENDING
+    APPROVED
+    REJECTED
+}
+
+enum InventoryStatus {
+    AVAILABLE
+    ASSIGNED
+    DAMAGED
+}
+
+enum SOPStatus {
+    ACTIVE
+    ARCHIVED
+}
+
+enum Degree {
+    HIGH_SCHOOL
+    DIPLOMA
+    BACHELORS_DEGREE
+    MASTERS_DEGREE
+    PHD
+}
+
+enum EmployeeRole {
+    EMPLOYEE
+    KPI_AUDITOR
+    HR
+    MANAGER
+}

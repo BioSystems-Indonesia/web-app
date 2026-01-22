@@ -1,0 +1,21 @@
+model Attendance {
+    id         String           @id @default(uuid())
+    employeeId String
+    date       DateTime
+    checkIn    DateTime?
+    checkOut   DateTime?
+    status     AttendanceStatus
+
+    employee Employee @relation(fields: [employeeId], references: [id])
+}
+
+model AttendancePenalty {
+    id            String   @id @default(uuid())
+    lateMinutes   Int
+    penaltyAmount Decimal
+    effectiveFrom DateTime
+
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    deletedAt DateTime?
+}

@@ -1,0 +1,78 @@
+model KPI {
+    id           String  @id @default(uuid())
+    employeeId   String
+    period       String
+    documentFile String
+    description  String?
+
+    employee Employee   @relation(fields: [employeeId], references: [id])
+    audits   KPIAudit[]
+
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    deletedAt DateTime?
+}
+
+model PerformanceReview {
+    id         String @id @default(uuid())
+    employeeId String
+    period     String
+
+    workQuality    Int
+    communication  Int
+    workMethod     Int
+    problemSolving Int
+
+    compliance  Int
+    discipline  Int
+    cleanliness Int
+    initiative  Int
+
+    specialTaskScore Int
+    weight           Float
+    totalScore       Float
+    ranking          Int?
+
+    employee Employee           @relation(fields: [employeeId], references: [id])
+    audits   PerformanceAudit[]
+
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    deletedAt DateTime?
+}
+
+model PerformanceAudit {
+    id        String   @id @default(uuid())
+    auditorId String
+    reviewId  String
+    notes     String?
+    approved  Boolean  @default(false)
+    auditedAt DateTime @default(now())
+
+    auditor Employee          @relation("Auditor", fields: [auditorId], references: [id])
+    review  PerformanceReview @relation(fields: [reviewId], references: [id])
+
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    deletedAt DateTime?
+
+    @@unique([auditorId, reviewId])
+}
+
+model KPIAudit {
+    id        String   @id @default(uuid())
+    auditorId String
+    kpiId     String
+    notes     String?
+    score     Float?
+    auditedAt DateTime @default(now())
+
+    auditor Employee @relation("Auditor", fields: [auditorId], references: [id])
+    kpi     KPI      @relation(fields: [kpiId], references: [id])
+
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    deletedAt DateTime?
+
+    @@unique([auditorId, kpiId])
+}

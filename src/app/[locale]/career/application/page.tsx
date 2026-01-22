@@ -24,7 +24,7 @@ type PageProps = {
 async function getPositionData(id: string): Promise<Position | null> {
     try {
         // Fetch data dari API endpoint
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'}/api/positions/${id}`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080'}/api/positions/${id}`, {
             cache: 'no-store'
         })
 
