@@ -40,14 +40,51 @@ export class LeaveRepositoryPrisma {
   }
 
   async getById(id: string): Promise<LeaveRequest> {
-    const leave = await prisma.leaveRequest.findFirst({ where: { id, deletedAt: null } });
+    const leave = await prisma.leaveRequest.findFirst({
+      where: { id, deletedAt: null },
+      include: {
+        employee: {
+          select: {
+            id: true,
+            fullName: true,
+            position: {
+              select: {
+                name: true,
+                code: true,
+              },
+            },
+          },
+        },
+      },
+    });
     if (!leave) throw new NotFoundError(`LeaveRequest ${id} not found`);
     return leave;
   }
 
-  async getAll(): Promise<LeaveRequest[]> {
+  async getAll(): Promise<any[]> {
     return await prisma.leaveRequest.findMany({
       where: { deletedAt: null },
+      select: {
+        id: true,
+        employeeId: false,
+        startDate: true,
+        endDate: true,
+        totalDays: true,
+        status: true,
+        approvedBy: true,
+        employee: {
+          select: {
+            id: true,
+            fullName: true,
+            position: {
+              select: {
+                name: true,
+                code: true,
+              },
+            },
+          },
+        },
+      },
       orderBy: { startDate: "desc" },
     });
   }
@@ -124,16 +161,33 @@ export class LeaveRepositoryPrisma {
     return updated;
   }
 
-  async getByEmployeeAndPeriod(
-    employeeId: string,
-    start: Date,
-    end: Date
-  ): Promise<LeaveRequest[]> {
+  async getByEmployeeAndPeriod(employeeId: string, start: Date, end: Date): Promise<any[]> {
     return await prisma.leaveRequest.findMany({
       where: {
         employeeId,
         deletedAt: null,
         AND: [{ startDate: { lte: end } }, { endDate: { gte: start } }],
+      },
+      select: {
+        id: true,
+        employeeId: true,
+        startDate: true,
+        endDate: true,
+        totalDays: true,
+        status: true,
+        approvedBy: true,
+        employee: {
+          select: {
+            id: true,
+            fullName: true,
+            position: {
+              select: {
+                name: true,
+                code: true,
+              },
+            },
+          },
+        },
       },
       orderBy: { startDate: "asc" },
     });

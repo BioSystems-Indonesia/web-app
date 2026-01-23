@@ -81,6 +81,15 @@ export class EmployeeRepositoryPrisma implements EmployeeRepository {
   async getAll(): Promise<Employee[]> {
     const employees = await prisma.employee.findMany({
       where: { deletedAt: null },
+      include: {
+        position: {
+          select: {
+            id: true,
+            code: true,
+            description: true,
+          },
+        },
+      },
     });
 
     return employees;

@@ -1,0 +1,516 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+    HUMAN_RESOURCE
+    PRODUCT_SPECIALIST
+    ADMIN
+    DG
+}
+
+enum ArticleStatus {
+    DRAFT
+    PUBLISHED
+    ARCHIVED
+}
+
+enum ProductType {
+    CLINICAL
+    FOOD_AND_BEVERAGE
+}
+
+enum EmployeeStatus {
+    PERMANENT
+    PROBATION
+    CONTRACT
+}
+
+enum RecruitmentStatus {
+    RECEIVED
+    IN_REVIEW
+    INITIAL_INTERVIEW
+    TECHNICAL_TEST
+    PSYCHOLOGICAL_TEST
+    OFFERING
+    REJECTED
+}
+
+enum AttendanceStatus {
+    PRESENT
+    FULL_LEAVE
+    HALF_LEAVE
+    SICK
+    ABSENT
+    OUT_OF_OFFICE
+}
+
+enum LeaveStatus {
+    PENDING
+    APPROVED
+    REJECTED
+}
+
+enum InventoryStatus {
+    AVAILABLE
+    ASSIGNED
+    DAMAGED
+}
+
+enum SOPStatus {
+    ACTIVE
+    ARCHIVED
+}
+
+enum Degree {
+    HIGH_SCHOOL
+    DIPLOMA
+    BACHELORS_DEGREE
+    MASTERS_DEGREE
+    PHD
+}
+
+enum EmployeeRole {
+    EMPLOYEE
+    KPI_AUDITOR
+    HR
+    MANAGER
+}
+
+model Article {
+    id          String        @id @default(cuid())
+    authorId    String
+    title       String
+    subTitle    String
+    slug        String        @unique
+    excerpt     String?       @db.LongText
+    heroImage   String?       @db.VarChar(500)
+    author      User          @relation(fields: [authorId], references: [id])
+    contentHtml String        @db.LongText
+    references  String?       @db.Text
+    status      ArticleStatus @default(DRAFT)
+
+    deletedAt DateTime?
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+
+    @@index([status])
+}
+
+model Attendance {
+    id         String           @id @default(uuid())
+    employeeId String
+    date       DateTime
+    checkIn    DateTime?
+    checkOut   DateTime?
+    status     AttendanceStatus
+
+    employee Employee @relation(fields: [employeeId], references: [id])
+}
+
+model AttendancePenalty {
+    id            String   @id @default(uuid())
+    lateMinutes   Int
+    penaltyAmount Decimal
+    effectiveFrom DateTime
+
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    deletedAt DateTime?
+}
+
+model Authentication {
+    id       Int    @id @default(autoincrement())
+    userId   String @unique
+    username String @unique
+    password String
+    user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    deletedAt DateTime?
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+}
+
+model Employee {
+    id           String @id @default(uuid())
+    employeeCode String @unique
+    fullName     String
+
+    positionId String
+    position   Position @relation(fields: [positionId], references: [id])
+
+    joinDate         DateTime
+    employmentStatus EmployeeStatus
+    birthDate        DateTime
+    nationalId       String         @unique
+    salary           Decimal
+    domicile         String
+    email            String         @unique
+    motherName       String
+    religion         String
+    bankName         String
+    bankAccount      String
+    bpjsNumber       String?
+    taxNumber        String?
+
+    role EmployeeRole @default(EMPLOYEE)
+
+    attendances     Attendance[]
+    leaveRequests   LeaveRequest[]
+    inventoryAssets InventoryHandover[]
+    jobAssignments  EmployeeJobdesk[]
+    kpis            KPI[]
+    performances    PerformanceReview[]
+
+    auditedKpis    KPIAudit[]         @relation("Auditor")
+    auditedReviews PerformanceAudit[] @relation("Auditor")
+
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    deletedAt DateTime?
+}
+
+model Inventory {
+    id        String          @id @default(uuid())
+    assetCode String          @unique
+    assetType String
+    status    InventoryStatus @default(AVAILABLE)
+
+    categoryId String
+    category   InventoryCategory @relation(fields: [categoryId], references: [id])
+
+    handovers InventoryHandover[]
+
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    deletedAt DateTime?
+}
+
+model InventoryCategory {
+    id   String @id @default(uuid())
+    code String @unique
+    name String
+
+    inventories Inventory[]
+
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    deletedAt DateTime?
+}
+
+model InventoryHandover {
+    id             String    @id @default(uuid())
+    employeeId     String
+    inventoryId    String
+    handoverDate   DateTime
+    conditionNotes String
+    signatureFile  String
+    returnedAt     DateTime?
+
+    employee  Employee  @relation(fields: [employeeId], references: [id])
+    inventory Inventory @relation(fields: [inventoryId], references: [id])
+
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    deletedAt DateTime?
+}
+
+model Jobdesk {
+    id          String  @id @default(uuid())
+    title       String
+    description String?
+
+    positionId String
+    position   Position @relation(fields: [positionId], references: [id])
+
+    employees EmployeeJobdesk[]
+
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    deletedAt DateTime?
+}
+
+model EmployeeJobdesk {
+    id         String @id @default(uuid())
+    employeeId String
+    jobdeskId  String
+
+    employee Employee @relation(fields: [employeeId], references: [id])
+    jobdesk  Jobdesk  @relation(fields: [jobdeskId], references: [id])
+
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    deletedAt DateTime?
+}
+
+model KPI {
+    id           String  @id @default(uuid())
+    employeeId   String
+    period       String
+    documentFile String
+    description  String?
+
+    employee Employee   @relation(fields: [employeeId], references: [id])
+    audits   KPIAudit[]
+
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    deletedAt DateTime?
+}
+
+model PerformanceReview {
+    id         String @id @default(uuid())
+    employeeId String
+    period     String
+
+    workQuality    Int
+    communication  Int
+    workMethod     Int
+    problemSolving Int
+
+    compliance  Int
+    discipline  Int
+    cleanliness Int
+    initiative  Int
+
+    specialTaskScore Int
+    weight           Float
+    totalScore       Float
+    ranking          Int?
+
+    employee Employee           @relation(fields: [employeeId], references: [id])
+    audits   PerformanceAudit[]
+
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    deletedAt DateTime?
+}
+
+model PerformanceAudit {
+    id        String   @id @default(uuid())
+    auditorId String
+    reviewId  String
+    notes     String?
+    approved  Boolean  @default(false)
+    auditedAt DateTime @default(now())
+
+    auditor Employee          @relation("Auditor", fields: [auditorId], references: [id])
+    review  PerformanceReview @relation(fields: [reviewId], references: [id])
+
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    deletedAt DateTime?
+
+    @@unique([auditorId, reviewId])
+}
+
+model KPIAudit {
+    id        String   @id @default(uuid())
+    auditorId String
+    kpiId     String
+    notes     String?
+    score     Float?
+    auditedAt DateTime @default(now())
+
+    auditor Employee @relation("Auditor", fields: [auditorId], references: [id])
+    kpi     KPI      @relation(fields: [kpiId], references: [id])
+
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    deletedAt DateTime?
+
+    @@unique([auditorId, kpiId])
+}
+
+model LeaveRequest {
+    id         String      @id @default(uuid())
+    employeeId String
+    // position   String
+    leaveType  String
+    startDate  DateTime
+    endDate    DateTime
+    totalDays  Int
+    status     LeaveStatus @default(PENDING)
+    approvedBy String?
+
+    employee Employee @relation(fields: [employeeId], references: [id])
+
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    deletedAt DateTime?
+}
+
+model Position {
+    id          String  @id @default(uuid())
+    code        String  @unique
+    name        String
+    description String?
+
+    employees Employee[]
+    jobdesks  Jobdesk[]
+
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    deletedAt DateTime?
+}
+
+model Product {
+    id          Int         @id @default(autoincrement())
+    name        String
+    method      String
+    productType ProductType @default(CLINICAL)
+    createdAt   DateTime    @default(now())
+    deletedAt   DateTime?
+
+    variants          ProductVariant[]
+    productCategories ProductCategory[] @relation("ProductToCategory")
+}
+
+model ProductCategory {
+    id           Int         @id @default(autoincrement())
+    category     String      @unique
+    categoryType ProductType @default(CLINICAL)
+    icon         String
+    deletedAt    DateTime?
+
+    products Product[] @relation("ProductToCategory")
+}
+
+model ProductVariant {
+    id         Int    @id @default(autoincrement())
+    productId  Int
+    code       String
+    instrument String
+
+    raVolume  String
+    rbVolume  String
+    kitVolume String
+
+    createdAt DateTime  @default(now())
+    deletedAt DateTime?
+
+    product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+    @@unique([productId, code])
+}
+
+model RecruitmentCandidate {
+    id        String   @id @default(uuid())
+    fullName  String
+    email     String?
+    phone     String
+    birthDate DateTime
+    address   String
+    domicile  String
+
+    status    RecruitmentStatus @default(RECEIVED)
+    appliedAt DateTime          @default(now())
+
+    urlCV        String
+    urlSelfPhoto String
+    urlPortfolio String?
+
+    coverLetter String?
+
+    expectedSalery       Decimal
+    availabilityToStart  DateTime
+    profesionalReference String
+    source               String
+
+    experiences   CandidateExperience[]
+    educations    CandidateEducation[]
+    statusHistory RecruitmentStatusHistory[]
+
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    deletedAt DateTime?
+}
+
+model CandidateExperience {
+    id          String @id @default(uuid())
+    candidateId String
+
+    companyName    String
+    jobTitle       String
+    startDate      DateTime
+    endDate        DateTime?
+    description    String?
+    isStillWorking Boolean
+
+    candidate RecruitmentCandidate @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+}
+
+model CandidateEducation {
+    id              String @id @default(uuid())
+    candidateId     String
+    highestDegree   Degree
+    institutionName String
+    fieldOfStudy    String
+    endYear         Int?
+    gpa             Float?
+
+    candidate RecruitmentCandidate @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+}
+
+model RecruitmentStatusHistory {
+    id          String            @id @default(uuid())
+    candidateId String
+    status      RecruitmentStatus
+    notes       String?
+
+    candidate RecruitmentCandidate @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    deletedAt DateTime?
+}
+
+model Role {
+    id          Int       @id @default(autoincrement())
+    name        UserRole  @unique
+    description String
+    deletedAt   DateTime?
+
+    users User[]
+}
+
+model SOPArchive {
+    id          String    @id @default(uuid())
+    title       String
+    category    String
+    filePath    String
+    version     String
+    effectiveAt DateTime
+    status      SOPStatus @default(ACTIVE)
+
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    deletedAt DateTime?
+}
+
+model User {
+    id     String          @id @default(uuid())
+    email  String          @unique
+    name   String
+    roleId Int?
+    role   Role?           @relation(fields: [roleId], references: [id])
+    posts  Article[]
+    auth   Authentication?
+
+    deletedAt DateTime?
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+}
+

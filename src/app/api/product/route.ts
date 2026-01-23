@@ -25,7 +25,7 @@ export const POST = WithAuth(async (req) => {
 
     const result = await productUseCase.create(payload);
     const response = NextResponse.json(APIResponseBuilder.created(result), {
-      status: HttpStatus.OK,
+      status: HttpStatus.CREATED,
     });
 
     return response;

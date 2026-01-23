@@ -40,6 +40,15 @@ export class PositionRepositoryPrisma implements PositionRepository {
   async getAll(): Promise<Position[]> {
     const positions = await prisma.position.findMany({
       where: { deletedAt: null },
+      include: {
+        jobdesks: true,
+        employees: {
+          select: {
+            id: true,
+            fullName: true,
+          },
+        },
+      },
     });
 
     return positions;

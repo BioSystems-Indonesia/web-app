@@ -1,7 +1,7 @@
 model LeaveRequest {
     id         String      @id @default(uuid())
     employeeId String
-    position   String
+    // position   String
     leaveType  String
     startDate  DateTime
     endDate    DateTime

@@ -54,8 +54,8 @@ export class AttendanceRepositoryPrisma implements AttendanceRepository {
 
   async getByEmployeeIdAndMonth(
     employeeId: string,
-    year: number,
-    month: number
+    month: number,
+    year: number
   ): Promise<Attendance[]> {
     const start = new Date(Date.UTC(year, month - 1, 1));
     const end = new Date(Date.UTC(year, month - 1 + 1, 1));
