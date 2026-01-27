@@ -10,6 +10,7 @@ import { IoBagSharp, IoCall } from "react-icons/io5";
 import { BsBox2 } from "react-icons/bs";
 
 import "./sidebar.css";
+import { Fa42Group, FaBox, FaBoxOpen, FaBoxTissue, FaPeopleGroup } from "react-icons/fa6";
 
 interface SidebarProps {
   isOpen: boolean;
@@ -43,6 +44,30 @@ const getNavItems = (locale: string): NavItem[] => [
     icon: <FaNewspaper />,
     roles: ["ADMIN", "PRODUCT_SPECIALIST", "DG"],
   },
+  // {
+  //   href: `/${locale}/dashboard/position`,
+  //   label: "Position",
+  //   icon: <FaPeopleGroup />,
+  //   roles: ["ADMIN", "HUMAN_RESOURCE",],
+  // },
+  // {
+  //   href: `/${locale}/dashboard/employee`,
+  //   label: "Employee",
+  //   icon: <FaPeopleGroup />,
+  //   roles: ["ADMIN", "HUMAN_RESOURCE",],
+  // },
+  // {
+  //   href: `/${locale}/dashboard/inventory`,
+  //   label: "Inventory",
+  //   icon: <FaBoxOpen />,
+  //   roles: ["ADMIN", "HUMAN_RESOURCE",],
+  // },
+  // {
+  //   href: `/${locale}/dashboard/category-inventory`,
+  //   label: "Category Inventory",
+  //   icon: <FaBox />,
+  //   roles: ["ADMIN", "HUMAN_RESOURCE",],
+  // },
   // { href: `/${locale}/dashboard/events`, label: "Events", icon: <MdEventAvailable />, roles: ["ADMIN", "PRODUCT_SPECIALIST"] },
   // { href: `/${locale}/dashboard/career`, label: "Career", icon: <IoBagSharp />, roles: ["ADMIN", "HUMAN_RESOURCE"] },
   // { href: `/${locale}/dashboard/contact`, label: "Contact", icon: <IoCall />, roles: ["ADMIN"] },

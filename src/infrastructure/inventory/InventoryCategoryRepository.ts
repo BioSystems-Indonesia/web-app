@@ -22,7 +22,15 @@ export class InventoryCategoryRepositoryPrisma implements InventoryCategoryRepos
   }
 
   async getById(id: string): Promise<InventoryCategory> {
-    const category = await prisma.inventoryCategory.findFirst({ where: { id, deletedAt: null } });
+    const category = await prisma.inventoryCategory.findFirst({
+      where: { id, deletedAt: null },
+      include: {
+        inventories: {
+          where: { deletedAt: null },
+          select: { id: true, assetCode: true, assetType: true, status: true },
+        },
+      },
+    });
     if (!category) throw new NotFoundError(`InventoryCategory ${id} not found`);
     return category;
   }

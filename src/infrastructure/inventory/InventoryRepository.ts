@@ -30,13 +30,42 @@ export class InventoryRepositoryPrisma implements InventoryRepository {
   }
 
   async getById(id: string): Promise<Inventory> {
-    const inventory = await prisma.inventory.findFirst({ where: { id, deletedAt: null } });
+    const inventory = await prisma.inventory.findFirst({
+      where: { id, deletedAt: null },
+      include: {
+        category: {
+          select: {
+            id: true,
+            code: true,
+            name: true,
+          },
+        },
+        handovers: {
+          select: {
+            handoverDate: true,
+            conditionNotes: true,
+            signatureFile: true,
+            employee: {
+              select: {
+                id: true,
+                fullName: true,
+              },
+            },
+          },
+        },
+      },
+    });
     if (!inventory) throw new NotFoundError(`Inventory ${id} not found`);
     return inventory;
   }
 
   async getAll(): Promise<Inventory[]> {
-    return await prisma.inventory.findMany({ where: { deletedAt: null } });
+    return await prisma.inventory.findMany({
+      where: { deletedAt: null },
+      include: {
+        category: true,
+      },
+    });
   }
 
   async update(id: string, req: InventoryRequest): Promise<Inventory> {
@@ -54,7 +83,7 @@ export class InventoryRepositoryPrisma implements InventoryRepository {
     if (categoryExists === 0) throw new NotFoundError(`Category ${req.categoryId} not found`);
 
     const inventory = await prisma.inventory.update({
-      where: { id },
+      where: { id, deletedAt: null },
       data: {
         assetCode: req.assetCode,
         assetType: req.assetType,
@@ -109,7 +138,7 @@ export class InventoryRepositoryPrisma implements InventoryRepository {
     if (exists.returnedAt) throw new Error("Handover already returned");
 
     const updated = await prisma.inventoryHandover.update({
-      where: { id: handoverId },
+      where: { id: handoverId, deletedAt: null },
       data: { returnedAt: new Date() },
     });
     return updated;
@@ -117,7 +146,7 @@ export class InventoryRepositoryPrisma implements InventoryRepository {
 
   async getHandoversByEmployee(employeeId: string): Promise<InventoryHandover[]> {
     return await prisma.inventoryHandover.findMany({
-      where: { employeeId },
+      where: { employeeId, deletedAt: null },
       orderBy: { handoverDate: "desc" },
     });
   }

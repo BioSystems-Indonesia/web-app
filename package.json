@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 8080 --turbopack",
+    "dev": "next dev -p 3000 --turbopack",
     "debug": "next dev --inspect",
     "build": "next build --turbopack",
-    "start": "next start -p 8080",
+    "start": "next start -p 3000",
     "test": "jest --verbose --colors",
     "test:watch": "jest --watch",
     "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx --fix .",

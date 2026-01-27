@@ -69,6 +69,29 @@ export class EmployeeRepositoryPrisma implements EmployeeRepository {
   async getById(id: string): Promise<Employee> {
     const employee = await prisma.employee.findFirst({
       where: { id, deletedAt: null },
+      include: {
+        position: {
+          select: {
+            id: true,
+            code: true,
+            name: true,
+            description: true,
+          },
+        },
+        inventoryAssets: {
+          where: { returnedAt: null },
+          include: {
+            inventory: {
+              select: {
+                id: true,
+                assetCode: true,
+                assetType: true,
+                status: true,
+              },
+            },
+          },
+        },
+      },
     });
 
     if (!employee) {
@@ -78,14 +101,20 @@ export class EmployeeRepositoryPrisma implements EmployeeRepository {
     return employee;
   }
 
-  async getAll(): Promise<Employee[]> {
+  async getAll(): Promise<any[]> {
     const employees = await prisma.employee.findMany({
       where: { deletedAt: null },
-      include: {
+      select: {
+        id: true,
+        employeeCode: true,
+        fullName: true,
+        employmentStatus: true,
+        email: true,
         position: {
           select: {
             id: true,
             code: true,
+            name: true,
             description: true,
           },
         },

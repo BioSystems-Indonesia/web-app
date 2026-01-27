@@ -28,6 +28,25 @@ export class PositionRepositoryPrisma implements PositionRepository {
   async getById(id: string): Promise<Position> {
     const position = await prisma.position.findFirst({
       where: { id, deletedAt: null },
+      include: {
+        jobdesks: {
+          where: { deletedAt: null },
+          select: {
+            id: true,
+            title: true,
+            description: true,
+          },
+        },
+        employees: {
+          where: { deletedAt: null },
+          select: {
+            id: true,
+            fullName: true,
+            employeeCode: true,
+            employmentStatus: true,
+          },
+        },
+      },
     });
 
     if (!position) {
@@ -37,18 +56,10 @@ export class PositionRepositoryPrisma implements PositionRepository {
     return position;
   }
 
-  async getAll(): Promise<Position[]> {
+  async getAll(): Promise<any[]> {
     const positions = await prisma.position.findMany({
       where: { deletedAt: null },
-      include: {
-        jobdesks: true,
-        employees: {
-          select: {
-            id: true,
-            fullName: true,
-          },
-        },
-      },
+      select: { id: true, code: true, name: true, description: true, createdAt: true },
     });
 
     return positions;
