@@ -1,4 +1,4 @@
-import { NextResponse, type NextRequest } from "next/server";
+simport { NextResponse, type NextRequest } from "next/server";
 import { jwtVerify } from "jose";
 import createMiddleware from "next-intl/middleware";
 
@@ -93,8 +93,8 @@ export async function middleware(req: NextRequest) {
 
 export const config = {
   matcher: [
-    // Exclude API routes, static files, and SEO files
-    "/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|logo.png|og-image.jpg|BingSiteAuth.xml).*)",
+    // Exclude API routes, static files, SEO files, and uploads so static assets under /uploads are served directly
+    "/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|logo.png|og-image.jpg|BingSiteAuth.xml|uploads).*)",
     "/",
   ],
 };
