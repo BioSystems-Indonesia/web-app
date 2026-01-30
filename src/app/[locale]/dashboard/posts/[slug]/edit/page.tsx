@@ -36,6 +36,7 @@ export default function EditPostPage() {
     const [article, setArticle] = useState<Article | null>(null);
     const [loading, setLoading] = useState(false);
     const [fetching, setFetching] = useState(true);
+    const [uploadingHero, setUploadingHero] = useState(false);
     const [formData, setFormData] = useState({
         title: "",
         subTitle: "",
@@ -91,6 +92,62 @@ export default function EditPostPage() {
 
     const handleContentChange = (html: string) => {
         setFormData({ ...formData, contentHtml: html });
+    };
+
+    const handleHeroImageUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0];
+        if (!file) return;
+
+        const allowedTypes = ["image/jpeg", "image/png", "image/gif", "image/webp"];
+        if (!allowedTypes.includes(file.type)) {
+            return;
+        }
+
+        const maxSize = 5 * 1024 * 1024;
+        if (file.size > maxSize) {
+            return;
+        }
+
+        try {
+            setUploadingHero(true);
+            const formDataUpload = new FormData();
+            formDataUpload.append("file", file);
+
+            const response = await fetch("/api/article/upload-image", {
+                method: "POST",
+                body: formDataUpload,
+            });
+
+            if (!response.ok) {
+                const error = await response.json();
+                throw new Error(error.error || "Upload failed");
+            }
+
+            const data = await response.json();
+            setFormData({ ...formData, heroImage: data.url });
+        } catch (error) {
+            console.error("Upload error:", error);
+            alert(error instanceof Error ? error.message : "Failed to upload image");
+        } finally {
+            setUploadingHero(false);
+            // clear input value if present
+            try { (event.target as HTMLInputElement).value = ""; } catch {}
+        }
+    };
+
+    const handleRemoveHeroImage = async () => {
+        try {
+            const response = await fetch(`/api/article/delete-image?url=${encodeURIComponent(formData.heroImage)}`, {
+                method: "DELETE",
+            });
+
+            if (!response.ok) {
+                console.error("Failed to delete image from server");
+            }
+        } catch (error) {
+            console.error("Error deleting image:", error);
+        }
+        setFormData({ ...formData, heroImage: "" });
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -177,6 +234,31 @@ export default function EditPostPage() {
                             rows={3}
                             placeholder="Short description of the article..."
                         />
+                    </div>
+
+                    <div className="form-group">
+                        <label>Hero Image</label>
+                        {formData.heroImage ? (
+                            <div className="hero-image-preview">
+                                <img src={formData.heroImage} alt="Hero" />
+                                <button type="button" className="btn-remove-hero" onClick={handleRemoveHeroImage}>
+                                    Remove Image
+                                </button>
+                            </div>
+                        ) : (
+                            <div className="hero-image-upload">
+                                <label className="upload-label">
+                                    {uploadingHero ? "Uploading..." : "Click to upload hero image"}
+                                    <input
+                                        type="file"
+                                        accept="image/*"
+                                        onChange={handleHeroImageUpload}
+                                        disabled={uploadingHero}
+                                        style={{ display: "none" }}
+                                    />
+                                </label>
+                            </div>
+                        )}
                     </div>
 
                     <div className="form-group">
