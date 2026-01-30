@@ -94,7 +94,8 @@ export async function middleware(req: NextRequest) {
 export const config = {
   matcher: [
     // Exclude API routes, static files, SEO files, and uploads so static assets under /uploads are served directly
-    "/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|logo.png|og-image.jpg|BingSiteAuth.xml|uploads).*)",
+    // Also exclude locale-prefixed uploads like /id/uploads and /en/uploads because middleware runs before rewrites
+    "/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|logo.png|og-image.jpg|BingSiteAuth.xml|uploads|id/uploads|en/uploads).*)",
     "/",
   ],
 };
