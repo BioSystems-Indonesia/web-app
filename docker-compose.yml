@@ -10,8 +10,13 @@ services:
       - lis-server_app_net
     ports:
       - "3000:3000"
+    volumes:
+      - uploads:/app/public/uploads
     restart: unless-stopped
 
 networks:
   lis-server_app_net:
     external: true
+
+volumes:
+  uploads:
