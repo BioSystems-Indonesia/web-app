@@ -209,6 +209,7 @@
   background: #f8f9fa;
   border-bottom: 1px solid #e9ecef;
   gap: 1rem;
+
 }
 
 .format-buttons {
@@ -226,6 +227,8 @@
   font-size: 0.875rem;
   transition: all 0.2s;
   min-width: 40px;
+  color: #0a0a0a;
+
 }
 
 .format-buttons button:hover {
