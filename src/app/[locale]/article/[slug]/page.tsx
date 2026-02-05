@@ -4,6 +4,7 @@ import "./page.css";
 import Header from "@/presentation/components/header/header";
 import CTASection from "@/presentation/home/cta/CTASection";
 import Footer from "@/presentation/components/footer/footer";
+import ArticleContent from "./ArticleContent";
 
 import type { Article as ArticleEntity } from "@/domain/entities/Article";
 import { headers } from "next/headers";
@@ -165,6 +166,9 @@ export default async function ArticlePage({ params }: PageProps) {
     return (
         <>
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
+            {article.heroImage && (
+                <link rel="preload" as="image" href={article.heroImage} />
+            )}
 
             <Header />
             <div className="article-page">
@@ -187,7 +191,7 @@ export default async function ArticlePage({ params }: PageProps) {
                         </div>
                     </header>
 
-                    <div className="article-content" dangerouslySetInnerHTML={{ __html: contentHtml }} />
+                    <ArticleContent contentHtml={contentHtml} />
 
                     {article.references && (
                         <div className="article-references">

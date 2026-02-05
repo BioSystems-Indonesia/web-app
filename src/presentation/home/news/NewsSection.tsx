@@ -10,6 +10,7 @@ import ContaimentImg from "@/assets/img/home/contaiment.png"
 import axios from "axios"
 import { useRouter } from "next/navigation"
 import { useState, useEffect } from "react";
+import { ensureAbsoluteImageUrl } from "@/lib/helper/imageLoader"
 
 type StaticNewsContent = {
     title: string
@@ -100,21 +101,24 @@ export default function NewsSection() {
                 <div className="card-container">
                     {loading ? (
                         <p>Loading...</p>
-                    ) : (articles ?? staticNews.map((s) => ({ title: s.title, excerpt: s.desc, slug: "", heroImage: null }))).map((n, index) => (
-                        <div
-                            key={index}
-                            className="card"
-                            style={{ backgroundImage: `url(${n.heroImage ?? (staticNews[index]?.image?.src ?? "")})` }}
-                            onClick={() => n.slug && router.push(`/article/${n.slug}`)}
-                        >
-                            <div className="text">
-                                <h3>{truncateWords(n.title, 5)}</h3>
-                                <p>{(n as any).subTitle}</p>
-                                <p>{t("viewMore")}</p>
+                    ) : (articles ?? staticNews.map((s) => ({ title: s.title, excerpt: s.desc, slug: "", heroImage: null }))).map((n, index) => {
+                        const bgImage = n.heroImage ? ensureAbsoluteImageUrl(n.heroImage) : (staticNews[index]?.image?.src ?? "");
+                        return (
+                            <div
+                                key={index}
+                                className="card"
+                                style={{ backgroundImage: `url(${bgImage})` }}
+                                onClick={() => n.slug && router.push(`/article/${n.slug}`)}
+                            >
+                                <div className="text">
+                                    <h3>{truncateWords(n.title, 5)}</h3>
+                                    <p>{(n as any).subTitle}</p>
+                                    <p>{t("viewMore")}</p>
+                                </div>
+                                <div className="overlay"></div>
                             </div>
-                            <div className="overlay"></div>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
                 <div className="content">
                     <div className="text">

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
 import axios from "axios";
 import "./page.css";
+import { useArticleContentImageFix } from "@/lib/helper/useArticleContentImageFix";
 
 interface User {
     id: string;
@@ -33,6 +34,7 @@ export default function ViewArticlePage() {
     const [article, setArticle] = useState<Article | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const contentRef = useArticleContentImageFix();
 
     useEffect(() => {
         if (slug) {
@@ -119,7 +121,7 @@ export default function ViewArticlePage() {
                     </div>
                 </header>
 
-                <div className="article-content" dangerouslySetInnerHTML={{ __html: article.contentHtml }} />
+                <div ref={contentRef} className="article-content" dangerouslySetInnerHTML={{ __html: article.contentHtml }} />
 
                 <footer className="article-footer">
                     <div className="footer-info">

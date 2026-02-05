@@ -10,6 +10,7 @@ import Image from "next/image"
 import CTASection from "@/presentation/home/cta/CTASection"
 import Footer from "@/presentation/components/footer/footer"
 import { useRouter } from "next/navigation"
+import { ensureAbsoluteImageUrl } from "@/lib/helper/imageLoader"
 
 export default function ArticlePage() {
     const t = useTranslations("Article")
@@ -43,17 +44,6 @@ export default function ArticlePage() {
         fetchArticle()
     }, [])
 
-    function getImageSrc(path?: string) {
-        if (!path) return "/logo.png";
-        if (/^https?:\/\//i.test(path)) return path;
-
-        const base = process.env.NEXT_PUBLIC_SITE_URL ?? (typeof window !== "undefined" ? window.location.origin : "");
-        try {
-            return new URL(path, base).toString();
-        } catch {
-            return path;
-        }
-    }
     return (
         <>
             <Header />
@@ -73,11 +63,18 @@ export default function ArticlePage() {
                         <p>{t("noArticles")}</p>
                     ) : (
                         articles.map((article, index) => {
-                            const imgSrc = getImageSrc(article.heroImage || "");
+                            const imgSrc = ensureAbsoluteImageUrl(article.heroImage);
                             return (
                                 <article key={index} className="article-item" onClick={() => router.push(`/article/${article.slug}`)}>
                                     <div className="image-wrap">
-                                        <Image src={imgSrc} alt={article.title || "article"} fill style={{ objectFit: "cover" }} />
+                                        <Image 
+                                            src={imgSrc} 
+                                            alt={article.title || "article"} 
+                                            fill 
+                                            style={{ objectFit: "cover" }}
+                                            priority={index < 3}
+                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                        />
                                     </div>
                                     <div className="text">
                                         <p><i>{article.createdAt.toLocaleDateString("en-US", {

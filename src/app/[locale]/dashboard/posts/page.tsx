@@ -5,6 +5,7 @@ import { ArticleStatus } from "@prisma/client";
 import axios from "axios";
 import { useParams, useRouter } from "next/navigation";
 import "./page.css";
+import { useArticleContentImageFix } from "@/lib/helper/useArticleContentImageFix";
 
 interface User {
   id: string;
@@ -46,6 +47,8 @@ export default function PostsPage() {
   const [showMessageModal, setShowMessageModal] = useState(false);
   const [messageContent, setMessageContent] = useState("");
   const [messageType, setMessageType] = useState<"error" | "success">("error");
+  
+  const contentPreviewRef = useArticleContentImageFix();
 
   useEffect(() => {
     fetchArticles();
@@ -318,7 +321,7 @@ export default function PostsPage() {
               </div>
               <div className="detail-content">
                 <strong>Content:</strong>
-                <div className="content-preview" dangerouslySetInnerHTML={{ __html: viewingArticle.contentHtml }} />
+                <div ref={contentPreviewRef} className="content-preview" dangerouslySetInnerHTML={{ __html: viewingArticle.contentHtml }} />
               </div>
             </div>
             <div className="modal-footer">

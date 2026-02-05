@@ -231,6 +231,12 @@
   height: auto;
   display: block;
   margin: 2rem auto;
+  image-rendering: auto;
+  will-change: auto;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
 /* Article References */
