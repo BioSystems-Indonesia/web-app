@@ -93,9 +93,8 @@ export async function middleware(req: NextRequest) {
 
 export const config = {
   matcher: [
-    // Exclude API routes, static files, SEO files, uploads, and instrument images
-    // Also exclude locale-prefixed paths for static assets
-    "/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|logo.png|og-image.jpg|BingSiteAuth.xml|uploads|instrument/images|.*\\.(jpg|jpeg|png|gif|webp|svg|ico|mp4|webm)).*)",
+    // Exclude API routes, static files, SEO files, and asset paths
+    "/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|logo.png|og-image.jpg|BingSiteAuth.xml|uploads|instrument).*)",
     "/",
   ],
 };
