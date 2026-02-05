@@ -47,7 +47,7 @@ export default function PostsPage() {
   const [showMessageModal, setShowMessageModal] = useState(false);
   const [messageContent, setMessageContent] = useState("");
   const [messageType, setMessageType] = useState<"error" | "success">("error");
-  
+
   const contentPreviewRef = useArticleContentImageFix();
 
   useEffect(() => {

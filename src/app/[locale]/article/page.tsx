@@ -67,10 +67,10 @@ export default function ArticlePage() {
                             return (
                                 <article key={index} className="article-item" onClick={() => router.push(`/article/${article.slug}`)}>
                                     <div className="image-wrap">
-                                        <Image 
-                                            src={imgSrc} 
-                                            alt={article.title || "article"} 
-                                            fill 
+                                        <Image
+                                            src={imgSrc}
+                                            alt={article.title || "article"}
+                                            fill
                                             style={{ objectFit: "cover" }}
                                             priority={index < 3}
                                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

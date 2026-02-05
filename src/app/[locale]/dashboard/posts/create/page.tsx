@@ -66,7 +66,8 @@ export default function CreatePostsPage() {
       const formDataUpload = new FormData();
       formDataUpload.append("file", file);
 
-      const response = await fetch("/api/article/upload-image", {
+      const response = await fetch("https://cdn.biosystems.id/v1/upload", {
+        headers: { "X-API-KEY": "JHADHSAKDHASJKHDKASHDUBVUAIBVUSAIB" },
         method: "POST",
         body: formDataUpload,
       });
@@ -89,7 +90,8 @@ export default function CreatePostsPage() {
 
   const handleRemoveHeroImage = async () => {
     try {
-      const response = await fetch(`/api/article/delete-image?url=${encodeURIComponent(formData.heroImage)}`, {
+      const response = await fetch(formData.heroImage, {
+        headers: { "X-API-KEY": "JHADHSAKDHASJKHDKASHDUBVUAIBVUSAIB" },
         method: "DELETE",
       });
 
