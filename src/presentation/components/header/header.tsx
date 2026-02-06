@@ -133,9 +133,9 @@ export default function Header({ backgroundColor = "transparent" }: HeaderProps)
     <header style={headerStyle} className={`${textColorClass} header`}>
       <div className={`layout ${isOpen ? "open" : ""}`} onClick={() => setIsOpen(false)}></div>
       <div className={`header-up ${isScrolled ? "hidden" : ""}`}>
-        <Link href={`/${locale}`}>
+        <a href={`/${locale}`}>
           <h2 className="logo">BioSystems</h2>
-        </Link>
+        </a>
         <div className="items">
           <div ref={languageRef} style={{ position: "relative" }}>
             <div

@@ -60,7 +60,7 @@ model Article {
   id          String        @id @default(cuid())
   authorId    String
   title       String
-  subTitle    String
+  subTitle    String        @db.LongText
   slug        String        @unique
   excerpt     String?       @db.LongText
   heroImage   String?       @db.VarChar(500)

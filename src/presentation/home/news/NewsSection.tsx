@@ -108,11 +108,11 @@ export default function NewsSection() {
                                 key={index}
                                 className="card"
                                 style={{ backgroundImage: `url(${bgImage})` }}
-                                onClick={() => n.slug && router.push(`/article/${n.slug}`)}
+                                onClick={() => n.slug && (window.location.href = `/article/${n.slug}`)}
                             >
                                 <div className="text">
                                     <h3>{truncateWords(n.title, 5)}</h3>
-                                    <p>{(n as any).subTitle}</p>
+                                    <p>{truncateWords((n as any).subTitle)}</p>
                                     <p>{t("viewMore")}</p>
                                 </div>
                                 <div className="overlay"></div>

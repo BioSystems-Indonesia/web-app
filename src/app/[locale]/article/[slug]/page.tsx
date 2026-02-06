@@ -190,31 +190,32 @@ export default async function ArticlePage({ params }: PageProps) {
                             </div>
                         </div>
                     </header>
+                    <div style={{ width: "100vw", display: 'flex', flexDirection: "column", alignItems: "center" }}>
+                        <ArticleContent contentHtml={contentHtml} />
 
-                    <ArticleContent contentHtml={contentHtml} />
-
-                    {article.references && (
-                        <div className="article-references">
-                            <h3>References</h3>
-                            <div className="references-content">
-                                {article.references.split("\n").map((ref, index) => {
-                                    const urlMatch = ref.match(/(https?:\/\/[^\s]+)/);
-                                    if (urlMatch) {
-                                        const url = urlMatch[0];
-                                        const text = ref.replace(url, "").trim() || url;
-                                        return (
-                                            <p key={index}>
-                                                <a href={url} target="_blank" rel="noopener noreferrer">
-                                                    {text}
-                                                </a>
-                                            </p>
-                                        );
-                                    }
-                                    return <p key={index}>{ref}</p>;
-                                })}
+                        {article.references && (
+                            <div className="article-references">
+                                <h3>References</h3>
+                                <div className="references-content">
+                                    {article.references.split("\n").map((ref, index) => {
+                                        const urlMatch = ref.match(/(https?:\/\/[^\s]+)/);
+                                        if (urlMatch) {
+                                            const url = urlMatch[0];
+                                            const text = ref.replace(url, "").trim() || url;
+                                            return (
+                                                <p key={index}>
+                                                    <a href={url} target="_blank" rel="noopener noreferrer">
+                                                        {text}
+                                                    </a>
+                                                </p>
+                                            );
+                                        }
+                                        return <p key={index}>{ref}</p>;
+                                    })}
+                                </div>
                             </div>
-                        </div>
-                    )}
+                        )}
+                    </div>
                 </article>
             </div>
             <CTASection contentBg="var(--primary)" iconColor="white" contentColor="white" />

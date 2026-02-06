@@ -264,14 +264,35 @@ const ImageBlock: React.FC<{
   const [uploading, setUploading] = useState(false);
   const [deleting, setDeleting] = useState(false);
 
-  const deleteImageFromServer = async (imageUrl: string) => {
-    if (!imageUrl || !imageUrl.startsWith("/uploads/articles/")) {
-      return;
+  const getCdnUrl = (imageUrl: string) => {
+    if (!imageUrl) return "";
+    if (imageUrl.startsWith("http://") || imageUrl.startsWith("https://")) {
+      return imageUrl;
     }
+    return `https://cdn.biosystems.id${imageUrl.startsWith("/") ? imageUrl : "/" + imageUrl}`;
+  };
 
+  const deleteImageFromServer = async (imageUrl: string) => {
+    if (!imageUrl) return;
     try {
-      const response = await fetch(`/api/article/delete-image?url=${encodeURIComponent(imageUrl)}`, {
+      let filename = imageUrl;
+
+      if (imageUrl.startsWith("http")) {
+        const url = new URL(imageUrl);
+        filename = url.pathname.split("/").pop() || "";
+      }
+
+      if (!filename) {
+        console.error("Filename not found");
+        return;
+      }
+
+      const deleteUrl = `https://cdn.biosystems.id/v1/delete/${filename}`;
+      const response = await fetch(deleteUrl, {
         method: "DELETE",
+        headers: {
+          "X-API-KEY": "JHADHSAKDHASJKHDKASHDUBVUAIBVUSAIB",
+        },
       });
 
       if (!response.ok) {
@@ -283,7 +304,7 @@ const ImageBlock: React.FC<{
   };
 
   const handleDeleteBlock = async () => {
-    if (block.content && block.content.startsWith("/uploads/articles/")) {
+    if (block.content) {
       setDeleting(true);
       await deleteImageFromServer(block.content);
       setDeleting(false);
@@ -294,11 +315,9 @@ const ImageBlock: React.FC<{
   const handleDeleteImage = async () => {
     if (!block.content) return;
 
-    if (block.content.startsWith("/uploads/articles/")) {
-      setDeleting(true);
-      await deleteImageFromServer(block.content);
-      setDeleting(false);
-    }
+    setDeleting(true);
+    await deleteImageFromServer(block.content);
+    setDeleting(false);
 
     onUpdate(block.id, "");
   };
@@ -326,7 +345,8 @@ const ImageBlock: React.FC<{
       const formData = new FormData();
       formData.append("file", file);
 
-      const response = await fetch("/api/article/upload-image", {
+      const response = await fetch("https://cdn.biosystems.id/v1/upload", {
+        headers: { "X-API-KEY": "JHADHSAKDHASJKHDKASHDUBVUAIBVUSAIB" },
         method: "POST",
         body: formData,
       });
@@ -387,7 +407,7 @@ const ImageBlock: React.FC<{
       </div>
       <div className="image-preview">
         {block.content ? (
-          <img src={block.content} alt="Content" />
+          <img src={getCdnUrl(block.content)} alt="Content" />
         ) : (
           <div className="no-image-placeholder">
             <p>No image uploaded</p>

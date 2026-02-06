@@ -90,9 +90,15 @@ export default function CreatePostsPage() {
 
   const handleRemoveHeroImage = async () => {
     try {
-      const response = await fetch(formData.heroImage, {
-        headers: { "X-API-KEY": "JHADHSAKDHASJKHDKASHDUBVUAIBVUSAIB" },
+      if (!formData.heroImage) return;
+
+      const filename = formData.heroImage.split("/").pop();
+      const deleteUrl = `https://cdn.biosystems.id/v1/delete/${filename}`;
+      const response = await fetch(deleteUrl, {
         method: "DELETE",
+        headers: {
+          "X-API-KEY": "JHADHSAKDHASJKHDKASHDUBVUAIBVUSAIB",
+        },
       });
 
       if (!response.ok) {
@@ -101,8 +107,10 @@ export default function CreatePostsPage() {
     } catch (error) {
       console.error("Error deleting image:", error);
     }
+
     setFormData({ ...formData, heroImage: "" });
   };
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

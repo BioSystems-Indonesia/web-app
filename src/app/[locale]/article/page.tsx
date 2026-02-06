@@ -65,7 +65,7 @@ export default function ArticlePage() {
                         articles.map((article, index) => {
                             const imgSrc = ensureAbsoluteImageUrl(article.heroImage);
                             return (
-                                <article key={index} className="article-item" onClick={() => router.push(`/article/${article.slug}`)}>
+                                <article key={index} className="article-item" onClick={() => window.location.href = `/article/${article.slug}`}>
                                     <div className="image-wrap">
                                         <Image
                                             src={imgSrc}
